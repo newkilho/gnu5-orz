@@ -103,8 +103,8 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
     $list[$i]['datetime'] = $datetime;
     $list[$i]['datetime2'] = $datetime2;
 
-    $list[$i]['gr_subject'] = $row['gr_subject'];
-    $list[$i]['bo_subject'] = ((G5_IS_MOBILE && $row['bo_mobile_subject']) ? $row['bo_mobile_subject'] : $row['bo_subject']);
+    $list[$i]['gr_subject'] = __($row['gr_subject']);
+    $list[$i]['bo_subject'] = __((G5_IS_MOBILE && $row['bo_mobile_subject']) ? $row['bo_mobile_subject'] : $row['bo_subject']);
     $list[$i]['wr_subject'] = $row2['wr_subject'];
 }
 

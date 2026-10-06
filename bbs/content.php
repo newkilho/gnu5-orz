@@ -29,7 +29,7 @@ if (G5_IS_MOBILE) {
 if (! (isset($co['co_id']) && $co['co_id']))
     alert('등록된 내용이 없습니다.');
 
-$g5['title'] = $co['co_subject'];
+$g5['title'] = __($co['co_subject']);
 
 if ($co['co_include_head'] && is_include_path_check($co['co_include_head'])
     && (!function_exists('is_content_include_allowed') || is_content_include_allowed($co['co_include_head'])))

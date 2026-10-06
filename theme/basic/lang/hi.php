@@ -4,6 +4,9 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // 사전 (hi). 틀은 php lang/build.php hi 로 만든다. 값이 ''이면 원문을 쓴다.
 return array(
 
+// theme/basic/group.php
+'{1} 그룹은 모바일에서만 접근할 수 있습니다.' => 'समूह {1} तक केवल मोबाइल से पहुँचा जा सकता है।',
+
 // theme/basic/head.php
 '본문 바로가기' => 'सामग्री पर जाएँ',
 '커뮤니티' => 'समुदाय',

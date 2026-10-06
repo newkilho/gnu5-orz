@@ -49,7 +49,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
     $list[$i]['num'] = $num;
     $list[$i]['opener_href'] = get_pretty_url($row['bo_table']);
     $list[$i]['opener_href_wr_id'] = get_pretty_url($row['bo_table'], $row['wr_id']);
-    $list[$i]['bo_subject'] = $row2['bo_subject'];
+    $list[$i]['bo_subject'] = __($row2['bo_subject']);
     $list[$i]['subject'] = $subject;
     $list[$i]['del_href'] = './scrap_delete.php?ms_id='.$row['ms_id'].'&amp;page='.$page;
 }

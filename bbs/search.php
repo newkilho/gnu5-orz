@@ -167,7 +167,7 @@ if ($stx) {
     for ($idx=$table_index; $idx<count($search_table); $idx++) {
         $sql = " select bo_subject, bo_mobile_subject from {$g5['board_table']} where bo_table = '{$search_table[$idx]}' ";
         $row = sql_fetch($sql);
-        $bo_subject[$idx] = ((G5_IS_MOBILE && $row['bo_mobile_subject']) ? $row['bo_mobile_subject'] : $row['bo_subject']);
+        $bo_subject[$idx] = __((G5_IS_MOBILE && $row['bo_mobile_subject']) ? $row['bo_mobile_subject'] : $row['bo_subject']);
 
         $tmp_write_table = $g5['write_prefix'] . $search_table[$idx];
 

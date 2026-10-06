@@ -45,7 +45,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 				if( empty($row) ) continue;
             ?>
                 <li class="gnb_1dli">
-                    <a href="<?php echo $row['me_link']; ?>" target="_<?php echo $row['me_target']; ?>" class="gnb_1da"><?php echo $row['me_name'] ?></a>
+                    <a href="<?php echo $row['me_link']; ?>" target="_<?php echo $row['me_target']; ?>" class="gnb_1da"><?php echo __($row['me_name']) ?></a>
                     <?php
                     $k = 0;
                     foreach( (array) $row['sub'] as $row2 ){
@@ -53,7 +53,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                         if($k == 0)
                             echo '<button type="button" class="btn_gnb_op"><span class="sound_only">'.__('하위분류').'</span></button><ul class="gnb_2dul">'.PHP_EOL;
                     ?>
-                        <li class="gnb_2dli"><a href="<?php echo $row2['me_link']; ?>" target="_<?php echo $row2['me_target']; ?>" class="gnb_2da"><span></span><?php echo $row2['me_name'] ?></a></li>
+                        <li class="gnb_2dli"><a href="<?php echo $row2['me_link']; ?>" target="_<?php echo $row2['me_target']; ?>" class="gnb_2da"><span></span><?php echo __($row2['me_name']) ?></a></li>
                     <?php
 					$k++;
                     }	//end foreach $row2

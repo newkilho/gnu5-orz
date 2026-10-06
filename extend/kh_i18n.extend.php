@@ -34,3 +34,12 @@ function __js(str) {
 
 if (is_file(G5_PATH.'/lang/'.KH_LANG.'.js'))
     add_javascript('<script src="'.G5_URL.'/lang/'.KH_LANG.'.js"></script>', -1);
+
+// 관리자 메뉴: 환경설정 → 다국어 문구 (adm/i18n.php)
+add_replace('admin_menu', 'kh_i18n_admin_menu', G5_HOOK_DEFAULT_PRIORITY, 1);
+function kh_i18n_admin_menu($menu)
+{
+    if (isset($menu['menu100']))
+        $menu['menu100'][] = array('100960', '다국어 문구', G5_ADMIN_URL.'/i18n.php', 'cf_i18n');
+    return $menu;
+}

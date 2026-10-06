@@ -4,6 +4,9 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // 사전 (en). 틀은 php lang/build.php en 로 만든다. 값이 ''이면 원문을 쓴다.
 return array(
 
+// theme/basic/group.php
+'{1} 그룹은 모바일에서만 접근할 수 있습니다.' => 'The {1} group can only be accessed on mobile.',
+
 // theme/basic/head.php
 '본문 바로가기' => 'Skip to content',
 '커뮤니티' => 'Community',

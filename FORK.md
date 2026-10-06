@@ -22,6 +22,10 @@
 | `common.php` | `uri.lib.php` include 바로 다음 | `lib/i18n.lib.php`(새 파일: `__()`, 사전 읽기) include 한 줄 | 코어 문구도 `__()`로 번역하므로 `extend/`보다 먼저 읽어야 한다 |
 | `lib/common.lib.php` | `alert()`, `alert_close()`, `confirm()` | 받은 문구를 `__()`로 번역 (각 한 곳) | 호출하는 곳 수백 군데를 고치지 않고 알림창을 번역하려고. 값이 이어붙은 문구만 호출하는 곳에서 `__('…{1}…', 값)` |
 | `bbs/`, `lib/`, `plugin/`(본인인증·캡차·sns·social), `common.php`, `head.php`, `head.sub.php` | 문자열 | 사용자에게 보이는 문자열을 `__('…')`로 감쌈. JS 안이면 `get_js_safe_string(__('…'))` | 다국어. 관리자(`adm/`)·쇼핑몰·DB 저장값·비교값은 그대로 |
+| `lib/get_data.lib.php` | `get_board_db()` | 게시판 이름(`bo_subject`, `bo_mobile_subject`)을 `__()`로 번역 (2줄) | DB 문구 번역. 사이트 이름·그룹 이름은 코어 훅(`get_config`, `get_group`)으로 해서 코어 수정 없음 |
+| `lib/latest.lib.php` | `latest()` 캐시 파일 이름 | 이름에 `KH_LANG`을 넣음 | 최신글 캐시에 번역된 게시판 이름이 들어가므로 언어별로 나눔 |
+| `bbs/new.php`, `bbs/search.php`, `bbs/scrap.php`, `bbs/content.php` | SQL로 직접 읽은 게시판·그룹 이름, 내용 제목 | `__()`로 감쌈 | `get_board_db()`를 거치지 않는 곳 |
+| `adm/i18n.php`, `adm/i18n_update.php` | 새 파일 | 관리자 → 환경설정 → 다국어 문구 (메뉴는 `extend/`의 `admin_menu` 훅) | 번역 수정·DB 문구 번역. 저장은 `data/lang/<언어>.php` |
 
 ### 저장소 밖 설정 (서버 `.htaccess`)
 

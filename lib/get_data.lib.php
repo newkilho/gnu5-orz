@@ -87,6 +87,9 @@ function get_board_db($bo_table, $is_cache=false){
         $board_defaults = array('bo_table'=>'', 'bo_skin'=>'', 'bo_mobile_skin'=>'', 'bo_upload_count' => 0, 'bo_use_dhtml_editor'=>'', 'bo_subject'=>'', 'bo_image_width'=>0);
 
         $cache[$key] = array_merge($board_defaults, (array) $board);
+        // 게시판 이름 번역 (관리자 → 다국어 문구의 DB 문구)
+        $cache[$key]['bo_subject'] = __($cache[$key]['bo_subject']);
+        $cache[$key]['bo_mobile_subject'] = isset($cache[$key]['bo_mobile_subject']) ? __($cache[$key]['bo_mobile_subject']) : '';
     }
 
     return $cache[$key];

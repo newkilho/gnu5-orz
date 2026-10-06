@@ -4,6 +4,9 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // 사전 (zh-hant). 틀은 php lang/build.php zh-hant 로 만든다. 값이 ''이면 원문을 쓴다.
 return array(
 
+// theme/basic/group.php
+'{1} 그룹은 모바일에서만 접근할 수 있습니다.' => '{1} 群組只能在行動裝置上存取。',
+
 // theme/basic/head.php
 '본문 바로가기' => '跳到主要內容',
 '커뮤니티' => '社群',
