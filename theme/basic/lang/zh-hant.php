@@ -35,6 +35,9 @@ return array(
 // theme/basic/index.php
 '최신글' => '最新文章',
 
+// theme/basic/lang_select.php
+'언어' => '語言',
+
 // theme/basic/mobile/group.php
 '{1} 그룹은 PC에서만 접근할 수 있습니다.' => '{1}群組只能在電腦上存取。',
 

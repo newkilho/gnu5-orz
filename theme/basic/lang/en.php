@@ -35,6 +35,9 @@ return array(
 // theme/basic/index.php
 '최신글' => 'Latest posts',
 
+// theme/basic/lang_select.php
+'언어' => 'Language',
+
 // theme/basic/mobile/group.php
 '{1} 그룹은 PC에서만 접근할 수 있습니다.' => 'The {1} group is only accessible on PC.',
 

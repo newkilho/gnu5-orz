@@ -32,7 +32,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 */
 ?>
 <!doctype html>
-<html lang="<?php echo KH_LANG; ?>"<?php echo KH_LANG === 'ar' ? ' dir="rtl"' : ''; ?>>
+<html lang="<?php echo KH_LANG; ?>">
 <head>
 <meta charset="utf-8">
 <?php

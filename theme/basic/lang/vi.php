@@ -35,6 +35,9 @@ return array(
 // theme/basic/index.php
 '최신글' => 'Bài viết mới nhất',
 
+// theme/basic/lang_select.php
+'언어' => 'Ngôn ngữ',
+
 // theme/basic/mobile/group.php
 '{1} 그룹은 PC에서만 접근할 수 있습니다.' => 'Nhóm {1} chỉ có thể truy cập trên PC.',
 

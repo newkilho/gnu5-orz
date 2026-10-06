@@ -31,7 +31,7 @@
 | `lib/latest.lib.php` | `latest()` 캐시 파일 이름 | 이름에 `KH_LANG`을 넣음 | 최신글 캐시에 번역된 게시판 이름이 들어가므로 언어별로 나눔 |
 | `bbs/new.php`, `bbs/search.php`, `bbs/scrap.php`, `bbs/content.php` | SQL로 직접 읽은 게시판·그룹 이름, 내용 제목 | `__()`로 감쌈 | `get_board_db()`를 거치지 않는 곳 |
 | `bbs/board.php` | 목록 제목 `$g5['title']` | `$page`가 없으면 게시판 이름만 | 원본은 `page`가 없을 때 `$page`가 빈 문자열이라(PHP 8에서 `'' == 0`은 거짓) "자유게시판  페이지"가 됐다. 한국어 제목도 "자유게시판"으로 바뀐다 |
-| `head.sub.php`, `theme/basic/head.sub.php` | `<html lang>` | `KH_LANG`, 아랍어면 `dir="rtl"` | 원래 `ko` 고정. basic 테마 CSS는 오른쪽→왼쪽 배치를 고려하지 않았다 |
+| `head.sub.php`, `theme/basic/head.sub.php` | `<html lang>` | `KH_LANG`. 코어 `head.sub.php`만 아랍어면 `dir="rtl"` | 원래 `ko` 고정. basic 테마는 아랍어 오른쪽→왼쪽 배치를 지원하지 않는다(번역 문구만 왼쪽→오른쪽으로) |
 | `plugin/recaptcha/recaptcha.user.lib.php`, `plugin/recaptcha_inv/recaptcha.user.lib.php` | `api.js?hl=` | `KH_LANG`(구글 코드로: `zh-CN`, `zh-TW`, `pt-BR`, `pt-PT`, `no`) | 원래 `hl=ko` 고정 |
 | `js/wrest.js`, `js/common.js`, `js/autosave.js`, `js/certify.js`, `js/jquery.fancyalert.js` | 사용자에게 보이는 문구 | `__js('…')`, 값이 들어가면 `__js('…{1}…', 값)` | 코어 JS 번역. 사전은 `lang/<언어>.js`(`php lang/build.php`가 `lang/<언어>.php`에서 만듦) |
 | `plugin/editor/smarteditor2/editor.lib.php`, `plugin/editor/cheditor5/editor.lib.php` | 그누보드가 만든 감싸기 코드의 문구 | `__()`로 감쌈 | "단축키 일람", "내용을 입력해 주십시오." 등 |
@@ -54,6 +54,7 @@ RewriteRule ^(en|de|ja|fr|zh-hans|zh-hant|nl|sv|da|nb|es|it|pt-br|pt-pt|ar|pl|tr
 ### 다국어 기능 (`extend/kh_i18n.extend.php`, 코어 수정 없음)
 
 - `kh_lang_url('en')`: 지금 화면의 다른 언어 주소. 언어 선택 버튼은 `kh_langs()`(언어 목록)와 이 함수로 그린다.
+- basic 테마의 언어 선택: `theme/basic/lang_select.php`(선택 상자)를 PC 상단 바로가기(`head.php`)와 모바일 메뉴(`mobile/head.php`)에서 include.
 - `<head>`에 canonical, hreflang(전 언어 + `x-default`), `og:locale`을 넣는다. 관리자 화면은 제외. 테마가 직접 넣는다면 `theme.config.php`에 `define('KH_NO_I18N_HEAD', true);`
 - 첫 접속 때 브라우저 언어로 보내는 302는 넣지 않았다(검색엔진·공유 링크가 엉뚱한 언어로 열릴 수 있음).
 - 메일 발송 오류 문구(PHPMailer)는 `mail_options` 훅으로 PHPMailer가 제공하는 언어 파일을 고른다.
@@ -64,7 +65,7 @@ RewriteRule ^(en|de|ja|fr|zh-hans|zh-hant|nl|sv|da|nb|es|it|pt-br|pt-pt|ar|pl|tr
 
 - 원본 그누보드가 `G5_JS_VER` 상수를 없앴다. 이 상수를 쓰는 옛 테마는 500 오류가 난다 → 상수를 정의하는 `extend/version.extend.php` 같은 파일이 필요할 수 있다.
 - `get_paging()`이 "처음·이전·다음·맨끝" 같은 글자를 번역한다. 이 글자로 페이징 HTML을 가공하는 테마(예: daisyui의 `chg_paging()`)는 외국어 화면에서 깨진다.
-- 아랍어는 `dir="rtl"`만 넣는다. 테마 CSS가 오른쪽→왼쪽 배치를 지원해야 한다.
+- 아랍어 오른쪽→왼쪽 배치는 테마 몫이다. 코어 `head.sub.php`는 `dir="rtl"`을 넣지만 basic 테마는 넣지 않는다.
 
 ## 수명
 

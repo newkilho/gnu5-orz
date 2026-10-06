@@ -60,6 +60,8 @@ ul {list-style:none}
 box-shadow:0 0 5px rgba(55,55,5,0.4)}
 
 #gnb_1dul {background:#fff}
+#gnb .kh_lang {padding:10px 15px;background:#fff;border-bottom:1px solid #e5e5e5}
+#gnb .kh_lang select {width:100%;height:36px;padding:0 8px;border:1px solid #d5d5d5;border-radius:3px;background:#fff}
 #gnb_1dul a {display:block;color:#000}
 .gnb_1dli {position:relative;line-height:40px}
 .gnb_1dli button {position:absolute;top:5px;right:0;width:40px;height:40px;overflow:hidden;border:0;font-size:1.2em;background:#fff;background:url(../img/mobile/gnb_bg2.png) no-repeat 50% 50%;text-indent:-9999px}

@@ -37,6 +37,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
         <div id="gnb" class="hd_div">
             <button type="button" id="gnb_close" class="hd_closer"><span class="sound_only"><?php echo __('메뉴 닫기') ?></span><i class="fa fa-times" aria-hidden="true"></i></button>
 			<?php echo outlogin('theme/basic'); // 외부 로그인 ?>
+			<?php include G5_THEME_PATH.'/lang_select.php'; // 언어 선택 ?>
             <ul id="gnb_1dul">
             <?php
             $menu_datas = get_menu_db(1, true);
