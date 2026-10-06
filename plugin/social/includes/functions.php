@@ -268,7 +268,7 @@ function social_user_profile_replace( $mb_id, $provider, $profile ){
 
 function social_build_provider_config($provider){
     $setting = array(
-        'base_url'  =>  https_url(G5_PLUGIN_DIR.'/'.G5_SOCIAL_LOGIN_DIR).'/',
+        'base_url'  =>  (G5_HTTPS_DOMAIN ? G5_HTTPS_DOMAIN : G5_BASE_URL).'/'.G5_PLUGIN_DIR.'/'.G5_SOCIAL_LOGIN_DIR.'/',   // 언어 접두사 없이 (gnu5-orz)
         'providers' =>  array(
             $provider   =>  array(
                     'enabled'   => true,

@@ -79,7 +79,8 @@ define('G5_CONTENT_DIR',    'content');
 
 // gnu5-orz 다국어: .htaccess가 /en/… 의 접두사를 떼고 환경변수 KH_LANG으로 넘긴다 (없으면 ko)
 // 짧은주소(/en/free)는 내부 연결이 두 번 일어나 REDIRECT_가 두 번 붙는다
-// 접두사를 G5_URL에도 붙여, 그누보드가 만드는 링크가 모두 같은 언어를 유지하게 한다
+// 접두사는 페이지 주소(G5_URL 계열)에만 붙여 링크가 같은 언어를 유지하게 하고,
+// 자산·관리자 주소(CSS, JS, 이미지, data, 스킨, 테마, 에디터, adm)는 접두사 없는 G5_BASE_URL로 만든다
 $kh_lang = 'ko';
 foreach (array('KH_LANG', 'REDIRECT_KH_LANG', 'REDIRECT_REDIRECT_KH_LANG') as $kh_key) {
     if (isset($_SERVER[$kh_key]) && preg_match('/^[a-z]{2}(-[a-z]{2,4})?$/', $_SERVER[$kh_key])) {
@@ -88,19 +89,18 @@ foreach (array('KH_LANG', 'REDIRECT_KH_LANG', 'REDIRECT_REDIRECT_KH_LANG') as $k
     }
 }
 define('KH_LANG', $kh_lang);
-if (KH_LANG !== 'ko' && isset($g5_path['url']))
-    $g5_path['url'] .= '/'.KH_LANG;
 unset($kh_lang, $kh_key);
 
 // URL 은 브라우저상에서의 경로 (도메인으로 부터)
 if (G5_DOMAIN) {
-    define('G5_URL', G5_DOMAIN);
+    define('G5_BASE_URL', G5_DOMAIN);
 } else {
     if (isset($g5_path['url']))
-        define('G5_URL', $g5_path['url']);
+        define('G5_BASE_URL', $g5_path['url']);
     else
-        define('G5_URL', '');
+        define('G5_BASE_URL', '');
 }
+define('G5_URL', G5_BASE_URL.(KH_LANG !== 'ko' ? '/'.KH_LANG : ''));
 
 if (isset($g5_path['path'])) {
     define('G5_PATH', $g5_path['path']);
@@ -108,15 +108,15 @@ if (isset($g5_path['path'])) {
     define('G5_PATH', '');
 }
 
-define('G5_ADMIN_URL',      G5_URL.'/'.G5_ADMIN_DIR);
+define('G5_ADMIN_URL',      G5_BASE_URL.'/'.G5_ADMIN_DIR);
 define('G5_BBS_URL',        G5_URL.'/'.G5_BBS_DIR);
-define('G5_CSS_URL',        G5_URL.'/'.G5_CSS_DIR);
-define('G5_DATA_URL',       G5_URL.'/'.G5_DATA_DIR);
-define('G5_IMG_URL',        G5_URL.'/'.G5_IMG_DIR);
-define('G5_JS_URL',         G5_URL.'/'.G5_JS_DIR);
-define('G5_SKIN_URL',       G5_URL.'/'.G5_SKIN_DIR);
+define('G5_CSS_URL',        G5_BASE_URL.'/'.G5_CSS_DIR);
+define('G5_DATA_URL',       G5_BASE_URL.'/'.G5_DATA_DIR);
+define('G5_IMG_URL',        G5_BASE_URL.'/'.G5_IMG_DIR);
+define('G5_JS_URL',         G5_BASE_URL.'/'.G5_JS_DIR);
+define('G5_SKIN_URL',       G5_BASE_URL.'/'.G5_SKIN_DIR);
 define('G5_PLUGIN_URL',     G5_URL.'/'.G5_PLUGIN_DIR);
-define('G5_EDITOR_URL',     G5_PLUGIN_URL.'/'.G5_EDITOR_DIR);
+define('G5_EDITOR_URL',     G5_BASE_URL.'/'.G5_PLUGIN_DIR.'/'.G5_EDITOR_DIR);
 define('G5_OKNAME_URL',     G5_PLUGIN_URL.'/'.G5_OKNAME_DIR);
 define('G5_KCPCERT_URL',    G5_PLUGIN_URL.'/'.G5_KCPCERT_DIR);
 define('G5_KCPCERT_V2_URL', G5_PLUGIN_URL.'/'.G5_KCPCERT_V2_DIR);
@@ -124,7 +124,7 @@ define('G5_INICERT_URL',     G5_PLUGIN_URL.'/'.G5_INICERT_DIR);
 define('G5_LGXPAY_URL',     G5_PLUGIN_URL.'/'.G5_LGXPAY_DIR);
 define('G5_SNS_URL',        G5_PLUGIN_URL.'/'.G5_SNS_DIR);
 define('G5_SYNDI_URL',      G5_PLUGIN_URL.'/'.G5_SYNDI_DIR);
-define('G5_MOBILE_URL',     G5_URL.'/'.G5_MOBILE_DIR);
+define('G5_MOBILE_URL',     G5_BASE_URL.'/'.G5_MOBILE_DIR);
 
 // PATH 는 서버상에서의 절대경로
 define('G5_ADMIN_PATH',     G5_PATH.'/'.G5_ADMIN_DIR);

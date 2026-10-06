@@ -18,7 +18,10 @@
 
 | 파일 | 위치 | 내용 | 이유 |
 |---|---|---|---|
-| `config.php` | `define('G5_URL', …)` 바로 앞 | 환경변수 `KH_LANG`(없으면 `ko`)으로 `KH_LANG` 상수를 정하고, `ko`가 아니면 `G5_URL` 끝에 `/<언어>`를 붙임 | `/en/…` 주소에서 그누보드가 만드는 모든 링크·이동 주소가 같은 언어를 유지하게 하려고. `G5_URL`은 상수라 `extend/`에서 바꿀 수 없다 |
+| `config.php` | `define('G5_URL', …)` 부분과 `G5_*_URL` 정의 | 환경변수 `KH_LANG`(없으면 `ko`)으로 `KH_LANG` 상수를 정함. 원래 `G5_URL`이던 기준 주소를 `G5_BASE_URL`(접두사 없음)로 두고, `G5_URL`은 `ko`가 아니면 끝에 `/<언어>`를 붙임. 자산·관리자 상수(`G5_ADMIN_URL`, `G5_CSS_URL`, `G5_DATA_URL`, `G5_IMG_URL`, `G5_JS_URL`, `G5_SKIN_URL`, `G5_EDITOR_URL`, `G5_MOBILE_URL`)는 `G5_BASE_URL`로 만듦 | 페이지 링크(`G5_URL`, `G5_BBS_URL`, `G5_PLUGIN_URL` …)는 같은 언어를 유지하고, 에디터 이미지처럼 DB에 저장되는 주소와 CSS·JS는 언어와 무관한 주소가 되게 하려고. `G5_DOMAIN`을 써도 접두사가 붙는다. 상수라 `extend/`에서 바꿀 수 없다 |
+| `common.php` | `define('G5_THEME_URL', …)` | `G5_URL` → `G5_BASE_URL` | 테마 자산 주소는 언어와 무관하게 |
+| `lib/common.lib.php` | `https_url()` | `G5_HTTPS_DOMAIN`·`G5_DOMAIN`을 쓸 때도 언어 접두사를 붙임 | 원래는 이 두 설정을 쓰면 로그인·회원가입 주소에서 언어가 빠졌다 |
+| `extend/social_login.extend.php`, `plugin/social/includes/functions.php` | `G5_SOCIAL_LOGIN_BASE_URL`, hybridauth `base_url` | `G5_BASE_URL`로 만듦 (접두사 없음) | 네이버·카카오 등에 등록하는 콜백 주소는 하나라서, 언어마다 달라지면 로그인이 실패한다 |
 | `common.php` | `uri.lib.php` include 바로 다음 | `lib/i18n.lib.php`(새 파일: `__()`, 사전 읽기) include 한 줄 | 코어 문구도 `__()`로 번역하므로 `extend/`보다 먼저 읽어야 한다 |
 | `bbs/`, `lib/`, `plugin/`(본인인증·캡차·sns·social), `common.php`, `head.php`, `head.sub.php` | 문자열 | 사용자에게 보이는 문자열을 `__('…')`로 감쌈. 알림(`alert`, `alert_close`, `confirm`)도 호출하는 곳에서 `alert(__('…'))`, 값이 들어가면 `__('…{1}…', 값)`. JS 안이면 `get_js_safe_string(__('…'))` | 다국어. 관리자(`adm/`)·쇼핑몰·DB 저장값·비교값은 그대로 |
 | `lib/get_data.lib.php` | `get_board_db()` | 게시판 이름(`bo_subject`, `bo_mobile_subject`)을 `__()`로 번역 (2줄) | DB 문구 번역. 사이트 이름·그룹 이름은 코어 훅(`get_config`, `get_group`)으로 해서 코어 수정 없음 |

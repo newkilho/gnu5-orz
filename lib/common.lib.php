@@ -3643,13 +3643,13 @@ function https_url($dir, $https=true)
 {
     if ($https) {
         if (G5_HTTPS_DOMAIN) {
-            $url = G5_HTTPS_DOMAIN.'/'.$dir;
+            $url = G5_HTTPS_DOMAIN.(KH_LANG !== 'ko' ? '/'.KH_LANG : '').'/'.$dir;
         } else {
             $url = G5_URL.'/'.$dir;
         }
     } else {
         if (G5_DOMAIN) {
-            $url = G5_DOMAIN.'/'.$dir;
+            $url = G5_URL.'/'.$dir;   // G5_DOMAIN + 언어 접두사
         } else {
             $url = G5_URL.'/'.$dir;
         }

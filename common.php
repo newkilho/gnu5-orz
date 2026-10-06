@@ -711,7 +711,7 @@ if(isset($config['cf_theme']) && trim($config['cf_theme'])) {
     $theme_path = G5_PATH.'/'.G5_THEME_DIR.'/'.$config['cf_theme'];
     if(is_dir($theme_path)) {
         define('G5_THEME_PATH',        $theme_path);
-        define('G5_THEME_URL',         G5_URL.'/'.G5_THEME_DIR.'/'.$config['cf_theme']);
+        define('G5_THEME_URL',         G5_BASE_URL.'/'.G5_THEME_DIR.'/'.$config['cf_theme']);
         define('G5_THEME_MOBILE_PATH', $theme_path.'/'.G5_MOBILE_DIR);
         define('G5_THEME_LIB_PATH',    $theme_path.'/'.G5_LIB_DIR);
         define('G5_THEME_CSS_URL',     G5_THEME_URL.'/'.G5_CSS_DIR);
