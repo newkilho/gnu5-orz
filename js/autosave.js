@@ -61,7 +61,7 @@ $(function(){
                         var subject = $(this).find("subject").text();
                         var datetime = $(this).find("datetime").text();
                         $("#autosave_pop ul")
-                            .append('<li><a href="#none" class="autosave_load">'+subject+'</a><span>'+datetime+' <button type="button" class="autosave_del">삭제</button></span></li>')
+                            .append('<li><a href="#none" class="autosave_load">'+subject+'</a><span>'+datetime+' <button type="button" class="autosave_del">'+__js('삭제')+'</button></span></li>')
                             .find("li:eq("+i+")")
                             .data({ as_id: id, uid: uid });
                     });
@@ -105,7 +105,7 @@ $(function(){
         var as_id = $li.data("as_id");
         $.get(g5_bbs_url+"/ajax.autosavedel.php", {"as_id":as_id}, function(data){
             if (data == -1) {
-                alert("임시 저장된글을 삭제중에 오류가 발생하였습니다.");
+                alert(__js("임시 저장된글을 삭제중에 오류가 발생하였습니다."));
             } else {
                 $("#autosave_count").html(data);
                 $li.remove();

@@ -813,4 +813,80 @@ Comentário
 // plugin/social/unlink.php
 '회원이 아니거나 해당값이 넘어오지 않았습니다.' => 'Não é membro ou o valor não foi recebido.',
 '권한이 없거나 잘못된 요청입니다.' => 'Não tem permissão ou o pedido é inválido.',
+
+// js/autosave.js
+'삭제' => 'Eliminar',
+'임시 저장된글을 삭제중에 오류가 발생하였습니다.' => 'Ocorreu um erro ao eliminar a publicação guardada temporariamente.',
+
+// js/certify.js
+'이미 {1}으로 본인확인을 완료하셨습니다.
+
+이전 인증을 취소하고 다시 인증하시겠습니까?' => 'Já verificou a sua identidade por {1}.
+
+Cancelar a verificação anterior e verificar novamente?',
+
+// js/common.js
+'한번 삭제한 자료는 복구할 방법이 없습니다.
+
+정말 삭제하시겠습니까?' => 'Os dados eliminados não podem ser recuperados.
+
+Pretende mesmo eliminar?',
+'KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.' => 'O ficheiro postcode.v2.js do serviço de código postal KAKAO não foi carregado.',
+'토큰 정보가 올바르지 않습니다.' => 'As informações do token não são válidas.',
+
+// js/wrest.js
+'{1} : 필수 선택입니다.
+' => '{1} : Seleção obrigatória.
+',
+'{1} : 필수 입력입니다.
+' => '{1} : Campo obrigatório.
+',
+'{1} : 전화번호 형식이 올바르지 않습니다.
+
+하이픈(-)을 포함하여 입력하세요.
+' => '{1} : O formato do número de telefone não é válido.
+
+Introduza-o com hífenes (-).
+',
+'{1} : 이메일주소 형식이 아닙니다.
+' => '{1} : Endereço de e-mail inválido.
+',
+'{1} : 한글이 아닙니다. (자음, 모음 조합된 한글만 가능)
+' => '{1} : Só é permitido coreano. (Apenas sílabas coreanas completas)
+',
+'{1} : 한글이 아닙니다.
+' => '{1} : Só é permitido coreano.
+',
+'{1} : 한글, 영문, 숫자가 아닙니다.
+' => '{1} : Só são permitidos coreano, letras latinas e números.
+',
+'{1} : 한글, 영문이 아닙니다.
+' => '{1} : Só são permitidos coreano e letras latinas.
+',
+'{1} : 숫자가 아닙니다.
+' => '{1} : Só são permitidos números.
+',
+'{1} : 영문이 아닙니다.
+' => '{1} : Só são permitidas letras latinas.
+',
+'{1} : 영문 또는 숫자가 아닙니다.
+' => '{1} : Só são permitidas letras latinas ou números.
+',
+'{1} : 영문, 숫자, _ 가 아닙니다.
+' => '{1} : Só são permitidos letras latinas, números e _.
+',
+'{1} : 최소 {2}글자 이상 입력하세요.
+' => '{1} : Introduza pelo menos {2} caracteres.
+',
+'{1} : 이미지 파일이 아닙니다.
+.gif .jpg .png 파일만 가능합니다.
+' => '{1} : Não é um ficheiro de imagem.
+Só são permitidos ficheiros .gif .jpg .png.
+',
+'{1} : .{2} 파일만 가능합니다.
+' => '{1} : Só são permitidos ficheiros .{2}.
+',
+'{1} : 공백이 없어야 합니다.
+' => '{1} : Não são permitidos espaços.
+',
 );

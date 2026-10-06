@@ -813,4 +813,80 @@ Bình luận
 // plugin/social/unlink.php
 '회원이 아니거나 해당값이 넘어오지 않았습니다.' => 'Bạn không phải thành viên hoặc không nhận được giá trị cần thiết.',
 '권한이 없거나 잘못된 요청입니다.' => 'Bạn không có quyền hoặc yêu cầu không hợp lệ.',
+
+// js/autosave.js
+'삭제' => 'Xóa',
+'임시 저장된글을 삭제중에 오류가 발생하였습니다.' => 'Đã xảy ra lỗi khi xóa bài viết đã lưu tạm.',
+
+// js/certify.js
+'이미 {1}으로 본인확인을 완료하셨습니다.
+
+이전 인증을 취소하고 다시 인증하시겠습니까?' => 'Bạn đã xác minh danh tính qua {1}.
+
+Hủy xác minh trước đó và xác minh lại?',
+
+// js/common.js
+'한번 삭제한 자료는 복구할 방법이 없습니다.
+
+정말 삭제하시겠습니까?' => 'Dữ liệu đã xóa không thể khôi phục.
+
+Bạn có chắc chắn muốn xóa?',
+'KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.' => 'Chưa tải tệp postcode.v2.js của dịch vụ mã bưu chính KAKAO.',
+'토큰 정보가 올바르지 않습니다.' => 'Thông tin token không hợp lệ.',
+
+// js/wrest.js
+'{1} : 필수 선택입니다.
+' => '{1} : Bắt buộc chọn.
+',
+'{1} : 필수 입력입니다.
+' => '{1} : Bắt buộc nhập.
+',
+'{1} : 전화번호 형식이 올바르지 않습니다.
+
+하이픈(-)을 포함하여 입력하세요.
+' => '{1} : Định dạng số điện thoại không hợp lệ.
+
+Vui lòng nhập kèm dấu gạch nối (-).
+',
+'{1} : 이메일주소 형식이 아닙니다.
+' => '{1} : Không phải địa chỉ email hợp lệ.
+',
+'{1} : 한글이 아닙니다. (자음, 모음 조합된 한글만 가능)
+' => '{1} : Chỉ cho phép tiếng Hàn. (Chỉ âm tiết tiếng Hàn hoàn chỉnh)
+',
+'{1} : 한글이 아닙니다.
+' => '{1} : Chỉ cho phép tiếng Hàn.
+',
+'{1} : 한글, 영문, 숫자가 아닙니다.
+' => '{1} : Chỉ cho phép tiếng Hàn, chữ Latinh và số.
+',
+'{1} : 한글, 영문이 아닙니다.
+' => '{1} : Chỉ cho phép tiếng Hàn và chữ Latinh.
+',
+'{1} : 숫자가 아닙니다.
+' => '{1} : Chỉ cho phép số.
+',
+'{1} : 영문이 아닙니다.
+' => '{1} : Chỉ cho phép chữ Latinh.
+',
+'{1} : 영문 또는 숫자가 아닙니다.
+' => '{1} : Chỉ cho phép chữ Latinh hoặc số.
+',
+'{1} : 영문, 숫자, _ 가 아닙니다.
+' => '{1} : Chỉ cho phép chữ Latinh, số và _.
+',
+'{1} : 최소 {2}글자 이상 입력하세요.
+' => '{1} : Vui lòng nhập ít nhất {2} ký tự.
+',
+'{1} : 이미지 파일이 아닙니다.
+.gif .jpg .png 파일만 가능합니다.
+' => '{1} : Không phải tệp hình ảnh.
+Chỉ cho phép tệp .gif .jpg .png.
+',
+'{1} : .{2} 파일만 가능합니다.
+' => '{1} : Chỉ cho phép tệp .{2}.
+',
+'{1} : 공백이 없어야 합니다.
+' => '{1} : Không được có khoảng trắng.
+',
 );

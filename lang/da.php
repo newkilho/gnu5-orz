@@ -813,4 +813,80 @@ Kommentar
 // plugin/social/unlink.php
 '회원이 아니거나 해당값이 넘어오지 않았습니다.' => 'Du er ikke medlem, eller værdien blev ikke modtaget.',
 '권한이 없거나 잘못된 요청입니다.' => 'Du har ikke tilladelse, eller anmodningen er ugyldig.',
+
+// js/autosave.js
+'삭제' => 'Slet',
+'임시 저장된글을 삭제중에 오류가 발생하였습니다.' => 'Der opstod en fejl under sletning af det midlertidigt gemte indlæg.',
+
+// js/certify.js
+'이미 {1}으로 본인확인을 완료하셨습니다.
+
+이전 인증을 취소하고 다시 인증하시겠습니까?' => 'Du har allerede bekræftet din identitet via {1}.
+
+Vil du annullere den tidligere bekræftelse og bekræfte igen?',
+
+// js/common.js
+'한번 삭제한 자료는 복구할 방법이 없습니다.
+
+정말 삭제하시겠습니까?' => 'Slettede data kan ikke gendannes.
+
+Vil du virkelig slette?',
+'KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.' => 'KAKAO-postnummertjenestens fil postcode.v2.js er ikke indlæst.',
+'토큰 정보가 올바르지 않습니다.' => 'Tokenoplysningerne er ugyldige.',
+
+// js/wrest.js
+'{1} : 필수 선택입니다.
+' => '{1} : Du skal foretage et valg.
+',
+'{1} : 필수 입력입니다.
+' => '{1} : Obligatorisk felt.
+',
+'{1} : 전화번호 형식이 올바르지 않습니다.
+
+하이픈(-)을 포함하여 입력하세요.
+' => '{1} : Telefonnummerets format er ugyldigt.
+
+Indtast det med bindestreger (-).
+',
+'{1} : 이메일주소 형식이 아닙니다.
+' => '{1} : Ikke en gyldig e-mailadresse.
+',
+'{1} : 한글이 아닙니다. (자음, 모음 조합된 한글만 가능)
+' => '{1} : Kun koreansk er tilladt. (Kun fuldstændige koreanske stavelser)
+',
+'{1} : 한글이 아닙니다.
+' => '{1} : Kun koreansk er tilladt.
+',
+'{1} : 한글, 영문, 숫자가 아닙니다.
+' => '{1} : Kun koreansk, latinske bogstaver og tal er tilladt.
+',
+'{1} : 한글, 영문이 아닙니다.
+' => '{1} : Kun koreansk og latinske bogstaver er tilladt.
+',
+'{1} : 숫자가 아닙니다.
+' => '{1} : Kun tal er tilladt.
+',
+'{1} : 영문이 아닙니다.
+' => '{1} : Kun latinske bogstaver er tilladt.
+',
+'{1} : 영문 또는 숫자가 아닙니다.
+' => '{1} : Kun latinske bogstaver eller tal er tilladt.
+',
+'{1} : 영문, 숫자, _ 가 아닙니다.
+' => '{1} : Kun latinske bogstaver, tal og _ er tilladt.
+',
+'{1} : 최소 {2}글자 이상 입력하세요.
+' => '{1} : Indtast mindst {2} tegn.
+',
+'{1} : 이미지 파일이 아닙니다.
+.gif .jpg .png 파일만 가능합니다.
+' => '{1} : Ikke en billedfil.
+Kun .gif-, .jpg- og .png-filer er tilladt.
+',
+'{1} : .{2} 파일만 가능합니다.
+' => '{1} : Kun .{2}-filer er tilladt.
+',
+'{1} : 공백이 없어야 합니다.
+' => '{1} : Mellemrum er ikke tilladt.
+',
 );

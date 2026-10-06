@@ -73,6 +73,26 @@ function build_scan($file, $rel, &$keys)
     }
 }
 
+// js/*.js 의 __js('원문') 키 (저장소 사전에 넣고, lang/<lang>.js 로도 내보낸다)
+function build_scan_js($file, $rel, &$keys, &$js_keys)
+{
+    preg_match_all('/\b__js\(\s*(\'(?:[^\'\\\\]|\\\\.)*\'|"(?:[^"\\\\]|\\\\.)*")/', file_get_contents($file), $m);
+    foreach ($m[1] as $lit) {
+        $q = $lit[0];
+        $body = substr($lit, 1, -1);
+        if ($q === "'")
+            $body = str_replace(array("\\'", '"'), array("'", '\\"'), $body);
+        $str = json_decode('"'.str_replace("\\'", "'", $body).'"');
+        if (!is_string($str) || $str === '') {
+            fwrite(STDERR, "건너뜀(JS 문자열을 읽지 못함)\t$rel\t$lit\n");
+            continue;
+        }
+        if (!isset($keys[$str]))
+            $keys[$str] = $rel;
+        $js_keys[$str] = true;
+    }
+}
+
 // 저장소 전체를 파일 경로 순으로 읽는다
 $files = array();
 $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root));
@@ -94,6 +114,12 @@ foreach ($files as $rel => $path) {
     if (!isset($scoped[$scope]))
         $scoped[$scope] = array();
     build_scan($path, $rel, $scoped[$scope]);
+}
+$js_keys = array();
+foreach (glob($root.'/js/*.js') as $path) {
+    $rel = 'js/'.basename($path);
+    if (!preg_match('#shop|\.min\.js$|^js/jquery-#', $rel))
+        build_scan_js($path, $rel, $scoped[''], $js_keys);
 }
 
 // 기존 사전 전부에서 번역을 모은다 (키가 다른 사전으로 옮겨 가도 번역을 잃지 않게)
@@ -162,4 +188,18 @@ foreach ($dict_files as $scope => $dict_file) {
 
     $name = substr($dict_file, strlen($root) + 1);
     echo "$name: 키 ".count($keys).", 새로 추가 $added, 번역됨 $done, 쓰지 않는 키 ".count($unused)."\n";
+}
+
+// JS 사전 lang/<lang>.js: js/*.js 의 __js() 키 중 번역이 있는 것 (extend/kh_i18n.extend.php가 읽는다)
+$dict = include($root.'/lang/'.$lang.'.php');
+$js = array();
+foreach ($js_keys as $key => $t)
+    if (isset($dict[$key]) && $dict[$key] !== '')
+        $js[$key] = $dict[$key];
+$js_file = $root.'/lang/'.$lang.'.js';
+if ($js) {
+    file_put_contents($js_file, "// JS 사전 ($lang). php lang/build.php $lang 가 lang/$lang.php 에서 만든다. 직접 고치지 않는다.\nvar kh_i18n = ".json_encode($js, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).";\n");
+    echo "lang/$lang.js: 키 ".count($js_keys).", 번역됨 ".count($js)."\n";
+} elseif (is_file($js_file)) {
+    unlink($js_file);
 }

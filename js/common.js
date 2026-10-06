@@ -127,7 +127,7 @@ function check_disallowed_svg_upload(form)
         return true;
     }
 
-    alert("허용되지 않는 파일 확장자입니다.");
+    alert(__js("허용되지 않는 파일 확장자입니다."));
     $(form).find("input:submit, button:submit, input:image").prop("disabled", false);
     invalid_file.focus();
 
@@ -208,7 +208,7 @@ function no_comma(data)
 // 삭제 검사 확인
 function del(href)
 {
-    if(confirm("한번 삭제한 자료는 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?")) {
+    if(confirm(__js("한번 삭제한 자료는 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?"))) {
         window.location.href = href;
     }
 }
@@ -431,7 +431,7 @@ var win_homepage = function(href) {
  **/
 var win_zip = function(frm_name, frm_zip, frm_addr1, frm_addr2, frm_addr3, frm_jibeon) {
     if(typeof daum === "undefined"){
-        alert("KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.");
+        alert(__js("KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다."));
         return false;
     }
 
@@ -808,7 +808,7 @@ $(function() {
             return true;
         }
 
-        alert("허용되지 않는 파일 확장자입니다.");
+        alert(__js("허용되지 않는 파일 확장자입니다."));
         this.value = "";
 
         return false;
@@ -838,7 +838,7 @@ $(function() {
         var token = get_write_token(bo_table);
 
         if(!token) {
-            alert("토큰 정보가 올바르지 않습니다.");
+            alert(__js("토큰 정보가 올바르지 않습니다."));
             return false;
         }
 

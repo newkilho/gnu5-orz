@@ -813,4 +813,80 @@ Yorum
 // plugin/social/unlink.php
 '회원이 아니거나 해당값이 넘어오지 않았습니다.' => 'Üye değilsiniz veya ilgili değer gönderilmedi.',
 '권한이 없거나 잘못된 요청입니다.' => 'Yetkiniz yok veya istek geçersiz.',
+
+// js/autosave.js
+'삭제' => 'Sil',
+'임시 저장된글을 삭제중에 오류가 발생하였습니다.' => 'Geçici olarak kaydedilen gönderi silinirken bir hata oluştu.',
+
+// js/certify.js
+'이미 {1}으로 본인확인을 완료하셨습니다.
+
+이전 인증을 취소하고 다시 인증하시겠습니까?' => 'Kimliğinizi zaten {1} ile doğruladınız.
+
+Önceki doğrulama iptal edilip yeniden doğrulama yapılsın mı?',
+
+// js/common.js
+'한번 삭제한 자료는 복구할 방법이 없습니다.
+
+정말 삭제하시겠습니까?' => 'Silinen veriler kurtarılamaz.
+
+Silmek istediğinizden emin misiniz?',
+'KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.' => 'KAKAO posta kodu hizmetinin postcode.v2.js dosyası yüklenmedi.',
+'토큰 정보가 올바르지 않습니다.' => 'Belirteç bilgileri geçersiz.',
+
+// js/wrest.js
+'{1} : 필수 선택입니다.
+' => '{1} : Seçim zorunludur.
+',
+'{1} : 필수 입력입니다.
+' => '{1} : Zorunlu alan.
+',
+'{1} : 전화번호 형식이 올바르지 않습니다.
+
+하이픈(-)을 포함하여 입력하세요.
+' => '{1} : Telefon numarası biçimi geçersiz.
+
+Lütfen tirelerle (-) girin.
+',
+'{1} : 이메일주소 형식이 아닙니다.
+' => '{1} : Geçerli bir e-posta adresi değil.
+',
+'{1} : 한글이 아닙니다. (자음, 모음 조합된 한글만 가능)
+' => '{1} : Yalnızca Korece kullanılabilir. (Yalnızca tam Korece heceler)
+',
+'{1} : 한글이 아닙니다.
+' => '{1} : Yalnızca Korece kullanılabilir.
+',
+'{1} : 한글, 영문, 숫자가 아닙니다.
+' => '{1} : Yalnızca Korece, Latin harfleri ve rakamlar kullanılabilir.
+',
+'{1} : 한글, 영문이 아닙니다.
+' => '{1} : Yalnızca Korece ve Latin harfleri kullanılabilir.
+',
+'{1} : 숫자가 아닙니다.
+' => '{1} : Yalnızca rakamlar kullanılabilir.
+',
+'{1} : 영문이 아닙니다.
+' => '{1} : Yalnızca Latin harfleri kullanılabilir.
+',
+'{1} : 영문 또는 숫자가 아닙니다.
+' => '{1} : Yalnızca Latin harfleri veya rakamlar kullanılabilir.
+',
+'{1} : 영문, 숫자, _ 가 아닙니다.
+' => '{1} : Yalnızca Latin harfleri, rakamlar ve _ kullanılabilir.
+',
+'{1} : 최소 {2}글자 이상 입력하세요.
+' => '{1} : Lütfen en az {2} karakter girin.
+',
+'{1} : 이미지 파일이 아닙니다.
+.gif .jpg .png 파일만 가능합니다.
+' => '{1} : Resim dosyası değil.
+Yalnızca .gif .jpg .png dosyalarına izin verilir.
+',
+'{1} : .{2} 파일만 가능합니다.
+' => '{1} : Yalnızca .{2} dosyalarına izin verilir.
+',
+'{1} : 공백이 없어야 합니다.
+' => '{1} : Boşluk kullanılamaz.
+',
 );

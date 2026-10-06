@@ -120,19 +120,19 @@ function cert_confirm() {
 
     switch(val) {
         case "simple":
-            type = "간편인증";
+            type = __js("간편인증");
             break;
         case "ipin":
-            type = "아이핀";
+            type = __js("아이핀");
             break;
         case "hp":
-            type = "휴대폰";
+            type = __js("휴대폰");
             break;
         default:
             return true;
     }
 
-    if(confirm("이미 "+type+"으로 본인확인을 완료하셨습니다.\n\n이전 인증을 취소하고 다시 인증하시겠습니까?"))
+    if(confirm(__js("이미 {1}으로 본인확인을 완료하셨습니다.\n\n이전 인증을 취소하고 다시 인증하시겠습니까?", type)))
         return true;
     else
         return false;

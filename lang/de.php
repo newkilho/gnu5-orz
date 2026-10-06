@@ -813,4 +813,80 @@ Kommentar
 // plugin/social/unlink.php
 '회원이 아니거나 해당값이 넘어오지 않았습니다.' => 'Kein Mitglied oder der Wert wurde nicht übergeben.',
 '권한이 없거나 잘못된 요청입니다.' => 'Keine Berechtigung oder ungültige Anfrage.',
+
+// js/autosave.js
+'삭제' => 'Löschen',
+'임시 저장된글을 삭제중에 오류가 발생하였습니다.' => 'Beim Löschen des zwischengespeicherten Beitrags ist ein Fehler aufgetreten.',
+
+// js/certify.js
+'이미 {1}으로 본인확인을 완료하셨습니다.
+
+이전 인증을 취소하고 다시 인증하시겠습니까?' => 'Sie haben Ihre Identität bereits per {1} bestätigt.
+
+Die vorherige Verifizierung aufheben und erneut verifizieren?',
+
+// js/common.js
+'한번 삭제한 자료는 복구할 방법이 없습니다.
+
+정말 삭제하시겠습니까?' => 'Gelöschte Daten können nicht wiederhergestellt werden.
+
+Möchten Sie wirklich löschen?',
+'KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.' => 'Die KAKAO-Postleitzahldatei postcode.v2.js wurde nicht geladen.',
+'토큰 정보가 올바르지 않습니다.' => 'Die Token-Informationen sind ungültig.',
+
+// js/wrest.js
+'{1} : 필수 선택입니다.
+' => '{1} : Bitte treffen Sie eine Auswahl.
+',
+'{1} : 필수 입력입니다.
+' => '{1} : Pflichtfeld.
+',
+'{1} : 전화번호 형식이 올바르지 않습니다.
+
+하이픈(-)을 포함하여 입력하세요.
+' => '{1} : Das Telefonnummernformat ist ungültig.
+
+Bitte mit Bindestrichen (-) eingeben.
+',
+'{1} : 이메일주소 형식이 아닙니다.
+' => '{1} : Keine gültige E-Mail-Adresse.
+',
+'{1} : 한글이 아닙니다. (자음, 모음 조합된 한글만 가능)
+' => '{1} : Nur Koreanisch erlaubt. (Nur vollständige koreanische Silben)
+',
+'{1} : 한글이 아닙니다.
+' => '{1} : Nur Koreanisch erlaubt.
+',
+'{1} : 한글, 영문, 숫자가 아닙니다.
+' => '{1} : Nur Koreanisch, lateinische Buchstaben und Ziffern erlaubt.
+',
+'{1} : 한글, 영문이 아닙니다.
+' => '{1} : Nur Koreanisch und lateinische Buchstaben erlaubt.
+',
+'{1} : 숫자가 아닙니다.
+' => '{1} : Nur Ziffern erlaubt.
+',
+'{1} : 영문이 아닙니다.
+' => '{1} : Nur lateinische Buchstaben erlaubt.
+',
+'{1} : 영문 또는 숫자가 아닙니다.
+' => '{1} : Nur lateinische Buchstaben oder Ziffern erlaubt.
+',
+'{1} : 영문, 숫자, _ 가 아닙니다.
+' => '{1} : Nur lateinische Buchstaben, Ziffern und _ erlaubt.
+',
+'{1} : 최소 {2}글자 이상 입력하세요.
+' => '{1} : Bitte mindestens {2} Zeichen eingeben.
+',
+'{1} : 이미지 파일이 아닙니다.
+.gif .jpg .png 파일만 가능합니다.
+' => '{1} : Keine Bilddatei.
+Nur .gif-, .jpg- und .png-Dateien sind erlaubt.
+',
+'{1} : .{2} 파일만 가능합니다.
+' => '{1} : Nur .{2}-Dateien sind erlaubt.
+',
+'{1} : 공백이 없어야 합니다.
+' => '{1} : Leerzeichen sind nicht erlaubt.
+',
 );

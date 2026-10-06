@@ -813,4 +813,80 @@ Comment
 // plugin/social/unlink.php
 '회원이 아니거나 해당값이 넘어오지 않았습니다.' => 'Not a member, or the value was not passed.',
 '권한이 없거나 잘못된 요청입니다.' => 'No permission or invalid request.',
+
+// js/autosave.js
+'삭제' => 'Delete',
+'임시 저장된글을 삭제중에 오류가 발생하였습니다.' => 'An error occurred while deleting the temporarily saved post.',
+
+// js/certify.js
+'이미 {1}으로 본인확인을 완료하셨습니다.
+
+이전 인증을 취소하고 다시 인증하시겠습니까?' => 'You have already verified your identity with {1}.
+
+Cancel the previous verification and verify again?',
+
+// js/common.js
+'한번 삭제한 자료는 복구할 방법이 없습니다.
+
+정말 삭제하시겠습니까?' => 'Deleted data cannot be recovered.
+
+Are you sure you want to delete it?',
+'KAKAO 우편번호 서비스 postcode.v2.js 파일이 로드되지 않았습니다.' => 'The KAKAO postcode service file postcode.v2.js has not been loaded.',
+'토큰 정보가 올바르지 않습니다.' => 'The token is invalid.',
+
+// js/wrest.js
+'{1} : 필수 선택입니다.
+' => '{1} : Please make a selection.
+',
+'{1} : 필수 입력입니다.
+' => '{1} : This field is required.
+',
+'{1} : 전화번호 형식이 올바르지 않습니다.
+
+하이픈(-)을 포함하여 입력하세요.
+' => '{1} : The phone number format is invalid.
+
+Please include hyphens (-).
+',
+'{1} : 이메일주소 형식이 아닙니다.
+' => '{1} : Not a valid email address.
+',
+'{1} : 한글이 아닙니다. (자음, 모음 조합된 한글만 가능)
+' => '{1} : Only Korean is allowed. (Complete Korean syllables only)
+',
+'{1} : 한글이 아닙니다.
+' => '{1} : Only Korean is allowed.
+',
+'{1} : 한글, 영문, 숫자가 아닙니다.
+' => '{1} : Only Korean, English letters and numbers are allowed.
+',
+'{1} : 한글, 영문이 아닙니다.
+' => '{1} : Only Korean and English letters are allowed.
+',
+'{1} : 숫자가 아닙니다.
+' => '{1} : Only numbers are allowed.
+',
+'{1} : 영문이 아닙니다.
+' => '{1} : Only English letters are allowed.
+',
+'{1} : 영문 또는 숫자가 아닙니다.
+' => '{1} : Only English letters or numbers are allowed.
+',
+'{1} : 영문, 숫자, _ 가 아닙니다.
+' => '{1} : Only English letters, numbers and _ are allowed.
+',
+'{1} : 최소 {2}글자 이상 입력하세요.
+' => '{1} : Please enter at least {2} characters.
+',
+'{1} : 이미지 파일이 아닙니다.
+.gif .jpg .png 파일만 가능합니다.
+' => '{1} : Not an image file.
+Only .gif .jpg .png files are allowed.
+',
+'{1} : .{2} 파일만 가능합니다.
+' => '{1} : Only .{2} files are allowed.
+',
+'{1} : 공백이 없어야 합니다.
+' => '{1} : Spaces are not allowed.
+',
 );
