@@ -557,7 +557,7 @@ Les données supprimées ne peuvent pas être récupérées.',
 '오늘' => 'Aujourd\'hui',
 '어제' => 'Hier',
 '최대' => 'Max',
-'전체' => 'Total',
+'visit|전체' => 'Total',
 '상세보기' => 'Détails',
 
 // theme/basic/mobile/tail.php

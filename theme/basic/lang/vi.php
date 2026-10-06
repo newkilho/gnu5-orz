@@ -557,7 +557,7 @@ Dữ liệu đã xóa không thể khôi phục.',
 '오늘' => 'Hôm nay',
 '어제' => 'Hôm qua',
 '최대' => 'Cao nhất',
-'전체' => 'Tổng',
+'visit|전체' => 'Tổng',
 '상세보기' => 'Chi tiết',
 
 // theme/basic/mobile/tail.php

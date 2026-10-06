@@ -557,7 +557,7 @@ Gelöschte Daten können nicht wiederhergestellt werden.',
 '오늘' => 'Heute',
 '어제' => 'Gestern',
 '최대' => 'Maximum',
-'전체' => 'Gesamt',
+'visit|전체' => 'Gesamt',
 '상세보기' => 'Details',
 
 // theme/basic/mobile/tail.php

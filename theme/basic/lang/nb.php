@@ -557,7 +557,7 @@ Slettede data kan ikke gjenopprettes.',
 '오늘' => 'I dag',
 '어제' => 'I går',
 '최대' => 'Maks',
-'전체' => 'Totalt',
+'visit|전체' => 'Totalt',
 '상세보기' => 'Detaljer',
 
 // theme/basic/mobile/tail.php

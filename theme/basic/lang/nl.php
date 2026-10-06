@@ -557,7 +557,7 @@ Verwijderde gegevens kunnen niet worden hersteld.',
 '오늘' => 'Vandaag',
 '어제' => 'Gisteren',
 '최대' => 'Maximum',
-'전체' => 'Totaal',
+'visit|전체' => 'Totaal',
 '상세보기' => 'Details',
 
 // theme/basic/mobile/tail.php

@@ -557,7 +557,7 @@ Data yang telah dihapus tidak dapat dipulihkan.',
 '오늘' => 'Hari ini',
 '어제' => 'Kemarin',
 '최대' => 'Maks',
-'전체' => 'Total',
+'visit|전체' => 'Total',
 '상세보기' => 'Detail',
 
 // theme/basic/mobile/tail.php

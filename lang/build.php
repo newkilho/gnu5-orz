@@ -141,7 +141,8 @@ foreach ($dict_files as $scope => $dict_file) {
             $out .= "\n// $rel\n";
             $group = $rel;
         }
-        $val = isset($trans[$key]) ? (string)$trans[$key] : '';
+        // 같은 키가 다른 사전에도 있으면 자기 사전의 번역을 먼저 쓴다
+        $val = (isset($old[$key]) && $old[$key] !== '') ? (string)$old[$key] : (isset($trans[$key]) ? (string)$trans[$key] : '');
         if (!isset($trans[$key]))
             $added++;
         if ($val !== '')

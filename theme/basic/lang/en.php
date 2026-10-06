@@ -557,7 +557,7 @@ Deleted data cannot be recovered.',
 '오늘' => 'Today',
 '어제' => 'Yesterday',
 '최대' => 'Max',
-'전체' => 'Total',
+'visit|전체' => 'Total',
 '상세보기' => 'Details',
 
 // theme/basic/mobile/tail.php

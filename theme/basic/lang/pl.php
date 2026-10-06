@@ -557,7 +557,7 @@ Usuniętych danych nie można odzyskać.',
 '오늘' => 'Dzisiaj',
 '어제' => 'Wczoraj',
 '최대' => 'Maks.',
-'전체' => 'Łącznie',
+'visit|전체' => 'Łącznie',
 '상세보기' => 'Szczegóły',
 
 // theme/basic/mobile/tail.php

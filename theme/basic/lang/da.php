@@ -557,7 +557,7 @@ Slettede data kan ikke gendannes.',
 '오늘' => 'I dag',
 '어제' => 'I går',
 '최대' => 'Maks.',
-'전체' => 'I alt',
+'visit|전체' => 'I alt',
 '상세보기' => 'Detaljer',
 
 // theme/basic/mobile/tail.php

@@ -557,7 +557,7 @@ Os dados excluídos não podem ser recuperados.',
 '오늘' => 'Hoje',
 '어제' => 'Ontem',
 '최대' => 'Máximo',
-'전체' => 'Total',
+'visit|전체' => 'Total',
 '상세보기' => 'Detalhes',
 
 // theme/basic/mobile/tail.php

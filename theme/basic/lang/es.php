@@ -557,7 +557,7 @@ Los datos eliminados no se pueden recuperar.',
 '오늘' => 'Hoy',
 '어제' => 'Ayer',
 '최대' => 'Máx.',
-'전체' => 'Total',
+'visit|전체' => 'Total',
 '상세보기' => 'Detalles',
 
 // theme/basic/mobile/tail.php

@@ -557,7 +557,7 @@ Raderade data kan inte återställas.',
 '오늘' => 'Idag',
 '어제' => 'Igår',
 '최대' => 'Max',
-'전체' => 'Totalt',
+'visit|전체' => 'Totalt',
 '상세보기' => 'Detaljer',
 
 // theme/basic/mobile/tail.php

@@ -557,7 +557,7 @@ Silinen veriler geri alınamaz.',
 '오늘' => 'Bugün',
 '어제' => 'Dün',
 '최대' => 'En yüksek',
-'전체' => 'Toplam',
+'visit|전체' => 'Toplam',
 '상세보기' => 'Ayrıntılar',
 
 // theme/basic/mobile/tail.php
