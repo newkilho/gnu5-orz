@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = "로그인 검사";
+$g5['title'] = __('로그인 검사');
 
 $mb_id       = isset($_POST['mb_id']) ? trim($_POST['mb_id']) : '';
 $mb_password = isset($_POST['mb_password']) ? trim($_POST['mb_password']) : '';
@@ -9,7 +9,7 @@ $mb_password = isset($_POST['mb_password']) ? trim($_POST['mb_password']) : '';
 run_event('member_login_check_before', $mb_id);
 
 if (!$mb_id || run_replace('check_empty_member_login_password', !$mb_password, $mb_id))
-    alert('회원아이디나 비밀번호가 공백이면 안됩니다.');
+    alert(__('회원아이디나 비밀번호가 공백이면 안됩니다.'));
 
 $mb = get_member($mb_id);
 
@@ -37,25 +37,25 @@ if (!$is_need_not_password && (! (isset($mb['mb_id']) && $mb['mb_id']) || !login
 
     run_event('password_is_wrong', 'login', $mb);
 
-    alert('가입된 회원아이디가 아니거나 비밀번호가 틀립니다.\\n비밀번호는 대소문자를 구분합니다.');
+    alert(__('가입된 회원아이디가 아니거나 비밀번호가 틀립니다.\\n비밀번호는 대소문자를 구분합니다.'));
 }
 
 // 차단된 아이디인가?
 if ($mb['mb_intercept_date'] && $mb['mb_intercept_date'] <= date("Ymd", G5_SERVER_TIME)) {
-    $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", "\\1년 \\2월 \\3일", $mb['mb_intercept_date']);
-    alert('회원님의 아이디는 접근이 금지되어 있습니다.\n처리일 : '.$date);
+    $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", __("\\1년 \\2월 \\3일"), $mb['mb_intercept_date']);
+    alert(__('회원님의 아이디는 접근이 금지되어 있습니다.\n처리일 : {1}', $date));
 }
 
 // 탈퇴한 아이디인가?
 if ($mb['mb_leave_date'] && $mb['mb_leave_date'] <= date("Ymd", G5_SERVER_TIME)) {
-    $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", "\\1년 \\2월 \\3일", $mb['mb_leave_date']);
-    alert('탈퇴한 아이디이므로 접근하실 수 없습니다.\n탈퇴일 : '.$date);
+    $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", __("\\1년 \\2월 \\3일"), $mb['mb_leave_date']);
+    alert(__('탈퇴한 아이디이므로 접근하실 수 없습니다.\n탈퇴일 : {1}', $date));
 }
 
 // 메일인증 설정이 되어 있다면
 if ( is_use_email_certify() && !preg_match("/[1-9]/", $mb['mb_email_certify'])) {
     $ckey = function_exists('get_email_cert_key') ? get_email_cert_key($mb_id, $mb['mb_datetime']) : md5($mb['mb_ip'].$mb['mb_datetime']);
-    confirm("{$mb['mb_email']} 메일로 메일인증을 받으셔야 로그인 가능합니다. 다른 메일주소로 변경하여 인증하시려면 취소를 클릭하시기 바랍니다.", G5_URL, G5_BBS_URL.'/register_email.php?mb_id='.$mb_id.'&ckey='.$ckey);
+    confirm(__('{1} 메일로 메일인증을 받으셔야 로그인 가능합니다. 다른 메일주소로 변경하여 인증하시려면 취소를 클릭하시기 바랍니다.', $mb['mb_email']), G5_URL, G5_BBS_URL.'/register_email.php?mb_id='.$mb_id.'&ckey='.$ckey);
 }
 
 run_event('login_session_before', $mb, $is_social_login);
@@ -198,7 +198,7 @@ if( is_admin($mb['mb_id']) && is_dir(G5_DATA_PATH.'/tmp/') ){
     @unlink($tmp_data_file);
 
     if(! $tmp_data_check){
-        alert("data 폴더에 쓰기권한이 없거나 또는 웹하드 용량이 없는 경우\\n로그인을 못할수도 있으니, 용량 체크 및 쓰기 권한을 확인해 주세요.", $link);
+        alert(__("data 폴더에 쓰기권한이 없거나 또는 웹하드 용량이 없는 경우\\n로그인을 못할수도 있으니, 용량 체크 및 쓰기 권한을 확인해 주세요."), $link);
     }
 }
 
