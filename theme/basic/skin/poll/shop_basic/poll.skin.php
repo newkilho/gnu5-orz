@@ -40,7 +40,7 @@ function fpoll_submit(f)
 {
     <?php
     if ($member['mb_level'] < $po['po_level'])
-        echo " alert('권한 {$po['po_level']} 이상의 회원만 투표에 참여하실 수 있습니다.'); return false; ";
+        echo " alert(".get_js_safe_string(__('권한 {1} 이상의 회원만 투표에 참여하실 수 있습니다.', $po['po_level']))."); return false; ";
      ?>
 
     var chk = false;
@@ -66,7 +66,7 @@ function poll_result(url)
 {
     <?php
     if ($member['mb_level'] < $po['po_level'])
-        echo " alert('권한 {$po['po_level']} 이상의 회원만 결과를 보실 수 있습니다.'); return false; ";
+        echo " alert(".get_js_safe_string(__('권한 {1} 이상의 회원만 결과를 보실 수 있습니다.', $po['po_level']))."); return false; ";
      ?>
 
     win_poll(url);

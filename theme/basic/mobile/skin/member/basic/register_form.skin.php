@@ -436,7 +436,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
                     $cert_type = 'lg-hp';
                     break;
                 default:
-                    echo 'alert("기본환경설정에서 휴대폰 본인확인 설정을 해주십시오");';
+                    echo 'alert('.get_js_safe_string(__('기본환경설정에서 휴대폰 본인확인 설정을 해주십시오')).');';
                     echo 'return false;';
                     break;
             }
