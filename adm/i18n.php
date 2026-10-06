@@ -12,7 +12,8 @@ $langs = kh_langs();
 unset($langs['ko']);
 $lang = (isset($_GET['lang']) && isset($langs[$_GET['lang']])) ? $_GET['lang'] : 'en';
 
-$base  = kh_dict_file(G5_THEME_PATH, $lang) + kh_dict_file(G5_PATH, $lang);   // git 사전 (테마 우선)
+$theme = kh_dict_file(G5_THEME_PATH, $lang);                                   // 테마 사전 (화면 문구로 보여 줄 것)
+$base  = $theme + kh_dict_file(G5_PATH, $lang);                                 // git 사전 (테마 우선). lang/ 문구는 보여 주지 않는다
 $saved = kh_dict_file(G5_DATA_PATH, $lang);                                    // 관리자에서 고친 것
 
 // DB 문구: 사이트 이름, 게시판·그룹·메뉴·내용 제목
@@ -31,7 +32,7 @@ unset($db_keys['']);
 
 $sections = array(
     'DB 문구 (사이트 이름, 게시판·그룹·메뉴·내용 제목)' => array_keys($db_keys),
-    '화면 문구' => array_keys(array_diff_key($base, $db_keys)),
+    '화면 문구' => array_keys(array_diff_key($theme, $db_keys)),
 );
 
 $g5['title'] = '다국어 문구';
