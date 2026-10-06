@@ -208,11 +208,11 @@ jQuery(function($){
 $(function() {
     $("a.view_file_download").click(function() {
         if(!g5_is_member) {
-            alert("다운로드 권한이 없습니다.\n회원이시라면 로그인 후 이용해 보십시오.");
+            alert(__js("다운로드 권한이 없습니다.\n회원이시라면 로그인 후 이용해 보십시오."));
             return false;
         }
 
-        var msg = "파일을 다운로드 하시면 포인트가 차감(<?php echo number_format($board['bo_download_point']) ?>점)됩니다.\n\n포인트는 게시물당 한번만 차감되며 다음에 다시 다운로드 하셔도 중복하여 차감하지 않습니다.\n\n그래도 다운로드 하시겠습니까?";
+        var msg = __js("파일을 다운로드 하시면 포인트가 차감({1}점)됩니다.\n\n포인트는 게시물당 한번만 차감되며 다음에 다시 다운로드 하셔도 중복하여 차감하지 않습니다.\n\n그래도 다운로드 하시겠습니까?", "<?php echo number_format($board['bo_download_point']) ?>");
 
         if(confirm(msg)) {
             var href = $(this).attr("href")+"&js=on";
@@ -271,10 +271,10 @@ function excute_good(href, $el, $tx)
             if(data.count) {
                 $el.find("strong").text(number_format(String(data.count)));
                 if($tx.attr("id").search("nogood") > -1) {
-                    $tx.text("이 글을 비추천하셨습니다.");
+                    $tx.text(__js("이 글을 비추천하셨습니다."));
                     $tx.fadeIn(200).delay(2500).fadeOut(200);
                 } else {
-                    $tx.text("이 글을 추천하셨습니다.");
+                    $tx.text(__js("이 글을 추천하셨습니다."));
                     $tx.fadeIn(200).delay(2500).fadeOut(200);
                 }
             }

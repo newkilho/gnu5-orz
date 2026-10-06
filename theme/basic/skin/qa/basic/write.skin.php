@@ -112,7 +112,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
     function html_auto_br(obj)
     {
         if (obj.checked) {
-            result = confirm("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다.");
+            result = confirm(__js("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다."));
             if (result)
                 obj.value = "2";
             else
@@ -145,13 +145,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
         });
 
         if (subject) {
-            alert("제목에 금지단어('"+subject+"')가 포함되어있습니다");
+            alert(__js("제목에 금지단어('{1}')가 포함되어있습니다", subject));
             f.qa_subject.focus();
             return false;
         }
 
         if (content) {
-            alert("내용에 금지단어('"+content+"')가 포함되어있습니다");
+            alert(__js("내용에 금지단어('{1}')가 포함되어있습니다", content));
             if (typeof(ed_qa_content) != "undefined")
                 ed_qa_content.returnFalse();
             else
@@ -162,7 +162,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
         <?php if ($is_hp) { ?>
         var hp = f.qa_hp.value.replace(/[0-9\-]/g, "");
         if(hp.length > 0) {
-            alert("휴대폰번호는 숫자, - 으로만 입력해 주십시오.");
+            alert(__js("휴대폰번호는 숫자, - 으로만 입력해 주십시오."));
             return false;
         }
         <?php } ?>

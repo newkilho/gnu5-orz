@@ -205,7 +205,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
         });
 
         if (content) {
-            alert("내용에 금지단어('"+content+"')가 포함되어있습니다");
+            alert(__js("내용에 금지단어('{1}')가 포함되어있습니다", content));
             f.wr_content.focus();
             return false;
         }
@@ -219,17 +219,17 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
             var cnt = parseInt(document.getElementById('char_count').innerHTML);
             if (char_min > 0 && char_min > cnt)
             {
-                alert("댓글은 "+char_min+"글자 이상 쓰셔야 합니다.");
+                alert(__js("댓글은 {1}글자 이상 쓰셔야 합니다.", char_min));
                 return false;
             } else if (char_max > 0 && char_max < cnt)
             {
-                alert("댓글은 "+char_max+"글자 이하로 쓰셔야 합니다.");
+                alert(__js("댓글은 {1}글자 이하로 쓰셔야 합니다.", char_max));
                 return false;
             }
         }
         else if (!document.getElementById('wr_content').value)
         {
-            alert("댓글을 입력하여 주십시오.");
+            alert(__js("댓글을 입력하여 주십시오."));
             return false;
         }
 
@@ -238,7 +238,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
             f.wr_name.value = f.wr_name.value.replace(pattern, "");
             if (f.wr_name.value == '')
             {
-                alert('이름이 입력되지 않았습니다.');
+                alert(__js('이름이 입력되지 않았습니다.'));
                 f.wr_name.focus();
                 return false;
             }
@@ -249,7 +249,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
             f.wr_password.value = f.wr_password.value.replace(pattern, "");
             if (f.wr_password.value == '')
             {
-                alert('비밀번호가 입력되지 않았습니다.');
+                alert(__js('비밀번호가 입력되지 않았습니다.'));
                 f.wr_password.focus();
                 return false;
             }
@@ -317,7 +317,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
 
     function comment_delete()
     {
-        return confirm("이 댓글을 삭제하시겠습니까?");
+        return confirm(__js("이 댓글을 삭제하시겠습니까?"));
     }
 
     comment_box('', 'c'); // 댓글 입력폼이 보이도록 처리하기위해서 추가 (root님)

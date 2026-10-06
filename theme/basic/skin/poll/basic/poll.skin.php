@@ -52,7 +52,7 @@ function fpoll_submit(f)
     }
 
     if (!chk) {
-        alert("투표하실 설문항목을 선택하세요");
+        alert(__js("투표하실 설문항목을 선택하세요"));
         return false;
     }
 

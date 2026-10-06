@@ -181,7 +181,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     function html_auto_br(obj)
     {
         if (obj.checked) {
-            result = confirm("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다.");
+            result = confirm(__js("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다."));
             if (result)
                 obj.value = "html2";
             else
@@ -214,13 +214,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         });
 
         if (subject) {
-            alert("제목에 금지단어('"+subject+"')가 포함되어있습니다");
+            alert(__js("제목에 금지단어('{1}')가 포함되어있습니다", subject));
             f.wr_subject.focus();
             return false;
         }
 
         if (content) {
-            alert("내용에 금지단어('"+content+"')가 포함되어있습니다");
+            alert(__js("내용에 금지단어('{1}')가 포함되어있습니다", content));
             if (typeof(ed_wr_content) != "undefined")
                 ed_wr_content.returnFalse();
             else
@@ -232,11 +232,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             if (char_min > 0 || char_max > 0) {
                 var cnt = parseInt(check_byte("wr_content", "char_count"));
                 if (char_min > 0 && char_min > cnt) {
-                    alert("내용은 "+char_min+"글자 이상 쓰셔야 합니다.");
+                    alert(__js("내용은 {1}글자 이상 쓰셔야 합니다.", char_min));
                     return false;
                 }
                 else if (char_max > 0 && char_max < cnt) {
-                    alert("내용은 "+char_max+"글자 이하로 쓰셔야 합니다.");
+                    alert(__js("내용은 {1}글자 이하로 쓰셔야 합니다.", char_max));
                     return false;
                 }
             }

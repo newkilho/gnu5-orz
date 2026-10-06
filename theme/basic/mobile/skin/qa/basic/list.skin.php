@@ -148,12 +148,12 @@ function fqalist_submit(f) {
     }
 
     if (!chk_count) {
-        alert(document.pressed + "할 게시물을 하나 이상 선택하세요.");
+        alert(__js("{1}할 게시물을 하나 이상 선택하세요.", document.pressed));
         return false;
     }
 
     if(document.pressed == "선택삭제") {
-        if (!confirm("선택한 게시물을 정말 삭제하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다"))
+        if (!confirm(__js("선택한 게시물을 정말 삭제하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다")))
             return false;
     }
 
