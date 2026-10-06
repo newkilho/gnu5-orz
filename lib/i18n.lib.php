@@ -76,8 +76,11 @@ function kh_dict_write($lang, $dict)
 
     ksort($dict);
     $body = "<?php\nif (!defined('_GNUBOARD_')) exit;\n\n// 다국어 문구 ($lang) — 관리자 → 환경설정 → 다국어 문구\nreturn ".var_export($dict, true).";\n";
-    if (@file_put_contents($file, $body) === false)
+    $tmp = $file.'.'.getmypid().'.tmp';
+    if (@file_put_contents($tmp, $body) === false || !@rename($tmp, $file)) {
+        @unlink($tmp);
         return false;
+    }
     @chmod($file, G5_FILE_PERMISSION);
     if (function_exists('opcache_invalidate'))
         @opcache_invalidate($file, true);
@@ -114,38 +117,24 @@ function kh_dict_miss_save()
     if (!$miss)
         return;
 
+    // 사전 파일 자체를 잠그면 Windows에서는 잠근 채 include로 읽지 못해 저장된 번역을 잃는다
     $dir = G5_DATA_PATH.'/lang';
     if (!is_dir($dir)) {
         @mkdir($dir, G5_DIR_PERMISSION);
         @chmod($dir, G5_DIR_PERMISSION);
     }
-    $file = $dir.'/en.php';
-
-    $fp = @fopen($file, 'c+');
+    $fp = @fopen($dir.'/en.lock', 'c');
     if (!$fp)
         return;
-    if (!flock($fp, LOCK_EX)) {
-        fclose($fp);
-        return;
+    if (flock($fp, LOCK_EX)) {
+        if (function_exists('opcache_invalidate'))
+            @opcache_invalidate($dir.'/en.php', true);
+        $saved = kh_dict_file(G5_DATA_PATH, 'en');
+        $dict = $saved + $miss;
+        if (count($dict) != count($saved))
+            kh_dict_write('en', $dict);
+        flock($fp, LOCK_UN);
     }
-
-    if (function_exists('opcache_invalidate'))
-        @opcache_invalidate($file, true);
-    $saved = kh_dict_file(G5_DATA_PATH, 'en');
-    $dict = $saved + $miss;
-
-    if (count($dict) != count($saved)) {
-        ksort($dict);
-        $body = "<?php\nif (!defined('_GNUBOARD_')) exit;\n\n// 다국어 문구 (en) — 관리자 → 환경설정 → 다국어 문구\nreturn ".var_export($dict, true).";\n";
-        if (ftruncate($fp, 0) && fwrite($fp, $body) !== false) {
-            fflush($fp);
-            @chmod($file, G5_FILE_PERMISSION);
-            if (function_exists('opcache_invalidate'))
-                @opcache_invalidate($file, true);
-        }
-    }
-
-    flock($fp, LOCK_UN);
     fclose($fp);
 }
 
