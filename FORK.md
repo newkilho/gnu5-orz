@@ -25,7 +25,6 @@
 | `shop.config.php` | `G5_MSHOP_URL` | `G5_MOBILE_URL` 대신 `G5_URL.'/'.G5_MOBILE_DIR` 기준 | `G5_MOBILE_URL`이 접두사 없는 자산 주소가 되면서 모바일 쇼핑몰 링크가 한국어 주소로 나가던 것 |
 | `lib/common.lib.php` | `https_url()` | `G5_HTTPS_DOMAIN`·`G5_DOMAIN`을 쓸 때도 언어 접두사를 붙임 | 원래는 이 두 설정을 쓰면 로그인·회원가입 주소에서 언어가 빠졌다 |
 | `extend/social_login.extend.php`, `plugin/social/includes/functions.php` | `G5_SOCIAL_LOGIN_BASE_URL`, hybridauth `base_url` | `G5_BASE_URL`로 만듦 (접두사 없음) | 네이버·카카오 등에 등록하는 콜백 주소는 하나라서, 언어마다 달라지면 로그인이 실패한다 |
-| `common.php` | 테마경로 결정 바로 앞 | `data/theme_host.php`가 있으면 include 하는 한 줄 | 사이트마다 호스트별 테마 같은 `$config` 보정을 코어 수정 없이 넣을 수 있게. 테마 결정이 `extend/`보다 먼저라 `extend/`로는 못 한다. 파일이 없으면 아무 일도 안 한다 |
 | `common.php` | `uri.lib.php` include 바로 다음 | `lib/i18n.lib.php`(새 파일: `__()`, 사전 읽기) include 한 줄 | 코어 문구도 `__()`로 번역하므로 `extend/`보다 먼저 읽어야 한다 |
 | `bbs/`, `lib/`, `plugin/`(본인인증·캡차·sns·social), `common.php`, `head.php`, `head.sub.php` | 문자열 | 사용자에게 보이는 문자열을 `__('…')`로 감쌈. 알림(`alert`, `alert_close`, `confirm`)도 호출하는 곳에서 `alert(__('…'))`, 값이 들어가면 `__('…{1}…', 값)`. JS 안이면 `get_js_safe_string(__('…'))` | 다국어. 관리자(`adm/`)·쇼핑몰·DB 저장값·비교값은 그대로 |
 | `lib/get_data.lib.php` | `get_board_db()` | 게시판 이름(`bo_subject`, `bo_mobile_subject`)을 `__()`로 번역 (2줄) | DB 문구 번역. 사이트 이름·그룹 이름은 코어 훅(`get_config`, `get_group`)으로 해서 코어 수정 없음 |

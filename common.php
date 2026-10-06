@@ -707,9 +707,6 @@ if (isset($member['mb_id']) && $member['mb_id']) {
 if(defined('_THEME_PREVIEW_') && _THEME_PREVIEW_ === true)
     $config['cf_theme'] = isset($_GET['theme']) ? trim($_GET['theme']) : '';
 
-// 호스트별 테마 (data/theme_host.php 가 있으면)
-if (is_file(G5_DATA_PATH.'/theme_host.php')) include_once(G5_DATA_PATH.'/theme_host.php');
-
 if(isset($config['cf_theme']) && trim($config['cf_theme'])) {
     $theme_path = G5_PATH.'/'.G5_THEME_DIR.'/'.$config['cf_theme'];
     if(is_dir($theme_path)) {
