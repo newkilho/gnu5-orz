@@ -51,7 +51,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
 
 <?php if ($is_admin) { ?>
 <div class="admin_new_btn">
-    <button type="submit" onclick="document.pressed=this.title" title="<?php echo __('선택삭제') ?>" class="btn_b01 btn"><i class="fa fa-trash-o" aria-hidden="true"></i><span class="sound_only"><?php echo __('선택삭제') ?></span></button>
+    <button type="submit" onclick="document.pressed='선택삭제'" title="<?php echo __('선택삭제') ?>" class="btn_b01 btn"><i class="fa fa-trash-o" aria-hidden="true"></i><span class="sound_only"><?php echo __('선택삭제') ?></span></button>
 </div>
 <?php } ?>
 <div class="tbl_head01 tbl_wrap">
@@ -114,7 +114,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
 
 <?php if ($is_admin) { ?>
 <div class="admin_new_btn">
-    <button type="submit" onclick="document.pressed=this.title" title="<?php echo __('선택삭제') ?>" class="btn_b01 btn"><i class="fa fa-trash-o" aria-hidden="true"></i><span class="sound_only"><?php echo __('선택삭제') ?></span></button>
+    <button type="submit" onclick="document.pressed='선택삭제'" title="<?php echo __('선택삭제') ?>" class="btn_b01 btn"><i class="fa fa-trash-o" aria-hidden="true"></i><span class="sound_only"><?php echo __('선택삭제') ?></span></button>
 </div>
 <?php } ?>
 </form>
@@ -138,11 +138,11 @@ function fnew_submit(f)
     }
 
     if (!cnt) {
-        alert(<?php echo get_js_safe_string(__('{1}할 게시물을 하나 이상 선택하세요.')) ?>.replace('{1}', document.pressed));
+        alert(<?php echo get_js_safe_string(__('{1}할 게시물을 하나 이상 선택하세요.')) ?>.replace('{1}', <?php echo get_js_safe_string(__('선택삭제')) ?>));
         return false;
     }
 
-    if (!confirm(<?php echo get_js_safe_string(__("선택한 게시물을 정말 {1} 하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다")) ?>.replace('{1}', document.pressed))) {
+    if (!confirm(<?php echo get_js_safe_string(__("선택한 게시물을 정말 {1} 하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다")) ?>.replace('{1}', <?php echo get_js_safe_string(__('선택삭제')) ?>))) {
         return false;
     }
 
