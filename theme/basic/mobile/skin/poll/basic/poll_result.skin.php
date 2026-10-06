@@ -109,7 +109,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
 <script>
 $(function() {
     $(".poll_delete").click(function() {
-        if(!confirm(__js("해당 기타의견을 삭제하시겠습니까?")))
+        if(!confirm(<?php echo get_js_safe_string(__('해당 기타의견을 삭제하시겠습니까?')) ?>))
             return false;
     });
 });

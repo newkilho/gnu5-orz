@@ -74,7 +74,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     function html_auto_br(obj)
     {
         if (obj.checked) {
-            result = confirm(__js("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다."));
+            result = confirm(<?php echo get_js_safe_string(__("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다.")) ?>);
             if (result)
                 obj.value = "2";
             else
@@ -107,13 +107,13 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
         });
 
         if (subject) {
-            alert(__js("제목에 금지단어('{1}')가 포함되어있습니다", subject));
+            alert(<?php echo get_js_safe_string(__('제목에 금지단어(\'{1}\')가 포함되어있습니다')) ?>.replace('{1}', subject));
             f.qa_subject.focus();
             return false;
         }
 
         if (content) {
-            alert(__js("내용에 금지단어('{1}')가 포함되어있습니다", content));
+            alert(<?php echo get_js_safe_string(__('내용에 금지단어(\'{1}\')가 포함되어있습니다')) ?>.replace('{1}', content));
             if (typeof(ed_qa_content) != "undefined")
                 ed_qa_content.returnFalse();
             else

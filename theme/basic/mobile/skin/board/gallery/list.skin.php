@@ -195,7 +195,7 @@ function fboardlist_submit(f) {
     }
 
     if (!chk_count) {
-        alert(__js("{1}할 게시물을 하나 이상 선택하세요.", document.pressed));
+        alert(<?php echo get_js_safe_string(__('{1}할 게시물을 하나 이상 선택하세요.')) ?>.replace('{1}', document.pressed));
         return false;
     }
 
@@ -210,7 +210,7 @@ function fboardlist_submit(f) {
     }
 
     if(document.pressed == "선택삭제") {
-        if (!confirm(__js("선택한 게시물을 정말 삭제하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다\n\n답변글이 있는 게시글을 선택하신 경우\n답변글도 선택하셔야 게시글이 삭제됩니다.")))
+        if (!confirm(<?php echo get_js_safe_string(__("선택한 게시물을 정말 삭제하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다\n\n답변글이 있는 게시글을 선택하신 경우\n답변글도 선택하셔야 게시글이 삭제됩니다.")) ?>))
             return false;
 
         f.removeAttribute("target");
@@ -225,9 +225,9 @@ function select_copy(sw) {
     var f = document.fboardlist;
 
     if (sw == 'copy')
-        str = __js("복사");
+        str = <?php echo get_js_safe_string(__('복사')) ?>;
     else
-        str = __js("이동");
+        str = <?php echo get_js_safe_string(__('이동')) ?>;
 
     var sub_win = window.open("", "move", "left=50, top=50, width=500, height=550, scrollbars=1");
 

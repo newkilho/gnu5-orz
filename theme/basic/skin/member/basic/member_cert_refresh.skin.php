@@ -140,7 +140,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
         
         function fcertrefreshform_submit(f) {
             if (!f.agree2.checked) {
-                alert(__js("추가 개인정보처리방침에 동의하셔야 인증을 진행하실 수 있습니다."));
+                alert(<?php echo get_js_safe_string(__('추가 개인정보처리방침에 동의하셔야 인증을 진행하실 수 있습니다.')) ?>);
                 f.agree2.focus();
                 return false;
             }

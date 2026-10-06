@@ -99,7 +99,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 {
                     var stx = f.stx.value.trim();
                     if (stx.length < 2) {
-                        alert(__js("검색어는 두글자 이상 입력하십시오."));
+                        alert(<?php echo get_js_safe_string(__('검색어는 두글자 이상 입력하십시오.')) ?>);
                         f.stx.select();
                         f.stx.focus();
                         return false;
@@ -113,7 +113,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     }
 
                     if (cnt > 1) {
-                        alert(__js("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."));
+                        alert(<?php echo get_js_safe_string(__('빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다.')) ?>);
                         f.stx.select();
                         f.stx.focus();
                         return false;
@@ -151,14 +151,14 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 
                 if($hd_layer.is(":visible")) {
                     $hd_layer.hide();
-                    $this.find("span").text(__js("열기"));
+                    $this.find("span").text(<?php echo get_js_safe_string(__('열기')) ?>);
                 } else {
                     var $hd_layer2 = $(".hd_div:visible");
-                    $hd_layer2.prev(".hd_opener").find("span").text(__js("열기"));
+                    $hd_layer2.prev(".hd_opener").find("span").text(<?php echo get_js_safe_string(__('열기')) ?>);
                     $hd_layer2.hide();
 
                     $hd_layer.show();
-                    $this.find("span").text(__js("닫기"));
+                    $this.find("span").text(<?php echo get_js_safe_string(__('닫기')) ?>);
                 }
             });
 
@@ -175,7 +175,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             $(".hd_closer").on("click", function() {
                 var idx = $(".hd_closer").index($(this));
                 $(".hd_div:visible").hide();
-                $(".hd_opener:eq("+idx+")").find("span").text(__js("열기"));
+                $(".hd_opener:eq("+idx+")").find("span").text(<?php echo get_js_safe_string(__('열기')) ?>);
             });
         });
         </script>

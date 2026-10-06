@@ -39,7 +39,7 @@
   const openFrom = (btn) => {
     opener = btn;
     const tplSel = btn.getAttribute('data-template');
-    const title  = btn.getAttribute('data-title') || __js('안내');
+    const title  = btn.getAttribute('data-title') || <?php echo get_js_safe_string(__('안내')) ?>;
     const tpl    = tplSel ? document.querySelector(tplSel) : null;
 
     titleE.textContent = title;

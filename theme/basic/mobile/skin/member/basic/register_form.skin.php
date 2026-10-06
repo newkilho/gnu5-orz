@@ -455,19 +455,19 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
 
         switch(val) {
             case "simple":
-                type = __js("간편인증");
+                type = <?php echo get_js_safe_string(__('간편인증')) ?>;
                 break;
             case "ipin":
-                type = __js("아이핀");
+                type = <?php echo get_js_safe_string(__('아이핀')) ?>;
                 break;
             case "hp":
-                type = __js("휴대폰");
+                type = <?php echo get_js_safe_string(__('휴대폰')) ?>;
                 break;
             default:
                 return true;
         }
 
-        if(confirm(__js("이미 {1}으로 본인확인을 완료하셨습니다.\n\n이전 인증을 취소하고 다시 인증하시겠습니까?", type)))
+        if(confirm(<?php echo get_js_safe_string(__("이미 {1}으로 본인확인을 완료하셨습니다.\n\n이전 인증을 취소하고 다시 인증하시겠습니까?")) ?>.replace('{1}', type)))
             return true;
         else
             return false;
@@ -488,21 +488,21 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
 
         if (f.w.value == '') {
             if (f.mb_password.value.length < 3) {
-                alert(__js('비밀번호를 3글자 이상 입력하십시오.'));
+                alert(<?php echo get_js_safe_string(__('비밀번호를 3글자 이상 입력하십시오.')) ?>);
                 f.mb_password.focus();
                 return false;
             }
         }
 
         if (f.mb_password.value != f.mb_password_re.value) {
-            alert(__js('비밀번호가 같지 않습니다.'));
+            alert(<?php echo get_js_safe_string(__('비밀번호가 같지 않습니다.')) ?>);
             f.mb_password_re.focus();
             return false;
         }
 
         if (f.mb_password.value.length > 0) {
             if (f.mb_password_re.value.length < 3) {
-                alert(__js('비밀번호를 3글자 이상 입력하십시오.'));
+                alert(<?php echo get_js_safe_string(__('비밀번호를 3글자 이상 입력하십시오.')) ?>);
                 f.mb_password_re.focus();
                 return false;
             }
@@ -511,7 +511,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
         // 이름 검사
         if (f.w.value=='') {
             if (f.mb_name.value.length < 1) {
-                alert(__js('이름을 입력하십시오.'));
+                alert(<?php echo get_js_safe_string(__('이름을 입력하십시오.')) ?>);
                 f.mb_name.focus();
                 return false;
             }
@@ -520,7 +520,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
         <?php if($w == '' && $config['cf_cert_use'] && $config['cf_cert_req']) { ?>
         // 본인확인 체크
         if(f.cert_no.value=="") {
-            alert(__js("회원가입을 위해서는 본인확인을 해주셔야 합니다."));
+            alert(<?php echo get_js_safe_string(__('회원가입을 위해서는 본인확인을 해주셔야 합니다.')) ?>);
             return false;
         }
         <?php } ?>
@@ -558,7 +558,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
         if (typeof f.mb_icon != "undefined") {
             if (f.mb_icon.value) {
                 if (!f.mb_icon.value.toLowerCase().match(/.(gif|jpe?g|png)$/i)) {
-                    alert(__js("회원아이콘이 이미지 파일이 아닙니다."));
+                    alert(<?php echo get_js_safe_string(__('회원아이콘이 이미지 파일이 아닙니다.')) ?>);
                     f.mb_icon.focus();
                     return false;
                 }
@@ -568,7 +568,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
         if (typeof f.mb_img != "undefined") {
             if (f.mb_img.value) {
                 if (!f.mb_img.value.toLowerCase().match(/.(gif|jpe?g|png)$/i)) {
-                    alert(__js("회원이미지가 이미지 파일이 아닙니다."));
+                    alert(<?php echo get_js_safe_string(__('회원이미지가 이미지 파일이 아닙니다.')) ?>);
                     f.mb_img.focus();
                     return false;
                 }
@@ -577,7 +577,7 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
 
         if (typeof(f.mb_recommend) != 'undefined' && f.mb_recommend.value) {
             if (f.mb_id.value == f.mb_recommend.value) {
-                alert(__js('본인을 추천할 수 없습니다.'));
+                alert(<?php echo get_js_safe_string(__('본인을 추천할 수 없습니다.')) ?>);
                 f.mb_recommend.focus();
                 return false;
             }

@@ -33,7 +33,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
     {
         var stx = f.stx.value.trim();
         if (stx.length < 2) {
-            alert(__js("검색어는 두글자 이상 입력하십시오."));
+            alert(<?php echo get_js_safe_string(__('검색어는 두글자 이상 입력하십시오.')) ?>);
             f.stx.select();
             f.stx.focus();
             return false;
@@ -47,7 +47,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
         }
 
         if (cnt > 1) {
-            alert(__js("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."));
+            alert(<?php echo get_js_safe_string(__('빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다.')) ?>);
             f.stx.select();
             f.stx.focus();
             return false;
