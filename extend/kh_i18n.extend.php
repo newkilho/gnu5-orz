@@ -7,7 +7,10 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // 번역이 없으면 한국어 원문을 그대로 돌려준다.
 //------------------------------------------------------------------------------
 
-// 현재 언어 (.htaccess가 환경변수 KH_LANG으로 넘긴다. 없으면 ko)
+// 현재 언어 (.htaccess가 /en/… 의 접두사를 떼고 환경변수 KH_LANG으로 넘긴다. 없으면 ko)
+// .htaccess 그누보드 rewrite 블록의 RewriteBase 바로 아래:
+//   RewriteRule ^(en)/?$ index.php [E=KH_LANG:$1,L]
+//   RewriteRule ^(en)/(.+)$ $2 [E=KH_LANG:$1,L]
 if (!function_exists('kh_lang')) {
 function kh_lang()
 {
@@ -15,7 +18,8 @@ function kh_lang()
 
     if ($lang === null) {
         $lang = 'ko';
-        foreach (array('KH_LANG', 'REDIRECT_KH_LANG') as $key) {
+        // 짧은주소(/en/free)는 내부 연결이 두 번 일어나 REDIRECT_가 두 번 붙는다
+        foreach (array('KH_LANG', 'REDIRECT_KH_LANG', 'REDIRECT_REDIRECT_KH_LANG') as $key) {
             if (isset($_SERVER[$key]) && preg_match('/^[a-z]{2}$/', $_SERVER[$key])) {
                 $lang = $_SERVER[$key];
                 break;
