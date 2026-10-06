@@ -3,7 +3,8 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 //------------------------------------------------------------------------------
 // 다국어 문구
-// 사전: lang/<lang>.php → return ['원문' => '번역', '문맥|원문' => '번역', ...];
+// 사전: lang/<lang>.php (테마 밖 문구), theme/<테마>/lang/<lang>.php (테마 문구)
+//       → return ['원문' => '번역', '문맥|원문' => '번역', ...]; 같은 키는 테마 사전이 우선
 // 번역이 없으면 한국어 원문을 그대로 돌려준다.
 //------------------------------------------------------------------------------
 
@@ -20,10 +21,12 @@ function kh_dict()
     static $dict = null;
 
     if ($dict === null) {
-        $file = G5_PATH.'/lang/'.KH_LANG.'.php';
-        $dict = is_file($file) ? include($file) : array();
-        if (!is_array($dict))
-            $dict = array();
+        $dict = array();
+        foreach (array(G5_PATH, defined('G5_THEME_PATH') ? G5_THEME_PATH : '') as $dir) {
+            $file = $dir.'/lang/'.KH_LANG.'.php';
+            if ($dir && is_file($file) && is_array($d = include($file)))
+                $dict = $d + $dict;
+        }
     }
 
     return $dict;

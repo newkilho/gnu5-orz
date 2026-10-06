@@ -1,5 +1,6 @@
 <?php
-// 사전 틀 만들기: 코드의 __('원문'), __('원문', '문맥') 키를 모아 lang/<lang>.php 에 쓴다.
+// 사전 틀 만들기: 코드의 __('원문'), __('원문', '문맥') 키를 모아 사전에 쓴다.
+//   테마 밖 문구 → lang/<lang>.php, theme/<테마>/ 문구 → theme/<테마>/lang/<lang>.php
 // 사용: php lang/build.php en
 // 이미 있는 번역은 그대로 두고 새 키는 빈 값('')으로 추가한다. 빈 값이면 화면에는 원문이 나온다.
 if (PHP_SAPI !== 'cli') exit;
@@ -13,7 +14,6 @@ if (!preg_match('/^[a-z]{2}$/', $lang) || $lang === 'ko') {
 }
 
 $root = dirname(dirname(__FILE__));
-$dict_file = $root.'/lang/'.$lang.'.php';
 $skip_dirs = array('.git', 'data', 'lang', '_dev');
 
 // PHP 문자열 리터럴 토큰 → 값
@@ -73,48 +73,76 @@ foreach ($it as $f) {
         continue;
     $rel = str_replace('\\', '/', substr($f->getPathname(), strlen($root) + 1));
     $top = strtok($rel, '/');
-    if (in_array($top, $skip_dirs))
+    if (in_array($top, $skip_dirs) || preg_match('#^theme/[^/]+/lang/#', $rel))
         continue;
     $files[$rel] = $f->getPathname();
 }
 ksort($files);
 
-$keys = array();
-foreach ($files as $rel => $path)
-    build_scan($path, $rel, $keys);
+// 사전 단위(''=저장소, 'theme/<테마>')로 키를 모은다
+$scoped = array('' => array());
+foreach ($files as $rel => $path) {
+    $scope = preg_match('#^theme/[^/]+#', $rel, $m) ? $m[0] : '';
+    if (!isset($scoped[$scope]))
+        $scoped[$scope] = array();
+    build_scan($path, $rel, $scoped[$scope]);
+}
 
-$old = is_file($dict_file) ? include($dict_file) : array();
-if (!is_array($old))
-    $old = array();
+// 기존 사전 전부에서 번역을 모은다 (키가 다른 사전으로 옮겨 가도 번역을 잃지 않게)
+$dict_files = array('' => $root.'/lang/'.$lang.'.php');
+foreach (glob($root.'/theme/*/lang/'.$lang.'.php') as $f)
+    $dict_files['theme/'.basename(dirname(dirname($f)))] = $f;
+foreach ($scoped as $scope => $keys)
+    if (!isset($dict_files[$scope]))
+        $dict_files[$scope] = $root.'/'.$scope.'/lang/'.$lang.'.php';
 
-// 파일별로 묶어서 쓴다. 코드에서 사라진 키도 번역을 잃지 않도록 맨 끝에 남긴다.
-$out = "<?php\nif (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가\n\n";
-$out .= "// 사전 ($lang). 틀은 php lang/build.php $lang 로 만든다. 값이 ''이면 원문을 쓴다.\n";
-$out .= "return array(\n";
-$group = null;
-$added = 0;
-foreach ($keys as $key => $rel) {
-    if ($rel !== $group) {
-        $out .= "\n// $rel\n";
-        $group = $rel;
+$olds = $trans = $used = array();
+foreach ($dict_files as $scope => $f) {
+    $olds[$scope] = is_file($f) ? include($f) : array();
+    if (!is_array($olds[$scope]))
+        $olds[$scope] = array();
+    foreach ($olds[$scope] as $key => $val)
+        if ($val !== '' || !isset($trans[$key]))
+            $trans[$key] = $val;
+}
+foreach ($scoped as $keys)
+    $used += $keys;
+
+foreach ($dict_files as $scope => $dict_file) {
+    $keys = isset($scoped[$scope]) ? $scoped[$scope] : array();
+    $old = $olds[$scope];
+
+    // 파일별로 묶어서 쓴다. 어디서도 쓰지 않는 키는 번역을 잃지 않도록 맨 끝에 남긴다.
+    $out = "<?php\nif (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가\n\n";
+    $out .= "// 사전 ($lang). 틀은 php lang/build.php $lang 로 만든다. 값이 ''이면 원문을 쓴다.\n";
+    $out .= "return array(\n";
+    $group = null;
+    $added = $done = 0;
+    foreach ($keys as $key => $rel) {
+        if ($rel !== $group) {
+            $out .= "\n// $rel\n";
+            $group = $rel;
+        }
+        $val = isset($trans[$key]) ? (string)$trans[$key] : '';
+        if (!isset($trans[$key]))
+            $added++;
+        if ($val !== '')
+            $done++;
+        $out .= var_export((string)$key, true).' => '.var_export($val, true).",\n";
     }
-    if (!isset($old[$key]))
-        $added++;
-    $out .= var_export((string)$key, true).' => '.var_export(isset($old[$key]) ? (string)$old[$key] : '', true).",\n";
+
+    $unused = array_diff_key($old, $used);
+    if ($unused) {
+        $out .= "\n// 코드에서 쓰지 않는 키\n";
+        foreach ($unused as $key => $val)
+            $out .= var_export((string)$key, true).' => '.var_export((string)$val, true).",\n";
+    }
+    $out .= ");\n";
+
+    if (!is_dir(dirname($dict_file)))
+        mkdir(dirname($dict_file));
+    file_put_contents($dict_file, $out);
+
+    $name = substr($dict_file, strlen($root) + 1);
+    echo "$name: 키 ".count($keys).", 새로 추가 $added, 번역됨 $done, 쓰지 않는 키 ".count($unused)."\n";
 }
-
-$unused = array_diff_key($old, $keys);
-if ($unused) {
-    $out .= "\n// 코드에서 쓰지 않는 키\n";
-    foreach ($unused as $key => $val)
-        $out .= var_export((string)$key, true).' => '.var_export((string)$val, true).",\n";
-}
-$out .= ");\n";
-
-file_put_contents($dict_file, $out);
-
-$done = 0;
-foreach ($keys as $key => $rel)
-    if (isset($old[$key]) && $old[$key] !== '')
-        $done++;
-echo "lang/$lang.php: 키 ".count($keys).", 새로 추가 $added, 번역됨 $done, 쓰지 않는 키 ".count($unused)."\n";
