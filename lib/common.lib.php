@@ -3372,7 +3372,7 @@ function get_versioned_asset_url($url)
     }
 
     $asset_url = preg_replace('/[?#].*$/', '', $url);
-    $g5_url = defined('G5_URL') ? rtrim(G5_URL, '/') : '';
+    $g5_url = defined('G5_BASE_URL') ? rtrim(G5_BASE_URL, '/') : '';   // 자산 주소는 언어 접두사 없음 (gnu5-orz)
     $relative_path = '';
 
     if ($g5_url !== '' && strpos($asset_url, $g5_url.'/') === 0) {

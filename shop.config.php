@@ -12,7 +12,7 @@ define('G5_SHOP_DIR', 'shop');
 define('G5_SHOP_PATH',  G5_PATH.'/'.G5_SHOP_DIR);
 define('G5_SHOP_URL',   G5_URL.'/'.G5_SHOP_DIR);
 define('G5_MSHOP_PATH', G5_MOBILE_PATH.'/'.G5_SHOP_DIR);
-define('G5_MSHOP_URL',  G5_MOBILE_URL.'/'.G5_SHOP_DIR);
+define('G5_MSHOP_URL',  G5_URL.'/'.G5_MOBILE_DIR.'/'.G5_SHOP_DIR);   // 페이지 주소라 언어 접두사 유지 (gnu5-orz)
 
 define('G5_SHOP_IMG_URL',  G5_SHOP_URL.'/'.G5_IMG_DIR);
 define('G5_MSHOP_IMG_URL', G5_MSHOP_URL.'/'.G5_IMG_DIR);

@@ -11,7 +11,7 @@ function captcha_html($class="captcha")
     #hl=ko 표시는 언어지정가능
     */
     $html = '<fieldset id="captcha" class="captcha recaptcha">';
-    $html .= '<script src="https://www.google.com/recaptcha/api.js?hl=ko"></script>';
+    $html .= '<script src="https://www.google.com/recaptcha/api.js?hl='.strtr(KH_LANG, array('zh-hans' => 'zh-CN', 'zh-hant' => 'zh-TW', 'pt-br' => 'pt-BR', 'pt-pt' => 'pt-PT', 'nb' => 'no')).'"></script>';
     $html .= '<script src="'.G5_CAPTCHA_URL.'/recaptcha.js"></script>';
     $html .= '<div class="g-recaptcha" data-sitekey="'.$config['cf_recaptcha_site_key'].'"></div>';
     $html .= '</fieldset>';
