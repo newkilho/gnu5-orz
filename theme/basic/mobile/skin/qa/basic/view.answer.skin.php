@@ -4,7 +4,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 
 <section id="bo_v_ans" class="bo_v_wr">
     <h2>
-    	<span class="tit_rpl">답변</span>
+    	<span class="tit_rpl"><?php echo __('답변') ?></span>
     	<span class="tit_cnt"><?php echo get_text($answer['qa_subject']); ?></span>
     	<div id="ans_datetime">
 	        <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $answer['qa_datetime']; ?>
@@ -29,7 +29,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
         <?php if(isset($answer['download_count']) && $answer['download_count']) { ?>
         <!-- 첨부파일 시작 { -->
         <section id="bo_v_file">
-            <h2>첨부파일</h2>
+            <h2><?php echo __('첨부파일') ?></h2>
             <ul>
             <?php
             // 가변 파일
@@ -50,17 +50,17 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
         <?php } ?>
     </div>
 	
-	<button id="btn_ans_btn" class="btn_b03 btn"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sound_only">게시판 리스트 옵션</span></button>
+	<button id="btn_ans_btn" class="btn_b03 btn"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sound_only"><?php echo __('게시판 리스트 옵션') ?></span></button>
     <div id="ans_add" class="ans_more_opt">
         <?php if($answer_update_href) { ?>
-        <a href="<?php echo $answer_update_href; ?>">답변수정</a>
+        <a href="<?php echo $answer_update_href; ?>"><?php echo __('답변수정') ?></a>
         <?php } ?>
         <?php if($answer_delete_href) { ?>
-        <a href="<?php echo $answer_delete_href; ?>" onclick="del(this.href); return false;">답변삭제</a>
+        <a href="<?php echo $answer_delete_href; ?>" onclick="del(this.href); return false;"><?php echo __('답변삭제') ?></a>
         <?php } ?>
     </div>
 </section>
-<a href="<?php echo $rewrite_href; ?>" class="add_qu">추가질문</a>
+<a href="<?php echo $rewrite_href; ?>" class="add_qu"><?php echo __('추가질문') ?></a>
 
 <script>
 // 답변 글쓰기 관리자 옵션

@@ -19,7 +19,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 <header id="hd">
     <h1 id="hd_h1"><?php echo $g5['title'] ?></h1>
 
-    <div class="to_content"><a href="#container">본문 바로가기</a></div>
+    <div class="to_content"><a href="#container"><?php echo __('본문 바로가기') ?></a></div>
 
     <?php
     if(defined('_INDEX_')) { // index에서만 실행
@@ -32,10 +32,10 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             <a href="<?php echo G5_URL ?>"><img src="<?php echo G5_IMG_URL ?>/m_logo.png" alt="<?php echo $config['cf_title']; ?>"></a>
         </div>
 
-        <button type="button" id="gnb_open" class="hd_opener"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only"> 메뉴열기</span></button>
+        <button type="button" id="gnb_open" class="hd_opener"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only"> <?php echo __('메뉴열기') ?></span></button>
 
         <div id="gnb" class="hd_div">
-            <button type="button" id="gnb_close" class="hd_closer"><span class="sound_only">메뉴 닫기</span><i class="fa fa-times" aria-hidden="true"></i></button>
+            <button type="button" id="gnb_close" class="hd_closer"><span class="sound_only"><?php echo __('메뉴 닫기') ?></span><i class="fa fa-times" aria-hidden="true"></i></button>
 			<?php echo outlogin('theme/basic'); // 외부 로그인 ?>
             <ul id="gnb_1dul">
             <?php
@@ -51,7 +51,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     foreach( (array) $row['sub'] as $row2 ){
 						if( empty($row2) ) continue;
                         if($k == 0)
-                            echo '<button type="button" class="btn_gnb_op"><span class="sound_only">하위분류</span></button><ul class="gnb_2dul">'.PHP_EOL;
+                            echo '<button type="button" class="btn_gnb_op"><span class="sound_only">'.__('하위분류').'</span></button><ul class="gnb_2dul">'.PHP_EOL;
                     ?>
                         <li class="gnb_2dli"><a href="<?php echo $row2['me_link']; ?>" target="_<?php echo $row2['me_target']; ?>" class="gnb_2da"><span></span><?php echo $row2['me_name'] ?></a></li>
                     <?php
@@ -67,31 +67,31 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             }	//end foreach $row
 
             if ($i == 0) {  ?>
-                <li id="gnb_empty">메뉴 준비 중입니다.<?php if ($is_admin) { ?> <br><a href="<?php echo G5_ADMIN_URL; ?>/menu_list.php">관리자모드 &gt; 환경설정 &gt; 메뉴설정</a>에서 설정하세요.<?php } ?></li>
+                <li id="gnb_empty"><?php echo __('메뉴 준비 중입니다.') ?><?php if ($is_admin) { ?> <br><?php echo __('{1}에서 설정하세요.', '<a href="'.G5_ADMIN_URL.'/menu_list.php">'.__('관리자모드 &gt; 환경설정 &gt; 메뉴설정').'</a>') ?><?php } ?></li>
             <?php } ?>
             <?php if (defined('G5_USE_SHOP') && G5_USE_SHOP) { ?>
-                <li class="gnb_1dli"><a href="<?php echo G5_SHOP_URL ?>" class="gnb_1da"> 쇼핑몰</a></li>
+                <li class="gnb_1dli"><a href="<?php echo G5_SHOP_URL ?>" class="gnb_1da"> <?php echo __('쇼핑몰') ?></a></li>
             <?php } ?>
             </ul>
 
             <ul id="hd_nb">
             	<li class="hd_nb1"><a href="<?php echo G5_BBS_URL ?>/faq.php" id="snb_faq"><i class="fa fa-question" aria-hidden="true"></i>FAQ</a></li>
-                <li class="hd_nb2"><a href="<?php echo G5_BBS_URL ?>/qalist.php" id="snb_qa"><i class="fa fa-comments" aria-hidden="true"></i>1:1문의</a></li>
-                <li class="hd_nb3"><a href="<?php echo G5_BBS_URL ?>/current_connect.php" id="snb_cnt"><i class="fa fa-users" aria-hidden="true"></i>접속자 <span><?php echo connect('theme/basic'); // 현재 접속자수 ?></span></a></li>
-                <li class="hd_nb4"><a href="<?php echo G5_BBS_URL ?>/new.php" id="snb_new"><i class="fa fa-history" aria-hidden="true"></i>새글</a></li>   
+                <li class="hd_nb2"><a href="<?php echo G5_BBS_URL ?>/qalist.php" id="snb_qa"><i class="fa fa-comments" aria-hidden="true"></i><?php echo __('1:1문의') ?></a></li>
+                <li class="hd_nb3"><a href="<?php echo G5_BBS_URL ?>/current_connect.php" id="snb_cnt"><i class="fa fa-users" aria-hidden="true"></i><?php echo __('접속자') ?> <span><?php echo connect('theme/basic'); // 현재 접속자수 ?></span></a></li>
+                <li class="hd_nb4"><a href="<?php echo G5_BBS_URL ?>/new.php" id="snb_new"><i class="fa fa-history" aria-hidden="true"></i><?php echo __('새글') ?></a></li>   
             </ul>
         </div>
 
-        <button type="button" id="user_btn" class="hd_opener"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">사용자메뉴</span></button>
+        <button type="button" id="user_btn" class="hd_opener"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only"><?php echo __('사용자메뉴') ?></span></button>
         <div class="hd_div" id="user_menu">
-            <button type="button" id="user_close" class="hd_closer"><span class="sound_only">메뉴 닫기</span><i class="fa fa-times" aria-hidden="true"></i></button>
+            <button type="button" id="user_close" class="hd_closer"><span class="sound_only"><?php echo __('메뉴 닫기') ?></span><i class="fa fa-times" aria-hidden="true"></i></button>
             <div id="hd_sch">
-                <h2>사이트 내 전체검색</h2>
+                <h2><?php echo __('사이트 내 전체검색') ?></h2>
                 <form name="fsearchbox" action="<?php echo G5_BBS_URL ?>/search.php" onsubmit="return fsearchbox_submit(this);" method="get">
                 <input type="hidden" name="sfl" value="wr_subject||wr_content">
                 <input type="hidden" name="sop" value="and">
-                <input type="text" name="stx" id="sch_stx" placeholder="검색어를 입력해주세요" required maxlength="20">
-                <button type="submit" value="검색" id="sch_submit"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+                <input type="text" name="stx" id="sch_stx" placeholder="<?php echo __('검색어를 입력해주세요') ?>" required maxlength="20">
+                <button type="submit" value="검색" id="sch_submit"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only"><?php echo __('검색') ?></span></button>
                 </form>
 
                 <script>
@@ -127,9 +127,9 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             <?php echo popular('theme/basic'); // 인기검색어 ?>
             <div id="text_size">
             <!-- font_resize('엘리먼트id', '제거할 class', '추가할 class'); -->
-                <button id="size_down" onclick="font_resize('container', 'ts_up ts_up2', '', this);" class="select"><img src="<?php echo G5_URL; ?>/img/ts01.png" width="20" alt="기본"></button>
-                <button id="size_def" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up', this);"><img src="<?php echo G5_URL; ?>/img/ts02.png" width="20" alt="크게"></button>
-                <button id="size_up" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up2', this);"><img src="<?php echo G5_URL; ?>/img/ts03.png" width="20" alt="더크게"></button>
+                <button id="size_down" onclick="font_resize('container', 'ts_up ts_up2', '', this);" class="select"><img src="<?php echo G5_URL; ?>/img/ts01.png" width="20" alt="<?php echo __('기본') ?>"></button>
+                <button id="size_def" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up', this);"><img src="<?php echo G5_URL; ?>/img/ts02.png" width="20" alt="<?php echo __('크게') ?>"></button>
+                <button id="size_up" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up2', this);"><img src="<?php echo G5_URL; ?>/img/ts03.png" width="20" alt="<?php echo __('더크게') ?>"></button>
             </div>
         </div>
 
@@ -190,6 +190,6 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
     <div id="container">
     <?php if (!defined("_INDEX_")) { ?>
     	<h2 id="container_title" class="top" title="<?php echo get_text($g5['title']); ?>">
-    		<a href="javascript:history.back();"><i class="fa fa-chevron-left" aria-hidden="true"></i><span class="sound_only">뒤로가기</span></a> <?php echo get_head_title($g5['title']); ?>
+    		<a href="javascript:history.back();"><i class="fa fa-chevron-left" aria-hidden="true"></i><span class="sound_only"><?php echo __('뒤로가기') ?></span></a> <?php echo get_head_title($g5['title']); ?>
     	</h2>
     <?php }

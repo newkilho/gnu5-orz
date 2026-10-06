@@ -17,27 +17,27 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
     <input type="hidden" name="mb_name" value="<?php echo $member['mb_name']; ?>">
 	<input type="hidden" name="cert_no" value="">
         <section id="member_cert_refresh_private">
-            <h2>(필수) 추가 개인정보처리방침 안내</h2>
+            <h2><?php echo __('(필수) 추가 개인정보처리방침 안내') ?></h2>
             <div>
                 <div class="tbl_head01 tbl_wrap">
                     <table>
-                        <caption>추가 개인정보처리방침 안내</caption>
+                        <caption><?php echo __('추가 개인정보처리방침 안내') ?></caption>
                         <thead>
                             <tr>
-                                <th colspan="2">목적</th>
+                                <th colspan="2"><?php echo __('목적') ?></th>
                             </tr>
                             <tr>
-                                <th>항목</th>
-                                <th>보유기간</th>
+                                <th><?php echo __('항목') ?></th>
+                                <th><?php echo __('보유기간') ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="2">이용자 식별 및 본인여부 확인</td>
+                                <td colspan="2"><?php echo __('이용자 식별 및 본인여부 확인') ?></td>
                             </tr>
                             <tr>
-                                <td>생년월일<?php echo (empty($member['mb_dupinfo']))? ", 휴대폰 번호(아이핀 제외)" : ""; ?>, 암호화된 개인식별부호(CI)</td>
-                                <td>회원 탈퇴 시까지</td>
+                                <td><?php echo __('생년월일') ?><?php echo (empty($member['mb_dupinfo']))? __(", 휴대폰 번호(아이핀 제외)") : ""; ?><?php echo __(', 암호화된 개인식별부호(CI)') ?></td>
+                                <td><?php echo __('회원 탈퇴 시까지') ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -46,26 +46,26 @@ if ($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipi
 
             <fieldset class="member_cert_refresh_agree">
                 <input type="checkbox" name="agree2" value="1" id="agree21" class="selec_chk">
-                <label for="agree21"><span></span><b class="sound_only">추가 개인정보처리방침에 동의합니다.</b></label>
+                <label for="agree21"><span></span><b class="sound_only"><?php echo __('추가 개인정보처리방침에 동의합니다.') ?></b></label>
             </fieldset>
         </section>
 
         <section id="find_info" class="new_win">
-            <h2>인증수단 선택하기</h2>
+            <h2><?php echo __('인증수단 선택하기') ?></h2>
 
             <div class="find_btn">
             <?php
             if ($config['cf_cert_use']) {
                 echo '<div class="cert_btn">';
                 if ($config['cf_cert_simple']) {
-                    echo '<button type="button" id="win_sa_kakao_cert" class="btn_submit win_sa_cert" data-type="">간편인증</button>' . PHP_EOL;
+                    echo '<button type="button" id="win_sa_kakao_cert" class="btn_submit win_sa_cert" data-type="">'.__('간편인증').'</button>' . PHP_EOL;
                 }
                 if ($config['cf_cert_hp'])
-                    echo '<button type="button" id="win_hp_cert" class="btn_submit">휴대폰 본인확인</button>' . PHP_EOL;
+                    echo '<button type="button" id="win_hp_cert" class="btn_submit">'.__('휴대폰 본인확인').'</button>' . PHP_EOL;
                 if ($config['cf_cert_ipin'])
-                    echo '<button type="button" id="win_ipin_cert" class="btn_submit">아이핀 본인확인</button>' . PHP_EOL;
+                    echo '<button type="button" id="win_ipin_cert" class="btn_submit">'.__('아이핀 본인확인').'</button>' . PHP_EOL;
                 echo '</div>';
-                echo '<noscript>본인확인을 위해서는 자바스크립트 사용이 가능해야합니다.</noscript>' . PHP_EOL;
+                echo '<noscript>'.__('본인확인을 위해서는 자바스크립트 사용이 가능해야합니다.').'</noscript>' . PHP_EOL;
             }
             ?>
             </div>

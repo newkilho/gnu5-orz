@@ -7,7 +7,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     if($is_admin === 'super') // 최고관리자이면 답변등록
     {
     ?>
-    <h2>답변등록</h2>
+    <h2><?php echo __('답변등록') ?></h2>
 
     <form name="fanswer" method="post" action="./qawrite_update.php" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data" autocomplete="off">
     <input type="hidden" name="qa_id" value="<?php echo $view['qa_id']; ?>">
@@ -34,30 +34,30 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
         <ul>
             <?php if ($option) { ?>
             <li>
-                <span class="sound_only">옵션</span>
+                <span class="sound_only"><?php echo __('옵션') ?></span>
                 <?php echo $option; ?>
             </li>
             <?php } ?>
             <li>
-                <label for="qa_subject" class="sound_only">제목</label>
-                <input type="text" name="qa_subject" value="" id="qa_subject" required class="frm_input required" size="50" maxlength="255" placeholder="제목">
+                <label for="qa_subject" class="sound_only"><?php echo __('제목') ?></label>
+                <input type="text" name="qa_subject" value="" id="qa_subject" required class="frm_input required" size="50" maxlength="255" placeholder="<?php echo __('제목') ?>">
             </li>
             <li>
-                <label for="qa_content" class="sound_only">내용<strong>필수</strong></label>
+                <label for="qa_content" class="sound_only"><?php echo __('내용') ?><strong><?php echo __('필수') ?></strong></label>
                 <?php echo $editor_html; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
             </li>
 
             <li class="bo_w_flie">
                 <div class="file_wr filebox">
-                	<input type="text" class="fileName" readonly="readonly" placeholder="파일을 첨부하세요">
-                    <label for="bf_file[1]"><i class="fa fa-download lb_icon" aria-hidden="true"></i><span class="sound_only">파일 #1</span><span class="btn_file">파일첨부</span></label>
-                    <input type="file" name="bf_file[1]" id="bf_file[1]" title="파일첨부 1 :  용량 <?php echo $upload_max_filesize; ?> 이하만 업로드 가능" class="frm_file uploadBtn">
+                	<input type="text" class="fileName" readonly="readonly" placeholder="<?php echo __('파일을 첨부하세요') ?>">
+                    <label for="bf_file[1]"><i class="fa fa-download lb_icon" aria-hidden="true"></i><span class="sound_only"><?php echo __('파일 #1') ?></span><span class="btn_file"><?php echo __('파일첨부') ?></span></label>
+                    <input type="file" name="bf_file[1]" id="bf_file[1]" title="<?php echo __('파일첨부 1 :  용량 {1} 이하만 업로드 가능', $upload_max_filesize) ?>" class="frm_file uploadBtn">
                 </div>
 				<br>
                 <div class="file_wr filebox">
-                	<input type="text" class="fileName" readonly="readonly" placeholder="파일을 첨부하세요">
-                    <label for="bf_file[2]"><i class="fa fa-download lb_icon" aria-hidden="true"></i><span class="sound_only">파일 #2</span><span class="btn_file">파일첨부</span></label>
-                    <input type="file" name="bf_file[2]" id="bf_file[2]" title="파일첨부 2 :  용량 <?php echo $upload_max_filesize; ?> 이하만 업로드 가능" class="frm_file uploadBtn">
+                	<input type="text" class="fileName" readonly="readonly" placeholder="<?php echo __('파일을 첨부하세요') ?>">
+                    <label for="bf_file[2]"><i class="fa fa-download lb_icon" aria-hidden="true"></i><span class="sound_only"><?php echo __('파일 #2') ?></span><span class="btn_file"><?php echo __('파일첨부') ?></span></label>
+                    <input type="file" name="bf_file[2]" id="bf_file[2]" title="<?php echo __('파일첨부 2 :  용량 {1} 이하만 업로드 가능', $upload_max_filesize) ?>" class="frm_file uploadBtn">
                 </div>
             </li>
 
@@ -65,7 +65,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     </div>
 
     <div class="btn_confirm">
-        <input type="submit" value="답변쓰기" id="btn_submit" accesskey="s" class="btn_submit">
+        <input type="submit" value="<?php echo __('답변쓰기') ?>" id="btn_submit" accesskey="s" class="btn_submit">
     </div>
     </form>
 
@@ -147,7 +147,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     else
     {
     ?>
-    <p id="ans_msg">고객님의 문의에 대한 답변을 준비 중입니다.</p>
+    <p id="ans_msg"><?php echo __('고객님의 문의에 대한 답변을 준비 중입니다.') ?></p>
     <?php
     }
     ?>
