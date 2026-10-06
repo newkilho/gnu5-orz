@@ -39,6 +39,15 @@
 | `plugin/editor/smarteditor2/SmartEditor2Skin_en_US.html`, `_zh_CN.html`, `_zh_TW.html` | 화면 구조 | 그누보드가 기본 화면과 `_ja_JP.html`에 넣은 것(사진첨부 스크립트·사진 버튼, 목록·들여쓰기 '더보기' 묶음, 버전 숨김)을 똑같이 옮김 | 원본의 언어별 화면에는 사진 업로드가 없었다 |
 | `adm/i18n.php`, `adm/i18n_update.php` | 새 파일 | 관리자 → 환경설정 → 다국어 문구 (메뉴는 `extend/`의 `admin_menu` 훅) | 번역 수정·DB 문구 번역. 저장은 `data/lang/<언어>.php` |
 
+### 원본 업데이트를 받을 때
+
+`git fetch upstream` → `master`에 merge → `orz`에 merge. 충돌은 주로 원본이 고친 줄에 이 포크가 `__()`로 감싼 문구가 있을 때 난다(2026-10-07 연습: 원본 5.6.38~5.6.41을 합치면 `bbs/write_update.php`, `bbs/qawrite_update.php` 2곳, 첨부파일 저장 부분).
+
+1. 충돌난 곳은 **원본 코드를 받고**, 그 안의 사용자 문구만 다시 `__('…')`(값이 있으면 `__('…{1}…', 값)`, JS 안이면 `get_js_safe_string(__('…'))`)로 감싼다.
+2. 위 표의 다른 수정(주소 상수, `get_board_db()` 등)이 원본 변경으로 사라지지 않았는지 확인한다.
+3. `php lang/build.php <언어>`를 언어마다 실행 → "새로 추가"된 키를 번역하고, "알림 문구가 __() 밖에 있음" 경고를 고친다.
+4. `php tests/i18n.php`가 `ok`인지 확인한다.
+
 ### 저장소 밖 설정 (서버 `.htaccess`)
 
 `.htaccess`는 git 관리 대상이 아니므로 서버마다 직접 넣습니다. 그누보드 rewrite 블록의 `RewriteBase /` 바로 아래 (첫 두 줄은 `/en/폴더`처럼 끝 `/`가 없는 폴더 주소를 `/en/폴더/`로 보낸다 — 없으면 Apache가 접두사를 뗀 내부 주소로 `/폴더/`에 보내 언어가 빠진다. 셋째 줄은 관리자 화면 `/en/adm/…`을 `/adm/…`으로 이동):
