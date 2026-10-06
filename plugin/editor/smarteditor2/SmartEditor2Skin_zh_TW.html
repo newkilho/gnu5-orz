@@ -14,13 +14,15 @@
 <script type="text/javascript" src="./js/service/SE2M_Configuration.js" charset="utf-8"></script>	<!-- 설정 파일 -->
 <script type="text/javascript" src="./js/service/SE2BasicCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/smarteditor2.min.js" charset="utf-8"></script>
+<!-- 사진첨부샘플  --> 
+<script type="text/javascript" src="photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js?v3" charset="utf-8"></script>
 
 </head>
 <body>
 
 
 
-<span id="rev">Version: 2.9.0.4a256db </span>
+<span id="rev" style="display:none">Version: 2.9.0.4a256db </span>
 
 <!-- SE2 Markup Start -->	
 <div id="smart_editor2">
@@ -211,14 +213,6 @@
 
 				<li class="husky_seditor_ui_justifyfull"><button type="button" title="兩側排列" class="se2_justify"><span class="_buttonRound">兩側排列</span></button></li>
 
-				<li class="husky_seditor_ui_orderedlist"><button type="button" title="排號" class="se2_ol"><span class="_buttonRound">排號</span></button></li>
-
-				<li class="husky_seditor_ui_unorderedlist"><button type="button" title="主題符號" class="se2_ul"><span class="_buttonRound">主題符號</span></button></li>
-
-				<li class="husky_seditor_ui_outdent"><button type="button" title="凸排[Shift+Tab]" class="se2_outdent"><span class="_buttonRound">凸排[Shift+Tab]</span></button></li>
-
-				<li class="husky_seditor_ui_indent"><button type="button" title="縮排[Tab]" class="se2_indent"><span class="_buttonRound">縮排[Tab]</span></button></li>			
-
 				<li class="husky_seditor_ui_lineHeight last_child"><button type="button" title="行間隔" class="se2_lineheight" ><span class="_buttonRound tool_bg">行間隔</span></button>
 					<!-- 줄간격 레이어 -->
 					<div class="se2_layer husky_se2m_lineHeight_layer">
@@ -246,6 +240,17 @@
 						</div>
 					</div>
 					<!-- //줄간격 레이어 -->
+				</li>
+</ul><ul>
+                <li class="husky_seditor_ui_text_more" id="se2_text_more"><button title="更多" type="button" class="se2_text_tool_more"><span>更多</span></button>
+					<div class="se2_sub_text_tool se2_sub_step1">
+						<ul>
+						<li class="husky_seditor_ui_orderedlist"><button type="button" title="排號" class="se2_ol"><span class="_buttonRound">排號</span></button></li>
+						<li class="husky_seditor_ui_unorderedlist"><button type="button" title="主題符號" class="se2_ul"><span class="_buttonRound">主題符號</span></button></li>
+						<li class="husky_seditor_ui_outdent"><button type="button" title="凸排[Shift+Tab]" class="se2_outdent"><span class="_buttonRound">凸排[Shift+Tab]</span></button></li>
+						<li class="husky_seditor_ui_indent"><button type="button" title="縮排[Tab]" class="se2_indent"><span class="_buttonRound">縮排[Tab]</span></button></li>
+						</ul>
+					</div>
 				</li>
 </ul><ul>
 				<li class="husky_seditor_ui_quote single_child"><button type="button" title="인용구" class="se2_blockquote"><span class="_buttonRound tool_bg">인용구</span></button>
@@ -532,6 +537,9 @@
 					<!--//@lazyload_html-->
 				</li>
 </ul>
+				<ul class="se2_multy">
+					<li class="se2_mn husky_seditor_ui_photo_attach"><button type="button" class="se2_photo ico_btn"><span class="se2_icon"></span><span class="se2_mntxt">圖片<span class="se2_new"></span></span></button></li>
+				</ul>
 			</div>
 			<!-- //704이상 -->
 		</div>

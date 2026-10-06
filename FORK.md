@@ -33,6 +33,10 @@
 | `bbs/board.php` | 목록 제목 `$g5['title']` | `$page`가 없으면 게시판 이름만 | 원본은 `page`가 없을 때 `$page`가 빈 문자열이라(PHP 8에서 `'' == 0`은 거짓) "자유게시판  페이지"가 됐다. 한국어 제목도 "자유게시판"으로 바뀐다 |
 | `head.sub.php`, `theme/basic/head.sub.php` | `<html lang>` | `KH_LANG`, 아랍어면 `dir="rtl"` | 원래 `ko` 고정. basic 테마 CSS는 오른쪽→왼쪽 배치를 고려하지 않았다 |
 | `plugin/recaptcha/recaptcha.user.lib.php`, `plugin/recaptcha_inv/recaptcha.user.lib.php` | `api.js?hl=` | `KH_LANG`(구글 코드로: `zh-CN`, `zh-TW`, `pt-BR`, `pt-PT`, `no`) | 원래 `hl=ko` 고정 |
+| `js/wrest.js`, `js/common.js`, `js/autosave.js`, `js/certify.js`, `js/jquery.fancyalert.js` | 사용자에게 보이는 문구 | `__js('…')`, 값이 들어가면 `__js('…{1}…', 값)` | 코어 JS 번역. 사전은 `lang/<언어>.js`(`php lang/build.php`가 `lang/<언어>.php`에서 만듦) |
+| `plugin/editor/smarteditor2/editor.lib.php`, `plugin/editor/cheditor5/editor.lib.php` | 그누보드가 만든 감싸기 코드의 문구 | `__()`로 감쌈 | "단축키 일람", "내용을 입력해 주십시오." 등 |
+| `plugin/editor/smarteditor2/editor.lib.php`, `plugin/editor/smarteditor2/config.js` | 에디터 언어 | 현재 언어를 `g5_editor_locale`로 넘기고, `config.js`가 그 언어의 화면 파일(`SmartEditor2Skin_<로케일>.html`)과 `I18N_LOCALE`을 고름. 에디터가 제공하는 ko_KR·en_US·ja_JP·zh_CN·zh_TW만 쓰고 그 밖의 언어는 en_US | 외부 라이브러리는 직접 번역하지 않고 제공 언어만 쓴다 |
+| `plugin/editor/smarteditor2/SmartEditor2Skin_en_US.html`, `_zh_CN.html`, `_zh_TW.html` | 화면 구조 | 그누보드가 기본 화면과 `_ja_JP.html`에 넣은 것(사진첨부 스크립트·사진 버튼, 목록·들여쓰기 '더보기' 묶음, 버전 숨김)을 똑같이 옮김 | 원본의 언어별 화면에는 사진 업로드가 없었다 |
 | `adm/i18n.php`, `adm/i18n_update.php` | 새 파일 | 관리자 → 환경설정 → 다국어 문구 (메뉴는 `extend/`의 `admin_menu` 훅) | 번역 수정·DB 문구 번역. 저장은 `data/lang/<언어>.php` |
 
 ### 저장소 밖 설정 (서버 `.htaccess`)
@@ -52,6 +56,9 @@ RewriteRule ^(en|de|ja|fr|zh-hans|zh-hant|nl|sv|da|nb|es|it|pt-br|pt-pt|ar|pl|tr
 - `kh_lang_url('en')`: 지금 화면의 다른 언어 주소. 언어 선택 버튼은 `kh_langs()`(언어 목록)와 이 함수로 그린다.
 - `<head>`에 canonical, hreflang(전 언어 + `x-default`), `og:locale`을 넣는다. 관리자 화면은 제외. 테마가 직접 넣는다면 `theme.config.php`에 `define('KH_NO_I18N_HEAD', true);`
 - 첫 접속 때 브라우저 언어로 보내는 302는 넣지 않았다(검색엔진·공유 링크가 엉뚱한 언어로 열릴 수 있음).
+- 메일 발송 오류 문구(PHPMailer)는 `mail_options` 훅으로 PHPMailer가 제공하는 언어 파일을 고른다.
+- 외부 오픈소스 플러그인(에디터, PHPMailer, hybridauth 등)은 직접 번역하지 않는다. 그 라이브러리가 제공하는 언어만 연결한다. CHEditor5는 한국어만 있어 그대로다.
+- 메일은 보내는 순간의 화면 언어로 나간다(회원별 언어를 저장하지 않음). 관리자에게 가는 메일은 한국어 그대로.
 
 ### 다른 사이트(테마)에 적용할 때 주의
 

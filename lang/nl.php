@@ -647,6 +647,14 @@ Reactie
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Voer een geldig mobiel nummer in.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' Dit mobiele nummer is al in gebruik. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Begin webeditor',
+'웹 에디터 끝' => 'Einde webeditor',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Sneltoetsen',
+'단축키 일람 닫기' => 'Sneltoetsen sluiten',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Ongeldig verzoek.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Ongeldige verificatie. Gebruik de juiste methode.',

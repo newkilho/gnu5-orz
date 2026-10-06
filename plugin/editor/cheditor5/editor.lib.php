@@ -42,9 +42,9 @@ function editor_html($id, $content, $is_dhtml_editor=true)
         $html .= "ed_{$id}.config.editorPath = \"{$editor_url}\";\n"; 
         $html .= "ed_{$id}.inputForm = \"tx_{$id}\";\n";
         $html .= "</script>\n";                                             
-        $html .= "<span class=\"sound_only\">웹에디터 시작</span>";
+        $html .= '<span class="sound_only">'.__('웹에디터 시작').'</span>';
         $html .= "<textarea name=\"{$id}\" id=\"tx_{$id}\" style=\"display:none;\">{$content}</textarea>\n";
-        $html .= "\n<span class=\"sound_only\">웹 에디터 끝</span>";
+        $html .= "\n".'<span class="sound_only">'.__('웹 에디터 끝').'</span>';
         $html .= "<script>ed_{$id}.run();</script>\n";
     } else {
         $html .= "<textarea id=\"$id\" name=\"$id\" style=\"width:{$width};height:{$height};\" maxlength=\"65536\">$content</textarea>\n";
@@ -68,9 +68,9 @@ function get_editor_js($id, $is_dhtml_editor=true)
 function chk_editor_js($id, $is_dhtml_editor=true)
 {
     if ($is_dhtml_editor) {
-        return "if (document.getElementById('tx_{$id}') && jQuery.inArray(ed_{$id}.outputBodyHTML().toLowerCase().replace(/^\s*|\s*$/g, ''), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<div><br></div>','<p></p>','<br>','']) != -1) { alert(\"내용을 입력해 주십시오.\"); ed_{$id}.returnFalse(); return false; }\n";
+        return "if (document.getElementById('tx_{$id}') && jQuery.inArray(ed_{$id}.outputBodyHTML().toLowerCase().replace(/^\s*|\s*$/g, ''), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<div><br></div>','<p></p>','<br>','']) != -1) { alert(".get_js_safe_string(__('내용을 입력해 주십시오.'))."); ed_{$id}.returnFalse(); return false; }\n";
     } else {
-        return "if (!{$id}_editor.value) { alert(\"내용을 입력해 주십시오.\"); {$id}_editor.focus(); return false; }\n";
+        return "if (!{$id}_editor.value) { alert(".get_js_safe_string(__('내용을 입력해 주십시오.'))."); {$id}_editor.focus(); return false; }\n";
     }
 }
 

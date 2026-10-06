@@ -647,6 +647,14 @@ Bình luận
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Vui lòng nhập đúng số điện thoại di động.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' Số điện thoại di động đã được sử dụng. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Bắt đầu trình soạn thảo web',
+'웹 에디터 끝' => 'Kết thúc trình soạn thảo web',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Phím tắt',
+'단축키 일람 닫기' => 'Đóng phím tắt',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Yêu cầu không hợp lệ.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Xác minh không hợp lệ. Vui lòng sử dụng đúng cách.',

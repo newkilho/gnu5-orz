@@ -647,6 +647,14 @@ Comentário
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Introduza um número de telemóvel válido.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' Este número de telemóvel já está a ser utilizado. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Início do editor web',
+'웹 에디터 끝' => 'Fim do editor web',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Atalhos de teclado',
+'단축키 일람 닫기' => 'Fechar atalhos de teclado',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Pedido inválido.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Verificação inválida. Utilize o procedimento correto.',

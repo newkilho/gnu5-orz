@@ -8,8 +8,9 @@
             nhn.husky.EZCreator.createInIFrame({
                 oAppRef: oEditors,
                 elPlaceHolder: get_id,
-                sSkinURI: g5_editor_url+"/SmartEditor2Skin.html",	
+                sSkinURI: g5_editor_url+"/SmartEditor2Skin"+(window.g5_editor_locale && g5_editor_locale !== "ko_KR" ? "_"+g5_editor_locale : "")+".html",	
                 htParams : {
+                    I18N_LOCALE : window.g5_editor_locale || "ko_KR",	// 에디터 제공 언어 (gnu5-orz)
                     bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
                     bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
                     bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)

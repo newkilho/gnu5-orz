@@ -15,8 +15,8 @@ if (!preg_match('/^[a-z]{2}(-[a-z]{2,4})?$/', $lang) || $lang === 'ko') {
 
 $root = dirname(dirname(__FILE__));
 $skip_dirs = array('.git', 'data', 'lang', '_dev');
-// 번역 대상이 아닌 곳: 관리자, 쇼핑몰, 테마가 없을 때의 기본 스킨, 설치, 외부 라이브러리 플러그인
-$skip_re = '#^(adm|install|skin|mobile|shop)/|^theme/[^/]+/(mobile/)?shop/|^lib/shop|^shop\.|^(g4|yc4)_import|^plugin/(editor|PHPMailer|lgxpay|sms5|debugbar|jqplot|jquery-ui|htmlpurifier|browscap|syndi)/#';
+// 번역 대상이 아닌 곳: 관리자, 쇼핑몰, 테마가 없을 때의 기본 스킨, 설치, 외부 라이브러리 플러그인(에디터는 그누보드가 만든 editor.lib.php만)
+$skip_re = '#^(adm|install|skin|mobile|shop)/|^theme/[^/]+/(mobile/)?shop/|^lib/shop|^shop\.|^(g4|yc4)_import|^plugin/editor/(?![^/]+/editor.lib.php$)|^plugin/(PHPMailer|lgxpay|sms5|debugbar|jqplot|jquery-ui|htmlpurifier|browscap|syndi)/#';
 
 // PHP 문자열 리터럴 토큰 → 값
 function build_literal($t)

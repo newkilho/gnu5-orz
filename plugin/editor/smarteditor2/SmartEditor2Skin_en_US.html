@@ -14,13 +14,15 @@
 <script type="text/javascript" src="./js/service/SE2M_Configuration.js" charset="utf-8"></script>	<!-- 설정 파일 -->
 <script type="text/javascript" src="./js/service/SE2BasicCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/smarteditor2.min.js" charset="utf-8"></script>
+<!-- 사진첨부샘플  --> 
+<script type="text/javascript" src="photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js?v3" charset="utf-8"></script>
 
 </head>
 <body>
 
 
 
-<span id="rev">Version: 2.9.0.4a256db </span>
+<span id="rev" style="display:none">Version: 2.9.0.4a256db </span>
 
 <!-- SE2 Markup Start -->	
 <div id="smart_editor2">
@@ -211,14 +213,6 @@
 
 				<li class="husky_seditor_ui_justifyfull"><button type="button" title="Align: Justify" class="se2_justify"><span class="_buttonRound">Align: Justify</span></button></li>
 
-				<li class="husky_seditor_ui_orderedlist"><button type="button" title="Add Number" class="se2_ol"><span class="_buttonRound">Add Number</span></button></li>
-
-				<li class="husky_seditor_ui_unorderedlist"><button type="button" title="Bullet" class="se2_ul"><span class="_buttonRound">Bullet</span></button></li>
-
-				<li class="husky_seditor_ui_outdent"><button type="button" title="Outdent[Shift+Tab]" class="se2_outdent"><span class="_buttonRound">Outdent[Shift+Tab]</span></button></li>
-
-				<li class="husky_seditor_ui_indent"><button type="button" title="Indent[Tab]" class="se2_indent"><span class="_buttonRound">Indent[Tab]</span></button></li>			
-
 				<li class="husky_seditor_ui_lineHeight last_child"><button type="button" title="Line-height" class="se2_lineheight" ><span class="_buttonRound tool_bg">Line-height</span></button>
 					<!-- 줄간격 레이어 -->
 					<div class="se2_layer husky_se2m_lineHeight_layer">
@@ -246,6 +240,17 @@
 						</div>
 					</div>
 					<!-- //줄간격 레이어 -->
+				</li>
+</ul><ul>
+                <li class="husky_seditor_ui_text_more" id="se2_text_more"><button title="More" type="button" class="se2_text_tool_more"><span>More</span></button>
+					<div class="se2_sub_text_tool se2_sub_step1">
+						<ul>
+						<li class="husky_seditor_ui_orderedlist"><button type="button" title="Add Number" class="se2_ol"><span class="_buttonRound">Add Number</span></button></li>
+						<li class="husky_seditor_ui_unorderedlist"><button type="button" title="Bullet" class="se2_ul"><span class="_buttonRound">Bullet</span></button></li>
+						<li class="husky_seditor_ui_outdent"><button type="button" title="Outdent[Shift+Tab]" class="se2_outdent"><span class="_buttonRound">Outdent[Shift+Tab]</span></button></li>
+						<li class="husky_seditor_ui_indent"><button type="button" title="Indent[Tab]" class="se2_indent"><span class="_buttonRound">Indent[Tab]</span></button></li>
+						</ul>
+					</div>
 				</li>
 </ul><ul>
 				<li class="husky_seditor_ui_quote single_child"><button type="button" title="인용구" class="se2_blockquote"><span class="_buttonRound tool_bg">인용구</span></button>
@@ -532,6 +537,9 @@
 					<!--//@lazyload_html-->
 				</li>
 </ul>
+				<ul class="se2_multy">
+					<li class="se2_mn husky_seditor_ui_photo_attach"><button type="button" class="se2_photo ico_btn"><span class="se2_icon"></span><span class="se2_mntxt">Photo<span class="se2_new"></span></span></button></li>
+				</ul>
 			</div>
 			<!-- //704이상 -->
 		</div>

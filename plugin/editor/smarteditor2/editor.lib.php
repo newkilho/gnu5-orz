@@ -21,13 +21,16 @@ function editor_html($id, $content, $is_dhtml_editor=true)
     $editor_url = G5_EDITOR_URL.'/'.$config['cf_editor'];
 
     $html = "";
-    $html .= "<span class=\"sound_only\">웹에디터 시작</span>";
+    $html .= '<span class="sound_only">'.__('웹에디터 시작').'</span>';
     if ($is_dhtml_editor)
-        $html .= '<script>document.write("<div class=\'cke_sc\'><button type=\'button\' class=\'btn_cke_sc\'>단축키 일람</button></div>");</script>';
+        $html .= '<script>document.write("<div class=\'cke_sc\'><button type=\'button\' class=\'btn_cke_sc\'>'.get_text(__('단축키 일람')).'</button></div>");</script>';
 
     if ($is_dhtml_editor && $js) {
         $html .= "\n".'<script src="'.$editor_url.'/js/service/HuskyEZCreator.js"></script>';
-        $html .= "\n".'<script>var g5_editor_url = "'.$editor_url.'", oEditors = [], ed_nonce = "'.ft_nonce_create('smarteditor').'";</script>';
+        // 에디터가 제공하는 언어만 쓴다 (ko_KR, en_US, ja_JP, zh_CN, zh_TW). 그 밖의 언어는 영어 (gnu5-orz)
+        $se2_locales = array('ko' => 'ko_KR', 'ja' => 'ja_JP', 'zh-hans' => 'zh_CN', 'zh-hant' => 'zh_TW');
+        $se2_locale = isset($se2_locales[KH_LANG]) ? $se2_locales[KH_LANG] : 'en_US';
+        $html .= "\n".'<script>var g5_editor_url = "'.$editor_url.'", g5_editor_locale = "'.$se2_locale.'", oEditors = [], ed_nonce = "'.ft_nonce_create('smarteditor').'";</script>';
         $html .= "\n".'<script src="'.$editor_url.'/config.js"></script>';
         $html .= "\n<script>";
         $html .= '
@@ -35,10 +38,10 @@ function editor_html($id, $content, $is_dhtml_editor=true)
             $(".btn_cke_sc").click(function(){
                 if ($(this).next("div.cke_sc_def").length) {
                     $(this).next("div.cke_sc_def").remove();
-                    $(this).text("단축키 일람");
+                    $(this).text('.get_js_safe_string(__('단축키 일람')).');
                 } else {
                     $(this).after("<div class=\'cke_sc_def\' />").next("div.cke_sc_def").load("'.$editor_url.'/shortcut.html");
-                    $(this).text("단축키 일람 닫기");
+                    $(this).text('.get_js_safe_string(__('단축키 일람 닫기')).');
                 }
             });
             $(document).on("click", ".btn_cke_sc_close", function(){
@@ -51,7 +54,7 @@ function editor_html($id, $content, $is_dhtml_editor=true)
 
     $smarteditor_class = $is_dhtml_editor ? "smarteditor2" : "";
     $html .= "\n<textarea id=\"$id\" name=\"$id\" class=\"$smarteditor_class\" maxlength=\"65536\" style=\"width:100%;height:300px\">$content</textarea>";
-    $html .= "\n<span class=\"sound_only\">웹 에디터 끝</span>";
+    $html .= "\n".'<span class="sound_only">'.__('웹 에디터 끝').'</span>';
     return $html;
 }
 
@@ -71,9 +74,9 @@ function get_editor_js($id, $is_dhtml_editor=true)
 function chk_editor_js($id, $is_dhtml_editor=true)
 {
     if ($is_dhtml_editor) {
-        return "if (!{$id}_editor_data || jQuery.inArray({$id}_editor_data.toLowerCase(), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<p></p>','<br>']) != -1) { alert(\"내용을 입력해 주십시오.\"); oEditors.getById['{$id}'].exec('FOCUS'); return false; }\n";
+        return "if (!{$id}_editor_data || jQuery.inArray({$id}_editor_data.toLowerCase(), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<p></p>','<br>']) != -1) { alert(".get_js_safe_string(__('내용을 입력해 주십시오.'))."); oEditors.getById['{$id}'].exec('FOCUS'); return false; }\n";
     } else {
-        return "if (!{$id}_editor.value) { alert(\"내용을 입력해 주십시오.\"); {$id}_editor.focus(); return false; }\n";
+        return "if (!{$id}_editor.value) { alert(".get_js_safe_string(__('내용을 입력해 주십시오.'))."); {$id}_editor.focus(); return false; }\n";
     }
 }
 

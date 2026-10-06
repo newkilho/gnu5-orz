@@ -647,6 +647,14 @@ Commentaire
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Veuillez saisir un numéro de mobile valide.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' Ce numéro de mobile est déjà utilisé. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Début de l\'éditeur web',
+'웹 에디터 끝' => 'Fin de l\'éditeur web',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Raccourcis clavier',
+'단축키 일람 닫기' => 'Fermer les raccourcis clavier',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Requête non valide.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Vérification non valide. Veuillez utiliser la procédure appropriée.',

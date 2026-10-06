@@ -647,6 +647,14 @@ Komentarz
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Wpisz prawidłowy numer telefonu komórkowego.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' Ten numer telefonu komórkowego jest już używany. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Początek edytora',
+'웹 에디터 끝' => 'Koniec edytora',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Skróty klawiaturowe',
+'단축키 일람 닫기' => 'Zamknij skróty klawiaturowe',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Nieprawidłowe żądanie.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Nieprawidłowa weryfikacja. Skorzystaj z właściwej procedury.',

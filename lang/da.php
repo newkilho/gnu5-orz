@@ -647,6 +647,14 @@ Kommentar
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Indtast et gyldigt mobilnummer.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' Mobilnummeret er allerede i brug. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Webeditor start',
+'웹 에디터 끝' => 'Webeditor slut',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Tastaturgenveje',
+'단축키 일람 닫기' => 'Luk tastaturgenveje',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Ugyldig anmodning.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Ugyldig bekræftelse. Brug venligst den korrekte fremgangsmåde.',

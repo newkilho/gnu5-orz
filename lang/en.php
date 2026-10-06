@@ -647,6 +647,14 @@ Comment
 '휴대폰번호를 올바르게 입력해 주십시오.' => 'Please enter a valid mobile number.',
 ' 이미 사용 중인 휴대폰번호입니다. {1}' => ' This mobile number is already in use. {1}',
 
+// plugin/editor/cheditor5/editor.lib.php
+'웹에디터 시작' => 'Web editor start',
+'웹 에디터 끝' => 'Web editor end',
+
+// plugin/editor/smarteditor2/editor.lib.php
+'단축키 일람' => 'Keyboard shortcuts',
+'단축키 일람 닫기' => 'Close keyboard shortcuts',
+
 // plugin/inicert/ini_find_result.php
 '잘못된 요청입니다.' => 'Invalid request.',
 '정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.' => 'Invalid verification. Please use the correct method.',
