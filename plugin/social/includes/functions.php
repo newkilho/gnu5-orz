@@ -36,7 +36,7 @@ function get_social_skin_url(){
 
     $skin_path = get_social_skin_path();
 
-    return str_replace(G5_PATH, G5_URL, $skin_path);
+    return str_replace(G5_PATH, G5_BASE_URL, $skin_path);
 }
 
 function get_social_convert_id($identifier, $service)

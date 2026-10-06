@@ -4606,7 +4606,7 @@ function get_skin_url($dir, $skin)
 {
     $skin_path = get_skin_path($dir, $skin);
 
-    return str_replace(G5_PATH, G5_URL, $skin_path);
+    return str_replace(G5_PATH, G5_BASE_URL, $skin_path);
 }
 
 // 발신번호 유효성 체크

@@ -20,10 +20,10 @@ function outlogin($skin_dir='basic')
             $outlogin_skin_path = G5_THEME_MOBILE_PATH.'/'.G5_SKIN_DIR.'/outlogin/'.$match[1];
             if(!is_dir($outlogin_skin_path))
                 $outlogin_skin_path = G5_THEME_PATH.'/'.G5_SKIN_DIR.'/outlogin/'.$match[1];
-            $outlogin_skin_url = str_replace(G5_PATH, G5_URL, $outlogin_skin_path);
+            $outlogin_skin_url = str_replace(G5_PATH, G5_BASE_URL, $outlogin_skin_path);
         } else {
             $outlogin_skin_path = G5_THEME_PATH.'/'.G5_SKIN_DIR.'/outlogin/'.$match[1];
-            $outlogin_skin_url = str_replace(G5_PATH, G5_URL, $outlogin_skin_path);
+            $outlogin_skin_url = str_replace(G5_PATH, G5_BASE_URL, $outlogin_skin_path);
         }
         $skin_dir = $match[1];
     } else {
