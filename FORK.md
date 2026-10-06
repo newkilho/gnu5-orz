@@ -63,7 +63,7 @@ RewriteRule ^(en|de|ja|fr|zh-hans|zh-hant|nl|sv|da|nb|es|it|pt-br|pt-pt|ar|pl|tr
 ### 다국어 기능 (`extend/kh_i18n.extend.php`, 코어 수정 없음)
 
 - `kh_lang_url('en')`: 지금 화면의 다른 언어 주소. 언어 선택 버튼은 `kh_langs()`(언어 목록)와 이 함수로 그린다.
-- basic 테마의 언어 선택: `theme/basic/lang_select.php`(선택 상자)를 PC 상단 바로가기(`head.php`)와 모바일 메뉴(`mobile/head.php`)에서 include.
+- basic 테마의 언어 선택: `theme/basic/lang_select.php`(선택 상자)를 PC는 오른쪽 사이드의 outlogin 아래(`tail.php`), 모바일은 메뉴 패널의 outlogin 아래(`mobile/head.php`)에서 include.
 - `<head>`에 canonical, hreflang(전 언어 + `x-default`), `og:locale`을 넣는다. 관리자 화면은 제외. 테마가 직접 넣는다면 `theme.config.php`에 `define('KH_NO_I18N_HEAD', true);`
 - 첫 접속 때 브라우저 언어로 보내는 302는 넣지 않았다(검색엔진·공유 링크가 엉뚱한 언어로 열릴 수 있음).
 - 메일 발송 오류 문구(PHPMailer)는 `mail_options` 훅으로 PHPMailer가 제공하는 언어 파일을 고른다.
