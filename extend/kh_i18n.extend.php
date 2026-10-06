@@ -45,9 +45,10 @@ function __($str)
     $text = (isset($dict[$key]) && $dict[$key] !== '') ? $dict[$key] : $str;
 
     if ($has_param) {
-        $text = preg_replace_callback('/\{([0-9]+)\}/', function ($m) use ($args) {
-            return isset($args[$m[1] - 1]) ? $args[$m[1] - 1] : $m[0];
-        }, $text);
+        $map = array();
+        foreach ($args as $i => $v)
+            $map['{'.($i + 1).'}'] = $v;
+        $text = strtr($text, $map);
     }
 
     return $text;
