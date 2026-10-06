@@ -254,7 +254,7 @@ function alert($msg='', $url='', $error=true, $post=false)
         $url = safe_filter_url_host($url);
     }
 
-    $msg = $msg ? strip_tags(__($msg), '<br>') : __('올바른 방법으로 이용해 주십시오.');
+    $msg = $msg ? strip_tags(kh_t($msg), '<br>') : __('올바른 방법으로 이용해 주십시오.');
 
     $header = '';
     if (isset($g5['title'])) {
@@ -272,7 +272,7 @@ function alert_close($msg, $error=true)
     
     run_event('alert_close', $msg, $error);
 
-    $msg = strip_tags(__($msg), '<br>');
+    $msg = strip_tags(kh_t($msg), '<br>');
 
     $header = '';
     if (isset($g5['title'])) {
@@ -305,7 +305,7 @@ function confirm($msg, $url1='', $url2='', $url3='')
 
     if (!$url3) $url3 = clean_xss_tags($_SERVER['HTTP_REFERER']);
 
-    $msg = str_replace("\\n", "<br>", __($msg));
+    $msg = str_replace("\\n", "<br>", kh_t($msg));
 
     $header = '';
     if (isset($g5['title'])) {

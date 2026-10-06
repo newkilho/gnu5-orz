@@ -65,6 +65,13 @@ function __($str)
     return $text;
 }
 
+// 사전에서 찾기만 한다 (없어도 모으지 않음). alert()처럼 값이 이어붙은 문구가 오는 곳에서 쓴다
+function kh_t($str)
+{
+    $dict = kh_dict();
+    return (isset($dict[$str]) && $dict[$str] !== '') ? $dict[$str] : $str;
+}
+
 // data/lang/<lang>.php 쓰기 (true/false)
 function kh_dict_write($lang, $dict)
 {
