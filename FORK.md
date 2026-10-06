@@ -25,9 +25,9 @@
 `.htaccess`는 git 관리 대상이 아니므로 서버마다 직접 넣습니다. 그누보드 rewrite 블록의 `RewriteBase /` 바로 아래 (첫 줄은 관리자 화면 `/en/adm/…`을 `/adm/…`으로 이동):
 
 ```apache
-RewriteRule ^(en)/(adm(/.*)?)$ $2 [R=302,L]
-RewriteRule ^(en)/?$ index.php [E=KH_LANG:$1,L]
-RewriteRule ^(en)/(.+)$ $2 [E=KH_LANG:$1,L]
+RewriteRule ^(en|de|ja|fr|zh-Hans|zh-Hant|nl|sv|da|nb|es|it|pt-BR|pt-PT|ar|pl|tr|id|vi|hi)/(adm(/.*)?)$ $2 [R=302,L]
+RewriteRule ^(en|de|ja|fr|zh-Hans|zh-Hant|nl|sv|da|nb|es|it|pt-BR|pt-PT|ar|pl|tr|id|vi|hi)/?$ index.php [E=KH_LANG:$1,L]
+RewriteRule ^(en|de|ja|fr|zh-Hans|zh-Hant|nl|sv|da|nb|es|it|pt-BR|pt-PT|ar|pl|tr|id|vi|hi)/(.+)$ $2 [E=KH_LANG:$1,L]
 ```
 
 ## 수명
