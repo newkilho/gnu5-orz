@@ -112,6 +112,13 @@ foreach ($dict_files as $scope => $dict_file) {
     $keys = isset($scoped[$scope]) ? $scoped[$scope] : array();
     $old = $olds[$scope];
 
+    // 넣을 키가 없으면 사전을 두지 않는다 (번역은 모두 다른 사전에 있으므로 빈 사전은 지운다)
+    if (!$keys && !array_diff_key($old, $used)) {
+        if (is_file($dict_file))
+            unlink($dict_file);
+        continue;
+    }
+
     // 파일별로 묶어서 쓴다. 어디서도 쓰지 않는 키는 번역을 잃지 않도록 맨 끝에 남긴다.
     $out = "<?php\nif (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가\n\n";
     $out .= "// 사전 ($lang). 틀은 php lang/build.php $lang 로 만든다. 값이 ''이면 원문을 쓴다.\n";
