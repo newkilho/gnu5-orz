@@ -1,6 +1,6 @@
 <?php
 // 다국어 문구 저장 (gnu5-orz) — 화면은 i18n.php
-// 저장소 사전과 다른 번역만 data/lang/<언어>.php에 남긴다.
+// 받은 목록(사전에 없는 문구)으로 data/lang/<언어>.php를 새로 쓴다.
 $sub_menu = '100960';
 require_once './_common.php';
 
@@ -20,14 +20,13 @@ $rows = json_decode(isset($_POST['dict_json']) ? stripslashes((string)$_POST['di
 if (!is_array($rows))
     alert('번역을 읽지 못했습니다.');
 
-$base = kh_dict_file(G5_THEME_PATH, $lang) + kh_dict_file(G5_PATH, $lang);
 $saved = array();
 foreach ($rows as $r) {
     if (!is_array($r) || count($r) != 2)
         continue;
-    $key = (string)$r[0];
+    $key = trim(str_replace("\r\n", "\n", (string)$r[0]));
     $val = str_replace("\r\n", "\n", (string)$r[1]);
-    if ($key === '' || $val === '' || (isset($base[$key]) && $base[$key] === $val))
+    if ($key === '' || $val === '')
         continue;
     $saved[$key] = $val;
 }
