@@ -77,6 +77,21 @@ define('G5_THEME_DIR',      'theme');
 define('G5_GROUP_DIR',      'group');
 define('G5_CONTENT_DIR',    'content');
 
+// gnu5-orz 다국어: .htaccess가 /en/… 의 접두사를 떼고 환경변수 KH_LANG으로 넘긴다 (없으면 ko)
+// 짧은주소(/en/free)는 내부 연결이 두 번 일어나 REDIRECT_가 두 번 붙는다
+// 접두사를 G5_URL에도 붙여, 그누보드가 만드는 링크가 모두 같은 언어를 유지하게 한다
+$kh_lang = 'ko';
+foreach (array('KH_LANG', 'REDIRECT_KH_LANG', 'REDIRECT_REDIRECT_KH_LANG') as $kh_key) {
+    if (isset($_SERVER[$kh_key]) && preg_match('/^[a-z]{2}$/', $_SERVER[$kh_key])) {
+        $kh_lang = $_SERVER[$kh_key];
+        break;
+    }
+}
+define('KH_LANG', $kh_lang);
+if (KH_LANG !== 'ko' && isset($g5_path['url']))
+    $g5_path['url'] .= '/'.KH_LANG;
+unset($kh_lang, $kh_key);
+
 // URL 은 브라우저상에서의 경로 (도메인으로 부터)
 if (G5_DOMAIN) {
     define('G5_URL', G5_DOMAIN);
