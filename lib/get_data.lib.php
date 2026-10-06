@@ -450,15 +450,15 @@ function get_board_sfl_select_options($sfl){
     global $is_admin;
 
     $str = '';
-    $str .= '<option value="wr_subject" '.get_selected($sfl, 'wr_subject', true).'>제목</option>';
-    $str .= '<option value="wr_content" '.get_selected($sfl, 'wr_content').'>내용</option>';
-    $str .= '<option value="wr_subject||wr_content" '.get_selected($sfl, 'wr_subject||wr_content').'>제목+내용</option>';
+    $str .= '<option value="wr_subject" '.get_selected($sfl, 'wr_subject', true).'>'.__('제목').'</option>';
+    $str .= '<option value="wr_content" '.get_selected($sfl, 'wr_content').'>'.__('내용').'</option>';
+    $str .= '<option value="wr_subject||wr_content" '.get_selected($sfl, 'wr_subject||wr_content').'>'.__('제목+내용').'</option>';
     if ( $is_admin ){
         $str .= '<option value="mb_id,1" '.get_selected($sfl, 'mb_id,1').'>회원아이디</option>';
         $str .= '<option value="mb_id,0" '.get_selected($sfl, 'mb_id,0').'>회원아이디(코)</option>';
     }
-    $str .= '<option value="wr_name,1" '.get_selected($sfl, 'wr_name,1').'>글쓴이</option>';
-    $str .= '<option value="wr_name,0" '.get_selected($sfl, 'wr_name,0').'>글쓴이(코)</option>';
+    $str .= '<option value="wr_name,1" '.get_selected($sfl, 'wr_name,1').'>'.__('글쓴이').'</option>';
+    $str .= '<option value="wr_name,0" '.get_selected($sfl, 'wr_name,0').'>'.__('글쓴이(코)').'</option>';
 
     return run_replace('get_board_sfl_select_options', $str, $sfl);
 }
@@ -468,9 +468,9 @@ function get_qa_sfl_select_options($sfl) {
     global $is_admin;
 
     $str = '';
-    $str .= '<option value="qa_subject" '.get_selected($sfl, 'qa_subject', true).'>제목</option>';
-    $str .= '<option value="qa_content" '.get_selected($sfl, 'qa_content').'>내용</option>';
-    $str .= '<option value="qa_name" '.get_selected($sfl, 'qa_name').'>글쓴이</option>';
+    $str .= '<option value="qa_subject" '.get_selected($sfl, 'qa_subject', true).'>'.__('제목').'</option>';
+    $str .= '<option value="qa_content" '.get_selected($sfl, 'qa_content').'>'.__('내용').'</option>';
+    $str .= '<option value="qa_name" '.get_selected($sfl, 'qa_name').'>'.__('글쓴이').'</option>';
     if ($is_admin)
         $str .= '<option value="mb_id" '.get_selected($sfl, 'mb_id').'>회원아이디</option>';
 

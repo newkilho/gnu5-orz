@@ -4,7 +4,7 @@ include_once('./_common.php');
 if ($is_guest)
     alert_close('회원만 조회하실 수 있습니다.');
 
-$g5['title'] = get_text($member['mb_nick']).' 님의 포인트 내역';
+$g5['title'] = __('{1} 님의 포인트 내역', get_text($member['mb_nick']));
 include_once(G5_PATH.'/head.sub.php');
 
 $list = array();

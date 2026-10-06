@@ -282,7 +282,7 @@ if($result) {
         if(function_exists('update_auth_session_token')) update_auth_session_token(G5_TIME_YMDHIS);
 
     } else {    // 메일인증을 사용한다면
-        $subject = '['.$config['cf_title'].'] 인증확인 메일입니다.';
+        $subject = __('[{1}] 인증확인 메일입니다.', $config['cf_title']);
 
         // 어떠한 회원정보도 포함되지 않은 일회용 난수를 생성하여 인증에 사용 (CSPRNG 사용)
         $mb_md5 = get_email_certify_token();

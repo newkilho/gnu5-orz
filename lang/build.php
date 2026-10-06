@@ -1,5 +1,5 @@
 <?php
-// 사전 틀 만들기: 코드의 __('원문'), __('원문', '문맥') 키를 모아 사전에 쓴다.
+// 사전 틀 만들기: 코드의 __('원문'), __('원문', '문맥')과 alert/alert_close/confirm('원문') 키를 모아 사전에 쓴다.
 //   테마 밖 문구 → lang/<lang>.php, theme/<테마>/ 문구 → theme/<테마>/lang/<lang>.php
 // 사용: php lang/build.php en
 // 이미 있는 번역은 그대로 두고 새 키는 빈 값('')으로 추가한다. 빈 값이면 화면에는 원문이 나온다.
@@ -15,6 +15,8 @@ if (!preg_match('/^[a-z]{2}(-[a-z]{2,4})?$/', $lang) || $lang === 'ko') {
 
 $root = dirname(dirname(__FILE__));
 $skip_dirs = array('.git', 'data', 'lang', '_dev');
+// 번역 대상이 아닌 곳: 관리자, 쇼핑몰, 테마가 없을 때의 기본 스킨, 설치, 외부 라이브러리 플러그인
+$skip_re = '#^(adm|install|skin|mobile|shop)/|^theme/[^/]+/(mobile/)?shop/|^lib/shop|^shop\.|^(g4|yc4)_import|^plugin/(editor|PHPMailer|lgxpay|sms5|debugbar|jqplot|jquery-ui|htmlpurifier|browscap|syndi)/#';
 
 // PHP 문자열 리터럴 토큰 → 값
 function build_literal($t)
@@ -35,7 +37,8 @@ function build_scan($file, $rel, &$keys)
     $n = count($tokens);
     for ($i = 0; $i < $n; $i++) {
         $t = $tokens[$i];
-        if (!is_array($t) || $t[0] !== T_STRING || $t[1] !== '__' || !isset($tokens[$i + 1]) || $tokens[$i + 1] !== '(')
+        // alert/alert_close/confirm은 함수 안에서 __()를 거치므로 첫 문구도 키다
+        if (!is_array($t) || $t[0] !== T_STRING || !in_array($t[1], array('__', 'alert', 'alert_close', 'confirm')) || !isset($tokens[$i + 1]) || $tokens[$i + 1] !== '(')
             continue;
         // 함수 정의, 메서드 호출은 제외
         $prev = $i > 0 ? $tokens[$i - 1] : null;
@@ -44,6 +47,14 @@ function build_scan($file, $rel, &$keys)
 
         $str = isset($tokens[$i + 2]) ? build_literal($tokens[$i + 2]) : null;
         $next = isset($tokens[$i + 3]) ? $tokens[$i + 3] : null;
+        if ($t[1] !== '__') {
+            if ($str !== null && $next === '.')
+                fwrite(STDERR, "알림 문구에 값이 이어붙음(__('…{1}', 값)으로 바꿀 것)	$rel:{$t[2]}
+");
+            elseif ($str !== null && $str !== '' && ($next === ')' || $next === ',') && !isset($keys[$str]))
+                $keys[$str] = $rel;
+            continue;
+        }
         if ($str === null || ($next !== ')' && $next !== ',')) {
             fwrite(STDERR, "건너뜀(원문이 문자열 상수가 아님)\t$rel:{$t[2]}\n");
             continue;
@@ -73,7 +84,7 @@ foreach ($it as $f) {
         continue;
     $rel = str_replace('\\', '/', substr($f->getPathname(), strlen($root) + 1));
     $top = strtok($rel, '/');
-    if (in_array($top, $skip_dirs) || preg_match('#^theme/[^/]+/lang/#', $rel))
+    if (in_array($top, $skip_dirs) || preg_match('#^theme/[^/]+/lang/#', $rel) || preg_match($skip_re, $rel))
         continue;
     $files[$rel] = $f->getPathname();
 }
@@ -113,7 +124,7 @@ foreach ($dict_files as $scope => $dict_file) {
     $old = $olds[$scope];
 
     // 넣을 키가 없으면 사전을 두지 않는다 (번역은 모두 다른 사전에 있으므로 빈 사전은 지운다)
-    if (!$keys && !array_diff_key($old, $used)) {
+    if (!$keys && !array_filter(array_diff_key($old, $used), 'strlen')) {
         if (is_file($dict_file))
             unlink($dict_file);
         continue;
@@ -138,7 +149,8 @@ foreach ($dict_files as $scope => $dict_file) {
         $out .= var_export((string)$key, true).' => '.var_export($val, true).",\n";
     }
 
-    $unused = array_diff_key($old, $used);
+    // 번역이 없는(빈 값) 키는 남길 필요가 없다
+    $unused = array_filter(array_diff_key($old, $used), 'strlen');
     if ($unused) {
         $out .= "\n// 코드에서 쓰지 않는 키\n";
         foreach ($unused as $key => $val)

@@ -44,7 +44,7 @@ if ( false === run_replace('qa_download_file_exist_check', $file_exist_check, $f
     alert('파일이 존재하지 않습니다.');
 }
 
-$g5['title'] = '다운로드 &gt; '.conv_subject($file['qa_subject'], 255);
+$g5['title'] = __('다운로드 &gt; {1}', conv_subject($file['qa_subject'], 255));
 
 run_event('qa_download_file_header', $file, $file_exist_check);
 

@@ -55,11 +55,11 @@ if ($w == '') {
     if ($is_member) {
         $tmp_point = ($member['mb_point'] > 0) ? $member['mb_point'] : 0;
         if ($tmp_point + $board['bo_write_point'] < 0 && !$is_admin) {
-            alert('보유하신 포인트('.number_format($member['mb_point']).')가 없거나 모자라서 글쓰기('.number_format($board['bo_write_point']).')가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글쓰기 해 주십시오.');
+            alert(__('보유하신 포인트({1})가 없거나 모자라서 글쓰기({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글쓰기 해 주십시오.', number_format($member['mb_point']), number_format($board['bo_write_point'])));
         }
     }
 
-    $title_msg = '글쓰기';
+    $title_msg = __('글쓰기');
 } else if ($w == 'u') {
     // 김선용 1.00 : 글쓰기 권한과 수정은 별도로 처리되어야 함
     //if ($member['mb_level'] < $board['bo_write_level']) {
@@ -94,9 +94,9 @@ if ($w == '') {
                 and wr_is_comment = 1 ";
     $row = sql_fetch($sql);
     if ($board['bo_count_modify'] && $row['cnt'] >= $board['bo_count_modify'] && !$is_admin)
-        alert('이 글과 관련된 댓글이 존재하므로 수정 할 수 없습니다.\\n\\n댓글이 '.$board['bo_count_modify'].'건 이상 달린 원글은 수정할 수 없습니다.');
+        alert(__('이 글과 관련된 댓글이 존재하므로 수정 할 수 없습니다.\\n\\n댓글이 {1}건 이상 달린 원글은 수정할 수 없습니다.', $board['bo_count_modify']));
 
-    $title_msg = '글수정';
+    $title_msg = __('글수정');
 } else if ($w == 'r') {
     if ($member['mb_level'] < $board['bo_reply_level']) {
         if ($member['mb_id'])
@@ -107,7 +107,7 @@ if ($w == '') {
 
     $tmp_point = isset($member['mb_point']) ? $member['mb_point'] : 0;
     if ($tmp_point + $board['bo_write_point'] < 0 && !$is_admin)
-        alert('보유하신 포인트('.number_format($member['mb_point']).')가 없거나 모자라서 글답변('.number_format($board['bo_comment_point']).')가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.');
+        alert(__('보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.', number_format($member['mb_point']), number_format($board['bo_comment_point'])));
 
     //if (preg_match("/[^0-9]{0,1}{$wr_id}[\r]{0,1}/",$board['bo_notice']))
     if (in_array((int)$wr_id, $notice_array))
@@ -164,7 +164,7 @@ if ($w == '') {
 
     $reply = $reply_array['wr_reply'] . $reply_char;
 
-    $title_msg = '글답변';
+    $title_msg = __('글답변');
 
     $write['wr_subject'] = 'Re: '.$write['wr_subject'];
 }
@@ -393,7 +393,7 @@ if ($w == '') {
     $content = get_text($write['wr_content'], 0);
 }
 
-$upload_max_filesize = number_format($board['bo_upload_size']) . ' 바이트';
+$upload_max_filesize = __('{1} 바이트', number_format($board['bo_upload_size']));
 
 $width = $board['bo_table_width'];
 if ($width <= 100)

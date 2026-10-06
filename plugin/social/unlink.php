@@ -6,7 +6,7 @@ $nonce = isset($_POST['nonce']) ? preg_replace('/[^\da-z]/i', '',$_POST['nonce']
 $provider = social_get_request_provider();
 
 if( !($mp_no || $provider) || !$member['mb_id'] )
-    die("{\"error\":\"회원이 아니거나 해당값이 넘어오지 않았습니다.\"}");
+    die("{\"error\":".get_js_safe_string(__('회원이 아니거나 해당값이 넘어오지 않았습니다.'))."}");
 
 $mb_id = $member['mb_id'];
 
@@ -18,7 +18,7 @@ if($is_admin == 'super'){   //최고관리자인 경우
     // 비회원인 경우 nonce를 체크한다.
 
     if( ! social_nonce_is_valid($nonce, strtolower($provider), session_id()) ){
-        die("{\"error\":\"권한이 없거나 잘못된 요청입니다.\"}");
+        die("{\"error\":".get_js_safe_string(__('권한이 없거나 잘못된 요청입니다.'))."}");
     }
 }
 
@@ -42,6 +42,6 @@ if( $row['mp_no'] ){
 
 } else {
 
-    die("{\"error\":\"잘못된 요청입니다.\"}");
+    die("{\"error\":".get_js_safe_string(__('잘못된 요청입니다.'))."}");
 
 }

@@ -44,7 +44,7 @@ $user_name = isset($user_profile->username) ? $user_profile->username : '';
 $token = get_random_token_string(16);
 set_session("ss_token", $token);
 
-$g5['title'] = '소셜 회원 가입 - '.social_get_provider_service_name($provider_name);
+$g5['title'] = __('소셜 회원 가입 - {1}', social_get_provider_service_name($provider_name));
 
 include_once(G5_BBS_PATH.'/_head.php');
 

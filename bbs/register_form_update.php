@@ -325,7 +325,7 @@ if ($w == '') {
 
     // 회원님께 메일 발송
     if ($config['cf_email_mb_member']) {
-        $subject = '['.$config['cf_title'].'] 회원가입을 축하드립니다.';
+        $subject = __('[{1}] 회원가입을 축하드립니다.', $config['cf_title']);
 
         // 어떠한 회원정보도 포함되지 않은 일회용 난수를 생성하여 인증에 사용 (CSPRNG 사용)
         if ($config['cf_use_email_certify']) {
@@ -541,11 +541,11 @@ if (isset($_FILES['mb_icon']) && is_uploaded_file($_FILES['mb_icon']['tmp_name']
                 //=================================================================\
             }
         } else {
-            $msg .= '회원아이콘을 '.number_format($config['cf_member_icon_size']).'바이트 이하로 업로드 해주십시오.';
+            $msg .= __('회원아이콘을 {1}바이트 이하로 업로드 해주십시오.', number_format($config['cf_member_icon_size']));
         }
 
     } else {
-        $msg .= $_FILES['mb_icon']['name'].'은(는) 이미지 파일이 아닙니다.';
+        $msg .= __('{1}은(는) 이미지 파일이 아닙니다.', $_FILES['mb_icon']['name']);
     }
 }
 
@@ -599,18 +599,18 @@ if( $config['cf_member_img_size'] && $config['cf_member_img_width'] && $config['
                     //=================================================================\
                 }
             } else {
-                $msg .= '회원이미지을 '.number_format($config['cf_member_img_size']).'바이트 이하로 업로드 해주십시오.';
+                $msg .= __('회원이미지을 {1}바이트 이하로 업로드 해주십시오.', number_format($config['cf_member_img_size']));
             }
 
         } else {
-            $msg .= $_FILES['mb_img']['name'].'은(는) gif/jpg 파일이 아닙니다.';
+            $msg .= __('{1}은(는) gif/jpg 파일이 아닙니다.', $_FILES['mb_img']['name']);
         }
     }
 }
 
 // 인증메일 발송
 if ($config['cf_use_email_certify'] && $old_email != $mb_email) {
-    $subject = '['.$config['cf_title'].'] 인증확인 메일입니다.';
+    $subject = __('[{1}] 인증확인 메일입니다.', $config['cf_title']);
 
     // 어떠한 회원정보도 포함되지 않은 일회용 난수를 생성하여 인증에 사용 (CSPRNG 사용)
     $mb_md5 = get_email_certify_token();
@@ -711,7 +711,7 @@ if ($w == '') {
         <html lang="ko">
         <head>
         <meta charset="utf-8">
-        <title>회원정보수정</title>
+        <title>'.__('회원정보수정').'</title>
         <body>
         <form name="fregisterupdate" method="post" action="'.G5_HTTP_BBS_URL.'/register_form.php">
         <input type="hidden" name="w" value="u">
@@ -720,7 +720,7 @@ if ($w == '') {
         <input type="hidden" name="is_update" value="1">
         </form>
         <script>
-        alert("회원 정보가 수정 되었습니다.");
+        alert('.get_js_safe_string(__('회원 정보가 수정 되었습니다.')).');
         document.fregisterupdate.submit();
         </script>
         </body>

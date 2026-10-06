@@ -10,7 +10,7 @@ if (! (isset($po['po_id']) && $po['po_id']))
     alert('po_id 값이 제대로 넘어오지 않았습니다.');
 
 if ($member['mb_level'] < $po['po_level'])
-    alert_close('권한 '.$po['po_level'].' 이상 회원만 투표에 참여하실 수 있습니다.');
+    alert_close(__('권한 {1} 이상 회원만 투표에 참여하실 수 있습니다.', $po['po_level']));
 
 $gb_poll = isset($_POST['gb_poll']) ? preg_replace('/[^0-9]/', '', $_POST['gb_poll']) : 0;
 if(!$gb_poll)
@@ -38,7 +38,7 @@ if ($is_member) {
 sql_query($sql);
 
 if (get_sql_affected_rows() <= 0) {
-    alert($po['po_subject'].'에 이미 참여하셨습니다.', $result_url);
+    alert(__('{1}에 이미 참여하셨습니다.', $po['po_subject']), $result_url);
 }
 
 insert_point($member['mb_id'], $po['po_point'], $po['po_id'] . '. ' . cut_str($po['po_subject'],20) . ' 투표 참여 ', '@poll', $po['po_id'], '투표');

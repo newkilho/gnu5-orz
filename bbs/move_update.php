@@ -12,7 +12,7 @@ if ($sw != 'move' && $sw != 'copy')
     alert('sw 값이 제대로 넘어오지 않았습니다.');
 
 if(! $count_chk_bo_table)
-    alert('게시물을 '.$act.'할 게시판을 한개 이상 선택해 주십시오.', $url);
+    alert(__('게시물을 {1}할 게시판을 한개 이상 선택해 주십시오.', $act), $url);
 
 // 원본 파일 디렉토리
 $src_dir = G5_DATA_PATH.'/file/'.$bo_table;
@@ -295,7 +295,7 @@ if ($sw == 'move')
     sql_query(" update {$g5['board_table']} set bo_notice = '{$bo_notice}', bo_count_write = bo_count_write - '$save_count_write', bo_count_comment = bo_count_comment - '$save_count_comment' where bo_table = '$bo_table' ");
 }
 
-$msg = '해당 게시물을 선택한 게시판으로 '.$act.' 하였습니다.';
+$msg = __('해당 게시물을 선택한 게시판으로 {1} 하였습니다.', $act);
 $opener_href  = get_pretty_url($bo_table,'','&amp;page='.$page.'&amp;'.$qstr);
 $opener_href1 = str_replace('&amp;', '&', $opener_href);
 
@@ -311,5 +311,5 @@ window.close();
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="<?php echo $opener_href; ?>">돌아가기</a>
+<a href="<?php echo $opener_href; ?>"><?php echo __('돌아가기') ?></a>
 </noscript>

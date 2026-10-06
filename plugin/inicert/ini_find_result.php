@@ -85,16 +85,16 @@ if ($txId && isset($_POST["resultCode"]) && $_POST["resultCode"] === "0000") {
         set_session('ss_cert_mb_id', $row['mb_id']);
     } else {
         // 인증실패 curl의 인증실패 체크
-        alert_close('코드 : '.$res_data['resultCode'].'  '.urldecode($res_data['resultMsg']));
+        alert_close(__('코드 : {1}  {2}', $res_data['resultCode'], urldecode($res_data['resultMsg'])));
         exit;
     }
 } else {   // resultCode===0000 아닐경우 아래 인증 실패를 출력함 
     // 인증실패
-    alert_close('코드 : '.(isset($_POST['resultCode']) ? clean_xss_tags($_POST['resultCode'], 1, 1) : '').'  '.(isset($_POST['resultMsg']) ? clean_xss_tags(urldecode($_POST['resultMsg']), 1, 1) : ''));
+    alert_close(__('코드 : {1}  {2}', (isset($_POST['resultCode']) ? clean_xss_tags($_POST['resultCode'], 1, 1) : ''), (isset($_POST['resultMsg']) ? clean_xss_tags(urldecode($_POST['resultMsg']), 1, 1) : '')));
     exit;
 }
 
-$g5['title'] = 'KG이니시스 간편인증 결과';
+$g5['title'] = __('KG이니시스 간편인증 결과');
 include_once(G5_PATH.'/head.sub.php'); 
 ?>
 <form name="mbFindForm" method="POST">
@@ -118,7 +118,7 @@ include_once(G5_PATH.'/head.sub.php');
         document.mbFindForm.action = "<?php echo G5_BBS_URL.'/password_reset.php'?>";
         document.mbFindForm.submit();
 
-        alert("본인인증이 완료되었습니다.");
+        alert(<?php echo get_js_safe_string(__('본인인증이 완료되었습니다.')); ?>);
         window.close();        
     });
 </script>

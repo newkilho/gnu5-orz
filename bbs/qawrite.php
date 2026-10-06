@@ -96,7 +96,7 @@ if(is_file($skin_file)) {
     $editor_js .= get_editor_js('qa_content', $is_dhtml_editor);
     $editor_js .= chk_editor_js('qa_content', $is_dhtml_editor);
 
-    $upload_max_filesize = number_format($qaconfig['qa_upload_size']) . ' 바이트';
+    $upload_max_filesize = __('{1} 바이트', number_format($qaconfig['qa_upload_size']));
 
     $html_value = '';
     $html_checked = '';
@@ -144,7 +144,7 @@ if(is_file($skin_file)) {
 
     include_once($skin_file);
 } else {
-    echo '<div>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</div>';
+    echo '<div>'.__('{1}이 존재하지 않습니다.', str_replace(G5_PATH.'/', '', $skin_file)).'</div>';
 }
 
 include_once('./qatail.php');

@@ -10,9 +10,9 @@ if (!$po['po_id'])
     alert('설문조사 정보가 없습니다.');
 
 if ($member['mb_level'] < $po['po_level'])
-    alert('권한 '.$po['po_level'].' 이상의 회원만 결과를 보실 수 있습니다.');
+    alert(__('권한 {1} 이상의 회원만 결과를 보실 수 있습니다.', $po['po_level']));
 
-$g5['title'] = '설문조사 결과';
+$g5['title'] = __('설문조사 결과');
 
 $po_subject = $po['po_subject'];
 

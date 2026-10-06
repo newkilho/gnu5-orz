@@ -6,7 +6,7 @@ $co_seo_title = isset($_GET['co_seo_title']) ? clean_xss_tags($_GET['co_seo_titl
 
 //dbconfig파일에 $g5['content_table'] 배열변수가 있는지 체크
 if( !isset($g5['content_table']) ){
-    die('<meta charset="utf-8">관리자 모드에서 게시판관리->내용 관리를 먼저 확인해 주세요.');
+    die(__('<meta charset="utf-8">관리자 모드에서 게시판관리->내용 관리를 먼저 확인해 주세요.'));
 }
 
 // 내용
@@ -97,7 +97,7 @@ if(is_file($skin_file)) {
     if (file_exists($timg)) // 하단 이미지
         echo run_replace('content_tail_image_html', '<div id="ctt_timg" class="ctt_img"><img src="'.G5_DATA_URL.'/content/'.$co_id.'_t" alt=""></div>', $co);
 } else {
-    echo '<p>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</p>';
+    echo __('<p>{1}이 존재하지 않습니다.</p>', str_replace(G5_PATH.'/', '', $skin_file));
 }
 
 if ($co['co_include_tail'] && is_include_path_check($co['co_include_tail'])

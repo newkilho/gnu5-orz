@@ -32,22 +32,22 @@ $resultMsg              =   isset($_REQUEST['result_msg']) ? $_REQUEST['result_m
 $certDtTm               =   isset($_REQUEST['cert_dt_tm']) ? $_REQUEST['cert_dt_tm'] : '';           // 인증일시
 
 if($resultCd != 'B000') {
-    alert_close('휴대폰 본인확인 중 오류가 발생했습니다. 오류코드 : '.$resultCd.'\\n\\n문의는 코리아크레딧뷰로 고객센터 02-708-1000 로 해주십시오.');
+    alert_close(__('휴대폰 본인확인 중 오류가 발생했습니다. 오류코드 : {1}\\n\\n문의는 코리아크레딧뷰로 고객센터 02-708-1000 로 해주십시오.', $resultCd));
 }
 
 /**************************************************************************
  * 모듈 호출    ; 생년월일 본인 확인서비스 결과 데이터를 복호화한다.
  **************************************************************************/
 $encInfo = isset($_REQUEST['encInfo']) ? $_REQUEST['encInfo'] : '';
-if(preg_match('~[^0-9a-zA-Z+/=]~', $encInfo, $match)) {echo "입력 값 확인이 필요합니다"; exit;}
+if(preg_match('~[^0-9a-zA-Z+/=]~', $encInfo, $match)) {echo __("입력 값 확인이 필요합니다"); exit;}
 
 //KCB서버 공개키
 $WEBPUBKEY = isset($_REQUEST['WEBPUBKEY']) ? trim($_REQUEST['WEBPUBKEY']) : '';
-if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBPUBKEY, $match)) {echo "입력 값 확인이 필요합니다"; exit;}
+if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBPUBKEY, $match)) {echo __("입력 값 확인이 필요합니다"); exit;}
 
 //KCB서버 서명값
 $WEBSIGNATURE = isset($_REQUEST['WEBSIGNATURE']) ? trim($_REQUEST['WEBSIGNATURE']) : '';
-if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBSIGNATURE, $match)) {echo "입력 값 확인이 필요합니다"; exit;}
+if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBSIGNATURE, $match)) {echo __("입력 값 확인이 필요합니다"); exit;}
 
 // ########################################################################
 // # 암호화키 파일 설정 (절대경로) - 파일은 주어진 파일명으로 자동 생성 됨
@@ -122,7 +122,7 @@ if (!empty($member['mb_certify']) && !empty($member['mb_dupinfo']) && strlen($me
 $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$mb_dupinfo}' ";
 $row = sql_fetch($sql);
 if (!empty($row['mb_id'])) {
-    alert_close("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : ".$row['mb_id']);
+    alert_close(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : {1}", $row['mb_id']));
 }
 
 // hash 데이터
@@ -142,7 +142,7 @@ set_session('ss_cert_birth',   $mb_birth);
 set_session('ss_cert_sex',     ($field[9] == 1 ? 'M' : 'F'));
 set_session('ss_cert_dupinfo', $mb_dupinfo);
 
-$g5['title'] = 'KCB 휴대폰 본인확인';
+$g5['title'] = __('KCB 휴대폰 본인확인');
 include_once(G5_PATH.'/head.sub.php');
 ?>
 
@@ -155,7 +155,7 @@ $(function() {
     $opener.$("input[name=mb_hp]").val("<?php echo $phone_no; ?>").attr("readonly", true);
     $opener.$("input[name=cert_no]").val("<?php echo $md5_cert_no; ?>");
 
-    alert("본인의 휴대폰번호로 확인 되었습니다.");
+    alert(<?php echo get_js_safe_string(__('본인의 휴대폰번호로 확인 되었습니다.')); ?>);
 
     if($opener.$("form[name=fcertrefreshform]") != undefined){
         $opener.$("form[name=fcertrefreshform]").submit();

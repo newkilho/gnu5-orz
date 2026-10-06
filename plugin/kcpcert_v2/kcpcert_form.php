@@ -28,7 +28,7 @@ $api = new C_KCP_API_V2($site_cd, $kcp_enc_key, $cert_reg_url, $cert_dec_url);
 $reg = $api->trade_reg($ordr_idxx, $result_url, $web_siteid);
 
 if ($reg['res_cd'] !== '0000' || !$reg['call_url'] || !$reg['reg_cert_key']) {
-    $err = '본인확인 거래등록에 실패했습니다.\n('.$reg['res_cd'].' : '.$reg['res_msg'].')';
+    $err = __('본인확인 거래등록에 실패했습니다.\n({1} : {2})', $reg['res_cd'], $reg['res_msg']);
     alert_close($err);
 }
 
@@ -43,7 +43,7 @@ set_session('ss_kcp_v2_page_type',    $page_type);
 <?php if (is_mobile()) { ?>
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi">
 <?php } ?>
-<title>휴대폰 본인확인</title>
+<title><?php echo __('휴대폰 본인확인'); ?></title>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
 <form name="form_auth" method="post" action="<?php echo htmlspecialchars($reg['call_url'], ENT_QUOTES); ?>">

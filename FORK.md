@@ -20,6 +20,8 @@
 |---|---|---|---|
 | `config.php` | `define('G5_URL', …)` 바로 앞 | 환경변수 `KH_LANG`(없으면 `ko`)으로 `KH_LANG` 상수를 정하고, `ko`가 아니면 `G5_URL` 끝에 `/<언어>`를 붙임 | `/en/…` 주소에서 그누보드가 만드는 모든 링크·이동 주소가 같은 언어를 유지하게 하려고. `G5_URL`은 상수라 `extend/`에서 바꿀 수 없다 |
 | `common.php` | `uri.lib.php` include 바로 다음 | `lib/i18n.lib.php`(새 파일: `__()`, 사전 읽기) include 한 줄 | 코어 문구도 `__()`로 번역하므로 `extend/`보다 먼저 읽어야 한다 |
+| `lib/common.lib.php` | `alert()`, `alert_close()`, `confirm()` | 받은 문구를 `__()`로 번역 (각 한 곳) | 호출하는 곳 수백 군데를 고치지 않고 알림창을 번역하려고. 값이 이어붙은 문구만 호출하는 곳에서 `__('…{1}…', 값)` |
+| `bbs/`, `lib/`, `plugin/`(본인인증·캡차·sns·social), `common.php`, `head.php`, `head.sub.php` | 문자열 | 사용자에게 보이는 문자열을 `__('…')`로 감쌈. JS 안이면 `get_js_safe_string(__('…'))` | 다국어. 관리자(`adm/`)·쇼핑몰·DB 저장값·비교값은 그대로 |
 
 ### 저장소 밖 설정 (서버 `.htaccess`)
 

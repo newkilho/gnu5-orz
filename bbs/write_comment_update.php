@@ -93,12 +93,12 @@ if ($w == 'c') // 댓글 입력
 {
     /*
     if ($member[mb_point] + $board[bo_comment_point] < 0 && !$is_admin)
-        alert('보유하신 포인트('.number_format($member[mb_point]).')가 없거나 모자라서 댓글쓰기('.number_format($board[bo_comment_point]).')가 불가합니다.\\n\\n포인트를 적립하신 후 다시 댓글을 써 주십시오.');
+        alert(__('보유하신 포인트({1})가 없거나 모자라서 댓글쓰기({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 댓글을 써 주십시오.', number_format($member[mb_point]), number_format($board[bo_comment_point])));
     */
     // 댓글쓰기 포인트설정시 회원의 포인트가 음수인 경우 댓글을 쓰지 못하던 버그를 수정 (곱슬최씨님)
     $tmp_point = ($member['mb_point'] > 0) ? $member['mb_point'] : 0;
     if ($tmp_point + $board['bo_comment_point'] < 0 && !$is_admin)
-        alert('보유하신 포인트('.number_format($member['mb_point']).')가 없거나 모자라서 댓글쓰기('.number_format($board['bo_comment_point']).')가 불가합니다.\\n\\n포인트를 적립하신 후 다시 댓글을 써 주십시오.');
+        alert(__('보유하신 포인트({1})가 없거나 모자라서 댓글쓰기({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 댓글을 써 주십시오.', number_format($member['mb_point']), number_format($board['bo_comment_point'])));
 
     // 댓글 답변
     if ($comment_id)
@@ -216,12 +216,12 @@ if ($w == 'c') // 댓글 입력
         $group_admin = get_admin('group');
         $board_admin = get_admin('board');
 
-        $wr_content = nl2br(get_text(stripslashes("원글\n{$wr['wr_subject']}\n\n\n댓글\n$wr_content")));
+        $wr_content = nl2br(get_text(stripslashes(__("원글\n{1}\n\n\n댓글\n{2}", $wr['wr_subject'], $wr_content))));
 
-        $warr = array( ''=>'입력', 'u'=>'수정', 'r'=>'답변', 'c'=>'댓글 ', 'cu'=>'댓글 수정' );
+        $warr = array( ''=>__('입력'), 'u'=>__('수정'), 'r'=>__('답변'), 'c'=>__('댓글 '), 'cu'=>__('댓글 수정') );
         $str = $warr[$w];
 
-        $subject = '['.$config['cf_title'].'] '.$board['bo_subject'].' 게시판에 '.$str.'글이 올라왔습니다.';
+        $subject = __('[{1}] {2} 게시판에 {3}글이 올라왔습니다.', $config['cf_title'], $board['bo_subject'], $str);
         // 4.00.15 - 메일로 보내는 댓글의 바로가기 링크 수정
         $link_url = get_pretty_url($bo_table, $wr_id, $qstr."#c_".$comment_id);
 

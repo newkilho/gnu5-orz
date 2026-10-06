@@ -86,7 +86,7 @@ $ct_cert = new C_CT_CLI;
 $ct_cert->mf_clear();
 
 
-$g5['title'] = '휴대폰인증 결과';
+$g5['title'] = __('휴대폰인증 결과');
 include_once(G5_PATH.'/head.sub.php');
 
 // 결과 처리
@@ -123,7 +123,7 @@ if( $cert_enc_use == "Y" )
                 $bin_exe = '/'.$bin_path.'/ct_cli_exe.exe';
             }
 
-            echo "dn_hash 변조 위험있음 (".G5_KCPCERT_PATH.$bin_exe." 파일에 실행권한이 있는지 확인하세요.)";
+            echo __('dn_hash 변조 위험있음 ({1} 파일에 실행권한이 있는지 확인하세요.)', G5_KCPCERT_PATH.$bin_exe);
             exit;
             // 오류 처리 ( dn_hash 변조 위험있음)
         }
@@ -195,7 +195,7 @@ if( $cert_enc_use == "Y" )
     else if( $res_cd != "0000" )
     {
         // 인증실패
-        alert_close('코드 : '.$_POST['res_cd'].'  '.urldecode($_POST['res_msg']));
+        alert_close(__('코드 : {1}  {2}', $_POST['res_cd'], urldecode($_POST['res_msg'])));
         exit;
     }
 }
@@ -238,14 +238,14 @@ $ct_cert->mf_clear();
         
         // up_hash 검증
         if( document.mbFindForm.up_hash.value != $opener.$("input[name=veri_up_hash]").val() ) {
-            alert("up_hash 변조 위험있음");
+            alert(<?php echo get_js_safe_string(__('up_hash 변조 위험있음')); ?>);
         }
             
         document.mbFindForm.target = "parentPage";
         document.mbFindForm.action = "<?php echo G5_BBS_URL.'/password_reset.php'?>";
         document.mbFindForm.submit();
 
-        alert("본인인증이 완료되었습니다.");
+        alert(<?php echo get_js_safe_string(__('본인인증이 완료되었습니다.')); ?>);
         window.close();        
     });
 </script>

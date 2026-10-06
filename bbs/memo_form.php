@@ -39,7 +39,7 @@ if ($me_recv_mb_id)
     }
 }
 
-$g5['title'] = '쪽지 보내기';
+$g5['title'] = __('쪽지 보내기');
 include_once(G5_PATH.'/head.sub.php');
 
 $memo_action_url = G5_HTTPS_BBS_URL."/memo_form_update.php";

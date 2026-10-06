@@ -9,7 +9,7 @@ if(!(isset($_POST['mb_id']) && $_POST['mb_id'] === $ss_cert_mb_id)) { alert("잘
 
 if($config['cf_cert_find'] != 1) alert("본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.");
 
-$g5['title'] = '패스워드 변경';
+$g5['title'] = __('패스워드 변경');
 include_once(G5_PATH.'/_head.php');
 
 $action_url = G5_HTTPS_BBS_URL."/password_reset_update.php";

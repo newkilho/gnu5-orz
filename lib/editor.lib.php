@@ -22,5 +22,5 @@ function get_editor_js($id)
 //  textarea 의 값이 비어 있는지 검사
 function chk_editor_js($id)
 {
-    return "if (!{$id}_editor.value) { alert(\"내용을 입력해 주십시오.\"); {$id}_editor.focus(); return false; }\n";
+    return "if (!{$id}_editor.value) { alert(".get_js_safe_string(__('내용을 입력해 주십시오.'))."); {$id}_editor.focus(); return false; }\n";
 }

@@ -27,7 +27,7 @@ $sendmail_count = (int)get_session('ss_sendmail_count') + 1;
 if ($sendmail_count > 3)
     alert_close('한번 접속후 일정수의 메일만 발송할 수 있습니다.\\n\\n계속해서 메일을 보내시려면 다시 로그인 또는 접속하여 주십시오.');
 
-$g5['title'] = '메일 쓰기';
+$g5['title'] = __('메일 쓰기');
 include_once(G5_PATH.'/head.sub.php');
 
 $email_enc = new str_encrypt();

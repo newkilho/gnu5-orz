@@ -78,7 +78,7 @@ if ($txId && isset($_POST["resultCode"]) && $_POST["resultCode"] === "0000") {
         $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$mb_dupinfo}' ";
         $row = sql_fetch($sql);
         if (!empty($row['mb_id'])) {
-            alert_close("입력하신 본인확인 정보로 이미 가입된 내역이 존재합니다.\\n회원아이디 : ".$row['mb_id']);
+            alert_close(__("입력하신 본인확인 정보로 이미 가입된 내역이 존재합니다.\\n회원아이디 : {1}", $row['mb_id']));
         }
 
         // hash 데이터
@@ -100,16 +100,16 @@ if ($txId && isset($_POST["resultCode"]) && $_POST["resultCode"] === "0000") {
 
     } else {
         // 인증실패 curl의 인증실패 체크
-        alert_close('코드 : '.$res_data['resultCode'].'  '.urldecode($res_data['resultMsg']));
+        alert_close(__('코드 : {1}  {2}', $res_data['resultCode'], urldecode($res_data['resultMsg'])));
         exit;
     }
 } else {   // resultCode===0000 아닐경우 아래 인증 실패를 출력함 
     // 인증실패
-    alert_close('코드 : '.(isset($_POST['resultCode']) ? clean_xss_tags($_POST['resultCode'], 1, 1) : '').'  '.(isset($_POST['resultMsg']) ? clean_xss_tags(urldecode($_POST['resultMsg']), 1, 1) : ''));
+    alert_close(__('코드 : {1}  {2}', (isset($_POST['resultCode']) ? clean_xss_tags($_POST['resultCode'], 1, 1) : ''), (isset($_POST['resultMsg']) ? clean_xss_tags(urldecode($_POST['resultMsg']), 1, 1) : '')));
     exit;
 }
 
-$g5['title'] = 'KG이니시스 간편인증 결과';
+$g5['title'] = __('KG이니시스 간편인증 결과');
 include_once(G5_PATH.'/head.sub.php');
 ?>    
 <script>
@@ -122,7 +122,7 @@ include_once(G5_PATH.'/head.sub.php');
         $opener.$("input[name=mb_hp]").val("<?php echo $phone_no; ?>").attr("readonly", true);
         $opener.$("input[name=cert_no]").val("<?php echo $md5_cert_no; ?>");
         
-        alert("본인인증이 완료되었습니다.");
+        alert(<?php echo get_js_safe_string(__('본인인증이 완료되었습니다.')); ?>);
 
         if($opener.$("form[name=fcertrefreshform]") != undefined){
             $opener.$("form[name=fcertrefreshform]").submit();

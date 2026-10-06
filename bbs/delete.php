@@ -58,7 +58,7 @@ $sql = " select count(*) as cnt from $write_table
             and wr_is_comment = 1 ";
 $row = sql_fetch($sql);
 if ($row['cnt'] >= $board['bo_count_delete'] && !$is_admin)
-    alert('이 글과 관련된 코멘트가 존재하므로 삭제 할 수 없습니다.\\n\\n코멘트가 '.$board['bo_count_delete'].'건 이상 달린 원글은 삭제할 수 없습니다.');
+    alert(__('이 글과 관련된 코멘트가 존재하므로 삭제 할 수 없습니다.\\n\\n코멘트가 {1}건 이상 달린 원글은 삭제할 수 없습니다.', $board['bo_count_delete']));
 
 
 // 사용자 코드 실행

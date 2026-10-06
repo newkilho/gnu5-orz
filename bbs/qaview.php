@@ -215,7 +215,7 @@ if(is_file($skin_file)) {
 
     include_once($skin_file);
 } else {
-    echo '<div>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</div>';
+    echo '<div>'.__('{1}이 존재하지 않습니다.', str_replace(G5_PATH.'/', '', $skin_file)).'</div>';
 }
 
 include_once('./qatail.php');

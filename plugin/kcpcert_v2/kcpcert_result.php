@@ -12,7 +12,7 @@ set_session('ss_kcp_v2_reg_cert_key', '');
 set_session('ss_kcp_v2_ordr_idxx',    '');
 set_session('ss_kcp_v2_page_type',    '');
 
-$g5['title'] = '휴대폰인증 결과';
+$g5['title'] = __('휴대폰인증 결과');
 include_once(G5_PATH.'/head.sub.php');
 
 if ($res_cd === '') {
@@ -26,7 +26,7 @@ if ($res_cd === '9999') {
 }
 
 if ($res_cd !== '0000') {
-    alert_close('코드 : '.$res_cd.' '.urldecode($res_msg));
+    alert_close(__('코드 : {1} {2}', $res_cd, urldecode($res_msg)));
 }
 
 if (!$reg_cert_key || !$ordr_idxx) {
@@ -37,7 +37,7 @@ $api  = new C_KCP_API_V2($site_cd, $kcp_enc_key, $cert_reg_url, $cert_dec_url);
 $cert = $api->get_cert_data($reg_cert_key, $ordr_idxx);
 
 if ($cert['res_cd'] !== '0000') {
-    alert_close('본인확인 결과조회 실패 ('.$cert['res_cd'].' : '.$cert['res_msg'].')');
+    alert_close(__('본인확인 결과조회 실패 ({1} : {2})', $cert['res_cd'], $cert['res_msg']));
 }
 
 $phone_no   = trim($cert['phone_no']);
@@ -64,7 +64,7 @@ if (!empty($member['mb_certify']) && !empty($member['mb_dupinfo']) && strlen($me
 $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$sql_dupinfo}' ";
 $row = sql_fetch($sql);
 if (!empty($row['mb_id'])) {
-    alert_close("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : ".$row['mb_id']);
+    alert_close(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : {1}", $row['mb_id']));
 }
 
 $cert_type   = 'hp';
@@ -98,7 +98,7 @@ jQuery(function($) {
     $opener.$("input[name=mb_hp]").val(<?php echo $js_phone_no; ?>).attr("readonly", true);
     $opener.$("input[name=cert_no]").val(<?php echo $js_md5_cert_no; ?>);
 
-    alert("본인의 휴대폰번호로 확인 되었습니다.");
+    alert(<?php echo get_js_safe_string(__('본인의 휴대폰번호로 확인 되었습니다.')); ?>);
 
     if ($opener.$("form[name=fcertrefreshform]").length) {
         $opener.$("form[name=fcertrefreshform]").submit();

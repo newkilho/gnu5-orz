@@ -12,7 +12,7 @@ set_session('ss_kcp_v2_reg_cert_key', '');
 set_session('ss_kcp_v2_ordr_idxx',    '');
 set_session('ss_kcp_v2_page_type',    '');
 
-$g5['title'] = '휴대폰인증 결과';
+$g5['title'] = __('휴대폰인증 결과');
 include_once(G5_PATH.'/head.sub.php');
 
 if ($res_cd === '') {
@@ -26,7 +26,7 @@ if ($res_cd === '9999') {
 }
 
 if ($res_cd !== '0000') {
-    alert_close('코드 : '.$res_cd.' '.urldecode($res_msg));
+    alert_close(__('코드 : {1} {2}', $res_cd, urldecode($res_msg)));
 }
 
 if (!$reg_cert_key || !$ordr_idxx) {
@@ -37,7 +37,7 @@ $api  = new C_KCP_API_V2($site_cd, $kcp_enc_key, $cert_reg_url, $cert_dec_url);
 $cert = $api->get_cert_data($reg_cert_key, $ordr_idxx);
 
 if ($cert['res_cd'] !== '0000') {
-    alert_close('본인확인 결과조회 실패 ('.$cert['res_cd'].' : '.$cert['res_msg'].')');
+    alert_close(__('본인확인 결과조회 실패 ({1} : {2})', $cert['res_cd'], $cert['res_msg']));
 }
 
 $phone_no  = trim($cert['phone_no']);
@@ -96,7 +96,7 @@ jQuery(function($) {
     document.mbFindForm.action = "<?php echo G5_BBS_URL.'/password_reset.php'; ?>";
     document.mbFindForm.submit();
 
-    alert("본인인증이 완료되었습니다.");
+    alert(<?php echo get_js_safe_string(__('본인인증이 완료되었습니다.')); ?>);
     window.close();
 });
 </script>

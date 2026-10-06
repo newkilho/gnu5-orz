@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = '비밀번호 입력';
+$g5['title'] = __('비밀번호 입력');
 
 $comment_id = isset($_REQUEST['comment_id']) ? preg_replace('/[^0-9]/', '', $_REQUEST['comment_id']) : 0;
 

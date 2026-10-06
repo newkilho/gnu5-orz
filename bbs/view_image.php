@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = '이미지 크게보기';
+$g5['title'] = __('이미지 크게보기');
 include_once(G5_PATH.'/head.sub.php');
 
 $filename = isset($_GET['fn']) ? preg_replace('/[^A-Za-z0-9 _ .\-\/]/', '', $_GET['fn']) : '';

@@ -43,7 +43,7 @@ if(isset($_POST['qa_email']) && $_POST['qa_email'])
     $qa_email = get_email_address(trim($_POST['qa_email']));
 
 if($w != 'a' && $qaconfig['qa_req_email'] && !$qa_email)
-    $msg[] = '이메일을 입력하세요.';
+    $msg[] = __('이메일을 입력하세요.');
 
 $qa_subject = '';
 if (isset($_POST['qa_subject'])) {
@@ -51,7 +51,7 @@ if (isset($_POST['qa_subject'])) {
     $qa_subject = preg_replace("#[\\\]+$#", "", $qa_subject);
 }
 if ($qa_subject == '') {
-    $msg[] = '<strong>제목</strong>을 입력하세요.';
+    $msg[] = __('<strong>제목</strong>을 입력하세요.');
 }
 
 $qa_content = '';
@@ -60,7 +60,7 @@ if (isset($_POST['qa_content'])) {
     $qa_content = preg_replace("#[\\\]+$#", "", $qa_content);
 }
 if ($qa_content == '') {
-    $msg[] = '<strong>내용</strong>을 입력하세요.';
+    $msg[] = __('<strong>내용</strong>을 입력하세요.');
 }
 
 if (!empty($msg)) {
@@ -79,7 +79,7 @@ if (substr_count($qa_content, '&#') > 50) {
 $upload_max_filesize = ini_get('upload_max_filesize');
 
 if (empty($_POST)) {
-    alert("파일 또는 글내용의 크기가 서버에서 설정한 값을 넘어 오류가 발생하였습니다.\\npost_max_size=".ini_get('post_max_size')." , upload_max_filesize=".$upload_max_filesize."\\n게시판관리자 또는 서버관리자에게 문의 바랍니다.");
+    alert(__('파일 또는 글내용의 크기가 서버에서 설정한 값을 넘어 오류가 발생하였습니다.\\npost_max_size={1} , upload_max_filesize={2}\\n게시판관리자 또는 서버관리자에게 문의 바랍니다.', ini_get('post_max_size'), $upload_max_filesize));
 }
 
 $qa_type = 0;
@@ -185,11 +185,11 @@ for ($i=1; $i<=$upload_count; $i++) {
     // 서버에 설정된 값보다 큰파일을 업로드 한다면
     if ($filename) {
         if ($_FILES['bf_file']['error'][$i] == 1) {
-            $file_upload_msg .= '"'.$filename.'" 파일의 용량이 서버에 설정('.$upload_max_filesize.')된 값보다 크므로 업로드 할 수 없습니다.\\n';
+            $file_upload_msg .= __('"{1}" 파일의 용량이 서버에 설정({2})된 값보다 크므로 업로드 할 수 없습니다.\\n', $filename, $upload_max_filesize);
             continue;
         }
         else if ($_FILES['bf_file']['error'][$i] != 0) {
-            $file_upload_msg .= '"'.$filename.'" 파일이 정상적으로 업로드 되지 않았습니다.\\n';
+            $file_upload_msg .= __('"{1}" 파일이 정상적으로 업로드 되지 않았습니다.\\n', $filename);
             continue;
         }
     }
@@ -197,7 +197,7 @@ for ($i=1; $i<=$upload_count; $i++) {
     if (is_uploaded_file($tmp_file)) {
         // 최고관리자가 아니면서 설정한 업로드 사이즈보다 크다면 건너뜀
         if ($is_admin !== 'super' && $filesize > $qaconfig['qa_upload_size']) {
-            $file_upload_msg .= '"'.$filename.'" 파일의 용량('.number_format($filesize).' 바이트)이 게시판에 설정('.number_format($qaconfig['qa_upload_size']).' 바이트)된 값보다 크므로 업로드 하지 않습니다.\\n';
+            $file_upload_msg .= __('"{1}" 파일의 용량({2} 바이트)이 게시판에 설정({3} 바이트)된 값보다 크므로 업로드 하지 않습니다.\\n', $filename, number_format($filesize), number_format($qaconfig['qa_upload_size']));
             continue;
         }
 
@@ -219,7 +219,7 @@ for ($i=1; $i<=$upload_count; $i++) {
         // 새 파일 저장이 성공한 뒤에만 기존 첨부파일을 삭제합니다.
         $stored_file = g5_store_attachment($tmp_file, $filename, G5_DATA_PATH.'/qa');
         if ($stored_file === false) {
-            $file_upload_msg .= '"'.$filename.'" 파일을 안전하게 저장할 수 없습니다. 서버의 난수 소스와 저장 경로를 확인해 주십시오.\n';
+            $file_upload_msg .= __('"{1}" 파일을 안전하게 저장할 수 없습니다. 서버의 난수 소스와 저장 경로를 확인해 주십시오.\n', $filename);
             continue;
         }
         $upload[$i]['source'] = $filename;
@@ -460,7 +460,7 @@ if($config['cf_sms_use'] == 'icode' && $qaconfig['qa_use_sms']) {
 if($w == 'a' && $write['qa_email_recv'] && trim($write['qa_email'])) {
     include_once(G5_LIB_PATH.'/mailer.lib.php');
 
-    $subject = $config['cf_title'].' '.$qaconfig['qa_title'].' 답변 알림 메일';
+    $subject = __('{1} {2} 답변 알림 메일', $config['cf_title'], $qaconfig['qa_title']);
     $content = nl2br(conv_unescape_nl(stripslashes($qa_content)));
 
     mailer($config['cf_admin_email_name'], $config['cf_admin_email'], $write['qa_email'], $subject, $content, 1);

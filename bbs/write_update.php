@@ -6,7 +6,7 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 // 토큰체크
 check_write_token($bo_table);
 
-$g5['title'] = '게시글 저장';
+$g5['title'] = __('게시글 저장');
 
 $msg = array();
 $uid = isset($_POST['uid']) ? preg_replace('/[^0-9]/', '', $_POST['uid']) : 0;
@@ -14,11 +14,11 @@ $uid = isset($_POST['uid']) ? preg_replace('/[^0-9]/', '', $_POST['uid']) : 0;
 if($board['bo_use_category']) {
     $ca_name = isset($_POST['ca_name']) ? trim($_POST['ca_name']) : '';
     if(!$ca_name) {
-        $msg[] = '<strong>분류</strong>를 선택하세요.';
+        $msg[] = __('<strong>분류</strong>를 선택하세요.');
     } else {
         $categories = array_map('trim', explode("|", $board['bo_category_list'].($is_admin ? '|공지' : '')));
         if(!empty($categories) && !in_array($ca_name, $categories))
-            $msg[] = '분류를 올바르게 입력하세요.';
+            $msg[] = __('분류를 올바르게 입력하세요.');
 
         if(empty($categories))
             $ca_name = '';
@@ -36,7 +36,7 @@ if (isset($_POST['wr_subject'])) {
     }
 }
 if ($wr_subject == '') {
-    $msg[] = '<strong>제목</strong>을 입력하세요.';
+    $msg[] = __('<strong>제목</strong>을 입력하세요.');
 }
 
 $wr_content = '';
@@ -48,7 +48,7 @@ if (isset($_POST['wr_content'])) {
     }
 }
 if ($wr_content == '') {
-    $msg[] = '<strong>내용</strong>을 입력하세요.';
+    $msg[] = __('<strong>내용</strong>을 입력하세요.');
 }
 
 $wr_link1 = '';
@@ -79,7 +79,7 @@ if (substr_count($wr_content, '&#') > 50) {
 $upload_max_filesize = ini_get('upload_max_filesize');
 
 if (empty($_POST)) {
-    alert("파일 또는 글내용의 크기가 서버에서 설정한 값을 넘어 오류가 발생하였습니다.\\npost_max_size=".ini_get('post_max_size')." , upload_max_filesize=".$upload_max_filesize."\\n게시판관리자 또는 서버관리자에게 문의 바랍니다.");
+    alert(__("파일 또는 글내용의 크기가 서버에서 설정한 값을 넘어 오류가 발생하였습니다.\\npost_max_size={1} , upload_max_filesize={2}\\n게시판관리자 또는 서버관리자에게 문의 바랍니다.", ini_get('post_max_size'), $upload_max_filesize));
 }
 
 $notice_array = explode(",", $board['bo_notice']);
@@ -483,10 +483,10 @@ for ($i=0; $i<$upload_count; $i++) {
 if($w == 'u') {
     $file = get_file($bo_table, $wr_id);
     if($file_count && (int)$file['count'] > $board['bo_upload_count'])
-        alert('기존 파일을 삭제하신 후 첨부파일을 '.number_format($board['bo_upload_count']).'개 이하로 업로드 해주십시오.');
+        alert(__('기존 파일을 삭제하신 후 첨부파일을 {1}개 이하로 업로드 해주십시오.', number_format($board['bo_upload_count'])));
 } else {
     if($file_count > $board['bo_upload_count'])
-        alert('첨부파일을 '.number_format($board['bo_upload_count']).'개 이하로 업로드 해주십시오.');
+        alert(__('첨부파일을 {1}개 이하로 업로드 해주십시오.', number_format($board['bo_upload_count'])));
 }
 
 // 디렉토리가 없다면 생성합니다. (퍼미션도 변경하구요.)
@@ -543,11 +543,11 @@ if(isset($_FILES['bf_file']['name']) && is_array($_FILES['bf_file']['name'])) {
         // 서버에 설정된 값보다 큰파일을 업로드 한다면
         if ($filename) {
             if ($_FILES['bf_file']['error'][$i] == 1) {
-                $file_upload_msg .= '"'.$filename.'" 파일의 용량이 서버에 설정('.$upload_max_filesize.')된 값보다 크므로 업로드 할 수 없습니다.\\n';
+                $file_upload_msg .= __('"{1}" 파일의 용량이 서버에 설정({2})된 값보다 크므로 업로드 할 수 없습니다.\\n', $filename, $upload_max_filesize);
                 continue;
             }
             else if ($_FILES['bf_file']['error'][$i] != 0) {
-                $file_upload_msg .= '"'.$filename.'" 파일이 정상적으로 업로드 되지 않았습니다.\\n';
+                $file_upload_msg .= __('"{1}" 파일이 정상적으로 업로드 되지 않았습니다.\\n', $filename);
                 continue;
             }
         }
@@ -555,7 +555,7 @@ if(isset($_FILES['bf_file']['name']) && is_array($_FILES['bf_file']['name'])) {
         if (is_uploaded_file($tmp_file)) {
             // 관리자가 아니면서 설정한 업로드 사이즈보다 크다면 건너뜀
             if (!$is_admin && $filesize > $board['bo_upload_size']) {
-                $file_upload_msg .= '"'.$filename.'" 파일의 용량('.number_format($filesize).' 바이트)이 게시판에 설정('.number_format($board['bo_upload_size']).' 바이트)된 값보다 크므로 업로드 하지 않습니다.\\n';
+                $file_upload_msg .= __('"{1}" 파일의 용량({2} 바이트)이 게시판에 설정({3} 바이트)된 값보다 크므로 업로드 하지 않습니다.\\n', $filename, number_format($filesize), number_format($board['bo_upload_size']));
                 continue;
             }
 
@@ -578,7 +578,7 @@ if(isset($_FILES['bf_file']['name']) && is_array($_FILES['bf_file']['name'])) {
             // 새 파일 저장이 성공한 뒤에만 기존 첨부파일을 삭제합니다.
             $stored_file = g5_store_attachment($tmp_file, $filename, G5_DATA_PATH.'/file/'.$bo_table);
             if ($stored_file === false) {
-                $file_upload_msg .= '"'.$filename.'" 파일을 안전하게 저장할 수 없습니다. 서버의 난수 소스와 저장 경로를 확인해 주십시오.\n';
+                $file_upload_msg .= __('"{1}" 파일을 안전하게 저장할 수 없습니다. 서버의 난수 소스와 저장 경로를 확인해 주십시오.\n', $filename);
                 continue;
             }
             $upload[$i]['source'] = $filename;
@@ -730,10 +730,10 @@ if (!($w == 'u' || $w == 'cu') && $config['cf_email_use'] && $board['bo_use_emai
 
     $wr_content = conv_content(conv_unescape_nl(stripslashes($wr_content)), $tmp_html);
 
-    $warr = array( ''=>'입력', 'u'=>'수정', 'r'=>'답변', 'c'=>'코멘트', 'cu'=>'코멘트 수정' );
+    $warr = array( ''=>__('입력'), 'u'=>__('수정'), 'r'=>__('답변'), 'c'=>__('코멘트'), 'cu'=>__('코멘트 수정') );
     $str = $warr[$w];
 
-    $subject = '['.$config['cf_title'].'] '.$board['bo_subject'].' 게시판에 '.$str.'글이 올라왔습니다.';
+    $subject = __('[{1}] {2} 게시판에 {3}글이 올라왔습니다.', $config['cf_title'], $board['bo_subject'], $str);
 
     $link_url = get_pretty_url($bo_table, $wr_id, $qstr);
 

@@ -87,7 +87,7 @@ $ct_cert = new C_CT_CLI;
 $ct_cert->mf_clear();
 
 
-$g5['title'] = '휴대폰인증 결과';
+$g5['title'] = __('휴대폰인증 결과');
 include_once(G5_PATH.'/head.sub.php');
 
 // 결과 처리
@@ -124,7 +124,7 @@ if( $cert_enc_use == "Y" )
                 $bin_exe = '/'.$bin_path.'/ct_cli_exe.exe';
             }
 
-            echo "dn_hash 변조 위험있음 (".G5_KCPCERT_PATH.$bin_exe." 파일에 실행권한이 있는지 확인하세요.)";
+            echo __('dn_hash 변조 위험있음 ({1} 파일에 실행권한이 있는지 확인하세요.)', G5_KCPCERT_PATH.$bin_exe);
             exit;
             // 오류 처리 ( dn_hash 변조 위험있음)
         }
@@ -173,7 +173,7 @@ if( $cert_enc_use == "Y" )
         $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$mb_dupinfo}' ";
         $row = sql_fetch($sql);
         if (!empty($row['mb_id'])) {
-            alert_close("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : ".$row['mb_id']);
+            alert_close(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : {1}", $row['mb_id']));
         }
 
         // hash 데이터
@@ -196,7 +196,7 @@ if( $cert_enc_use == "Y" )
     else if( $res_cd != "0000" )
     {
         // 인증실패
-        alert_close('코드 : '.$_POST['res_cd'].'  '.urldecode($_POST['res_msg']));
+        alert_close(__('코드 : {1}  {2}', $_POST['res_cd'], urldecode($_POST['res_msg'])));
         exit;
     }
 }
@@ -237,7 +237,7 @@ $(function() {
 
     // up_hash 검증
     if( document.form_auth.up_hash.value != $opener.$("input[name=veri_up_hash]").val() ) {
-        alert("up_hash 변조 위험있음");
+        alert(<?php echo get_js_safe_string(__('up_hash 변조 위험있음')); ?>);
     }
 
     // 인증정보
@@ -251,7 +251,7 @@ $(function() {
         $opener.$("#kcp_cert" ).css("display", "none");
     }
 
-    alert("본인의 휴대폰번호로 확인 되었습니다.");
+    alert(<?php echo get_js_safe_string(__('본인의 휴대폰번호로 확인 되었습니다.')); ?>);
 
     if($opener.$("form[name=fcertrefreshform]") != undefined){
         $opener.$("form[name=fcertrefreshform]").submit();

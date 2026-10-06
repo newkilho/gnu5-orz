@@ -37,13 +37,13 @@ if (!chk_captcha()) {
 $sql = " select count(*) as cnt from {$g5['member_table']} where mb_id <> '{$esc_mb_id}' and mb_email = '$mb_email' ";
 $row = sql_fetch($sql);
 if ($row['cnt']) {
-    alert("{$mb_email} 메일은 이미 존재하는 메일주소 입니다.\\n\\n다른 메일주소를 입력해 주십시오.");
+    alert(__('{1} 메일은 이미 존재하는 메일주소 입니다.\\n\\n다른 메일주소를 입력해 주십시오.', $mb_email));
 }
 
 $security_mail_url = g5_require_security_mail_url();
 
 // 인증메일 발송
-$subject = '['.$config['cf_title'].'] 인증확인 메일입니다.';
+$subject = __('[{1}] 인증확인 메일입니다.', $config['cf_title']);
 
 $mb_name = $mb['mb_name'];
 
@@ -64,4 +64,4 @@ mailer($config['cf_admin_email_name'], $config['cf_admin_email'], $mb_email, $su
 $sql = " update {$g5['member_table']} set mb_email = '$mb_email' where mb_id = '{$esc_mb_id}' ";
 sql_query($sql);
 
-alert("인증메일을 {$mb_email} 메일로 다시 보내 드렸습니다.\\n\\n잠시후 {$mb_email} 메일을 확인하여 주십시오.", G5_URL);
+alert(__('인증메일을 {1} 메일로 다시 보내 드렸습니다.\\n\\n잠시후 {1} 메일을 확인하여 주십시오.', $mb_email), G5_URL);

@@ -6,7 +6,7 @@ if (!defined('_GNUBOARD_')) exit;
 		<meta name="robots" content="NOINDEX, NOFOLLOW">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
-		<title>소셜 로그인 - <?php echo $provider; ?></title>
+		<title><?php echo __('소셜 로그인 - {1}', $provider); ?></title>
 	</head>
 	<body>
         <table width="100%" border="0">
@@ -17,7 +17,7 @@ if (!defined('_GNUBOARD_')) exit;
             <td align="center"><br /><h3>Loading...</h3><br /></td> 
           </tr>
           <tr>
-            <td align="center"><b><?php echo ucfirst( strtolower( strip_tags( $provider ) ) ) ; ?></b> 에 연결중입니다. 잠시만 기다려주세요.</td> 
+            <td align="center"><?php echo __('{1} 에 연결중입니다. 잠시만 기다려주세요.', '<b>'.ucfirst( strtolower( strip_tags( $provider ) ) ).'</b>'); ?></td> 
           </tr> 
         </table>
 

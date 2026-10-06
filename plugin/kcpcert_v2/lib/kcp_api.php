@@ -34,7 +34,7 @@ if (!class_exists('C_KCP_API_V2')) {
             if ($req_json === false) {
                 return array(
                     'res_cd'       => 'JSON_ERROR',
-                    'res_msg'      => 'KCP 거래등록 요청 데이터를 생성할 수 없습니다.',
+                    'res_msg'      => __('KCP 거래등록 요청 데이터를 생성할 수 없습니다.'),
                     'call_url'     => '',
                     'reg_cert_key' => '',
                 );
@@ -44,7 +44,7 @@ if (!class_exists('C_KCP_API_V2')) {
             if (empty($enc['encData']) || empty($enc['rv'])) {
                 return array(
                     'res_cd'       => 'ENCRYPT_ERROR',
-                    'res_msg'      => 'KCP 거래등록 요청 데이터를 암호화할 수 없습니다.',
+                    'res_msg'      => __('KCP 거래등록 요청 데이터를 암호화할 수 없습니다.'),
                     'call_url'     => '',
                     'reg_cert_key' => '',
                 );
@@ -60,7 +60,7 @@ if (!class_exists('C_KCP_API_V2')) {
             if ($body === false || $body === '') {
                 return array(
                     'res_cd'       => 'HTTP_ERROR',
-                    'res_msg'      => $this->last_error ? $this->last_error : 'KCP 거래등록 API 응답이 없습니다.',
+                    'res_msg'      => $this->last_error ? $this->last_error : __('KCP 거래등록 API 응답이 없습니다.'),
                     'call_url'     => '',
                     'reg_cert_key' => '',
                 );
@@ -70,7 +70,7 @@ if (!class_exists('C_KCP_API_V2')) {
             if (!is_array($res)) {
                 return array(
                     'res_cd'       => 'JSON_ERROR',
-                    'res_msg'      => 'KCP 거래등록 API 응답을 해석할 수 없습니다.',
+                    'res_msg'      => __('KCP 거래등록 API 응답을 해석할 수 없습니다.'),
                     'call_url'     => '',
                     'reg_cert_key' => '',
                 );
@@ -91,7 +91,7 @@ if (!class_exists('C_KCP_API_V2')) {
                 'ordr_idxx'    => $ordr_idxx,
             ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
             if ($req_json === false) {
-                return array('res_cd' => 'JSON_ERROR', 'res_msg' => 'KCP 본인확인 결과조회 요청 데이터를 생성할 수 없습니다.');
+                return array('res_cd' => 'JSON_ERROR', 'res_msg' => __('KCP 본인확인 결과조회 요청 데이터를 생성할 수 없습니다.'));
             }
 
             $headers = array(
@@ -103,13 +103,13 @@ if (!class_exists('C_KCP_API_V2')) {
             if ($body === false || $body === '') {
                 return array(
                     'res_cd'  => 'HTTP_ERROR',
-                    'res_msg' => $this->last_error ? $this->last_error : 'KCP 본인확인 결과조회 API 응답이 없습니다.',
+                    'res_msg' => $this->last_error ? $this->last_error : __('KCP 본인확인 결과조회 API 응답이 없습니다.'),
                 );
             }
 
             $res = json_decode($body, true);
             if (!is_array($res)) {
-                return array('res_cd' => 'JSON_ERROR', 'res_msg' => 'KCP 본인확인 결과조회 API 응답을 해석할 수 없습니다.');
+                return array('res_cd' => 'JSON_ERROR', 'res_msg' => __('KCP 본인확인 결과조회 API 응답을 해석할 수 없습니다.'));
             }
 
             $res_cd  = isset($res['res_cd']) ? $res['res_cd'] : '';
@@ -124,12 +124,12 @@ if (!class_exists('C_KCP_API_V2')) {
 
             $plain = Crypto_KCP_V2::decryptJson($enc_cert_data, $rv, $this->enc_key, $this->site_cd);
             if ($plain === false || $plain === '') {
-                return array('res_cd' => 'DECRYPT_ERROR', 'res_msg' => 'KCP 본인확인 결과 데이터를 복호화할 수 없습니다.');
+                return array('res_cd' => 'DECRYPT_ERROR', 'res_msg' => __('KCP 본인확인 결과 데이터를 복호화할 수 없습니다.'));
             }
 
             $dec   = json_decode($plain, true);
             if (!is_array($dec)) {
-                return array('res_cd' => 'JSON_ERROR', 'res_msg' => 'KCP 본인확인 복호화 데이터를 해석할 수 없습니다.');
+                return array('res_cd' => 'JSON_ERROR', 'res_msg' => __('KCP 본인확인 복호화 데이터를 해석할 수 없습니다.'));
             }
 
             return array(
@@ -154,7 +154,7 @@ if (!class_exists('C_KCP_API_V2')) {
 
             $ch = curl_init($url);
             if (!$ch) {
-                $this->last_error = 'cURL 초기화에 실패했습니다.';
+                $this->last_error = __('cURL 초기화에 실패했습니다.');
                 return false;
             }
 
@@ -167,9 +167,9 @@ if (!class_exists('C_KCP_API_V2')) {
             $resp = curl_exec($ch);
             $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if ($resp === false) {
-                $this->last_error = 'KCP API 통신 실패: '.curl_error($ch);
+                $this->last_error = __('KCP API 통신 실패: {1}', curl_error($ch));
             } else if ($http_code && ($http_code < 200 || $http_code >= 300)) {
-                $this->last_error = 'KCP API HTTP 오류: '.$http_code;
+                $this->last_error = __('KCP API HTTP 오류: {1}', $http_code);
             }
             curl_close($ch);
 

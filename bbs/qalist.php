@@ -28,7 +28,7 @@ if ($qaconfig['qa_category']) {
     $category_option .= '<li><a href="'.$category_href.'"';
     if ($sca=='')
         $category_option .= ' id="bo_cate_on"';
-    $category_option .= '>전체</a></li>';
+    $category_option .= '>'.__('전체').'</a></li>';
 
     $categories = explode('|', $qaconfig['qa_category']); // 구분자가 | 로 되어 있음
     $categories_cnt = count($categories);
@@ -39,7 +39,7 @@ if ($qaconfig['qa_category']) {
         $category_option .= '<li><a href="'.($category_href."?sca=".urlencode($category)).'"';
         if ($category==$sca) { // 현재 선택된 카테고리라면
             $category_option .= ' id="bo_cate_on"';
-            $category_msg = '<span class="sound_only">열린 분류 </span>';
+            $category_msg = '<span class="sound_only">'.__('열린 분류 ').'</span>';
         }
         $category_option .= '>'.$category_msg.$category.'</a></li>';
     }
@@ -147,7 +147,7 @@ if(is_file($skin_file)) {
     $stx = get_text(stripslashes($stx));
     include_once($skin_file);
 } else {
-    echo '<div>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</div>';
+    echo '<div>'.__('{1}이 존재하지 않습니다.', str_replace(G5_PATH.'/', '', $skin_file)).'</div>';
 }
 
 include_once('./qatail.php');

@@ -137,7 +137,7 @@ function social_before_join_check($url=''){
             }
 
             if( $is_exist ){
-                $msg = sprintf("해당 %s ID 로 연결 또는 가입된 내역이 있기 때문에 다시 가입할수 없습니다. 회원이시면 로그인 후 정보 수정에서 계정 연결을 해 주세요.", social_get_provider_service_name($provider_name) );
+                $msg = __("해당 {1} ID 로 연결 또는 가입된 내역이 있기 때문에 다시 가입할수 없습니다. 회원이시면 로그인 후 정보 수정에서 계정 연결을 해 주세요.", social_get_provider_service_name($provider_name) );
 
                 $url = $url ? $url : G5_URL;
                 alert($msg, $url);
@@ -410,20 +410,20 @@ function social_get_error_msg($type){
     ob_start();
 
     switch( $type ){
-      case 0 : echo "지정되지 않은 오류입니다."; break;
-      case 1 : echo "설정 오류입니다."; break;
-      case 2 : echo "해당 provider 설정 오류입니다."; break;
-      case 3 : echo "알수 없거나 비활성화 된 provider 입니다."; break;
-      case 4 : echo "해당 서비스에 접근할수 있는 권한이 없습니다."; break;
-      case 5 : echo "인증이 실패되었습니다.. "
-                  . "사용자가 인증을 취소했거나, 공급자가 연결을 거부했습니다.";
+      case 0 : echo __("지정되지 않은 오류입니다."); break;
+      case 1 : echo __("설정 오류입니다."); break;
+      case 2 : echo __("해당 provider 설정 오류입니다."); break;
+      case 3 : echo __("알수 없거나 비활성화 된 provider 입니다."); break;
+      case 4 : echo __("해당 서비스에 접근할수 있는 권한이 없습니다."); break;
+      case 5 : echo __("인증이 실패되었습니다.. ")
+                  . __("사용자가 인증을 취소했거나, 공급자가 연결을 거부했습니다.");
                break;
-      case 6 : echo "사용자 프로필 요청이 실패했습니다.사용자가 해당 서비스에 연결되어 있지 않을 경우도 있습니다. "
-                  . "이 경우 다시 인증 요청을 해야 합니다.";
+      case 6 : echo __("사용자 프로필 요청이 실패했습니다.사용자가 해당 서비스에 연결되어 있지 않을 경우도 있습니다. ")
+                  . __("이 경우 다시 인증 요청을 해야 합니다.");
                break;
-      case 7 : echo "사용자가 해당 서비스에 연결되어 있지 않습니다.";
+      case 7 : echo __("사용자가 해당 서비스에 연결되어 있지 않습니다.");
                break;
-      case 8 : echo "해당 서비스가 기능을 지원하지 않습니다."; break;
+      case 8 : echo __("해당 서비스가 기능을 지원하지 않습니다."); break;
     }
     
     $get_error = ob_get_clean();
@@ -516,10 +516,10 @@ function social_check_login_before($p_service=''){
 
             if( $is_member ){
 
-                $msg = "이미 로그인 하셨거나 잘못된 요청입니다.";
+                $msg = __("이미 로그인 하셨거나 잘못된 요청입니다.");
                 
                 if( $mylink ){
-                    $msg = "이미 연결된 아이디가 있거나, 잘못된 요청입니다.";
+                    $msg = __("이미 연결된 아이디가 있거나, 잘못된 요청입니다.");
                 }
 
                 if( $use_popup == 1 || ! $use_popup ){   //팝업이면
@@ -607,7 +607,7 @@ function social_check_login_before($p_service=''){
             }
 
             if( !( property_exists($user_profile, 'sid') && !empty($user_profile->sid) ) ){
-                $msg = '소셜 데이터 오류';
+                $msg = __('소셜 데이터 오류');
                 if( $use_popup == 1 || ! $use_popup ){   //팝업이면
                     alert_close($msg);
                 } else {
@@ -814,7 +814,7 @@ function social_is_login_password_check($mb_id){
 
             $row = sql_fetch($sql);
             if( $row['num'] ){
-                alert("해당 계정에 이미 $provider_name ID 가 연결되어 있습니다. 연결을 해제 후 다시 시도해 주세요.");
+                alert(__('해당 계정에 이미 {1} ID 가 연결되어 있습니다. 연결을 해제 후 다시 시도해 주세요.', $provider_name));
             }
         }
         return false;
@@ -918,13 +918,13 @@ function social_login_link_account($mb_id, $is_buffer=false, $is_type=''){
 function social_get_provider_service_name($provider='', $all=''){
 
     $services = array(
-        'naver' =>  '네이버',
-        'kakao'  =>  '카카오',
-        'daum'  =>  '다음',
-        'facebook'  =>  '페이스북',
-        'google'    =>  '구글',
-        'twitter'  =>  '트위터',
-        'payco'  =>  '페이코',
+        'naver' =>  __('네이버'),
+        'kakao'  =>  __('카카오'),
+        'daum'  =>  __('다음'),
+        'facebook'  =>  __('페이스북'),
+        'google'    =>  __('구글'),
+        'twitter'  =>  __('트위터'),
+        'payco'  =>  __('페이코'),
         );
 
     if( $all ){

@@ -15,15 +15,15 @@ require('./ipin.config.php');
 
 //아이핀팝업에서 조회한 PERSONALINFO이다.
 @$encPsnlInfo = isset($_REQUEST["encPsnlInfo"]) ? $_REQUEST["encPsnlInfo"] : '';
-if(preg_match('~[^0-9a-zA-Z+/=]~', $encPsnlInfo, $match)) {echo "입력 값 확인이 필요합니다"; exit;}
+if(preg_match('~[^0-9a-zA-Z+/=]~', $encPsnlInfo, $match)) {echo __("입력 값 확인이 필요합니다"); exit;}
 
 //KCB서버 공개키
 @$WEBPUBKEY = isset($_REQUEST["WEBPUBKEY"]) ? trim($_REQUEST["WEBPUBKEY"]) : '';
-if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBPUBKEY, $match)) {echo "입력 값 확인이 필요합니다"; exit;}
+if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBPUBKEY, $match)) {echo __("입력 값 확인이 필요합니다"); exit;}
 
 //KCB서버 서명값
 @$WEBSIGNATURE = isset($_REQUEST["WEBSIGNATURE"]) ? trim($_REQUEST["WEBSIGNATURE"]) : '';
-if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBSIGNATURE, $match)) {echo "입력 값 확인이 필요합니다"; exit;}
+if(preg_match('~[^0-9a-zA-Z+/=]~', $WEBSIGNATURE, $match)) {echo __("입력 값 확인이 필요합니다"); exit;}
 
 //아이핀 서버와 통신을 위한 키파일 생성
 // 파라미터 정의
@@ -47,7 +47,7 @@ if($ret != 0) {
     else
         $resultCd=sprintf("S%03d", $ret);
 
-    alert_close('아이핀 본인확인 중 오류가 발생했습니다. 오류코드 : '.$resultCd.'\\n\\n문의는 코리아크레딧뷰로 고객센터 02-708-1000 로 해주십시오.');
+    alert_close(__('아이핀 본인확인 중 오류가 발생했습니다. 오류코드 : {1}\\n\\n문의는 코리아크레딧뷰로 고객센터 02-708-1000 로 해주십시오.', $resultCd));
 }
 
 // 결과라인에서 값을 추출
@@ -84,7 +84,7 @@ if(!empty($field[1])) { // 아이핀은 리턴받는 ci 데이터가 두가지�
 }else if(!empty($field[2])) {
     $ci = $field[2];
 }else{
-    alert_close('아이핀 본인확인 중 오류가 발생했습니다. (ci 정보 없음) 오류코드 : '.$resultCd.'\\n\\n문의는 코리아크레딧뷰로 고객센터 02-708-1000 로 해주십시오.');
+    alert_close(__('아이핀 본인확인 중 오류가 발생했습니다. (ci 정보 없음) 오류코드 : {1}\\n\\n문의는 코리아크레딧뷰로 고객센터 02-708-1000 로 해주십시오.', $resultCd));
 }
 $mb_dupinfo = md5($ci.$ci); // 간편인증 추가 후 ci로 변경
 
@@ -97,7 +97,7 @@ if (!empty($member['mb_certify']) && !empty($member['mb_dupinfo']) && strlen($me
 $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$mb_dupinfo}' ";
 $row = sql_fetch($sql);
 if (!empty($row['mb_id'])) {
-    alert_close("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : ".$row['mb_id']);
+    alert_close(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다.\\n회원아이디 : {1}", $row['mb_id']));
 }
 
 // hash 데이터
@@ -116,7 +116,7 @@ set_session('ss_cert_birth',   $mb_birth);
 set_session('ss_cert_sex',     ($field[9] == 1 ? 'M' : 'F'));
 set_session('ss_cert_dupinfo', $mb_dupinfo);
 
-$g5['title'] = 'KCB 아이핀 본인확인';
+$g5['title'] = __('KCB 아이핀 본인확인');
 include_once(G5_PATH.'/head.sub.php');
 ?>
 

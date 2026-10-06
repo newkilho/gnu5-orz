@@ -53,7 +53,7 @@ $bo_v_sns_class = $config['cf_kakao_js_apikey'] ? 'show_kakao' : '';
                     }
                 },
                 buttons: [{
-                    title: '자세히 보기',
+                    title: <?php echo get_js_safe_string(__('자세히 보기')); ?>,
                     link: {
                         mobileWebUrl: webUrl,
                         webUrl: webUrl
@@ -66,9 +66,9 @@ $bo_v_sns_class = $config['cf_kakao_js_apikey'] ? 'show_kakao' : '';
 <?php } ?>
 
 <ul id="bo_v_sns" class="<?php echo $bo_v_sns_class; ?>">
-	<li><a href="<?php echo $facebook_url; ?>" target="_blank" class="sns_f"><img src="<?php echo G5_SNS_URL; ?>/icon/facebook.png" alt="페이스북으로 공유" width="20"><span>페이스북 공유</span></a></li>
-    <li><a href="<?php echo $twitter_url; ?>" target="_blank" class="sns_t"><img src="<?php echo G5_SNS_URL; ?>/icon/twitter.png" alt="트위터로  공유" width="20"><span>트위터 공유</span></a></li>
+	<li><a href="<?php echo $facebook_url; ?>" target="_blank" class="sns_f"><img src="<?php echo G5_SNS_URL; ?>/icon/facebook.png" alt="<?php echo __('페이스북으로 공유'); ?>" width="20"><span><?php echo __('페이스북 공유'); ?></span></a></li>
+    <li><a href="<?php echo $twitter_url; ?>" target="_blank" class="sns_t"><img src="<?php echo G5_SNS_URL; ?>/icon/twitter.png" alt="<?php echo __('트위터로  공유'); ?>" width="20"><span><?php echo __('트위터 공유'); ?></span></a></li>
     <?php if($config['cf_kakao_js_apikey']) { ?>
-    <li><a href="javascript:Kakao_sendLink();" class="sns_k" ><img src="<?php echo G5_SNS_URL; ?>/icon/kakaotalk.png" alt="카카오톡으로 보내기" width="20"></a></li>
+    <li><a href="javascript:Kakao_sendLink();" class="sns_k" ><img src="<?php echo G5_SNS_URL; ?>/icon/kakaotalk.png" alt="<?php echo __('카카오톡으로 보내기'); ?>" width="20"></a></li>
     <?php } ?>
 </ul>

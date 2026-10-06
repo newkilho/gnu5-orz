@@ -631,7 +631,7 @@ if (!(isset($member['mb_id']) && $config['cf_admin'] === $member['mb_id'])) {
                 break;
         }
         if (!$is_possible_ip)
-            die ("<meta charset=utf-8>접근이 가능하지 않습니다.");
+            die ("<meta charset=utf-8>".__('접근이 가능하지 않습니다.'));
     }
 
     // 접근차단 IP
@@ -648,7 +648,7 @@ if (!(isset($member['mb_id']) && $config['cf_admin'] === $member['mb_id'])) {
         $pat = "/^{$pattern[$i]}$/";
         $is_intercept_ip = preg_match($pat, $_SERVER['REMOTE_ADDR']);
         if ($is_intercept_ip)
-            die ("<meta charset=utf-8>접근 불가합니다.");
+            die ("<meta charset=utf-8>".__('접근 불가합니다.'));
     }
 }
 

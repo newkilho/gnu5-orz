@@ -49,7 +49,7 @@ for ($i=0; $i<$recv_list_cnt; $i++) {
 $error_msg = implode(",", $error_list);
 
 if ($error_msg && !$is_admin)
-    alert("회원아이디 '{$error_msg}' 은(는) 존재(또는 정보공개)하지 않는 회원아이디 이거나 탈퇴, 접근차단된 회원아이디 입니다.\\n쪽지를 발송하지 않았습니다.");
+    alert(__("회원아이디 '{1}' 은(는) 존재(또는 정보공개)하지 않는 회원아이디 이거나 탈퇴, 접근차단된 회원아이디 입니다.\\n쪽지를 발송하지 않았습니다.", $error_msg));
 
 if (! count($member_list['id'])){
     alert('해당 회원이 존재하지 않습니다.');
@@ -60,7 +60,7 @@ if (!$is_admin) {
         $point = (int)$config['cf_memo_send_point'] * count($member_list['id']);
         if ($point) {
             if ($member['mb_point'] - $point < 0) {
-                alert('보유하신 포인트('.number_format($member['mb_point']).'점)가 모자라서 쪽지를 보낼 수 없습니다.');
+                alert(__('보유하신 포인트({1}점)가 모자라서 쪽지를 보낼 수 없습니다.', number_format($member['mb_point'])));
             }
         }
     }
@@ -104,7 +104,7 @@ if ($member_list) {
 
     run_event('memo_form_update_after', $member_list, $str_nick_list, $redirect_url, $_POST['me_memo']);
 
-    alert($str_nick_list." 님께 쪽지를 전달하였습니다.", $redirect_url, false);
+    alert(__('{1} 님께 쪽지를 전달하였습니다.', $str_nick_list), $redirect_url, false);
 } else {
 
     $redirect_url = G5_HTTP_BBS_URL."/memo_form.php";

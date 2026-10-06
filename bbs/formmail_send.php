@@ -55,7 +55,7 @@ if ($type == 2) {
 // html 이면
 if ($type) {
     $current_url = G5_URL;
-    $mail_content = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>메일보내기</title><link rel="stylesheet" href="'.$current_url.'/style.css"></head><body>'.$content.'</body></html>';
+    $mail_content = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>'.__('메일보내기').'</title><link rel="stylesheet" href="'.$current_url.'/style.css"></head><body>'.$content.'</body></html>';
 }
 else
     $mail_content = $content;
@@ -86,7 +86,7 @@ if(!empty($file)) {
 }
 
 //$html_title = $tmp_to . "님께 메일발송";
-$html_title = '메일 발송중';
+$html_title = __('메일 발송중');
 include_once(G5_PATH.'/head.sub.php');
 
 alert_close('메일을 정상적으로 발송하였습니다.');

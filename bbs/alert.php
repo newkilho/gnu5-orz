@@ -5,9 +5,9 @@ global $lo_url;
 include_once('./_common.php');
 
 if($error) {
-    $g5['title'] = "오류안내 페이지";
+    $g5['title'] = __("오류안내 페이지");
 } else {
-    $g5['title'] = "결과안내 페이지";
+    $g5['title'] = __("결과안내 페이지");
 }
 include_once(G5_PATH.'/head.sub.php');
 // 필수 입력입니다.
@@ -46,9 +46,9 @@ $js_alert_msg = function_exists('get_js_safe_string') ? get_js_safe_string($aler
 $js_alert_url = function_exists('get_js_safe_string') ? get_js_safe_string($alert_url) : '"'.strtr((string)$alert_url, $js_replace).'"';
 
 if($error) {
-    $header2 = "다음 항목에 오류가 있습니다.";
+    $header2 = __("다음 항목에 오류가 있습니다.");
 } else {
-    $header2 = "다음 내용을 확인해 주세요.";
+    $header2 = __("다음 내용을 확인해 주세요.");
 }
 ?>
 
@@ -85,11 +85,11 @@ history.back();
     <?php
     }
     ?>
-    <input type="submit" value="돌아가기">
+    <input type="submit" value="<?php echo __('돌아가기'); ?>">
     </form>
     <?php } else { ?>
     <div class="btn_confirm">
-        <a href="<?php echo $url ?>">돌아가기</a>
+        <a href="<?php echo $url ?>"><?php echo __('돌아가기'); ?></a>
     </div>
     <?php } ?>
 

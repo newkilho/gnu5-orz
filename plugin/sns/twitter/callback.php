@@ -43,7 +43,7 @@ if (200 == $connection->http_code) {
 exit;
 */
 
-$g5['title'] = '트위터 콜백';
+$g5['title'] = __('트위터 콜백');
 include_once(G5_PATH.'/head.sub.php');
 
 if (200 == $connection->http_code) {
@@ -55,11 +55,12 @@ if (200 == $connection->http_code) {
     set_session('ss_twitter_user', $sns_user);
 
     $g5_sns_url = G5_SNS_URL;
+    $msg = get_js_safe_string(__('트위터에 승인이 되었습니다.'));
 
     echo <<<EOT
     <script>
     $(function() {
-        document.write("<strong>트위터에 승인이 되었습니다.</strong>");
+        document.write("<strong>"+{$msg}+"</strong>");
 
         var opener = window.opener;
         opener.$("#wr_name").val("{$sns_name}");
@@ -72,11 +73,12 @@ if (200 == $connection->http_code) {
 EOT;
 
 } else {
+    $msg = get_js_safe_string(__('트위터에 승인이 되지 않았습니다.'));
 
     echo <<<EOT
     <script>
     $(function() {
-        alert("트위터에 승인이 되지 않았습니다.");
+        alert({$msg});
         window.close();
     });
     </script>

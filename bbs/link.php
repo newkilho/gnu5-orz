@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$html_title = '링크';
+$html_title = __('링크');
 
 if (isset($write['wr_subject']) && $write['wr_subject']) {
     $html_title .= ' &gt; '.conv_subject($write['wr_subject'], 255);
