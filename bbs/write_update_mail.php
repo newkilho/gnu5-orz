@@ -3,7 +3,7 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 ?>
 <!doctype html>
-<html lang="ko">
+<html lang="<?php echo KH_LANG ?>">
 <head>
 <meta charset="utf-8">
 <title><?php echo __('{1} 메일', $wr_subject) ?></title>

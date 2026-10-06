@@ -708,7 +708,7 @@ if ($w == '') {
     } else {
         echo '
         <!doctype html>
-        <html lang="ko">
+        <html lang="'.KH_LANG.'">
         <head>
         <meta charset="utf-8">
         <title>'.__('회원정보수정').'</title>

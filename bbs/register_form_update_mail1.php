@@ -5,7 +5,7 @@ $mail_site_url = g5_security_mail_base_url();
 ?>
 
 <!doctype html>
-<html lang="ko">
+<html lang="<?php echo KH_LANG ?>">
 <head>
 <meta charset="utf-8">
 <title><?php echo __('회원가입 축하 메일') ?></title>

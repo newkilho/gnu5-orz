@@ -72,6 +72,16 @@ if (!defined('G5_IS_ADMIN') && !defined('KH_NO_I18N_HEAD')) {
     unset($kh_head, $kh_code, $kh_locale);
 }
 
+// 메일 발송 오류 문구(PHPMailer)도 현재 언어로. 언어 파일이 없으면 영어
+add_replace('mail_options', 'kh_i18n_mail_options', G5_HOOK_DEFAULT_PRIORITY, 1);
+function kh_i18n_mail_options($mail)
+{
+    $code = strtr(KH_LANG, array('zh-hans' => 'zh_cn', 'zh-hant' => 'zh', 'pt-br' => 'pt_br', 'pt-pt' => 'pt'));
+    if (KH_LANG !== 'en' && is_object($mail) && method_exists($mail, 'setLanguage'))
+        $mail->setLanguage($code, G5_PHPMAILER_PATH.'/language/');
+    return $mail;
+}
+
 // 관리자 메뉴: 환경설정 → 다국어 문구 (adm/i18n.php)
 add_replace('admin_menu', 'kh_i18n_admin_menu', G5_HOOK_DEFAULT_PRIORITY, 1);
 function kh_i18n_admin_menu($menu)

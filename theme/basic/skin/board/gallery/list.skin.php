@@ -242,7 +242,7 @@ function fboardlist_submit(f) {
     }
 
     if (!chk_count) {
-        alert(<?php echo get_js_safe_string(__('{1}할 게시물을 하나 이상 선택하세요.')) ?>.replace('{1}', document.pressed));
+        alert(<?php echo get_js_safe_string(__('{1}할 게시물을 하나 이상 선택하세요.')) ?>.replace('{1}', document.pressed == "선택복사" ? <?php echo get_js_safe_string(__('선택복사')) ?> : (document.pressed == "선택이동" ? <?php echo get_js_safe_string(__('선택이동')) ?> : <?php echo get_js_safe_string(__('선택삭제')) ?>)));
         return false;
     }
 
