@@ -7,22 +7,22 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 
 <!-- 로그인 전 아웃로그인 시작 { -->
 <section id="ol_before" class="ol">
-    <h2>회원로그인</h2>
+    <h2><?php echo __('회원로그인') ?></h2>
     <form name="foutlogin" action="<?php echo $outlogin_action_url ?>" onsubmit="return fhead_submit(this);" method="post" autocomplete="off">
     <fieldset>
         <input type="hidden" name="url" value="<?php echo $outlogin_url ?>">
-        <label for="ol_id" id="ol_idlabel" class="sound_only">회원아이디<strong>필수</strong></label>
-        <input type="text" id="ol_id" name="mb_id" required class="required frm_input" maxlength="20" placeholder="아이디">
-        <label for="ol_pw" id="ol_pwlabel" class="sound_only">비밀번호<strong>필수</strong></label>
-        <input type="password" name="mb_password" id="ol_pw" required class="required frm_input" maxlength="20" placeholder="비밀번호">
+        <label for="ol_id" id="ol_idlabel" class="sound_only"><?php echo __('회원아이디') ?><strong><?php echo __('필수') ?></strong></label>
+        <input type="text" id="ol_id" name="mb_id" required class="required frm_input" maxlength="20" placeholder="<?php echo __('아이디') ?>">
+        <label for="ol_pw" id="ol_pwlabel" class="sound_only"><?php echo __('비밀번호') ?><strong><?php echo __('필수') ?></strong></label>
+        <input type="password" name="mb_password" id="ol_pw" required class="required frm_input" maxlength="20" placeholder="<?php echo __('비밀번호') ?>">
         <div id="ol_auto">
             <input type="checkbox" name="auto_login" value="1" id="auto_login">
-            <label for="auto_login" id="auto_login_label">자동로그인</label>
+            <label for="auto_login" id="auto_login_label"><?php echo __('자동로그인') ?></label>
         </div>
-        <input type="submit" id="ol_submit" value="로그인" class="btn_b02">
+        <input type="submit" id="ol_submit" value="<?php echo __('로그인') ?>" class="btn_b02">
         <div id="ol_svc">
-            <a href="<?php echo G5_BBS_URL ?>/register.php"><b>회원가입</b></a> /
-            <a href="<?php echo G5_BBS_URL ?>/password_lost.php">ID/PW 찾기</a>
+            <a href="<?php echo G5_BBS_URL ?>/register.php"><b><?php echo __('회원가입') ?></b></a> /
+            <a href="<?php echo G5_BBS_URL ?>/password_lost.php"><?php echo __('ID/PW 찾기') ?></a>
         </div>
 
     </fieldset>

@@ -14,7 +14,7 @@ $list_count = (is_array($list) && $list) ? count($list) : 0;
         <li>
             <?php
             if ($list[$i]['icon_secret']) echo "<span class=\"lock_icon\"><i class=\"fa fa-lock\" aria-hidden=\"true\"></i></span> ";
-            if ($list[$i]['icon_new']) echo "<span class=\"new_icon\">N<span class=\"sound_only\">새글</span></span>";
+            if ($list[$i]['icon_new']) echo '<span class="new_icon">N<span class="sound_only">'.__('새글').'</span></span>';
              //echo $list[$i]['icon_reply']." ";
             echo "<a href=\"".get_pretty_url($bo_table, $list[$i]['wr_id'])."\">";
             if ($list[$i]['is_notice'])
@@ -37,7 +37,7 @@ $list_count = (is_array($list) && $list) ? count($list) : 0;
         </li>
     <?php }  ?>
     <?php if ($list_count == 0) { //게시물이 없을 때  ?>
-    <li class="empty_li">게시물이 없습니다.</li>
+    <li class="empty_li"><?php echo __('게시물이 없습니다.') ?></li>
     <?php }  ?>
     </ul>
 </div>

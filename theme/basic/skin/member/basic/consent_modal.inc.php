@@ -3,12 +3,12 @@
 <dialog id="consentDialog" aria-labelledby="consentDialogTitle" aria-describedby="consentDialogBody">
   <form method="dialog" class="cd-card">
     <header class="cd-head">
-      <h3 id="consentDialogTitle" class="cd-title">안내</h3>
+      <h3 id="consentDialogTitle" class="cd-title"><?php echo __('안내') ?></h3>
     </header>
     <div id="consentDialogBody" class="cd-body"></div>
     <footer class="cd-actions">
-      <button type="button" class="cd-agree">동의합니다</button>
-      <button value="close" class="cd-close">닫기</button>
+      <button type="button" class="cd-agree"><?php echo __('동의합니다') ?></button>
+      <button value="close" class="cd-close"><?php echo __('닫기') ?></button>
     </footer>
   </form>
 </dialog>

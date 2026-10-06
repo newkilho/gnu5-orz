@@ -9,23 +9,23 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
 <form name="fsearch" onsubmit="return fsearch_submit(this);" method="get">
 <input type="hidden" name="srows" value="<?php echo $srows ?>">
 <fieldset id="sch_res_detail">
-    <legend>상세검색</legend>
+    <legend><?php echo __('상세검색') ?></legend>
     <?php echo $group_select ?>
     <script>document.getElementById("gr_id").value = "<?php echo $gr_id ?>";</script>
 
-    <label for="sfl" class="sound_only">검색조건</label>
+    <label for="sfl" class="sound_only"><?php echo __('검색조건') ?></label>
     <select name="sfl" id="sfl">
-        <option value="wr_subject||wr_content"<?php echo get_selected($sfl, "wr_subject||wr_content") ?>>제목+내용</option>
-        <option value="wr_subject"<?php echo get_selected($sfl, "wr_subject") ?>>제목</option>
-        <option value="wr_content"<?php echo get_selected($sfl, "wr_content") ?>>내용</option>
-        <option value="mb_id"<?php echo get_selected($sfl, "mb_id") ?>>회원아이디</option>
-        <option value="wr_name"<?php echo get_selected($sfl, "wr_name") ?>>이름</option>
+        <option value="wr_subject||wr_content"<?php echo get_selected($sfl, "wr_subject||wr_content") ?>><?php echo __('제목+내용') ?></option>
+        <option value="wr_subject"<?php echo get_selected($sfl, "wr_subject") ?>><?php echo __('제목') ?></option>
+        <option value="wr_content"<?php echo get_selected($sfl, "wr_content") ?>><?php echo __('내용') ?></option>
+        <option value="mb_id"<?php echo get_selected($sfl, "mb_id") ?>><?php echo __('회원아이디') ?></option>
+        <option value="wr_name"<?php echo get_selected($sfl, "wr_name") ?>><?php echo __('이름') ?></option>
     </select>
 
-    <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <label for="stx" class="sound_only"><?php echo __('검색어') ?><strong class="sound_only"> <?php echo __('필수') ?></strong></label>
     <span class="sch_wr">
         <input type="text" name="stx" value="<?php echo $text_stx ?>" id="stx" required class="frm_input" size="40">
-        <button type="submit" class="btn_submit"><i class="fa fa-search" aria-hidden="true"></i> 검색</button>
+        <button type="submit" class="btn_submit"><i class="fa fa-search" aria-hidden="true"></i> <?php echo __('검색') ?></button>
     </span>
 
     <script>
@@ -74,11 +74,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
         if ($board_count) {
     ?>
     <section id="sch_res_ov">
-        <h2><strong><?php echo $stx ?></strong> 전체검색 결과</h2>
+        <h2><?php echo __('{1} 전체검색 결과', '<strong>'.$stx.'</strong>') ?></h2>
         <ul>
-            <li>게시판 <?php echo $board_count ?>개</li>
-            <li>게시물 <?php echo number_format($total_count) ?>개</li>
-        	<li><?php echo number_format($page) ?>/<?php echo number_format($total_page) ?> 페이지 열람 중</li>
+            <li><?php echo __('게시판 {1}개', $board_count) ?></li>
+            <li><?php echo __('게시물 {1}개', number_format($total_count)) ?></li>
+        	<li><?php echo number_format($page) ?>/<?php echo number_format($total_page) ?> <?php echo __('페이지 열람 중') ?></li>
         </ul>
     </section>
     <?php
@@ -91,13 +91,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
         if ($board_count) {
      ?>
     <ul id="sch_res_board">
-        <li><a href="?<?php echo $search_query ?>&amp;gr_id=<?php echo $gr_id ?>" <?php echo $sch_all ?>>전체게시판</a></li>
+        <li><a href="?<?php echo $search_query ?>&amp;gr_id=<?php echo $gr_id ?>" <?php echo $sch_all ?>><?php echo __('전체게시판') ?></a></li>
         <?php echo $str_board_list; ?>
     </ul>
     <?php
         } else {
      ?>
-    <div class="empty_list">검색된 자료가 하나도 없습니다.</div>
+    <div class="empty_list"><?php echo __('검색된 자료가 하나도 없습니다.') ?></div>
     <?php } }  ?>
 
     <hr>
@@ -108,14 +108,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
     for ($idx=$table_index, $k=0; $idx<count($search_table) && $k<$rows; $idx++) {
      ?>
 		<div class="search_board_result">
-        <h2><a href="<?php echo get_pretty_url($search_table[$idx], '', $search_query); ?>"><?php echo $bo_subject[$idx] ?> 게시판 내 결과</a></h2>
-		<a href="<?php echo get_pretty_url($search_table[$idx], '', $search_query); ?>" class="sch_more">더보기</a>
+        <h2><a href="<?php echo get_pretty_url($search_table[$idx], '', $search_query); ?>"><?php echo $bo_subject[$idx] ?> <?php echo __('게시판 내 결과') ?></a></h2>
+		<a href="<?php echo get_pretty_url($search_table[$idx], '', $search_query); ?>" class="sch_more"><?php echo __('더보기') ?></a>
         <ul>
         <?php
         for ($i=0; $i<count($list[$idx]) && $k<$rows; $i++, $k++) {
             if ($list[$idx][$i]['wr_is_comment'])
             {
-                $comment_def = '<span class="cmt_def"><i class="fa fa-commenting-o" aria-hidden="true"></i><span class="sound_only">댓글</span></span> ';
+                $comment_def = '<span class="cmt_def"><i class="fa fa-commenting-o" aria-hidden="true"></i><span class="sound_only">'.__('댓글').'</span></span> ';
                 $comment_href = '#c_'.$list[$idx][$i]['wr_id'];
             }
             else
@@ -128,7 +128,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
             <li>
                 <div class="sch_tit">
                     <a href="<?php echo $list[$idx][$i]['href'] ?><?php echo $comment_href ?>" class="sch_res_title"><?php echo $comment_def ?><?php echo $list[$idx][$i]['subject'] ?></a>
-                    <a href="<?php echo $list[$idx][$i]['href'] ?><?php echo $comment_href ?>" target="_blank" class="pop_a"><i class="fa fa-window-restore" aria-hidden="true"></i><span class="sound_only">새창</span></a>
+                    <a href="<?php echo $list[$idx][$i]['href'] ?><?php echo $comment_href ?>" target="_blank" class="pop_a"><i class="fa fa-window-restore" aria-hidden="true"></i><span class="sound_only"><?php echo __('새창') ?></span></a>
                 </div>
                 <p><?php echo $list[$idx][$i]['content'] ?></p>
                 <div class="sch_info">
