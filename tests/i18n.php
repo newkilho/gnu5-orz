@@ -2,7 +2,6 @@
 // 실행: php tests/i18n.php (DB 없이 실행, PHP 5.2 문법 사용)
 // 다국어(gnu5-orz): __() 사전 합치기·치환, 번역 없는 문구 수집, 언어별 주소, 사전 파일 무결성
 if (PHP_SAPI !== 'cli') exit;
-define('_GNUBOARD_', true);
 $root = dirname(dirname(__FILE__));
 
 function expect_i18n($condition, $message) {
@@ -12,7 +11,7 @@ function expect_i18n($condition, $message) {
     }
 }
 
-// config.php의 주소 상수 (상수는 한 번만 정할 수 있으므로 자식 프로세스에서 확인)
+// config.php의 주소 상수 (상수는 한 번만 정할 수 있으므로 자식 프로세스에서 확인. _GNUBOARD_는 config.php가 정한다)
 if (isset($argv[1]) && $argv[1] === 'config') {
     $_SERVER['REDIRECT_REDIRECT_KH_LANG'] = $argv[2];
     $g5_path = array('path' => $root, 'url' => 'https://example.com/sub');
@@ -44,6 +43,7 @@ foreach (array('ko' => '', 'en' => '/en', 'zh-hant' => '/zh-hant') as $lang => $
 }
 
 // __(): 임시 저장소에 사전 세 개를 두고 en으로 읽는다
+define('_GNUBOARD_', true);
 $tmp = sys_get_temp_dir().'/gnu5_i18n_test_'.getmypid();
 foreach (array('/root/lang', '/root/theme/t/lang', '/data/lang') as $d)
     mkdir($tmp.$d, 0777, true);
