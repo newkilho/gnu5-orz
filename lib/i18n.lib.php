@@ -20,8 +20,8 @@ function kh_dict()
         $has_theme = defined('G5_THEME_PATH');
         $dict = array();
         foreach (array(G5_PATH, $has_theme ? G5_THEME_PATH : '', G5_DATA_PATH) as $dir) {
-            if ($dir)
-                $dict = kh_dict_file($dir, KH_LANG) + $dict;
+            if ($dir)   // 빈값('')은 번역이 아니므로 앞 사전의 번역을 가리지 않게 뺀다
+                $dict = array_filter(kh_dict_file($dir, KH_LANG), 'strlen') + $dict;
         }
     }
 
@@ -47,12 +47,11 @@ function __($str)
     $has_param = (bool)preg_match('/\{[0-9]+\}/', $str);
     $key = (!$has_param && isset($args[0]) && $args[0] !== '') ? $args[0].'|'.$str : $str;
 
-    if (isset($dict[$key]) && $dict[$key] !== '') {
+    if (isset($dict[$key])) {
         $text = $dict[$key];
     } else {
         $text = $str;
-        if (!isset($dict[$key]))
-            kh_dict_miss($key);
+        kh_dict_miss($key);
     }
 
     if ($has_param) {
@@ -107,8 +106,8 @@ function kh_dict_miss_save()
     if (!$miss || !defined('G5_DATA_PATH'))
         return;
 
-    // 저장소 사전(lang/, 테마 lang/)에 영어가 있는 문구는 적지 않는다
-    $base = kh_dict_file(G5_PATH, 'en');
+    // 저장소 사전(lang/, 테마 lang/)에 영어가 있거나 이미 모은 문구는 적지 않는다
+    $base = kh_dict_file(G5_PATH, 'en') + kh_dict_file(G5_DATA_PATH, 'en');
     if (defined('G5_THEME_PATH'))
         $base = kh_dict_file(G5_THEME_PATH, 'en') + $base;
     $miss = array_diff_key($miss, $base);
