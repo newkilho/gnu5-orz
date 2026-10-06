@@ -15,8 +15,9 @@ $lang = (isset($_GET['lang']) && isset($langs[$_GET['lang']])) ? $_GET['lang'] :
 $base  = kh_dict_file(G5_THEME_PATH, $lang) + kh_dict_file(G5_PATH, $lang);   // git 사전 (lang/, 테마 lang/) — 보여 주지 않는다
 $saved = kh_dict_file(G5_DATA_PATH, $lang);                                    // 여기서 추가·수정한 것
 
-// 사전에 없는 문구만: 여기서 추가한 것 + DB 문구(사이트 이름, 게시판·그룹·메뉴·내용 제목)
-$keys = $saved;
+// 사전에 없는 문구만: __()가 모아 둔 data/lang/en.php의 키 + 여기서 추가한 것
+//                     + DB 문구(사이트 이름, 게시판·그룹·메뉴·내용 제목)
+$keys = $saved + kh_dict_file(G5_DATA_PATH, 'en');
 foreach (array(
     "select cf_title as s from {$g5['config_table']}",
     "select bo_subject as s from {$g5['board_table']} union select bo_mobile_subject from {$g5['board_table']}",
@@ -35,16 +36,11 @@ $g5['title'] = '다국어 문구';
 require_once './admin.head.php';
 ?>
 <style>
-.kh_i18n textarea {width:100%;box-sizing:border-box;height:auto;resize:vertical}
-.kh_i18n textarea[readonly] {background:#f7f7f7;border:0}
+.kh_i18n input[type="text"] {width:100%;box-sizing:border-box}
+.kh_i18n input[readonly] {background:#f7f7f7;border:0}
 .kh_i18n tr.hide {display:none}
 #kh_i18n_tools {display:flex;gap:10px;align-items:center;margin:10px 0}
 </style>
-
-<div class="local_desc01 local_desc">
-    <p>저장소 사전(<code>lang/</code>, 테마 <code>lang/</code>)에 없는 문구만 여기서 추가·수정·삭제합니다. 저장은 <code>data/lang/<?php echo $lang; ?>.php</code>.<br>
-    사이트 이름, 게시판·그룹·메뉴·내용 제목은 자동으로 목록에 나옵니다. 번역을 비우면 저장하지 않습니다. 값 자리 <code>{1}</code>, HTML 태그는 그대로 두세요.</p>
-</div>
 
 <form name="fi18n" method="post" action="./i18n_update.php" onsubmit="return kh_i18n_submit(this);">
 <input type="hidden" name="token" value="<?php echo get_admin_token(); ?>">
@@ -58,8 +54,7 @@ require_once './admin.head.php';
         <?php } ?>
     </select>
     <input type="text" id="kh_i18n_q" class="frm_input" size="40" placeholder="찾기" oninput="kh_i18n_filter()">
-    <label><input type="checkbox" id="kh_i18n_empty" onclick="kh_i18n_filter()"> 번역 없음만</label>
-    <a href="<?php echo G5_URL; ?>/<?php echo $lang; ?>/" target="_blank" rel="noopener">화면 보기</a>
+    <label><input type="checkbox" id="kh_i18n_empty" onclick="kh_i18n_filter()"> 번역 없음</label>
 </div>
 
 <div class="tbl_head01 tbl_wrap">
@@ -72,8 +67,8 @@ require_once './admin.head.php';
         $val = isset($saved[$key]) ? $saved[$key] : '';
     ?>
     <tr>
-        <td><textarea class="frm_input" rows="1" readonly><?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?></textarea></td>
-        <td><textarea class="frm_input" rows="<?php echo substr_count($val, "\n") + 1; ?>"><?php echo htmlspecialchars($val, ENT_QUOTES, 'UTF-8'); ?></textarea></td>
+        <td><input type="text" class="frm_input" value="<?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>" readonly></td>
+        <td><input type="text" class="frm_input" value="<?php echo htmlspecialchars($val, ENT_QUOTES, 'UTF-8'); ?>"></td>
         <td class="td_mng"><button type="button" class="btn btn_02" onclick="kh_i18n_del(this)">삭제</button></td>
     </tr>
     <?php } ?>
@@ -92,7 +87,7 @@ require_once './admin.head.php';
 function kh_i18n_submit(f) {
     var out = [];
     document.querySelectorAll('.kh_i18n tbody tr').forEach(function (r) {
-        var t = r.querySelectorAll('textarea');
+        var t = r.querySelectorAll('input[type="text"]');
         out.push([t[0].value, t[1].value]);
     });
     f.dict_json.value = JSON.stringify(out);
@@ -100,10 +95,10 @@ function kh_i18n_submit(f) {
 }
 function kh_i18n_add() {
     var r = document.querySelector('.kh_i18n tbody').insertRow(-1);
-    r.innerHTML = '<td><textarea class="frm_input" rows="1" placeholder="한국어 원문"></textarea></td>'
-        + '<td><textarea class="frm_input" rows="1"></textarea></td>'
+    r.innerHTML = '<td><input type="text" class="frm_input" placeholder="한국어 원문"></td>'
+        + '<td><input type="text" class="frm_input"></td>'
         + '<td class="td_mng"><button type="button" class="btn btn_02" onclick="kh_i18n_del(this)">삭제</button></td>';
-    r.querySelector('textarea').focus();
+    r.querySelector('input').focus();
 }
 function kh_i18n_del(b) {
     b.closest('tr').remove();
@@ -112,7 +107,7 @@ function kh_i18n_filter() {
     var q = document.getElementById('kh_i18n_q').value.trim().toLowerCase(),
         empty = document.getElementById('kh_i18n_empty').checked;
     document.querySelectorAll('.kh_i18n tbody tr').forEach(function (r) {
-        var t = r.querySelectorAll('textarea'),
+        var t = r.querySelectorAll('input[type="text"]'),
             hit = (t[0].value + ' ' + t[1].value).toLowerCase().indexOf(q) >= 0;
         r.classList.toggle('hide', (q !== '' && !hit) || (empty && t[1].value.trim() !== ''));
     });

@@ -6,7 +6,8 @@ if (!defined('_GNUBOARD_')) exit;
 // 사전: lang/<lang>.php (테마 밖 문구), theme/<테마>/lang/<lang>.php (테마 문구),
 //       data/lang/<lang>.php (관리자 → 환경설정 → 다국어 문구에서 고친 것·DB 문구)
 //       → return ['원문' => '번역', '문맥|원문' => '번역', ...]; 같은 키는 뒤의 사전이 우선
-// 번역이 없으면 한국어 원문을 그대로 돌려준다.
+// 번역이 없으면 한국어 원문을 그대로 돌려주고, 그 키를 data/lang/en.php에 빈값으로 적어 둔다
+// (키 목록은 en.php 하나로 모은다. 관리자 → 환경설정 → 다국어 문구가 이 목록을 쓴다).
 // 코어에서도 쓰므로 common.php가 일찍 읽는다.
 //------------------------------------------------------------------------------
 
@@ -46,7 +47,13 @@ function __($str)
     $has_param = (bool)preg_match('/\{[0-9]+\}/', $str);
     $key = (!$has_param && isset($args[0]) && $args[0] !== '') ? $args[0].'|'.$str : $str;
 
-    $text = (isset($dict[$key]) && $dict[$key] !== '') ? $dict[$key] : $str;
+    if (isset($dict[$key]) && $dict[$key] !== '') {
+        $text = $dict[$key];
+    } else {
+        $text = $str;
+        if (!isset($dict[$key]))
+            kh_dict_miss($key);
+    }
 
     if ($has_param) {
         $map = array();
@@ -56,6 +63,91 @@ function __($str)
     }
 
     return $text;
+}
+
+// data/lang/<lang>.php 쓰기 (true/false)
+function kh_dict_write($lang, $dict)
+{
+    $dir = G5_DATA_PATH.'/lang';
+    if (!is_dir($dir)) {
+        @mkdir($dir, G5_DIR_PERMISSION);
+        @chmod($dir, G5_DIR_PERMISSION);
+    }
+    $file = $dir.'/'.$lang.'.php';
+
+    ksort($dict);
+    $body = "<?php\nif (!defined('_GNUBOARD_')) exit;\n\n// 다국어 문구 ($lang) — 관리자 → 환경설정 → 다국어 문구\nreturn ".var_export($dict, true).";\n";
+    if (@file_put_contents($file, $body) === false)
+        return false;
+    @chmod($file, G5_FILE_PERMISSION);
+    if (function_exists('opcache_invalidate'))
+        @opcache_invalidate($file, true);
+
+    return true;
+}
+
+// 사전에 없는 키 모으기 (요청이 끝날 때 한 번 저장)
+function kh_dict_miss($key = null)
+{
+    static $miss = array();
+
+    if ($key === null)
+        return $miss;
+    if ($key === '' || isset($miss[$key]))
+        return;
+    if (!$miss)
+        register_shutdown_function('kh_dict_miss_save');
+    $miss[$key] = '';
+}
+
+// 모은 키를 data/lang/en.php에 빈값으로 덧붙인다 (있는 번역은 건드리지 않는다)
+function kh_dict_miss_save()
+{
+    $miss = kh_dict_miss();
+    if (!$miss || !defined('G5_DATA_PATH'))
+        return;
+
+    // 저장소 사전(lang/, 테마 lang/)에 영어가 있는 문구는 적지 않는다
+    $base = kh_dict_file(G5_PATH, 'en');
+    if (defined('G5_THEME_PATH'))
+        $base = kh_dict_file(G5_THEME_PATH, 'en') + $base;
+    $miss = array_diff_key($miss, $base);
+    if (!$miss)
+        return;
+
+    $dir = G5_DATA_PATH.'/lang';
+    if (!is_dir($dir)) {
+        @mkdir($dir, G5_DIR_PERMISSION);
+        @chmod($dir, G5_DIR_PERMISSION);
+    }
+    $file = $dir.'/en.php';
+
+    $fp = @fopen($file, 'c+');
+    if (!$fp)
+        return;
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return;
+    }
+
+    if (function_exists('opcache_invalidate'))
+        @opcache_invalidate($file, true);
+    $saved = kh_dict_file(G5_DATA_PATH, 'en');
+    $dict = $saved + $miss;
+
+    if (count($dict) != count($saved)) {
+        ksort($dict);
+        $body = "<?php\nif (!defined('_GNUBOARD_')) exit;\n\n// 다국어 문구 (en) — 관리자 → 환경설정 → 다국어 문구\nreturn ".var_export($dict, true).";\n";
+        if (ftruncate($fp, 0) && fwrite($fp, $body) !== false) {
+            fflush($fp);
+            @chmod($file, G5_FILE_PERMISSION);
+            if (function_exists('opcache_invalidate'))
+                @opcache_invalidate($file, true);
+        }
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
 }
 
 // 지원 언어 (코드 => 그 언어로 쓴 이름). 주소 접두사는 .htaccess 규칙과 같아야 한다
