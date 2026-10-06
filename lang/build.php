@@ -8,7 +8,7 @@ if (PHP_SAPI !== 'cli') exit;
 define('_GNUBOARD_', true);
 
 $lang = isset($argv[1]) ? $argv[1] : '';
-if (!preg_match('/^[a-z]{2}(-[A-Za-z]{2,4})?$/', $lang) || $lang === 'ko') {
+if (!preg_match('/^[a-z]{2}(-[a-z]{2,4})?$/', $lang) || $lang === 'ko') {
     fwrite(STDERR, "사용: php lang/build.php <언어코드, 예: en>\n");
     exit(1);
 }

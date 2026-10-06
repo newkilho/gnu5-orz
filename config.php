@@ -82,7 +82,7 @@ define('G5_CONTENT_DIR',    'content');
 // 접두사를 G5_URL에도 붙여, 그누보드가 만드는 링크가 모두 같은 언어를 유지하게 한다
 $kh_lang = 'ko';
 foreach (array('KH_LANG', 'REDIRECT_KH_LANG', 'REDIRECT_REDIRECT_KH_LANG') as $kh_key) {
-    if (isset($_SERVER[$kh_key]) && preg_match('/^[a-z]{2}(-[A-Za-z]{2,4})?$/', $_SERVER[$kh_key])) {
+    if (isset($_SERVER[$kh_key]) && preg_match('/^[a-z]{2}(-[a-z]{2,4})?$/', $_SERVER[$kh_key])) {
         $kh_lang = $_SERVER[$kh_key];
         break;
     }
