@@ -158,6 +158,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 <div id="bo_list_total">
     <span><?php echo __('전체 {1}건', number_format($total_count)) ?></span>
     <?php echo $page ?> <?php echo __('페이지') ?>
+
 </div>
 
 <fieldset id="bo_sch">
