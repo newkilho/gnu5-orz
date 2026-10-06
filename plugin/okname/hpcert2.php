@@ -115,7 +115,7 @@ $phone_no = hyphen_hp_number($req_num);
 
 // 명의 변경 체크
 if (!empty($member['mb_certify']) && !empty($member['mb_dupinfo']) && strlen($member['mb_dupinfo']) != 64) { // 이미 인증된 계정중에 dupinfo가 di(64 length)가 아닐때
-    if($member['mb_dupinfo'] != $mb_dupinfo) alert_close("해당 계정은 이미 다른명의로 본인인증 되어있는 계정입니다.");
+    if($member['mb_dupinfo'] != $mb_dupinfo) alert_close(__("해당 계정은 이미 다른명의로 본인인증 되어있는 계정입니다."));
 }
 
 // 중복정보 체크

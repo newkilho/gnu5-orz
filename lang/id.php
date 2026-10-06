@@ -579,6 +579,7 @@ Komentar
 '열린' => 'Saat ini',
 '다음' => 'Berikutnya',
 '맨끝' => 'Terakhir',
+'$url1 과 $url2 를 지정해 주세요.' => 'Harap tentukan $url1 dan $url2.',
 '답변글' => 'Balasan',
 '{1} 자기소개' => 'Tentang {1}',
 '{1} 이름으로 검색' => 'Cari berdasarkan nama {1}',

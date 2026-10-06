@@ -159,7 +159,7 @@ if( $cert_enc_use == "Y" )
 
         // 정상인증인지 체크
         if(!$phone_no)
-            alert_close("정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.");
+            alert_close(__("정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요."));
 
         $phone_no = hyphen_hp_number($phone_no);
         $mb_dupinfo = $di;
@@ -169,7 +169,7 @@ if( $cert_enc_use == "Y" )
         if (empty($row['mb_id'])) { // ci로 등록된 계정이 없다면
             $row = sql_fetch("select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$mb_dupinfo}'"); // di데이터로 찾음
             if (empty($row['mb_id'])) { // di로 등록된 계정도 없다면
-                alert_close("인증하신 정보로 가입된 회원정보가 없습니다.");
+                alert_close(__("인증하신 정보로 가입된 회원정보가 없습니다."));
                 exit;
             }
         }else{
@@ -208,7 +208,7 @@ else if( $cert_enc_use != "Y" )
         echo 'window.parent.$("#kcp_cert" ).css("display", "none");'.PHP_EOL;
         echo '</script>'.PHP_EOL;
     } else {
-        alert_close("휴대폰 본인확인을 취소 하셨습니다.");
+        alert_close(__("휴대폰 본인확인을 취소 하셨습니다."));
     }
     exit;
 }

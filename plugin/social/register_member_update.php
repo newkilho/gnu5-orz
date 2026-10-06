@@ -4,21 +4,21 @@ include_once(G5_LIB_PATH.'/register.lib.php');
 include_once(G5_LIB_PATH.'/mailer.lib.php');
 
 if (!($w == '' || $w == 'u')) {
-    alert('w 값이 제대로 넘어오지 않았습니다.');
+    alert(__('w 값이 제대로 넘어오지 않았습니다.'));
 }
 
 if( ! $config['cf_social_login_use'] ){
-    alert('소셜 로그인을 사용하지 않습니다.', G5_URL);
+    alert(__('소셜 로그인을 사용하지 않습니다.'), G5_URL);
 }
 
 if( $is_member ){
-    alert('이미 회원가입 하였습니다.', G5_URL);
+    alert(__('이미 회원가입 하였습니다.'), G5_URL);
 }
 
 $provider_name = social_get_request_provider();
 $user_profile = social_session_exists_check();
 if( ! $user_profile ){
-    alert( "소셜로그인 을 하신 분만 접근할 수 있습니다.", G5_URL);
+    alert(__("소셜로그인 을 하신 분만 접근할 수 있습니다."), G5_URL);
 }
 
 // 소셜 가입된 내역이 있는지 확인 상수 G5_SOCIAL_DELETE_DAY 관련
@@ -35,7 +35,7 @@ $mb_name        = isset($_POST['mb_name']) ? addslashes(clean_xss_tags(trim(stri
 $profile_phone = isset($user_profile->phone) ? $user_profile->phone : '';
 $profile_phone = valid_mb_hp($profile_phone) ? '' : $profile_phone;
 if (isset($_POST['mb_hp']) && !is_string($_POST['mb_hp'])) {
-    alert('휴대폰번호를 올바르게 입력해 주십시오.', '', true, true);
+    alert(__('휴대폰번호를 올바르게 입력해 주십시오.'), '', true, true);
 }
 $mb_hp = isset($_POST['mb_hp']) ? trim($_POST['mb_hp']) : $profile_phone;
 if ($config['cf_req_hp'] || $mb_hp !== '') {
@@ -85,7 +85,7 @@ if ($msg = exist_mb_nick($mb_nick, $mb_id))     alert($msg, "", true, true);
 if ($msg = exist_mb_email($mb_email, $mb_id))   alert($msg, "", true, true);
 
 if( $mb = get_member($mb_id) ){
-    alert("이미 등록된 회원이 존재합니다.", G5_URL);
+    alert(__("이미 등록된 회원이 존재합니다."), G5_URL);
 }
 
 $data = array(
@@ -160,7 +160,7 @@ if($config['cf_cert_use']) {
         $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '".get_session('ss_cert_dupinfo')."' ";
         $row = sql_fetch($sql);
         if (!empty($row['mb_id'])) {
-            alert("입력하신 본인확인 정보로 가입된 내역이 존재합니다.");
+            alert(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다."));
         }
     }
 
@@ -186,7 +186,7 @@ if($config['cf_cert_use']) {
             if($w == 'u')
                 $sql_certify .= " , mb_name = '{$mb_name}' ";
         }else {
-            alert('본인인증된 정보와 개인정보가 일치하지않습니다. 다시시도 해주세요');
+            alert(__('본인인증된 정보와 개인정보가 일치하지않습니다. 다시시도 해주세요'));
         }
     } else {
         if (get_session("ss_reg_mb_name") != $mb_name || get_session("ss_reg_mb_hp") != $mb_hp) {
@@ -352,6 +352,6 @@ if($result) {
 
 } else {
 
-    alert('회원 가입 오류!', G5_URL );
+    alert(__('회원 가입 오류!'), G5_URL );
 
 }

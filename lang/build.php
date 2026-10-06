@@ -1,5 +1,5 @@
 <?php
-// 사전 틀 만들기: 코드의 __('원문'), __('원문', '문맥')과 alert/alert_close/confirm('원문') 키를 모아 사전에 쓴다.
+// 사전 틀 만들기: 코드의 __('원문'), __('원문', '문맥') 키를 모아 사전에 쓴다.
 //   테마 밖 문구 → lang/<lang>.php, theme/<테마>/ 문구 → theme/<테마>/lang/<lang>.php
 // 사용: php lang/build.php en
 // 이미 있는 번역은 그대로 두고 새 키는 빈 값('')으로 추가한다. 빈 값이면 화면에는 원문이 나온다.
@@ -37,7 +37,7 @@ function build_scan($file, $rel, &$keys)
     $n = count($tokens);
     for ($i = 0; $i < $n; $i++) {
         $t = $tokens[$i];
-        // alert/alert_close/confirm은 함수 안에서 __()를 거치므로 첫 문구도 키다
+        // alert/alert_close/confirm은 번역하지 않으므로 글자 문구가 바로 오면 알려 준다
         if (!is_array($t) || $t[0] !== T_STRING || !in_array($t[1], array('__', 'alert', 'alert_close', 'confirm')) || !isset($tokens[$i + 1]) || $tokens[$i + 1] !== '(')
             continue;
         // 함수 정의, 메서드 호출은 제외
@@ -48,11 +48,8 @@ function build_scan($file, $rel, &$keys)
         $str = isset($tokens[$i + 2]) ? build_literal($tokens[$i + 2]) : null;
         $next = isset($tokens[$i + 3]) ? $tokens[$i + 3] : null;
         if ($t[1] !== '__') {
-            if ($str !== null && $next === '.')
-                fwrite(STDERR, "알림 문구에 값이 이어붙음(__('…{1}', 값)으로 바꿀 것)	$rel:{$t[2]}
-");
-            elseif ($str !== null && $str !== '' && ($next === ')' || $next === ',') && !isset($keys[$str]))
-                $keys[$str] = $rel;
+            if ($str !== null && preg_match('/[\x{AC00}-\x{D7A3}]/u', $str))
+                fwrite(STDERR, "알림 문구가 __() 밖에 있음(__('…') 또는 __('…{1}', 값)으로 감쌀 것)\t$rel:{$t[2]}\n");
             continue;
         }
         if ($str === null || ($next !== ')' && $next !== ',')) {

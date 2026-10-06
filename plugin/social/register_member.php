@@ -6,17 +6,17 @@ include_once(G5_LIB_PATH.'/register.lib.php');
 define('ASIDE_DISABLE', 1);
 
 if( ! $config['cf_social_login_use'] ){
-    alert('소셜 로그인을 사용하지 않습니다.');
+    alert(__('소셜 로그인을 사용하지 않습니다.'));
 }
 
 if( $is_member ){
-    alert('이미 회원가입 하였습니다.', G5_URL);
+    alert(__('이미 회원가입 하였습니다.'), G5_URL);
 }
 
 $provider_name = social_get_request_provider();
 $user_profile = social_session_exists_check();
 if( ! $user_profile ){
-    alert( "소셜로그인을 하신 분만 접근할 수 있습니다.", G5_URL);
+    alert(__("소셜로그인을 하신 분만 접근할 수 있습니다."), G5_URL);
 }
 
 // 소셜 가입된 내역이 있는지 확인 상수 G5_SOCIAL_DELETE_DAY 관련

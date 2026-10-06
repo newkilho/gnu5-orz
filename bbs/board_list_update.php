@@ -7,7 +7,7 @@ $count = (isset($_POST['chk_wr_id']) && is_array($_POST['chk_wr_id'])) ? count($
 $post_btn_submit = isset($_POST['btn_submit']) ? clean_xss_tags($_POST['btn_submit'], 1, 1) : '';
 
 if(!$count) {
-    alert(__('{1} 하실 항목을 하나 이상 선택하세요.', kh_t($post_btn_submit)));
+    alert(__('{1} 하실 항목을 하나 이상 선택하세요.', in_array($post_btn_submit, array('선택삭제', '선택복사', '선택이동'), true) ? __($post_btn_submit) : $post_btn_submit));
 }
 
 if($post_btn_submit === '선택삭제') {
@@ -19,5 +19,5 @@ if($post_btn_submit === '선택삭제') {
     $sw = 'move';
     include './move.php';
 } else {
-    alert('올바른 방법으로 이용해 주세요.');
+    alert(__('올바른 방법으로 이용해 주세요.'));
 }

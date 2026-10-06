@@ -27,7 +27,7 @@ if (G5_IS_MOBILE) {
 }
 
 if (! (isset($co['co_id']) && $co['co_id']))
-    alert('등록된 내용이 없습니다.');
+    alert(__('등록된 내용이 없습니다.'));
 
 $g5['title'] = __($co['co_subject']);
 

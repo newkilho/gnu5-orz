@@ -555,9 +555,9 @@ function social_check_login_before($p_service=''){
                     set_session('ss_social_mylink_token', '');
                     if (!$mylink_token) {
                         if ($use_popup == 1 || !$use_popup) {
-                            alert_close('올바른 방법으로 이용해 주십시오.');
+                            alert_close(__('올바른 방법으로 이용해 주십시오.'));
                         } else {
-                            alert('올바른 방법으로 이용해 주십시오.');
+                            alert(__('올바른 방법으로 이용해 주십시오.'));
                         }
                         exit;
                     }
@@ -759,7 +759,7 @@ function social_member_comfirm_redirect(){
                 social_logout_with_adapter($adapter);
             }
 
-            alert('SNS 사용자 인증에 실패하였습니다.', G5_URL);
+            alert(__('SNS 사용자 인증에 실패하였습니다.'), G5_URL);
         }
 
         if( $user_provider = social_get_data('provider', $provider_name, $user_profile) ){
@@ -780,7 +780,7 @@ function social_member_comfirm_redirect(){
         }
 
         set_session('ss_social_provider', '');
-        alert('잘못된 요청입니다.', G5_URL);
+        alert(__('잘못된 요청입니다.'), G5_URL);
     }
 }
 

@@ -26,7 +26,7 @@ if (isset($fm_id) && $fm_id){
 }
 
 if (! (isset($fm['fm_id']) && $fm['fm_id']))
-    alert('등록된 내용이 없습니다.');
+    alert(__('등록된 내용이 없습니다.'));
 
 $g5['title'] = $fm['fm_subject'];
 

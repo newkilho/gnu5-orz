@@ -13,7 +13,7 @@ switch ($page_type) {
         $result_url = G5_KCPCERT_V2_URL.'/find_kcpcert_result.php';
         break;
     default:
-        alert_close('잘못된 접근입니다.');
+        alert_close(__('잘못된 접근입니다.'));
 }
 
 certify_count_check($member['mb_id'], 'hp');

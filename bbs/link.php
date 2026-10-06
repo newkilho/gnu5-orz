@@ -10,15 +10,15 @@ if (isset($write['wr_subject']) && $write['wr_subject']) {
 $no = isset($_REQUEST['no']) ? preg_replace('/[^0-9]/i', '', $_REQUEST['no']) : '';
 
 if (!($bo_table && $wr_id && $no))
-    alert_close('값이 제대로 넘어오지 않았습니다.');
+    alert_close(__('값이 제대로 넘어오지 않았습니다.'));
 
 // SQL Injection 예방
 $row = sql_fetch(" select count(*) as cnt from {$g5['write_prefix']}{$bo_table} ", FALSE);
 if (!(isset($row['cnt']) && $row['cnt']))
-    alert_close('존재하는 게시판이 아닙니다.');
+    alert_close(__('존재하는 게시판이 아닙니다.'));
 
 if (!(isset($write['wr_link'.$no]) && $write['wr_link'.$no]))
-    alert_close('링크가 없습니다.');
+    alert_close(__('링크가 없습니다.'));
 
 $ss_name = 'ss_link_'.$bo_table.'_'.$wr_id.'_'.$no;
 if (empty($_SESSION[$ss_name]))

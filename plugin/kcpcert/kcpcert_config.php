@@ -26,7 +26,7 @@ if ($config['cf_cert_use'] == 2) { // 실서비스
 }
 
 if(!$site_cd)
-    alert('KCP 휴대폰 본인확인 서비스 사이트코드가 없습니다.\\관리자 > 기본환경설정에 KCP 사이트코드를 입력해 주십시오.', G5_URL);
+    alert(__('KCP 휴대폰 본인확인 서비스 사이트코드가 없습니다.\\관리자 > 기본환경설정에 KCP 사이트코드를 입력해 주십시오.'), G5_URL);
 
 // KCP 인증 라이브러리
 require G5_KCPCERT_PATH.'/lib/ct_cli_lib.php';

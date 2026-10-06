@@ -579,6 +579,7 @@ Kommentar
 '열린' => 'Aktuel',
 '다음' => 'Næste',
 '맨끝' => 'Sidste',
+'$url1 과 $url2 를 지정해 주세요.' => 'Angiv $url1 og $url2.',
 '답변글' => 'Svar',
 '{1} 자기소개' => 'Om {1}',
 '{1} 이름으로 검색' => 'Søg efter navnet {1}',

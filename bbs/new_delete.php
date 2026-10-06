@@ -4,7 +4,7 @@ include_once('./_common.php');
 //print_r2($_POST); exit;
 
 if ($is_admin != 'super')
-    alert("최고관리자만 접근이 가능합니다.");
+    alert(__("최고관리자만 접근이 가능합니다."));
 
 $board = array('bo_table'=>'');
 $save_bo_table = array();

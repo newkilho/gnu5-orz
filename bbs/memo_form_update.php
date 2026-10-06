@@ -5,10 +5,10 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 if (function_exists('check_request_origin')) check_request_origin(G5_BBS_URL);
 
 if ($is_guest)
-    alert('회원만 이용하실 수 있습니다.');
+    alert(__('회원만 이용하실 수 있습니다.'));
 
 if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
+    alert(__('자동등록방지 숫자가 틀렸습니다.'));
 }
 
 $recv_list = isset($_POST['me_recv_mb_id']) ? explode(',', trim($_POST['me_recv_mb_id'])) : array();
@@ -52,7 +52,7 @@ if ($error_msg && !$is_admin)
     alert(__("회원아이디 '{1}' 은(는) 존재(또는 정보공개)하지 않는 회원아이디 이거나 탈퇴, 접근차단된 회원아이디 입니다.\\n쪽지를 발송하지 않았습니다.", $error_msg));
 
 if (! count($member_list['id'])){
-    alert('해당 회원이 존재하지 않습니다.');
+    alert(__('해당 회원이 존재하지 않습니다.'));
 }
 
 if (!$is_admin) {
@@ -111,5 +111,5 @@ if ($member_list) {
     
     run_event('memo_form_update_failed', $member_list, $redirect_url, $_POST['me_memo']);
 
-    alert("회원아이디 오류 같습니다.", $redirect_url, false);
+    alert(__("회원아이디 오류 같습니다."), $redirect_url, false);
 }

@@ -10,7 +10,7 @@ $w == u : 수정
 ==========================*/
 
 if($is_guest)
-    alert('회원이시라면 로그인 후 이용해 보십시오.', './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
+    alert(__('회원이시라면 로그인 후 이용해 보십시오.'), './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
 
 $msg = array();
 
@@ -21,7 +21,7 @@ $token = isset($_POST['token']) ? clean_xss_tags($_POST['token'], 1, 1) : '';
 
 //모든 회원의 토큰을 검사합니다.
 if (!($token && $write_token === $token))
-    alert('올바른 방법으로 이용해 주십시오.');
+    alert(__('올바른 방법으로 이용해 주십시오.'));
 
 // 1:1문의 설정값
 $qaconfig = get_qa_config();
@@ -31,10 +31,10 @@ if(trim($qaconfig['qa_category'])) {
     if($w != 'a') {
         $category = explode('|', $qaconfig['qa_category']);
         if(!in_array($qa_category, $category))
-            alert('분류를 올바르게 지정해 주십시오.');
+            alert(__('분류를 올바르게 지정해 주십시오.'));
     }
 } else {
-    alert('1:1문의 설정에서 분류를 설정해 주십시오');
+    alert(__('1:1문의 설정에서 분류를 설정해 주십시오'));
 }
 
 // e-mail 체크
@@ -72,7 +72,7 @@ $qa_hp = isset($_POST['qa_hp']) ? preg_replace('/[^0-9\-]/', '', $_POST['qa_hp']
 
 // 090710
 if (substr_count($qa_content, '&#') > 50) {
-    alert('내용에 올바르지 않은 코드가 다수 포함되어 있습니다.');
+    alert(__('내용에 올바르지 않은 코드가 다수 포함되어 있습니다.'));
     exit;
 }
 
@@ -101,7 +101,7 @@ for ($i=1; $i<=5; $i++) {
 
 if($w == 'u' || $w == 'a' || $w == 'r') {
     if($w == 'a' && $is_admin !== 'super')
-        alert('답변은 관리자만 등록할 수 있습니다.');
+        alert(__('답변은 관리자만 등록할 수 있습니다.'));
 
     $sql = " select * from {$g5['qa_content_table']} where qa_id = '$qa_id' ";
     // 최고관리자가 아니면 본인 문의만 대상으로 (게시판/그룹 관리자 문맥으로 우회 불가)
@@ -113,23 +113,23 @@ if($w == 'u' || $w == 'a' || $w == 'r') {
 
     if($w == 'u') {
         if(!$write['qa_id'])
-            alert('게시글이 존재하지 않습니다.\\n삭제되었거나 자신의 글이 아닌 경우입니다.');
+            alert(__('게시글이 존재하지 않습니다.\\n삭제되었거나 자신의 글이 아닌 경우입니다.'));
 
         if($is_admin !== 'super') {
             if($write['qa_type'] == 0 && $write['qa_status'] == 1)
-                alert('답변이 등록된 문의글은 수정할 수 없습니다.');
+                alert(__('답변이 등록된 문의글은 수정할 수 없습니다.'));
 
             if($write['mb_id'] != $member['mb_id'])
-                alert('게시글을 수정할 권한이 없습니다.\\n\\n올바른 방법으로 이용해 주십시오.', G5_URL);
+                alert(__('게시글을 수정할 권한이 없습니다.\\n\\n올바른 방법으로 이용해 주십시오.'), G5_URL);
         }
     }
 
     if($w == 'a') {
         if(!$write['qa_id'])
-            alert('문의글이 존재하지 않아 답변글을 등록할 수 없습니다.');
+            alert(__('문의글이 존재하지 않아 답변글을 등록할 수 없습니다.'));
 
         if($write['qa_type'] == 1)
-            alert('답변글에는 다시 답변을 등록할 수 없습니다.');
+            alert(__('답변글에는 다시 답변을 등록할 수 없습니다.'));
     }
 }
 
@@ -137,7 +137,7 @@ if (isset($_FILES['bf_file']['name']) && is_array($_FILES['bf_file']['name'])) {
     foreach ($_FILES['bf_file']['name'] as $filename) {
         $filename = get_safe_filename($filename);
         if (is_disallowed_active_filename($filename)) {
-            alert('허용되지 않는 파일 확장자입니다.');
+            alert(__('허용되지 않는 파일 확장자입니다.'));
         }
     }
 }
@@ -152,7 +152,7 @@ for ($i=1; $i<=$upload_count; $i++) {
 }
 
 if($file_count > 2)
-    alert('첨부파일을 2개 이하로 업로드 해주십시오.');
+    alert(__('첨부파일을 2개 이하로 업로드 해주십시오.'));
 
 // 디렉토리가 없다면 생성합니다. (퍼미션도 변경하구요.)
 @mkdir(G5_DATA_PATH.'/qa', G5_DIR_PERMISSION);

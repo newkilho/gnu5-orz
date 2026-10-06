@@ -8,11 +8,11 @@ if ($sw === 'move')
 else if ($sw === 'copy')
     $act = __('복사');
 else
-    alert('sw 값이 제대로 넘어오지 않았습니다.');
+    alert(__('sw 값이 제대로 넘어오지 않았습니다.'));
 
 // 게시판 관리자 이상 복사, 이동 가능
 if ($is_admin != 'board' && $is_admin != 'group' && $is_admin != 'super')
-    alert_close("게시판 관리자 이상 접근이 가능합니다.");
+    alert_close(__("게시판 관리자 이상 접근이 가능합니다."));
 
 $g5['title'] = __('게시물 {1}', $act);
 include_once(G5_PATH.'/head.sub.php');

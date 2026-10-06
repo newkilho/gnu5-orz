@@ -579,6 +579,7 @@ Comentario
 '열린' => 'Actual',
 '다음' => 'Siguiente',
 '맨끝' => 'Última',
+'$url1 과 $url2 를 지정해 주세요.' => 'Indique $url1 y $url2.',
 '답변글' => 'Respuesta',
 '{1} 자기소개' => 'Presentación de {1}',
 '{1} 이름으로 검색' => 'Buscar por el nombre {1}',

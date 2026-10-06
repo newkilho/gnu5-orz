@@ -32,7 +32,7 @@ if ($url) {
         $url = 'http:' . $url;
 
     if (preg_match('#\\\0#', $url) || preg_match('/^\/{1,}\\\/', $url)) {
-        alert('url 에 올바르지 않은 값이 포함되어 있습니다.', G5_URL);
+        alert(__('url 에 올바르지 않은 값이 포함되어 있습니다.'), G5_URL);
     }
 
     $p = @parse_url(urldecode(str_replace('\\', '', $url)));
@@ -41,7 +41,7 @@ if ($url) {
         // http://localhost/bbs/logout.php?url=http://sir.kr%23@/
     */
     if (preg_match('/^https?:\/\//i', $url) || $p['scheme'] || $p['host']) {
-        alert('url에 도메인을 지정할 수 없습니다.', G5_URL);
+        alert(__('url에 도메인을 지정할 수 없습니다.'), G5_URL);
     }
 
     if($url == 'shop')

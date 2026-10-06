@@ -4,27 +4,27 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 include_once(G5_LIB_PATH.'/mailer.lib.php');
 
 if (!$config['cf_email_use'])
-    alert('환경설정에서 "메일발송 사용"에 체크하셔야 메일을 발송할 수 있습니다.\\n\\n관리자에게 문의하시기 바랍니다.');
+    alert(__('환경설정에서 "메일발송 사용"에 체크하셔야 메일을 발송할 수 있습니다.\\n\\n관리자에게 문의하시기 바랍니다.'));
 
 if (!$is_member && $config['cf_formmail_is_member'])
-    alert_close('회원만 이용하실 수 있습니다.');
+    alert_close(__('회원만 이용하실 수 있습니다.'));
 
 // 발송 횟수 제한 (직접 POST 우회 방지)
 $sendmail_count = (int)get_session('ss_sendmail_count') + 1;
 set_session('ss_sendmail_count', $sendmail_count);
 if ($sendmail_count > 3) {
-    alert_close('폼메일 발송 횟수를 초과하였습니다.');
+    alert_close(__('폼메일 발송 횟수를 초과하였습니다.'));
 }
 
 $email_enc = new str_encrypt();
 $to = $email_enc->decrypt($to);
 
 if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
+    alert(__('자동등록방지 숫자가 틀렸습니다.'));
 }
 
 if (!preg_match("/([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)\.([0-9a-zA-Z_-]+)/", $to)){
-    alert_close('E-mail 주소가 형식에 맞지 않아서, 메일을 보낼수 없습니다.');
+    alert_close(__('E-mail 주소가 형식에 맞지 않아서, 메일을 보낼수 없습니다.'));
 }
 
 $file = array();
@@ -35,7 +35,7 @@ for ($i=1; $i<=$attach; $i++) {
     if (isset($_FILES[$file_key]['name']) && $_FILES[$file_key]['name']) {
         $filename = get_safe_filename($_FILES[$file_key]['name']);
         if (is_disallowed_active_filename($filename)) {
-            alert_close('허용되지 않는 파일 확장자입니다.');
+            alert_close(__('허용되지 않는 파일 확장자입니다.'));
         }
     }
 }
@@ -89,6 +89,6 @@ if(!empty($file)) {
 $html_title = __('메일 발송중');
 include_once(G5_PATH.'/head.sub.php');
 
-alert_close('메일을 정상적으로 발송하였습니다.');
+alert_close(__('메일을 정상적으로 발송하였습니다.'));
 
 include_once(G5_PATH.'/tail.sub.php');

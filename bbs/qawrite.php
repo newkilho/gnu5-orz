@@ -5,14 +5,14 @@ include_once(G5_EDITOR_LIB);
 $is_admin = get_super_admin_type($is_admin);
 
 if($w != '' && $w != 'u' && $w != 'r') {
-    alert('올바른 방법으로 이용해 주십시오.');
+    alert(__('올바른 방법으로 이용해 주십시오.'));
 }
 
 $qa_id = isset($_REQUEST['qa_id']) ? (int) $_REQUEST['qa_id'] : 0;
 $write = array('qa_email_recv'=>'', 'qa_subject'=>'', 'qa_category'=>'');
 
 if($is_guest)
-    alert('회원이시라면 로그인 후 이용해 보십시오.', './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
+    alert(__('회원이시라면 로그인 후 이용해 보십시오.'), './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
 
 $qaconfig = get_qa_config();
 $token = _token();
@@ -40,14 +40,14 @@ if(is_file($skin_file)) {
 
         if($w == 'u') {
             if(!$write['qa_id'])
-                alert('게시글이 존재하지 않습니다.\\n삭제되었거나 자신의 글이 아닌 경우입니다.');
+                alert(__('게시글이 존재하지 않습니다.\\n삭제되었거나 자신의 글이 아닌 경우입니다.'));
 
             if($is_admin !== 'super') {
                 if($write['qa_type'] == 0 && $write['qa_status'] == 1)
-                    alert('답변이 등록된 문의글은 수정할 수 없습니다.');
+                    alert(__('답변이 등록된 문의글은 수정할 수 없습니다.'));
 
                 if($write['mb_id'] != $member['mb_id'])
-                    alert('게시글을 수정할 권한이 없습니다.\\n\\n올바른 방법으로 이용해 주십시오.', G5_URL);
+                    alert(__('게시글을 수정할 권한이 없습니다.\\n\\n올바른 방법으로 이용해 주십시오.'), G5_URL);
             }
         }
     }
@@ -61,7 +61,7 @@ if(is_file($skin_file)) {
             $category_option .= option_selected($category[$i], $write['qa_category']);
         }
     } else {
-        alert('1:1문의 설정에서 분류를 설정해 주십시오');
+        alert(__('1:1문의 설정에서 분류를 설정해 주십시오'));
     }
 
     $is_dhtml_editor = false;

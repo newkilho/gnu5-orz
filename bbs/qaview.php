@@ -7,7 +7,7 @@ $is_admin = get_super_admin_type($is_admin);
 $qa_id = isset($_REQUEST['qa_id']) ? (int) $_REQUEST['qa_id'] : 0;
 
 if($is_guest)
-    alert('회원이시라면 로그인 후 이용해 보십시오.', './login.php?url='.urlencode(G5_BBS_URL.'/qaview.php?qa_id='.$qa_id));
+    alert(__('회원이시라면 로그인 후 이용해 보십시오.'), './login.php?url='.urlencode(G5_BBS_URL.'/qaview.php?qa_id='.$qa_id));
 
 $qaconfig = get_qa_config();
 $content = '';
@@ -30,7 +30,7 @@ if(is_file($skin_file)) {
     $view = sql_fetch($sql);
 
     if(!(isset($view['qa_id']) && $view['qa_id']))
-        alert('게시글이 존재하지 않습니다.\\n삭제되었거나 자신의 글이 아닌 경우입니다.');
+        alert(__('게시글이 존재하지 않습니다.\\n삭제되었거나 자신의 글이 아닌 경우입니다.'));
 
     $subject_len = G5_IS_MOBILE ? $qaconfig['qa_mobile_subject_len'] : $qaconfig['qa_subject_len'];
 

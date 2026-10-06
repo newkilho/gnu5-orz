@@ -40,7 +40,7 @@ switch ($w) {
         }
         break;
     default :
-        alert('w 값이 제대로 넘어오지 않았습니다.');
+        alert(__('w 값이 제대로 넘어오지 않았습니다.'));
 }
 
 include_once(G5_PATH.'/head.sub.php');

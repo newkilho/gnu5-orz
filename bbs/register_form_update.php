@@ -9,16 +9,16 @@ include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 referer_check();
 
 if (!($w == '' || $w == 'u')) {
-    alert('w 값이 제대로 넘어오지 않았습니다.');
+    alert(__('w 값이 제대로 넘어오지 않았습니다.'));
 }
 
 if ($w == 'u' && $is_admin == 'super') {
     if (file_exists(G5_PATH.'/DEMO'))
-        alert('데모 화면에서는 하실(보실) 수 없는 작업입니다.');
+        alert(__('데모 화면에서는 하실(보실) 수 없는 작업입니다.'));
 }
 
 if (run_replace('register_member_chk_captcha', !chk_captcha(), $w)) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
+    alert(__('자동등록방지 숫자가 틀렸습니다.'));
 }
 
 if($w == 'u')
@@ -26,10 +26,10 @@ if($w == 'u')
 else if($w == '')
     $mb_id = isset($_POST['mb_id']) ? trim($_POST['mb_id']) : '';
 else
-    alert('잘못된 접근입니다', G5_URL);
+    alert(__('잘못된 접근입니다'), G5_URL);
 
 if(!$mb_id)
-    alert('회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.');
+    alert(__('회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.'));
 
 $mb_password    = isset($_POST['mb_password']) ? trim($_POST['mb_password']) : '';
 $mb_password_re = isset($_POST['mb_password_re']) ? trim($_POST['mb_password_re']) : '';
@@ -111,11 +111,11 @@ if ($w == '' || $w == 'u') {
     // 서버환경에 따라 정상적으로 체크되지 않을 수 있음.
     $tmp_mb_name = iconv('UTF-8', 'UTF-8//IGNORE', $mb_name);
     if($tmp_mb_name != $mb_name) {
-        alert('이름을 올바르게 입력해 주십시오.');
+        alert(__('이름을 올바르게 입력해 주십시오.'));
     }
     $tmp_mb_nick = iconv('UTF-8', 'UTF-8//IGNORE', $mb_nick);
     if($tmp_mb_nick != $mb_nick) {
-        alert('닉네임을 올바르게 입력해 주십시오.');
+        alert(__('닉네임을 올바르게 입력해 주십시오.'));
     }
 
     // 비밀번호를 체크하는 상태의 기본값은 true이며, 비밀번호를 체크하지 않으려면 hook 을 통해 false 값으로 바꿔야 합니다.
@@ -123,9 +123,9 @@ if ($w == '' || $w == 'u') {
 
     if ($is_check_password){
         if ($w == '' && !$mb_password)
-            alert('비밀번호가 넘어오지 않았습니다.');
+            alert(__('비밀번호가 넘어오지 않았습니다.'));
         if ($w == '' && $mb_password != $mb_password_re)
-            alert('비밀번호가 일치하지 않습니다.');
+            alert(__('비밀번호가 일치하지 않습니다.'));
     }
 
     if ($msg = empty_mb_name($mb_name))       alert($msg, "", true, true);
@@ -152,23 +152,23 @@ if ($w == '' || $w == 'u') {
             set_session('ss_check_mb_nick', '');
             set_session('ss_check_mb_email', '');
 
-            alert('올바른 방법으로 이용해 주십시오.');
+            alert(__('올바른 방법으로 이용해 주십시오.'));
         }
 
         // 본인확인 체크
         if($config['cf_cert_use'] && $config['cf_cert_req']) {
             $post_cert_no = isset($_POST['cert_no']) ? trim($_POST['cert_no']) : '';
             if($post_cert_no !== get_session('ss_cert_no') || ! get_session('ss_cert_no'))
-                alert("회원가입을 위해서는 본인확인을 해주셔야 합니다.");
+                alert(__("회원가입을 위해서는 본인확인을 해주셔야 합니다."));
         }
 
         if ($config['cf_use_recommend'] && $mb_recommend) {
             if (!exist_mb_id($mb_recommend))
-                alert("추천인이 존재하지 않습니다.");
+                alert(__("추천인이 존재하지 않습니다."));
         }
 
         if (strtolower($mb_id) == strtolower($mb_recommend)) {
-            alert('본인을 추천할 수 없습니다.');
+            alert(__('본인을 추천할 수 없습니다.'));
         }
     } else {
         // 자바스크립트로 정보변경이 가능한 버그 수정
@@ -197,7 +197,7 @@ if($config['cf_cert_use'] && get_session('ss_cert_type') && get_session('ss_cert
     $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '".get_session('ss_cert_dupinfo')."' ";
     $row = sql_fetch($sql);
     if (!empty($row['mb_id'])) {
-        alert("입력하신 본인확인 정보로 가입된 내역이 존재합니다.");
+        alert(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다."));
     }
 }
 
@@ -225,7 +225,7 @@ if ($config['cf_cert_use'] && $cert_type && $md5_cert_no) {
         if($w == 'u')
             $sql_certify .= " , mb_name = '{$mb_name}' ";
     }else {
-        alert('본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요');
+        alert(__('본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요'));
     }
 } else {
     if (get_session("ss_reg_mb_name") != $mb_name || get_session("ss_reg_mb_hp") != $mb_hp) {
@@ -382,10 +382,10 @@ if ($w == '') {
 
 } else if ($w == 'u') {
     if (!trim(get_session('ss_mb_id')))
-        alert('로그인 되어 있지 않습니다.');
+        alert(__('로그인 되어 있지 않습니다.'));
 
     if (trim($_POST['mb_id']) != $mb_id)
-        alert("로그인된 정보와 수정하려는 정보가 틀리므로 수정할 수 없습니다.\\n만약 올바르지 않은 방법을 사용하신다면 바로 중지하여 주십시오.");
+        alert(__("로그인된 정보와 수정하려는 정보가 틀리므로 수정할 수 없습니다.\\n만약 올바르지 않은 방법을 사용하신다면 바로 중지하여 주십시오."));
 
     $sql_password = "";
     if ($mb_password)
@@ -704,7 +704,7 @@ if ($w == '') {
 
     if ($old_email != $mb_email && $config['cf_use_email_certify']) {
         set_session('ss_mb_id', '');
-        alert('회원 정보가 수정 되었습니다.\n\nE-mail 주소가 변경되었으므로 다시 인증하셔야 합니다.', G5_URL);
+        alert(__('회원 정보가 수정 되었습니다.\n\nE-mail 주소가 변경되었으므로 다시 인증하셔야 합니다.'), G5_URL);
     } else {
         echo '
         <!doctype html>

@@ -7,14 +7,14 @@ $po_id = isset($_POST['po_id']) ? preg_replace('/[^0-9]/', '', $_POST['po_id']) 
 
 $po = sql_fetch(" select * from {$g5['poll_table']} where po_id = '$po_id' ");
 if (! (isset($po['po_id']) && $po['po_id']))
-    alert('po_id 값이 제대로 넘어오지 않았습니다.');
+    alert(__('po_id 값이 제대로 넘어오지 않았습니다.'));
 
 if ($member['mb_level'] < $po['po_level'])
     alert_close(__('권한 {1} 이상 회원만 투표에 참여하실 수 있습니다.', $po['po_level']));
 
 $gb_poll = isset($_POST['gb_poll']) ? preg_replace('/[^0-9]/', '', $_POST['gb_poll']) : 0;
 if(!$gb_poll)
-    alert_close('항목을 선택하세요.');
+    alert_close(__('항목을 선택하세요.'));
 
 $post_skin_dir = isset($_POST['skin_dir']) ? clean_xss_tags($_POST['skin_dir'], 1, 1) : '';
 $result_url = G5_BBS_URL."/poll_result.php?po_id=$po_id&skin_dir={$post_skin_dir}";

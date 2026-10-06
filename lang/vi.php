@@ -579,6 +579,7 @@ Bình luận
 '열린' => 'Hiện tại',
 '다음' => 'Sau',
 '맨끝' => 'Cuối',
+'$url1 과 $url2 를 지정해 주세요.' => 'Vui lòng chỉ định $url1 và $url2.',
 '답변글' => 'Bài trả lời',
 '{1} 자기소개' => 'Giới thiệu của {1}',
 '{1} 이름으로 검색' => 'Tìm theo tên {1}',

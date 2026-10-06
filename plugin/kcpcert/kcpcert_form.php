@@ -14,7 +14,7 @@ switch($_GET['pageType']){ // 페이지 타입 체크
         $resultPage = "/find_kcpcert_result.php";
         break;
     default:
-        alert_close('잘못된 접근입니다.');
+        alert_close(__('잘못된 접근입니다.'));
 }
 
 // kcp 휴대폰인증파일

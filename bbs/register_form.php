@@ -26,7 +26,7 @@ if ($w == "") {
 
     // 회원 로그인을 한 경우 회원가입 할 수 없다
     // 경고창이 뜨는것을 막기위해 아래의 코드로 대체
-    // alert("이미 로그인중이므로 회원 가입 하실 수 없습니다.", "./");
+    // alert(__("이미 로그인중이므로 회원 가입 하실 수 없습니다."), "./");
     if ($is_member) {
         goto_url(G5_URL);
     }
@@ -35,11 +35,11 @@ if ($w == "") {
     referer_check();
 
     if (!isset($_POST['agree']) || !$_POST['agree']) {
-        alert('회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/register.php');
+        alert(__('회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.'), G5_BBS_URL.'/register.php');
     }
 
     if (!isset($_POST['agree2']) || !$_POST['agree2']) {
-        alert('개인정보 수집 및 이용의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/register.php');
+        alert(__('개인정보 수집 및 이용의 내용에 동의하셔야 회원가입 하실 수 있습니다.'), G5_BBS_URL.'/register.php');
     }
 
     $agree  = preg_replace('#[^0-9]#', '', $_POST['agree']);
@@ -63,17 +63,17 @@ if ($w == "") {
 } else if ($w == 'u') {
 
     if ($is_admin == 'super')
-        alert('관리자의 회원정보는 관리자 화면에서 수정해 주십시오.', G5_URL);
+        alert(__('관리자의 회원정보는 관리자 화면에서 수정해 주십시오.'), G5_URL);
 
     if (!$is_member)
-        alert('로그인 후 이용하여 주십시오.', G5_URL);
+        alert(__('로그인 후 이용하여 주십시오.'), G5_URL);
 
     if ($member['mb_id'] != $_POST['mb_id'])
-        alert('로그인된 회원과 넘어온 정보가 서로 다릅니다.');
+        alert(__('로그인된 회원과 넘어온 정보가 서로 다릅니다.'));
 
     /*
     if (!($member[mb_password] == sql_password($_POST[mb_password]) && $_POST[mb_password]))
-        alert("비밀번호가 틀립니다.");
+        alert(__("비밀번호가 틀립니다."));
 
     // 수정 후 다시 이 폼으로 돌아오기 위해 임시로 저장해 놓음
     set_session("ss_tmp_password", $_POST[mb_password]);
@@ -81,7 +81,7 @@ if ($w == "") {
     
     if($_POST['mb_id'] && ! (isset($_POST['mb_password']) && $_POST['mb_password'])){
         if( ! $is_social_login_modify ){
-            alert('비밀번호를 입력해 주세요.');
+            alert(__('비밀번호를 입력해 주세요.'));
         }
     }
 
@@ -95,7 +95,7 @@ if ($w == "") {
         }
 
         if (!$pass_check)
-            alert('비밀번호가 틀립니다.');
+            alert(__('비밀번호가 틀립니다.'));
     }
 
     $g5['title'] = __('회원 정보 수정');
@@ -124,7 +124,7 @@ if ($w == "") {
     $member['mb_9']           = get_text($member['mb_9']);
     $member['mb_10']          = get_text($member['mb_10']);
 } else {
-    alert('w 값이 제대로 넘어오지 않았습니다.');
+    alert(__('w 값이 제대로 넘어오지 않았습니다.'));
 }
 
 include_once('./_head.php');

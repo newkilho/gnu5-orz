@@ -579,6 +579,7 @@ Yorum
 '열린' => 'Geçerli',
 '다음' => 'Sonraki',
 '맨끝' => 'Son',
+'$url1 과 $url2 를 지정해 주세요.' => 'Lütfen $url1 ve $url2 değerlerini belirtin.',
 '답변글' => 'Yanıt',
 '{1} 자기소개' => '{1} - Hakkımda',
 '{1} 이름으로 검색' => '{1} adıyla ara',

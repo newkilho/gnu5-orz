@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if ($is_guest)
-    alert('로그인 한 회원만 접근하실 수 있습니다.', G5_BBS_URL.'/login.php');
+    alert(__('로그인 한 회원만 접근하실 수 있습니다.'), G5_BBS_URL.'/login.php');
 
 while (1) {
     $tmp = preg_replace('/&#[^;]+;/', '', $url);

@@ -579,6 +579,7 @@ Reactie
 '열린' => 'Huidige',
 '다음' => 'Volgende',
 '맨끝' => 'Laatste',
+'$url1 과 $url2 를 지정해 주세요.' => 'Geef $url1 en $url2 op.',
 '답변글' => 'Antwoord',
 '{1} 자기소개' => 'Over {1}',
 '{1} 이름으로 검색' => 'Zoeken op naam {1}',

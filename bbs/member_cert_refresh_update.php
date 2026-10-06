@@ -5,11 +5,11 @@ global $g5;
 
 // 로그인 검증 (본인인증 갱신은 로그인 필수)
 if (!$is_member) {
-    alert('로그인 후 이용해 주십시오.', G5_BBS_URL.'/login.php');
+    alert(__('로그인 후 이용해 주십시오.'), G5_BBS_URL.'/login.php');
 }
 
 if (!($w == '' || $w == 'u')) {
-    alert('w 값이 제대로 넘어오지 않았습니다.');
+    alert(__('w 값이 제대로 넘어오지 않았습니다.'));
 }
 $url = urldecode($url);
 
@@ -19,10 +19,10 @@ if($w == '') {
     $mb_name = isset($_POST['mb_name']) ? trim($_POST['mb_name']) : '';
     $mb_hp = isset($_POST['mb_hp']) ? trim($_POST['mb_hp']) : '';
 } else
-    alert('잘못된 접근입니다', G5_URL);
+    alert(__('잘못된 접근입니다'), G5_URL);
 
 if(!$mb_id)
-    alert('회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.');
+    alert(__('회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.'));
 
 //===============================================================
 //  본인확인
@@ -33,7 +33,7 @@ if($config['cf_cert_use'] && get_session('ss_cert_type') && get_session('ss_cert
     $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '".get_session('ss_cert_dupinfo')."' ";
     $row = sql_fetch($sql);
     if (!empty($row['mb_id'])) {
-        alert("입력하신 본인확인 정보로 가입된 내역이 존재합니다.");
+        alert(__("입력하신 본인확인 정보로 가입된 내역이 존재합니다."));
     }
 }
 
@@ -60,7 +60,7 @@ if ($config['cf_cert_use'] && $cert_type && $md5_cert_no) {
         $sql_certify .= " , mb_dupinfo = '".get_session('ss_cert_dupinfo')."' ";
         $sql_certify .= " , mb_name = '{$mb_name}' ";
     }else {
-        alert('본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요');
+        alert(__('본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요'));
     }
 } else {
     if (get_session("ss_reg_mb_name") != $mb_name || get_session("ss_reg_mb_hp") != $mb_hp) {

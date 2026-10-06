@@ -22,7 +22,7 @@ switch($_GET['pageType']){
         $resultPage = "/find_hpcert2.php";
         break;
     default:
-        alert_close('잘못된 접근입니다.');
+        alert_close(__('잘못된 접근입니다.'));
 }
 // KISA 취약점 내용(KVE-2018-0291) hpcert1.php의 $cmd 함수에 대한 인자 값은 hpcert_config.php 파일에서 설정되나, 이를 다른 페이지에서 포함한 뒤 호출할 시 임의 값 설정 가능
 // 이에 include_once 를 require 로 수정함
@@ -46,7 +46,7 @@ if($ret == 126) {
 }
 
 if($ret == -1) {
-    alert_close('모듈실행 파일의 실행권한이 없습니다.\\n\\ncmd.exe의 IUSER 실행권한이 있는지 확인하여 주십시오.');
+    alert_close(__('모듈실행 파일의 실행권한이 없습니다.\\n\\ncmd.exe의 IUSER 실행권한이 있는지 확인하여 주십시오.'));
 }
 
 /**************************************************************************

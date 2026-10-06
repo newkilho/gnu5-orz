@@ -579,6 +579,7 @@ Kommentar
 '열린' => 'Aktuell',
 '다음' => 'Weiter',
 '맨끝' => 'Ende',
+'$url1 과 $url2 를 지정해 주세요.' => 'Bitte geben Sie $url1 und $url2 an.',
 '답변글' => 'Antwort',
 '{1} 자기소개' => 'Über {1}',
 '{1} 이름으로 검색' => 'Nach Name {1} suchen',

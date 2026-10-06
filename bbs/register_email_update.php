@@ -5,7 +5,7 @@ include_once(G5_LIB_PATH.'/mailer.lib.php');
 
 // 로그인 검증
 if (!$is_member) {
-    alert('로그인 후 이용해 주십시오.', G5_BBS_URL.'/login.php');
+    alert(__('로그인 후 이용해 주십시오.'), G5_BBS_URL.'/login.php');
 }
 
 // 본인 계정만 수정 가능 (POST mb_id 무시, 세션 회원 ID 사용)
@@ -13,13 +13,13 @@ $mb_id = $member['mb_id'];
 $mb_email = isset($_POST['mb_email']) ? get_email_address(trim($_POST['mb_email'])) : '';
 
 if(!$mb_id || !$mb_email)
-    alert('올바른 방법으로 이용해 주십시오.', G5_URL);
+    alert(__('올바른 방법으로 이용해 주십시오.'), G5_URL);
 
 // ckey 검증 (register_email.php 폼에서 전달받은 인증키)
 $ckey = isset($_POST['ckey']) ? trim($_POST['ckey']) : '';
 $key = get_email_cert_key($mb_id, $member['mb_datetime']);
 if (!$ckey || $ckey !== $key) {
-    alert('올바른 방법으로 이용해 주십시오.', G5_URL);
+    alert(__('올바른 방법으로 이용해 주십시오.'), G5_URL);
 }
 
 $esc_mb_id = sql_real_escape_string($mb_id);
@@ -27,11 +27,11 @@ $esc_mb_id = sql_real_escape_string($mb_id);
 $sql = " select mb_name from {$g5['member_table']} where mb_id = '{$esc_mb_id}' and substring(mb_email_certify, 1, 1) = '0' ";
 $mb = sql_fetch($sql);
 if (!$mb) {
-    alert("이미 메일인증 하신 회원입니다.", G5_URL);
+    alert(__("이미 메일인증 하신 회원입니다."), G5_URL);
 }
 
 if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
+    alert(__('자동등록방지 숫자가 틀렸습니다.'));
 }
 
 $sql = " select count(*) as cnt from {$g5['member_table']} where mb_id <> '{$esc_mb_id}' and mb_email = '$mb_email' ";

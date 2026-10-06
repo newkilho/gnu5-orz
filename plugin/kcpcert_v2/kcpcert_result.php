@@ -16,13 +16,13 @@ $g5['title'] = __('휴대폰인증 결과');
 include_once(G5_PATH.'/head.sub.php');
 
 if ($res_cd === '') {
-    alert_close('본인확인 응답값이 없습니다. 처음부터 다시 시도해 주세요.');
+    alert_close(__('본인확인 응답값이 없습니다. 처음부터 다시 시도해 주세요.'));
 }
 
 @insert_cert_history($member['mb_id'], 'kcp_v2', 'hp');
 
 if ($res_cd === '9999') {
-    alert_close('휴대폰 본인확인을 취소 하셨습니다.');
+    alert_close(__('휴대폰 본인확인을 취소 하셨습니다.'));
 }
 
 if ($res_cd !== '0000') {
@@ -30,7 +30,7 @@ if ($res_cd !== '0000') {
 }
 
 if (!$reg_cert_key || !$ordr_idxx) {
-    alert_close('본인확인 세션이 만료되었습니다. 처음부터 다시 시도해 주세요.');
+    alert_close(__('본인확인 세션이 만료되었습니다. 처음부터 다시 시도해 주세요.'));
 }
 
 $api  = new C_KCP_API_V2($site_cd, $kcp_enc_key, $cert_reg_url, $cert_dec_url);
@@ -48,7 +48,7 @@ $ci         = trim($cert['ci']);
 $di         = trim($cert['di']);
 
 if (!$phone_no || !$user_name || !$birth_day || !$ci || !$di) {
-    alert_close('정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.');
+    alert_close(__('정상적인 인증이 아닙니다. 올바른 방법으로 이용해 주세요.'));
 }
 
 $phone_no   = hyphen_hp_number($phone_no);
@@ -57,7 +57,7 @@ $sql_dupinfo = sql_real_escape_string($mb_dupinfo);
 
 if (!empty($member['mb_certify']) && !empty($member['mb_dupinfo']) && strlen($member['mb_dupinfo']) != 64) {
     if ($member['mb_dupinfo'] != $mb_dupinfo) {
-        alert_close('해당 계정은 이미 다른명의로 본인인증 되어있는 계정입니다.');
+        alert_close(__('해당 계정은 이미 다른명의로 본인인증 되어있는 계정입니다.'));
     }
 }
 

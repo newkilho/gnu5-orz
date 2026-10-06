@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if ($is_guest)
-    alert_close('회원만 이용하실 수 있습니다.');
+    alert_close(__('회원만 이용하실 수 있습니다.'));
 
 set_session('ss_memo_delete_token', $token = uniqid(time()));
 
@@ -16,7 +16,7 @@ if ($kind == 'recv')
 else if ($kind == 'send')
     $unkind = 'recv';
 else {
-    alert("kind 변수 값이 올바르지 않습니다.");
+    alert(__("kind 변수 값이 올바르지 않습니다."));
 }
 
 if ($page < 1) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)

@@ -579,6 +579,7 @@ Comment
 '열린' => 'Current',
 '다음' => 'Next',
 '맨끝' => 'Last',
+'$url1 과 $url2 를 지정해 주세요.' => 'Please specify $url1 and $url2.',
 '답변글' => 'Reply',
 '{1} 자기소개' => 'About {1}',
 '{1} 이름으로 검색' => 'Search by name {1}',

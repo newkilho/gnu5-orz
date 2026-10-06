@@ -2,7 +2,7 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 if(!$config['cf_cert_use'] || $config['cf_cert_ipin'] != 'kcb')
-    alert('기본환경설정에서 KCB 아이핀 본인확인 서비스로 설정해 주십시오.');
+    alert(__('기본환경설정에서 KCB 아이핀 본인확인 서비스로 설정해 주십시오.'));
 
 // key 디렉토리 체크
 require_once('./key_dir_check.php');

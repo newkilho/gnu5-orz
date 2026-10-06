@@ -10,18 +10,18 @@ $sql = " select mb_email, mb_datetime, mb_ip, mb_email_certify, mb_id from {$g5[
 $mb = sql_fetch($sql);
 
 if(! (isset($mb['mb_id']) && $mb['mb_id'])){
-    alert("해당 회원이 존재하지 않습니다.", G5_URL);
+    alert(__("해당 회원이 존재하지 않습니다."), G5_URL);
 }
 
 if (substr($mb['mb_email_certify'],0,1)!=0) {
-    alert("이미 메일인증 하신 회원입니다.", G5_URL);
+    alert(__("이미 메일인증 하신 회원입니다."), G5_URL);
 }
 
 $ckey = isset($_GET['ckey']) ? trim($_GET['ckey']) : '';
 $key  = get_email_cert_key($mb_id, $mb['mb_datetime']);
 
 if(!$ckey || $ckey !== $key)
-    alert('올바른 방법으로 이용해 주십시오.', G5_URL);
+    alert(__('올바른 방법으로 이용해 주십시오.'), G5_URL);
 ?>
 
 <p class="rg_em_p"><?php echo __('메일인증을 받지 못한 경우 회원정보의 메일주소를 변경 할 수 있습니다.') ?></p>

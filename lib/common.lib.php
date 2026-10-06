@@ -254,7 +254,7 @@ function alert($msg='', $url='', $error=true, $post=false)
         $url = safe_filter_url_host($url);
     }
 
-    $msg = $msg ? strip_tags(kh_t($msg), '<br>') : __('올바른 방법으로 이용해 주십시오.');
+    $msg = $msg ? strip_tags($msg, '<br>') : __('올바른 방법으로 이용해 주십시오.');
 
     $header = '';
     if (isset($g5['title'])) {
@@ -272,7 +272,7 @@ function alert_close($msg, $error=true)
     
     run_event('alert_close', $msg, $error);
 
-    $msg = strip_tags(kh_t($msg), '<br>');
+    $msg = strip_tags($msg, '<br>');
 
     $header = '';
     if (isset($g5['title'])) {
@@ -288,7 +288,7 @@ function confirm($msg, $url1='', $url2='', $url3='')
     global $g5, $config, $member, $is_member, $is_admin, $board;
 
     if (!$msg) {
-        $msg = '올바른 방법으로 이용해 주십시오.';
+        $msg = __('올바른 방법으로 이용해 주십시오.');
         alert($msg);
     }
 
@@ -299,13 +299,13 @@ function confirm($msg, $url1='', $url2='', $url3='')
     }
 
     if(!trim($url1) || !trim($url2)) {
-        $msg = '$url1 과 $url2 를 지정해 주세요.';
+        $msg = __('$url1 과 $url2 를 지정해 주세요.');
         alert($msg);
     }
 
     if (!$url3) $url3 = clean_xss_tags($_SERVER['HTTP_REFERER']);
 
-    $msg = str_replace("\\n", "<br>", kh_t($msg));
+    $msg = str_replace("\\n", "<br>", $msg);
 
     $header = '';
     if (isset($g5['title'])) {
@@ -2332,7 +2332,7 @@ function referer_check($url='')
         $url = G5_URL;
 
     if (!preg_match("/^http['s']?:\/\/".$_SERVER['HTTP_HOST']."/", $_SERVER['HTTP_REFERER']))
-        alert("제대로 된 접근이 아닌것 같습니다.", $url);
+        alert(__("제대로 된 접근이 아닌것 같습니다."), $url);
     */
 }
 
@@ -2448,7 +2448,7 @@ function check_demo()
 {
     global $is_admin;
     if ($is_admin != 'super' && file_exists(G5_PATH.'/DEMO'))
-        alert('데모 화면에서는 하실(보실) 수 없는 작업입니다.');
+        alert(__('데모 화면에서는 하실(보실) 수 없는 작업입니다.'));
 }
 
 
@@ -2603,7 +2603,7 @@ function check_token($expire = 7200)
 
     $dot = strpos($token, '.');
     if (!$token || $dot === false) {
-        alert('올바른 방법으로 이용해 주십시오.');
+        alert(__('올바른 방법으로 이용해 주십시오.'));
         return false;
     }
 
@@ -2612,7 +2612,7 @@ function check_token($expire = 7200)
 
     // 만료 검증
     if (abs(time() - $time) > $expire) {
-        alert('토큰이 만료되었습니다. 페이지를 새로고침 해주십시오.');
+        alert(__('토큰이 만료되었습니다. 페이지를 새로고침 해주십시오.'));
         return false;
     }
 
@@ -2622,7 +2622,7 @@ function check_token($expire = 7200)
     $expected = hash_hmac('sha256', $secret . '|csrf_token|' . $time, $key);
 
     if ($hmac !== $expected) {
-        alert('올바른 방법으로 이용해 주십시오.');
+        alert(__('올바른 방법으로 이용해 주십시오.'));
         return false;
     }
 
@@ -2738,7 +2738,7 @@ function g5_require_security_mail_url()
     $url = g5_security_mail_base_url();
     if ($url === false) {
         error_log('[g5 security mail] Valid G5_DOMAIN is required.');
-        alert('메일 인증을 위한 사이트 주소가 설정되지 않았습니다. 사이트 관리자에게 문의해 주십시오.');
+        alert(__('메일 인증을 위한 사이트 주소가 설정되지 않았습니다. 사이트 관리자에게 문의해 주십시오.'));
     }
     return $url;
 }
@@ -2851,12 +2851,12 @@ function check_request_origin($redirect_url = '')
     $source  = $origin !== '' ? $origin : $referer;
 
     if ($source === '') {
-        alert('올바른 경로로 접근해 주십시오.', $redirect_url);
+        alert(__('올바른 경로로 접근해 주십시오.'), $redirect_url);
     }
 
     $source_host = @parse_url($source, PHP_URL_HOST);
     if (!$source_host) {
-        alert('올바른 경로로 접근해 주십시오.', $redirect_url);
+        alert(__('올바른 경로로 접근해 주십시오.'), $redirect_url);
     }
 
     // config.php의 G5_URL에서 호스트 추출 (HTTP_HOST보다 신뢰할 수 있음)
@@ -2874,7 +2874,7 @@ function check_request_origin($redirect_url = '')
     $server_host = preg_replace('/^www\./i', '', $server_host);
 
     if (!$server_host || strcasecmp($source_host, $server_host) !== 0) {
-        alert('올바른 경로로 접근해 주십시오.', $redirect_url);
+        alert(__('올바른 경로로 접근해 주십시오.'), $redirect_url);
     }
 
     return true;
@@ -3133,9 +3133,9 @@ function check_device($device)
     if ($is_admin) return;
 
     if ($device=='pc' && G5_IS_MOBILE) {
-        alert('PC 전용 게시판입니다.', G5_URL);
+        alert(__('PC 전용 게시판입니다.'), G5_URL);
     } else if ($device=='mobile' && !G5_IS_MOBILE) {
-        alert('모바일 전용 게시판입니다.', G5_URL);
+        alert(__('모바일 전용 게시판입니다.'), G5_URL);
     }
 }
 
@@ -3868,7 +3868,7 @@ function module_exec_check($exe, $type)
             if($is_linux) {
 
                 if ( !function_exists('exec') ) {
-                    alert('exec 함수실행이 불가능하므로 사용할수 없습니다.');
+                    alert(__('exec 함수실행이 불가능하므로 사용할수 없습니다.'));
                 }
 
                 $search = false;
@@ -3976,7 +3976,7 @@ function check_input_vars()
         $input_vars = $post_vars + $get_vars + $cookie_vars;
 
         if($input_vars > $max_input_vars) {
-            alert('폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.');
+            alert(__('폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.'));
         }
     }
 }
@@ -4365,11 +4365,11 @@ function check_url_host($url, $msg='', $return_url=G5_URL, $is_redirect=false)
 
     // KVE-2021-1277 Open Redirect 취약점 해결
     if (preg_match('#\\\0#', $url) || preg_match('/^\/{1,}\\\/', $url)) {
-        alert('url 에 올바르지 않은 값이 포함되어 있습니다.');
+        alert(__('url 에 올바르지 않은 값이 포함되어 있습니다.'));
     }
 
     if (preg_match('#//[^/@]+@#', $url)) {
-        alert('url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.');
+        alert(__('url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.'));
     }
 
     while ( ( $replace_url = preg_replace(array('/\/{2,}/', '/\\@/'), array('//', ''), urldecode($url)) ) != $url ) {
@@ -4398,7 +4398,7 @@ function check_url_host($url, $msg='', $return_url=G5_URL, $is_redirect=false)
 
     // if(stripos($url, 'http:') !== false) {
     //     if(!isset($p['scheme']) || !$p['scheme'] || !isset($p['host']) || !$p['host'])
-    //         alert('url 정보가 올바르지 않습니다.', $return_url);
+    //         alert(__('url 정보가 올바르지 않습니다.'), $return_url);
     // }
 
     //php 5.6.29 이하 버전에서는 parse_url 버그가 존재함
@@ -4739,14 +4739,14 @@ function get_write_token($bo_table)
 function check_write_token($bo_table)
 {
     if(!$bo_table)
-        alert('올바른 방법으로 이용해 주십시오.', G5_URL);
+        alert(__('올바른 방법으로 이용해 주십시오.'), G5_URL);
 
     $token = get_session('ss_write_'.$bo_table.'_token');
     set_session('ss_write_'.$bo_table.'_token', '');
 
     if (!is_string($token) || !$token || !isset($_POST['token']) || !is_string($_POST['token'])
         || !slow_equals($token, $_POST['token']))
-        alert('올바른 방법으로 이용해 주십시오.', G5_URL);
+        alert(__('올바른 방법으로 이용해 주십시오.'), G5_URL);
 
     return true;
 }

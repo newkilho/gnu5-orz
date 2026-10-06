@@ -4,7 +4,7 @@ include_once('./_common.php');
 $is_admin = get_super_admin_type($is_admin);
 
 if($is_guest)
-    alert('회원이시라면 로그인 후 이용해 주십시오.', G5_URL);
+    alert(__('회원이시라면 로그인 후 이용해 주십시오.'), G5_URL);
 
 $token = isset($_REQUEST['token']) ? clean_xss_tags($_REQUEST['token'], 1, 1) : '';
 $qa_id = isset($_REQUEST['qa_id']) ? (int) $_REQUEST['qa_id'] : 0;
@@ -14,7 +14,7 @@ set_session('ss_qa_delete_token', '');
 
 //모든 회원의 토큰을 검사합니다.
 if (!($token && $delete_token === $token))
-    alert('토큰 에러로 삭제 불가합니다.');
+    alert(__('토큰 에러로 삭제 불가합니다.'));
 
 $tmp_array = array();
 $deleted = array();
@@ -25,7 +25,7 @@ else // 일괄삭제
 
 $count = count($tmp_array);
 if(!$count)
-    alert('삭제할 게시글을 하나이상 선택해 주십시오.');
+    alert(__('삭제할 게시글을 하나이상 선택해 주십시오.'));
 
 for($i=0; $i<$count; $i++) {
     $qa_id = (int) $tmp_array[$i];

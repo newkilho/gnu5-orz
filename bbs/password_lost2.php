@@ -4,17 +4,17 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 include_once(G5_LIB_PATH.'/mailer.lib.php');
 
 if ($is_member) {
-    alert_close('이미 로그인중입니다.', G5_URL);
+    alert_close(__('이미 로그인중입니다.'), G5_URL);
 }
 
 if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
+    alert(__('자동등록방지 숫자가 틀렸습니다.'));
 }
 
 $email = get_email_address(trim($_POST['mb_email']));
 
 if (!$email)
-    alert_close('메일주소 오류입니다.');
+    alert_close(__('메일주소 오류입니다.'));
 
 // OWASP 권장: 이메일 존재 여부와 무관하게 동일한 응답 메시지 사용
 // (이메일 열거 공격 방지)

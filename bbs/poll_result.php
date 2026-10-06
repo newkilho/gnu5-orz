@@ -7,7 +7,7 @@ $skin_dir = isset($skin_dir) ? clean_relative_paths(strip_tags($skin_dir)) : '';
 
 $po = sql_fetch(" select * from {$g5['poll_table']} where po_id = '{$po_id}' ");
 if (!$po['po_id'])
-    alert('설문조사 정보가 없습니다.');
+    alert(__('설문조사 정보가 없습니다.'));
 
 if ($member['mb_level'] < $po['po_level'])
     alert(__('권한 {1} 이상의 회원만 결과를 보실 수 있습니다.', $po['po_level']));

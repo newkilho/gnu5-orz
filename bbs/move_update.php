@@ -6,10 +6,10 @@ $count_chk_bo_table = (isset($_POST['chk_bo_table']) && is_array($_POST['chk_bo_
 
 // 게시판 관리자 이상 복사, 이동 가능
 if ($is_admin != 'board' && $is_admin != 'group' && $is_admin != 'super')
-    alert_close('게시판 관리자 이상 접근이 가능합니다.');
+    alert_close(__('게시판 관리자 이상 접근이 가능합니다.'));
 
 if ($sw != 'move' && $sw != 'copy')
-    alert('sw 값이 제대로 넘어오지 않았습니다.');
+    alert(__('sw 값이 제대로 넘어오지 않았습니다.'));
 
 if(! $count_chk_bo_table)
     alert(__('게시물을 {1}할 게시판을 한개 이상 선택해 주십시오.', $act), $url);

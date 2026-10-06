@@ -4,7 +4,7 @@ include_once('./_common.php');
 $is_admin = get_super_admin_type($is_admin);
 
 if($is_guest)
-    alert('회원이시라면 로그인 후 이용해 보십시오.', './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
+    alert(__('회원이시라면 로그인 후 이용해 보십시오.'), './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
 
 $qaconfig = get_qa_config();
 

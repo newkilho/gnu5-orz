@@ -2,7 +2,7 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 if(!$config['cf_cert_use'] || $config['cf_cert_hp'] != 'kcb')
-    alert('기본환경설정에서 KCB 휴대폰본인확인 서비스로 설정해 주십시오.');
+    alert(__('기본환경설정에서 KCB 휴대폰본인확인 서비스로 설정해 주십시오.'));
 
 // key 디렉토리 체크
 require_once('./key_dir_check.php');
@@ -12,7 +12,7 @@ require_once('./key_dir_check.php');
  **************************************************************************/
 $memId = $config['cf_cert_kcb_cd'];                 // 회원사코드
 if(!$memId)
-    alert('기본환경설정에서 KCB 회원사ID를 입력해 주십시오.');
+    alert(__('기본환경설정에서 KCB 회원사ID를 입력해 주십시오.'));
 
 $inTpBit = '0';                                     // 입력구분코드(고정값 '0' : KCB팝업에서 개인정보 입력)
 $name = 'x';                                        // 성명 (고정값 'x')

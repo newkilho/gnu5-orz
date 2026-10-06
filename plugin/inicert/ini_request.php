@@ -50,7 +50,7 @@ switch($_GET['pageType']) {
         $resultPage = "/ini_find_result.php";
         break;
     default:
-        alert_close('잘못된 접근입니다.');
+        alert_close(__('잘못된 접근입니다.'));
 }
 
 $resultUrl = G5_INICERT_URL . $resultPage;

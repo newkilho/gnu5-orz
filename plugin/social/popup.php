@@ -2,25 +2,25 @@
 include_once('_common.php');
 
 if( ! $config['cf_social_login_use'] ){
-    alert('소셜 로그인 설정이 비활성화 되어 있습니다.');
+    alert(__('소셜 로그인 설정이 비활성화 되어 있습니다.'));
     return;
 }
 
 if( ! G5_SOCIAL_USE_POPUP ){
-    alert('새창 옵션이 비활성화 되어 있습니다.');
+    alert(__('새창 옵션이 비활성화 되어 있습니다.'));
     return;
 }
 
 $provider_name = social_get_request_provider();
 
 if( !$provider_name ){
-    alert('서비스 이름이 넘어오지 않았습니다.');
+    alert(__('서비스 이름이 넘어오지 않았습니다.'));
 }
 
 // 소셜 계정 연결(mylink) CSRF 방어
 if (isset($_REQUEST['mylink']) && !empty($_REQUEST['mylink'])) {
     if (!$is_member) {
-        alert('로그인 후 이용해 주십시오.');
+        alert(__('로그인 후 이용해 주십시오.'));
     }
 
     // 최초 진입(redirect_to_idp 없음) 시에만 Referer 검증 및 세션 토큰 설정
@@ -33,7 +33,7 @@ if (isset($_REQUEST['mylink']) && !empty($_REQUEST['mylink'])) {
         if ($site_host) $site_host = preg_replace('/^www\./i', '', $site_host);
 
         if (!$ref_host || !$site_host || strcasecmp($ref_host, $site_host) !== 0) {
-            alert_close('올바른 방법으로 이용해 주십시오.');
+            alert_close(__('올바른 방법으로 이용해 주십시오.'));
         }
 
         set_session('ss_social_mylink_token', get_random_token_string(16));
