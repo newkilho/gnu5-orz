@@ -4,6 +4,7 @@ if (!defined('_GNUBOARD_')) exit;
 //------------------------------------------------------------------------------
 // 다국어 문구 (gnu5-orz). 현재 언어는 config.php의 KH_LANG 상수 (ko, en …)
 // 사전: lang/<lang>.php (테마 밖 문구), theme/<테마>/lang/<lang>.php (테마 문구),
+//       kh_dict_add()로 추가한 폴더의 lang/<lang>.php (플러그인·모듈 문구, 추가한 순서),
 //       data/lang/<lang>.php (관리자 → 환경설정 → 다국어 문구에서 고친 것·DB 문구)
 //       → return ['원문' => '번역', '문맥|원문' => '번역', ...]; 같은 키는 뒤의 사전이 우선
 // 번역이 없으면 한국어 원문을 그대로 돌려주고, 그 키를 data/lang/en.php에 빈값으로 적어 둔다
@@ -12,20 +13,55 @@ if (!defined('_GNUBOARD_')) exit;
 //------------------------------------------------------------------------------
 
 // 현재 언어 사전 (한 번만 읽는다. 테마가 정해지기 전에 불리면 테마가 정해진 뒤 한 번 더 읽는다)
-function kh_dict()
+// $reload: kh_dict_add()로 폴더가 늘었을 때 다시 읽는다
+function kh_dict($reload = false)
 {
     static $dict = null, $has_theme = false;
 
-    if ($dict === null || (!$has_theme && defined('G5_THEME_PATH'))) {
+    if ($reload || $dict === null || (!$has_theme && defined('G5_THEME_PATH'))) {
         $has_theme = defined('G5_THEME_PATH');
         $dict = array();
-        foreach (array(G5_PATH, $has_theme ? G5_THEME_PATH : '', G5_DATA_PATH) as $dir) {
-            if ($dir)   // 빈값('')은 번역이 아니므로 앞 사전의 번역을 가리지 않게 뺀다
-                $dict = array_filter(kh_dict_file($dir, KH_LANG), 'strlen') + $dict;
-        }
+        foreach (kh_dict_dirs() as $dir)   // 빈값('')은 번역이 아니므로 앞 사전의 번역을 가리지 않게 뺀다
+            $dict = array_filter(kh_dict_file($dir, KH_LANG), 'strlen') + $dict;
     }
 
     return $dict;
+}
+
+// 사전 폴더 목록 (읽는 순서, 뒤가 우선): lang/ → 테마 lang/ → kh_dict_add()로 추가한 폴더 → data/lang/
+// $with_data = false 면 data 를 뺀 저장소 사전만 (관리자 다국어 문구·누락 수집이 "이미 번역된 문구"로 본다)
+function kh_dict_dirs($with_data = true, $add = null)
+{
+    static $extra = array();
+
+    if ($add !== null && $add !== '' && !in_array($add, $extra))
+        $extra[] = $add;
+
+    $dirs = array(G5_PATH);
+    if (defined('G5_THEME_PATH'))
+        $dirs[] = G5_THEME_PATH;
+    $dirs = array_merge($dirs, $extra);
+    if ($with_data)
+        $dirs[] = G5_DATA_PATH;
+
+    return $dirs;
+}
+
+// 사전 폴더 추가 (플러그인·모듈용) — <dir>/lang/<lang>.php 를 테마 사전 다음, data 사전 앞에 읽는다
+// extend/ 에서 부르면 관리자 다국어 문구 화면에도 반영된다. 예) kh_dict_add(G5_PLUGIN_PATH.'/my');
+function kh_dict_add($dir)
+{
+    kh_dict_dirs(true, rtrim((string)$dir, '/\\'));
+    kh_dict(true);
+}
+
+// 저장소 사전(data 제외)을 합친 것 — 같은 키는 뒤의 폴더가 우선
+function kh_dict_base($lang)
+{
+    $base = array();
+    foreach (kh_dict_dirs(false) as $dir)
+        $base = kh_dict_file($dir, $lang) + $base;
+    return $base;
 }
 
 // 사전 파일 하나 (<dir>/lang/<lang>.php, 없으면 빈 배열)
@@ -109,10 +145,8 @@ function kh_dict_miss_save()
     if (!$miss || !defined('G5_DATA_PATH'))
         return;
 
-    // 저장소 사전(lang/, 테마 lang/)에 영어가 있거나 이미 모은 문구는 적지 않는다
-    $base = kh_dict_file(G5_PATH, 'en') + kh_dict_file(G5_DATA_PATH, 'en');
-    if (defined('G5_THEME_PATH'))
-        $base = kh_dict_file(G5_THEME_PATH, 'en') + $base;
+    // 저장소 사전(lang/, 테마 lang/, kh_dict_add 폴더)에 영어가 있거나 이미 모은 문구는 적지 않는다
+    $base = kh_dict_base('en') + kh_dict_file(G5_DATA_PATH, 'en');
     $miss = array_diff_key($miss, $base);
     if (!$miss)
         return;

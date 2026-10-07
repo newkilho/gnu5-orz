@@ -109,6 +109,28 @@ kh_dict_miss_save();
 clearstatcache();
 expect_i18n(filemtime($collect) === $mtime && file_get_contents($collect) === $before, '이미 모은 문구만 있으면 파일을 다시 쓰지 않음');
 
+// kh_dict_add(): 플러그인·모듈 사전 폴더 — 테마 다음, data 앞에 읽는다
+mkdir($tmp.'/plug/lang', 0777, true);
+write_dict($tmp.'/root/theme/t/lang/en.php', array('나' => 'B-theme', '다' => '', '사' => 'S-theme'));
+write_dict($tmp.'/plug/lang/en.php', array('바' => 'F-plug', '나' => 'B-plug', '사' => 'S-plug', '아' => ''));
+expect_i18n(__('바') === '바', '추가하기 전에는 플러그인 사전을 읽지 않음');
+kh_dict_add($tmp.'/plug/');
+kh_dict_add($tmp.'/plug');
+$dirs = kh_dict_dirs();
+expect_i18n(count(array_keys($dirs, $tmp.'/plug')) === 1 && end($dirs) === G5_DATA_PATH, '같은 폴더는 한 번만, data 는 늘 마지막');
+expect_i18n(__('바') === 'F-plug', '추가한 폴더의 번역 (이미 만든 사전도 다시 읽음)');
+expect_i18n(__('사') === 'S-plug', '추가한 폴더가 테마 사전보다 우선');
+expect_i18n(__('나') === 'B-data', 'data 사전이 추가한 폴더보다 우선');
+expect_i18n(__('가') === 'A-root', '추가한 뒤에도 저장소 사전 그대로');
+$base = kh_dict_base('en');
+expect_i18n(isset($base['바']) && isset($base['아']) && !isset($base['마']), 'kh_dict_base 는 추가한 폴더를 넣고 data 는 뺌');
+__('아');
+__('플러그인에 없는 문구');
+kh_dict_miss_save();
+$saved = include $collect;
+expect_i18n(!isset($saved['바']) && !isset($saved['아']), '추가한 폴더에 있는 키(빈값이어도)는 모으지 않음');
+expect_i18n(isset($saved['플러그인에 없는 문구']), '어느 사전에도 없으면 모음');
+
 // 언어별 주소 (extend/kh_i18n.extend.php)
 require $root.'/extend/kh_i18n.extend.php';
 $cases = array(

@@ -1,6 +1,6 @@
 <?php
 // 다국어 문구 (gnu5-orz) — 저장은 i18n_update.php
-// 사전(lang/, 테마 lang/)에 없는 문구만 data/lang/<언어>.php에 추가·수정·삭제한다.
+// 저장소 사전(lang/, 테마 lang/, kh_dict_add 폴더)에 없는 문구만 data/lang/<언어>.php에 추가·수정·삭제한다.
 $sub_menu = '100960';
 require_once './_common.php';
 
@@ -12,7 +12,7 @@ $langs = kh_langs();
 unset($langs['ko']);
 $lang = (isset($_GET['lang']) && isset($langs[$_GET['lang']])) ? $_GET['lang'] : 'en';
 
-$base  = kh_dict_file(G5_THEME_PATH, $lang) + kh_dict_file(G5_PATH, $lang);   // git 사전 (lang/, 테마 lang/) — 보여 주지 않는다
+$base  = kh_dict_base($lang);                                                  // 저장소 사전 (lang/, 테마 lang/, kh_dict_add 폴더) — 보여 주지 않는다
 $saved = kh_dict_file(G5_DATA_PATH, $lang);                                    // 여기서 추가·수정한 것
 
 // 사전에 없는 문구만: __()가 모아 둔 data/lang/en.php의 키 + 여기서 추가한 것
