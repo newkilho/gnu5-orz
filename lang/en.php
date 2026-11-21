@@ -32,16 +32,12 @@ return array(
 '존재하지 않는 게시판입니다.' => 'This board does not exist.',
 'bo_table 값이 넘어오지 않았습니다.\\n\\nboard.php?bo_table=code 와 같은 방식으로 넘겨 주세요.' => 'No bo_table value was passed.\\n\\nPass it like board.php?bo_table=code.',
 '글이 존재하지 않습니다.\\n\\n글이 삭제되었거나 이동된 경우입니다.' => 'The post does not exist.\\n\\nIt may have been deleted or moved.',
-'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Guests do not have access to this board.\\n\\nIf you are a member, please log in and try again.',
-'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'You do not have permission to read posts.\\n\\nPlease contact the administrator if you have any questions.',
-'글을 읽을 권한이 없습니다.' => 'You do not have permission to read this post.',
-'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'You do not have permission to read this post.\\n\\nIf you are a member, please log in and try again.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Only identity-verified members can read posts on this board.\\n\\nIf you are a member, please log in and try again.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Only identity-verified members can read posts on this board.\\n\\nPlease verify your identity in Edit profile.',
-'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Only members verified as adults can read posts on this board.\\n\\nIf you are an adult and still cannot read posts, please verify your identity again in Edit profile.',
 '보유하신 포인트({1})가 없거나 모자라서 글읽기({2})가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.' => 'You do not have enough points ({1}) to read this post ({2}).\\n\\nPlease collect more points and try again.',
 '목록을 볼 권한이 없습니다.' => 'You do not have permission to view the list.',
 '목록을 볼 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'You do not have permission to view the list.\\n\\nIf you are a member, please log in and try again.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Only identity-verified members can read posts on this board.\\n\\nIf you are a member, please log in and try again.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Only identity-verified members can read posts on this board.\\n\\nPlease verify your identity in Edit profile.',
+'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Only members verified as adults can read posts on this board.\\n\\nIf you are an adult and still cannot read posts, please verify your identity again in Edit profile.',
 '{1} {2} 페이지' => '{1} page {2}',
 
 // bbs/board_list_update.php
@@ -59,7 +55,7 @@ return array(
 '<p>{1}이 존재하지 않습니다.</p>' => '<p>{1} does not exist.</p>',
 
 // bbs/current_connect.php
-'현재접속자' => 'Online users',
+'현재접속자 기능은 제공하지 않습니다.' => 'The online users feature is not available.',
 
 // bbs/delete.php
 '토큰 에러로 삭제 불가합니다.' => 'Cannot delete due to a token error.',
@@ -180,11 +176,13 @@ return array(
 
 // bbs/member_cert_refresh_update.php
 '로그인 후 이용해 주십시오.' => 'Please log in first.',
+'올바른 방법으로 이용해 주십시오. 본인인증 화면을 다시 열어 주십시오.' => 'Please use the correct method. Please open the identity verification screen again.',
 'w 값이 제대로 넘어오지 않았습니다.' => 'The w value was not passed correctly.',
 '잘못된 접근입니다' => 'Invalid access',
 '회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.' => 'No username was given. Please use the correct method.',
 '입력하신 본인확인 정보로 가입된 내역이 존재합니다.' => 'An account is already registered with the identity verification information you entered.',
 '본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요' => 'The verified identity does not match the member information entered. Please try again.',
+'본인인증을 완료한 뒤 다시 시도해 주십시오.' => 'Please complete identity verification and try again.',
 
 // bbs/member_confirm.php
 '로그인 한 회원만 접근하실 수 있습니다.' => 'Only logged-in members can access this page.',
@@ -204,6 +202,10 @@ return array(
 '보낸' => 'Sent',
 '정보없음' => 'No information',
 '아직 읽지 않음' => 'Not read yet',
+
+// bbs/memo_delete.php
+'쪽지가 존재하지 않거나 삭제할 수 없습니다.' => 'The message does not exist or cannot be deleted.',
+'쪽지를 삭제하지 못했습니다.' => 'Failed to delete the message.',
 
 // bbs/memo_form.php
 '자신의 정보를 공개하지 않으면 다른분에게 쪽지를 보낼 수 없습니다. 정보공개 설정은 회원정보수정에서 하실 수 있습니다.' => 'You cannot send messages to others unless your profile is public. You can change your profile visibility in Edit profile.',
@@ -255,13 +257,18 @@ return array(
 // bbs/password.php
 '비밀번호 입력' => 'Enter password',
 
+// bbs/password_check.php
+'비밀글 인증 대상이 올바르지 않습니다.' => 'Invalid target for secret post verification.',
+
 // bbs/password_lost.php
 '이미 로그인중입니다.' => 'You are already logged in.',
 '회원정보 찾기' => 'Find account',
 
 // bbs/password_lost2.php
+'현재 비밀번호 찾기를 이용할 수 없습니다. 관리자에게 문의해 주십시오.' => 'Password recovery is currently unavailable. Please contact the administrator.',
+'요청이 많습니다. 잠시 후 다시 이용해 주십시오.' => 'Too many requests. Please try again later.',
 '메일주소 오류입니다.' => 'Invalid email address.',
-'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'An email to verify your username and password has been sent to {1}.\\n\\nPlease check your email.',
+'입력하신 정보와 일치하는 회원이 있으면 비밀번호 찾기 안내 메일이 발송됩니다.\\n최근 요청이 있거나 발송이 제한된 경우 추가 발송되지 않을 수 있습니다.\\n메일함과 스팸함을 확인하고, 메일이 없으면 잠시 후 다시 요청해 주십시오.' => 'If a member matches the information you entered, a password recovery email will be sent.\\nIf you made a request recently or sending is limited, no additional email may be sent.\\nPlease check your inbox and spam folder, and if there is no email, request again later.',
 '[{1}] 요청하신 회원정보 찾기 안내 메일입니다.' => '[{1}] Account recovery email you requested',
 '회원정보 찾기 안내' => 'Account recovery',
 '{1} ({2}) 회원님은 {3} 에 회원정보 찾기 요청을 하셨습니다.<br>' => '{1} ({2}) requested account recovery on {3}.<br>',
@@ -277,10 +284,12 @@ return array(
 '비밀번호가 변경됐습니다.\\n\\n회원아이디와 변경된 비밀번호로 로그인 하시기 바랍니다.' => 'Your password has been changed.\\n\\nPlease log in with your username and the new password.',
 
 // bbs/password_reset.php
+'최고관리자 계정은 본인인증으로 비밀번호를 재설정할 수 없습니다.' => 'The super administrator account cannot reset its password through identity verification.',
 '본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.' => 'Finding your username/password via identity verification is not available. Please contact the administrator.',
 '패스워드 변경' => 'Change password',
 
 // bbs/password_reset_update.php
+'올바른 방법으로 이용해 주십시오. 비밀번호 찾기를 다시 진행해 주십시오.' => 'Please use the correct method. Please start password recovery again.',
 '비밀번호가 넘어오지 않았습니다.' => 'No password was submitted.',
 '비밀번호가 일치하지 않습니다.' => 'The passwords do not match.',
 
@@ -410,6 +419,7 @@ return array(
 '회원가입 완료' => 'Registration complete',
 
 // bbs/rss.php
+'RSS 보기가 허용되지 않는 게시판입니다.' => 'RSS is not allowed on this board.',
 '비회원 읽기가 가능한 게시판만 RSS 지원합니다.' => 'RSS is only available for boards that guests can read.',
 'RSS 보기가 금지되어 있습니다.' => 'RSS is disabled.',
 
@@ -433,7 +443,10 @@ Do you want to view your scraps now?',
 
 // bbs/scrap_popin_update.php
 '스크랩하시려는 게시글이 존재하지 않습니다.' => 'The post you are trying to scrap does not exist.',
+'올바른 방법으로 이용해 주십시오. 스크랩 창을 다시 열어 주십시오.' => 'Please use the correct method. Please open the scrap window again.',
 '너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.' => 'You cannot post repeatedly in such a short time.',
+'잠시 후 다시 시도해 주십시오.' => 'Please try again later.',
+'스크랩하지 못했습니다. 잠시 후 다시 시도해 주십시오.' => 'Could not scrap the post. Please try again later.',
 '이 글을 스크랩 하였습니다.
 
 지금 스크랩을 확인하시겠습니까?' => 'This post has been scrapped.
@@ -473,16 +486,9 @@ Do you want to view your scraps now?',
 '답변글을 작성할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'You do not have permission to write a reply.\\n\\nIf you are a member, please log in and try again.',
 '보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.' => 'You do not have enough points ({1}) to reply ({2}).\\n\\nPlease collect more points and try again.',
 '공지에는 답변 할 수 없습니다.' => 'You cannot reply to a notice.',
-'정상적인 접근이 아닙니다.' => 'Invalid access.',
-'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Only the author or an administrator can reply to a secret post.',
-'비회원의 비밀글에는 답변이 불가합니다.' => 'You cannot reply to a guest\'s secret post.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 10단계 까지만 가능합니다.' => 'You cannot reply any further.\\n\\nReplies are limited to 10 levels.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.' => 'You cannot reply any further.\\n\\nReplies are limited to 26.',
 '글답변' => 'Reply',
-'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Access denied.\\n\\nIf you are a member, please log in and try again.',
-'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'You do not have permission to write.\\n\\nPlease contact the administrator if you have any questions.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Only identity-verified members can write on this board.\\n\\nIf you are a member, please log in and try again.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Only identity-verified members can write on this board.\\n\\nPlease verify your identity in Edit profile.',
 
 // bbs/write_comment_update.php
 '이름은 필히 입력하셔야 합니다.' => 'Name is required.',
@@ -509,6 +515,7 @@ Comment
 '댓글 ' => 'Comment ',
 '댓글 수정' => 'Edit comment',
 '[{1}] {2} 게시판에 {3}글이 올라왔습니다.' => '[{1}] New post on the {2} board ({3})',
+'댓글 대상이 올바르지 않습니다.' => 'Invalid comment target.',
 '그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'You cannot edit this comment because it was written by a member with a higher level than the group admin.',
 '자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.' => 'You cannot edit the comment because the board is not in a group you manage.',
 '게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'You cannot edit this comment because it was written by a member with a higher level than the board admin.',
@@ -572,6 +579,17 @@ Comment
 // head.sub.php
 '{1}님 로그인 중 ' => '{1} logged in ',
 
+// lib/board_access.lib.php
+'회원만 접근할 수 있는 게시판입니다.' => 'This board is for members only.',
+'접근 권한이 없는 게시판입니다.' => 'You do not have access to this board.',
+'글을 읽을 권한이 없습니다.' => 'You do not have permission to read this post.',
+'본인확인 후 이용해 주십시오.' => 'Please verify your identity first.',
+'회원정보에서 본인확인 정보를 갱신한 후 이용해 주십시오.' => 'Please update your identity verification in your profile first.',
+'성인인증 후 이용해 주십시오.' => 'Please complete adult verification first.',
+'게시글이 존재하지 않거나 잘못된 대상입니다.' => 'The post does not exist or is an invalid target.',
+'비밀글 인증 후 이용해 주십시오.' => 'Please verify the secret post first.',
+'비밀글에는 작성자 또는 관리자만 답변할 수 있습니다.' => 'Only the author or an administrator can reply to a secret post.',
+
 // lib/common.lib.php
 '처음' => 'First',
 '이전' => 'Prev',
@@ -610,7 +628,10 @@ Comment
 '휴대폰' => 'Mobile',
 '아이핀' => 'i-PIN',
 '오늘 {1} 본인확인을 {2}회 이용하셔서 더 이상 이용할 수 없습니다.' => 'You have used {1} identity verification {2} times today and cannot use it any more.',
-'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Not available because the exec function cannot be executed.',
+'서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.
+서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.' => 'The NHN KCP payment module (basic) cannot be used because the PHP exec function is blocked on the server.
+Ask your server administrator to allow the exec function, or set up the service certificate and private key and select KCP REST API.',
+'서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.' => 'The verification module cannot be used because the PHP exec function is blocked on the server. Ask your server administrator to allow the exec function.',
 '폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.' => 'The number of variables submitted by the form exceeds max_input_vars.\\nSome submitted values may be lost when saved to the DB.\\n\\nTo fix this, change the max_input_vars value in the server\'s php.ini.',
 'url에 타 도메인을 지정할 수 없습니다.' => 'Other domains cannot be specified in the URL.',
 'url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.' => 'Access denied because the URL contains user information.',
@@ -897,4 +918,19 @@ Only .gif .jpg .png files are allowed.
 '{1} : 공백이 없어야 합니다.
 ' => '{1} : Spaces are not allowed.
 ',
+
+// 코드에서 쓰지 않는 키
+'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Guests do not have access to this board.\\n\\nIf you are a member, please log in and try again.',
+'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'You do not have permission to read posts.\\n\\nPlease contact the administrator if you have any questions.',
+'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'You do not have permission to read this post.\\n\\nIf you are a member, please log in and try again.',
+'현재접속자' => 'Online users',
+'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'An email to verify your username and password has been sent to {1}.\\n\\nPlease check your email.',
+'정상적인 접근이 아닙니다.' => 'Invalid access.',
+'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Only the author or an administrator can reply to a secret post.',
+'비회원의 비밀글에는 답변이 불가합니다.' => 'You cannot reply to a guest\'s secret post.',
+'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Access denied.\\n\\nIf you are a member, please log in and try again.',
+'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'You do not have permission to write.\\n\\nPlease contact the administrator if you have any questions.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Only identity-verified members can write on this board.\\n\\nIf you are a member, please log in and try again.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Only identity-verified members can write on this board.\\n\\nPlease verify your identity in Edit profile.',
+'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Not available because the exec function cannot be executed.',
 );

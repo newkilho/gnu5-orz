@@ -185,9 +185,6 @@ Questa funzione converte gli a capo del post in tag <br>.',
 '이미지 목록' => 'Elenco immagini',
 '열람중' => 'In visualizzazione',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Nessuno è online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Termine di ricerca',
 '자주하시는질문 분류' => 'Categorie FAQ',
@@ -679,4 +676,7 @@ I dati eliminati non possono essere recuperati.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Versione mobile',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Nessuno è online.',
 );

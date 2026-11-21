@@ -1,5 +1,6 @@
 <?php
 include_once('./_common.php');
+g5_require_board_read($board, $write);
 
 include_once(G5_PATH.'/head.sub.php');
 
@@ -65,6 +66,7 @@ HEREDOC;
     exit;
 }
 
+$scrap_token = g5_get_form_token('scrap_'.$bo_table.'_'.(int)$wr_id, $member['mb_id']);
 include_once($member_skin_path.'/scrap_popin.skin.php');
 
 include_once(G5_PATH.'/tail.sub.php');

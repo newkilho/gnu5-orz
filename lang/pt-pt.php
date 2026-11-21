@@ -32,16 +32,12 @@ return array(
 '존재하지 않는 게시판입니다.' => 'O fórum não existe.',
 'bo_table 값이 넘어오지 않았습니다.\\n\\nboard.php?bo_table=code 와 같은 방식으로 넘겨 주세요.' => 'O valor bo_table não foi recebido.\\n\\nEnvie-o no formato board.php?bo_table=code.',
 '글이 존재하지 않습니다.\\n\\n글이 삭제되었거나 이동된 경우입니다.' => 'A publicação não existe.\\n\\nPode ter sido eliminada ou movida.',
-'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Os visitantes não registados não têm acesso a este fórum.\\n\\nSe for membro, inicie sessão.',
-'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Não tem permissão para ler publicações.\\n\\nPara mais informações, contacte o administrador.',
-'글을 읽을 권한이 없습니다.' => 'Não tem permissão para ler esta publicação.',
-'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Não tem permissão para ler esta publicação.\\n\\nSe for membro, inicie sessão.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Neste fórum, apenas os membros com identidade verificada podem ler publicações.\\n\\nSe for membro, inicie sessão.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Neste fórum, apenas os membros com identidade verificada podem ler publicações.\\n\\nEfetue a verificação de identidade em Editar perfil.',
-'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Neste fórum, apenas os membros maiores de idade verificados podem ler publicações.\\n\\nSe for maior de idade e não conseguir ler, repita a verificação de identidade em Editar perfil.',
 '보유하신 포인트({1})가 없거나 모자라서 글읽기({2})가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.' => 'Os seus pontos ({1}) são insuficientes para ler a publicação ({2}).\\n\\nAcumule mais pontos e tente novamente.',
 '목록을 볼 권한이 없습니다.' => 'Não tem permissão para ver a lista.',
 '목록을 볼 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Não tem permissão para ver a lista.\\n\\nSe for membro, inicie sessão.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Neste fórum, apenas os membros com identidade verificada podem ler publicações.\\n\\nSe for membro, inicie sessão.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Neste fórum, apenas os membros com identidade verificada podem ler publicações.\\n\\nEfetue a verificação de identidade em Editar perfil.',
+'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Neste fórum, apenas os membros maiores de idade verificados podem ler publicações.\\n\\nSe for maior de idade e não conseguir ler, repita a verificação de identidade em Editar perfil.',
 '{1} {2} 페이지' => '{1} - página {2}',
 
 // bbs/board_list_update.php
@@ -59,7 +55,7 @@ return array(
 '<p>{1}이 존재하지 않습니다.</p>' => '<p>{1} não existe.</p>',
 
 // bbs/current_connect.php
-'현재접속자' => 'Utilizadores online',
+'현재접속자 기능은 제공하지 않습니다.' => 'A funcionalidade de utilizadores online não está disponível.',
 
 // bbs/delete.php
 '토큰 에러로 삭제 불가합니다.' => 'Não é possível eliminar: erro de token.',
@@ -180,11 +176,13 @@ return array(
 
 // bbs/member_cert_refresh_update.php
 '로그인 후 이용해 주십시오.' => 'Inicie sessão para continuar.',
+'올바른 방법으로 이용해 주십시오. 본인인증 화면을 다시 열어 주십시오.' => 'Utilize o método correto. Abra novamente o ecrã de verificação de identidade.',
 'w 값이 제대로 넘어오지 않았습니다.' => 'O valor w não foi recebido corretamente.',
 '잘못된 접근입니다' => 'Acesso inválido',
 '회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.' => 'Falta o nome de utilizador. Utilize o procedimento correto.',
 '입력하신 본인확인 정보로 가입된 내역이 존재합니다.' => 'Já existe um registo com estes dados de verificação de identidade.',
 '본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요' => 'Os dados verificados não correspondem às informações introduzidas. Tente novamente.',
+'본인인증을 완료한 뒤 다시 시도해 주십시오.' => 'Conclua a verificação de identidade e tente novamente.',
 
 // bbs/member_confirm.php
 '로그인 한 회원만 접근하실 수 있습니다.' => 'Acesso permitido apenas a membros com sessão iniciada.',
@@ -204,6 +202,10 @@ return array(
 '보낸' => 'Enviada',
 '정보없음' => 'Sem informações',
 '아직 읽지 않음' => 'Ainda não lida',
+
+// bbs/memo_delete.php
+'쪽지가 존재하지 않거나 삭제할 수 없습니다.' => 'A mensagem não existe ou não pode ser eliminada.',
+'쪽지를 삭제하지 못했습니다.' => 'Não foi possível eliminar a mensagem.',
 
 // bbs/memo_form.php
 '자신의 정보를 공개하지 않으면 다른분에게 쪽지를 보낼 수 없습니다. 정보공개 설정은 회원정보수정에서 하실 수 있습니다.' => 'Se o seu perfil não for público, não pode enviar mensagens a outros membros. Pode tornar o perfil público em Editar perfil.',
@@ -255,13 +257,18 @@ return array(
 // bbs/password.php
 '비밀번호 입력' => 'Introduzir palavra-passe',
 
+// bbs/password_check.php
+'비밀글 인증 대상이 올바르지 않습니다.' => 'Alvo inválido para a verificação de publicação secreta.',
+
 // bbs/password_lost.php
 '이미 로그인중입니다.' => 'Já tem sessão iniciada.',
 '회원정보 찾기' => 'Recuperar dados da conta',
 
 // bbs/password_lost2.php
+'현재 비밀번호 찾기를 이용할 수 없습니다. 관리자에게 문의해 주십시오.' => 'A recuperação da palavra-passe não está disponível de momento. Contacte o administrador.',
+'요청이 많습니다. 잠시 후 다시 이용해 주십시오.' => 'Demasiados pedidos. Tente novamente mais tarde.',
 '메일주소 오류입니다.' => 'Endereço de e-mail incorreto.',
-'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Foi enviado para {1} um e-mail para confirmar o nome de utilizador e a palavra-passe.\\n\\nVerifique a sua caixa de correio.',
+'입력하신 정보와 일치하는 회원이 있으면 비밀번호 찾기 안내 메일이 발송됩니다.\\n최근 요청이 있거나 발송이 제한된 경우 추가 발송되지 않을 수 있습니다.\\n메일함과 스팸함을 확인하고, 메일이 없으면 잠시 후 다시 요청해 주십시오.' => 'Se existir um membro correspondente aos dados introduzidos, será enviado um e-mail de recuperação da palavra-passe.\\nSe fez um pedido recentemente ou o envio estiver limitado, poderá não ser enviado outro e-mail.\\nVerifique a caixa de entrada e a pasta de spam; se não houver e-mail, peça novamente mais tarde.',
 '[{1}] 요청하신 회원정보 찾기 안내 메일입니다.' => '[{1}] Recuperação dos dados da conta solicitada',
 '회원정보 찾기 안내' => 'Recuperação dos dados da conta',
 '{1} ({2}) 회원님은 {3} 에 회원정보 찾기 요청을 하셨습니다.<br>' => '{1} ({2}), pediu a recuperação dos dados da conta em {3}.<br>',
@@ -277,10 +284,12 @@ return array(
 '비밀번호가 변경됐습니다.\\n\\n회원아이디와 변경된 비밀번호로 로그인 하시기 바랍니다.' => 'A palavra-passe foi alterada.\\n\\nInicie sessão com o seu nome de utilizador e a nova palavra-passe.',
 
 // bbs/password_reset.php
+'최고관리자 계정은 본인인증으로 비밀번호를 재설정할 수 없습니다.' => 'A conta do superadministrador não pode repor a palavra-passe através da verificação de identidade.',
 '본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.' => 'Não é possível recuperar o nome de utilizador e a palavra-passe através da verificação de identidade. Contacte o administrador.',
 '패스워드 변경' => 'Alterar palavra-passe',
 
 // bbs/password_reset_update.php
+'올바른 방법으로 이용해 주십시오. 비밀번호 찾기를 다시 진행해 주십시오.' => 'Utilize o método correto. Recomece a recuperação da palavra-passe.',
 '비밀번호가 넘어오지 않았습니다.' => 'A palavra-passe não foi recebida.',
 '비밀번호가 일치하지 않습니다.' => 'As palavras-passe não coincidem.',
 
@@ -410,6 +419,7 @@ return array(
 '회원가입 완료' => 'Registo concluído',
 
 // bbs/rss.php
+'RSS 보기가 허용되지 않는 게시판입니다.' => 'Este fórum não permite RSS.',
 '비회원 읽기가 가능한 게시판만 RSS 지원합니다.' => 'O RSS só está disponível para fóruns que os visitantes não registados podem ler.',
 'RSS 보기가 금지되어 있습니다.' => 'O RSS está desativado.',
 
@@ -433,7 +443,10 @@ Pretende ver agora as publicações guardadas?',
 
 // bbs/scrap_popin_update.php
 '스크랩하시려는 게시글이 존재하지 않습니다.' => 'A publicação que pretende guardar não existe.',
+'올바른 방법으로 이용해 주십시오. 스크랩 창을 다시 열어 주십시오.' => 'Utilize o método correto. Abra novamente a janela de guardar.',
 '너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.' => 'Não pode publicar seguidamente num intervalo tão curto.',
+'잠시 후 다시 시도해 주십시오.' => 'Tente novamente mais tarde.',
+'스크랩하지 못했습니다. 잠시 후 다시 시도해 주십시오.' => 'Não foi possível guardar a publicação. Tente novamente mais tarde.',
 '이 글을 스크랩 하였습니다.
 
 지금 스크랩을 확인하시겠습니까?' => 'Publicação guardada.
@@ -473,16 +486,9 @@ Pretende ver agora as publicações guardadas?',
 '답변글을 작성할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Não tem permissão para escrever uma resposta.\\n\\nSe for membro, inicie sessão.',
 '보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.' => 'Os seus pontos ({1}) são insuficientes para responder ({2}).\\n\\nAcumule mais pontos e tente novamente.',
 '공지에는 답변 할 수 없습니다.' => 'Não é possível responder a um aviso.',
-'정상적인 접근이 아닙니다.' => 'Acesso inválido.',
-'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Apenas o autor ou o administrador podem responder a publicações privadas.',
-'비회원의 비밀글에는 답변이 불가합니다.' => 'Não é possível responder a publicações privadas de visitantes não registados.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 10단계 까지만 가능합니다.' => 'Já não pode responder.\\n\\nAs respostas são permitidas até 10 níveis.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.' => 'Já não pode responder.\\n\\nSão permitidas no máximo 26 respostas.',
 '글답변' => 'Responder',
-'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Acesso não autorizado.\\n\\nSe for membro, inicie sessão.',
-'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Não tem permissão para escrever publicações.\\n\\nPara mais informações, contacte o administrador.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Neste fórum, apenas os membros com identidade verificada podem escrever publicações.\\n\\nSe for membro, inicie sessão.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Neste fórum, apenas os membros com identidade verificada podem escrever publicações.\\n\\nEfetue a verificação de identidade em Editar perfil.',
 
 // bbs/write_comment_update.php
 '이름은 필히 입력하셔야 합니다.' => 'O nome é obrigatório.',
@@ -509,6 +515,7 @@ Comentário
 '댓글 ' => 'Comentário',
 '댓글 수정' => 'Editar comentário',
 '[{1}] {2} 게시판에 {3}글이 올라왔습니다.' => '[{1}] Nova atividade no fórum {2}: {3}',
+'댓글 대상이 올바르지 않습니다.' => 'Alvo de comentário inválido.',
 '그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Não é possível editar o comentário de um membro com nível superior ao do administrador do grupo.',
 '자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.' => 'Não é possível editar o comentário: o fórum não pertence a um grupo que administra.',
 '게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Não é possível editar o comentário de um membro com nível superior ao do administrador do fórum.',
@@ -572,6 +579,17 @@ Comentário
 // head.sub.php
 '{1}님 로그인 중 ' => '{1} - sessão iniciada',
 
+// lib/board_access.lib.php
+'회원만 접근할 수 있는 게시판입니다.' => 'Este fórum é apenas para membros.',
+'접근 권한이 없는 게시판입니다.' => 'Não tem acesso a este fórum.',
+'글을 읽을 권한이 없습니다.' => 'Não tem permissão para ler esta publicação.',
+'본인확인 후 이용해 주십시오.' => 'Verifique primeiro a sua identidade.',
+'회원정보에서 본인확인 정보를 갱신한 후 이용해 주십시오.' => 'Atualize primeiro a verificação de identidade no seu perfil.',
+'성인인증 후 이용해 주십시오.' => 'Conclua primeiro a verificação de maioridade.',
+'게시글이 존재하지 않거나 잘못된 대상입니다.' => 'A publicação não existe ou o alvo é inválido.',
+'비밀글 인증 후 이용해 주십시오.' => 'Verifique primeiro a publicação secreta.',
+'비밀글에는 작성자 또는 관리자만 답변할 수 있습니다.' => 'Apenas o autor ou um administrador pode responder a uma publicação secreta.',
+
 // lib/common.lib.php
 '처음' => 'Primeira',
 '이전' => 'Anterior',
@@ -610,7 +628,10 @@ Comentário
 '휴대폰' => 'Telemóvel',
 '아이핀' => 'i-PIN',
 '오늘 {1} 본인확인을 {2}회 이용하셔서 더 이상 이용할 수 없습니다.' => 'Já utilizou hoje a verificação de identidade ({1}) {2} vezes e não pode voltar a utilizá-la.',
-'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Indisponível: a função exec não pode ser executada.',
+'서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.
+서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.' => 'Não é possível utilizar o módulo de pagamento NHN KCP (básico) porque a função exec do PHP está bloqueada no servidor.
+Peça ao administrador do servidor para permitir exec ou configure o certificado de serviço e a chave privada e selecione KCP REST API.',
+'서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.' => 'Não é possível utilizar o módulo de verificação porque a função exec do PHP está bloqueada no servidor. Peça ao administrador do servidor para permitir exec.',
 '폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.' => 'O número de variáveis enviadas pelo formulário excede max_input_vars.\\nParte dos valores enviados pode perder-se ao ser gravada na DB.\\n\\nPara resolver o problema, altere o valor max_input_vars no php.ini do servidor.',
 'url에 타 도메인을 지정할 수 없습니다.' => 'Não é possível especificar outro domínio no URL.',
 'url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.' => 'Acesso negado: o URL contém informações do utilizador.',
@@ -897,4 +918,19 @@ Só são permitidos ficheiros .gif .jpg .png.
 '{1} : 공백이 없어야 합니다.
 ' => '{1} : Não são permitidos espaços.
 ',
+
+// 코드에서 쓰지 않는 키
+'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Os visitantes não registados não têm acesso a este fórum.\\n\\nSe for membro, inicie sessão.',
+'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Não tem permissão para ler publicações.\\n\\nPara mais informações, contacte o administrador.',
+'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Não tem permissão para ler esta publicação.\\n\\nSe for membro, inicie sessão.',
+'현재접속자' => 'Utilizadores online',
+'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Foi enviado para {1} um e-mail para confirmar o nome de utilizador e a palavra-passe.\\n\\nVerifique a sua caixa de correio.',
+'정상적인 접근이 아닙니다.' => 'Acesso inválido.',
+'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Apenas o autor ou o administrador podem responder a publicações privadas.',
+'비회원의 비밀글에는 답변이 불가합니다.' => 'Não é possível responder a publicações privadas de visitantes não registados.',
+'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Acesso não autorizado.\\n\\nSe for membro, inicie sessão.',
+'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Não tem permissão para escrever publicações.\\n\\nPara mais informações, contacte o administrador.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Neste fórum, apenas os membros com identidade verificada podem escrever publicações.\\n\\nSe for membro, inicie sessão.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Neste fórum, apenas os membros com identidade verificada podem escrever publicações.\\n\\nEfetue a verificação de identidade em Editar perfil.',
+'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Indisponível: a função exec não pode ser executada.',
 );

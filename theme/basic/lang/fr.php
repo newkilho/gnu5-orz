@@ -185,9 +185,6 @@ Cette fonction convertit les retours à la ligne du message en balises <br>.',
 '이미지 목록' => 'Liste des images',
 '열람중' => 'En cours de lecture',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Personne n\'est en ligne.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Terme de recherche',
 '자주하시는질문 분류' => 'Catégories de la FAQ',
@@ -679,4 +676,7 @@ Les données supprimées ne peuvent pas être récupérées.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Version mobile',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Personne n\'est en ligne.',
 );

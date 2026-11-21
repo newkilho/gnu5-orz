@@ -185,9 +185,6 @@ Automatiske linjeskift omdanner linjeskift i indlægget til <br>-tags.',
 '이미지 목록' => 'Billedliste',
 '열람중' => 'Vises',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Ingen er online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Søgeord',
 '자주하시는질문 분류' => 'FAQ-kategorier',
@@ -679,4 +676,7 @@ Slettede data kan ikke gendannes.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Mobilversion',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Ingen er online.',
 );

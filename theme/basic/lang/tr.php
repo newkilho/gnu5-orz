@@ -185,9 +185,6 @@ Otomatik satır sonu, gönderideki satır sonlarını <br> etiketlerine dönüş
 '이미지 목록' => 'Görsel listesi',
 '열람중' => 'Görüntüleniyor',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Şu anda çevrimiçi kimse yok.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Arama terimi',
 '자주하시는질문 분류' => 'SSS kategorileri',
@@ -679,4 +676,7 @@ Silinen veriler geri alınamaz.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Mobil sürüm',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Şu anda çevrimiçi kimse yok.',
 );

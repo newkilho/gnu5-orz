@@ -185,9 +185,6 @@ return array(
 '이미지 목록' => 'छवि सूची',
 '열람중' => 'देखा जा रहा है',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'अभी कोई ऑनलाइन नहीं है।',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'खोज शब्द',
 '자주하시는질문 분류' => 'FAQ श्रेणियाँ',
@@ -679,4 +676,7 @@ return array(
 
 // theme/basic/tail.php
 '모바일버전' => 'मोबाइल संस्करण',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'अभी कोई ऑनलाइन नहीं है।',
 );

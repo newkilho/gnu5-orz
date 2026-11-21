@@ -1,4 +1,5 @@
 <?php
+include_once(G5_LIB_PATH.'/kcp_rest.lib.php');
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 include_once(G5_LIB_PATH.'/shop_order_access.lib.php');
 
@@ -100,7 +101,8 @@ if(function_exists('is_use_easypay') && is_use_easypay('global_nhnkcp')){  // �
             {
                 //$goods = addslashes($row[it_name]);
                 //$goods = get_text($row[it_name]);
-                $goods = preg_replace("/\'|\"|\||\,|\&|\;/", "", $row['it_name']);
+                // 토스 v2 상품명은 원문을 보존하고 출력 위치에서 이스케이프한다.
+                $goods = $default['de_pg_service'] === 'toss' ? $row['it_name'] : preg_replace("/\'|\"|\||\,|\&|\;/", "", $row['it_name']);
                 $goods_it_id = $row['it_id'];
             }
             $goods_count++;
@@ -259,7 +261,7 @@ if(function_exists('is_use_easypay') && is_use_easypay('global_nhnkcp')){  // �
         <input type="hidden" name="item_coupon" value="0">
         <input type="hidden" name="od_coupon" value="0">
         <input type="hidden" name="od_send_coupon" value="0">
-        <input type="hidden" name="od_goods_name" value="<?php echo $goods; ?>">
+        <input type="hidden" name="od_goods_name" value="<?php echo get_text($goods); ?>">
 
         <?php
         // 결제대행사별 코드 include (결제대행사 정보 필드)
@@ -1398,7 +1400,7 @@ function forderform_check(f)
                     if(typeof f.kakaopay_direct !== "undefined") f.kakaopay_direct.value = "Y";
                 } else {
                     if(typeof f.payco_direct !== "undefined") f.payco_direct.value = "Y";
-                    <?php if($default['de_card_test']) { ?>
+                    <?php if($default['de_card_test'] && !(kcp_rest_enabled())) { ?>
                     f.site_cd.value      = "S6729";
                     <?php } ?>
                 }
@@ -1611,7 +1613,7 @@ function forderform_check(f)
         <?php if($default['de_pg_service'] == 'toss') { ?>
 
         f.orderId.value = '<?=$od_id?>';
-        f.orderName.value = '<?=$goods?>';
+        f.orderName.value = <?php echo json_encode($goods, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 
         f.customerName.value = f.od_name.value;
         f.customerEmail.value = f.od_email.value;

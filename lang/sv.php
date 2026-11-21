@@ -32,16 +32,12 @@ return array(
 '존재하지 않는 게시판입니다.' => 'Forumet finns inte.',
 'bo_table 값이 넘어오지 않았습니다.\\n\\nboard.php?bo_table=code 와 같은 방식으로 넘겨 주세요.' => 'Inget bo_table-värde skickades.\\n\\nSkicka det till exempel som board.php?bo_table=code.',
 '글이 존재하지 않습니다.\\n\\n글이 삭제되었거나 이동된 경우입니다.' => 'Inlägget finns inte.\\n\\nDet kan ha tagits bort eller flyttats.',
-'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Gäster har inte åtkomst till det här forumet.\\n\\nOm du är medlem, logga in och försök igen.',
-'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Du har inte behörighet att läsa inlägg.\\n\\nKontakta administratören om du har frågor.',
-'글을 읽을 권한이 없습니다.' => 'Du har inte behörighet att läsa det här inlägget.',
-'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Du har inte behörighet att läsa det här inlägget.\\n\\nOm du är medlem, logga in och försök igen.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'I det här forumet kan endast identitetskontrollerade medlemmar läsa inlägg.\\n\\nOm du är medlem, logga in och försök igen.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'I det här forumet kan endast identitetskontrollerade medlemmar läsa inlägg.\\n\\nGör identitetskontrollen under Redigera profil.',
-'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'I det här forumet kan endast medlemmar som verifierats som myndiga läsa inlägg.\\n\\nOm du är myndig men ändå inte kan läsa, gör om identitetskontrollen under Redigera profil.',
 '보유하신 포인트({1})가 없거나 모자라서 글읽기({2})가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.' => 'Du har inte tillräckligt med poäng ({1}) för att läsa inlägget ({2}).\\n\\nSamla fler poäng och försök igen.',
 '목록을 볼 권한이 없습니다.' => 'Du har inte behörighet att visa listan.',
 '목록을 볼 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Du har inte behörighet att visa listan.\\n\\nOm du är medlem, logga in och försök igen.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'I det här forumet kan endast identitetskontrollerade medlemmar läsa inlägg.\\n\\nOm du är medlem, logga in och försök igen.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'I det här forumet kan endast identitetskontrollerade medlemmar läsa inlägg.\\n\\nGör identitetskontrollen under Redigera profil.',
+'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'I det här forumet kan endast medlemmar som verifierats som myndiga läsa inlägg.\\n\\nOm du är myndig men ändå inte kan läsa, gör om identitetskontrollen under Redigera profil.',
 '{1} {2} 페이지' => '{1} – sida {2}',
 
 // bbs/board_list_update.php
@@ -59,7 +55,7 @@ return array(
 '<p>{1}이 존재하지 않습니다.</p>' => '<p>{1} finns inte.</p>',
 
 // bbs/current_connect.php
-'현재접속자' => 'Aktuella besökare',
+'현재접속자 기능은 제공하지 않습니다.' => 'Funktionen för inloggade användare är inte tillgänglig.',
 
 // bbs/delete.php
 '토큰 에러로 삭제 불가합니다.' => 'Kan inte tas bort på grund av ett tokenfel.',
@@ -180,11 +176,13 @@ return array(
 
 // bbs/member_cert_refresh_update.php
 '로그인 후 이용해 주십시오.' => 'Logga in först.',
+'올바른 방법으로 이용해 주십시오. 본인인증 화면을 다시 열어 주십시오.' => 'Använd rätt metod. Öppna skärmen för identitetskontroll igen.',
 'w 값이 제대로 넘어오지 않았습니다.' => 'Värdet w skickades inte korrekt.',
 '잘못된 접근입니다' => 'Ogiltig åtkomst',
 '회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.' => 'Inget användarnamn angavs. Använd rätt tillvägagångssätt.',
 '입력하신 본인확인 정보로 가입된 내역이 존재합니다.' => 'Det finns redan ett konto registrerat med de identitetsuppgifter du angav.',
 '본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요' => 'Den kontrollerade identiteten stämmer inte med de angivna medlemsuppgifterna. Försök igen.',
+'본인인증을 완료한 뒤 다시 시도해 주십시오.' => 'Slutför identitetskontrollen och försök igen.',
 
 // bbs/member_confirm.php
 '로그인 한 회원만 접근하실 수 있습니다.' => 'Endast inloggade medlemmar har åtkomst.',
@@ -204,6 +202,10 @@ return array(
 '보낸' => 'Skickat',
 '정보없음' => 'Ingen information',
 '아직 읽지 않음' => 'Inte läst ännu',
+
+// bbs/memo_delete.php
+'쪽지가 존재하지 않거나 삭제할 수 없습니다.' => 'Meddelandet finns inte eller kan inte raderas.',
+'쪽지를 삭제하지 못했습니다.' => 'Det gick inte att radera meddelandet.',
 
 // bbs/memo_form.php
 '자신의 정보를 공개하지 않으면 다른분에게 쪽지를 보낼 수 없습니다. 정보공개 설정은 회원정보수정에서 하실 수 있습니다.' => 'Du kan inte skicka meddelanden till andra om din profil inte är offentlig. Du kan ändra profilens synlighet under Redigera profil.',
@@ -255,13 +257,18 @@ return array(
 // bbs/password.php
 '비밀번호 입력' => 'Ange lösenord',
 
+// bbs/password_check.php
+'비밀글 인증 대상이 올바르지 않습니다.' => 'Ogiltigt mål för verifiering av hemligt inlägg.',
+
 // bbs/password_lost.php
 '이미 로그인중입니다.' => 'Du är redan inloggad.',
 '회원정보 찾기' => 'Återställ kontouppgifter',
 
 // bbs/password_lost2.php
+'현재 비밀번호 찾기를 이용할 수 없습니다. 관리자에게 문의해 주십시오.' => 'Återställning av lösenord är inte tillgänglig just nu. Kontakta administratören.',
+'요청이 많습니다. 잠시 후 다시 이용해 주십시오.' => 'För många förfrågningar. Försök igen senare.',
 '메일주소 오류입니다.' => 'Ogiltig e-postadress.',
-'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Ett e-postmeddelande för att verifiera användarnamn och lösenord har skickats till {1}.\\n\\nKontrollera din e-post.',
+'입력하신 정보와 일치하는 회원이 있으면 비밀번호 찾기 안내 메일이 발송됩니다.\\n최근 요청이 있거나 발송이 제한된 경우 추가 발송되지 않을 수 있습니다.\\n메일함과 스팸함을 확인하고, 메일이 없으면 잠시 후 다시 요청해 주십시오.' => 'Om en medlem matchar uppgifterna du angav skickas ett e-postmeddelande för återställning av lösenord.\\nOm du nyligen har gjort en begäran eller om utskicket är begränsat kanske inget nytt meddelande skickas.\\nKontrollera inkorgen och skräpposten, och begär igen senare om inget meddelande har kommit.',
 '[{1}] 요청하신 회원정보 찾기 안내 메일입니다.' => '[{1}] E-post för återställning av kontouppgifter som du begärt',
 '회원정보 찾기 안내' => 'Återställning av kontouppgifter',
 '{1} ({2}) 회원님은 {3} 에 회원정보 찾기 요청을 하셨습니다.<br>' => '{1} ({2}) begärde återställning av kontouppgifter {3}.<br>',
@@ -277,10 +284,12 @@ return array(
 '비밀번호가 변경됐습니다.\\n\\n회원아이디와 변경된 비밀번호로 로그인 하시기 바랍니다.' => 'Ditt lösenord har bytts.\\n\\nLogga in med ditt användarnamn och det nya lösenordet.',
 
 // bbs/password_reset.php
+'최고관리자 계정은 본인인증으로 비밀번호를 재설정할 수 없습니다.' => 'Huvudadministratörens konto kan inte återställa lösenordet via identitetskontroll.',
 '본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.' => 'Det går inte att återställa användarnamn/lösenord via identitetskontroll. Kontakta administratören.',
 '패스워드 변경' => 'Byt lösenord',
 
 // bbs/password_reset_update.php
+'올바른 방법으로 이용해 주십시오. 비밀번호 찾기를 다시 진행해 주십시오.' => 'Använd rätt metod. Börja om med återställningen av lösenord.',
 '비밀번호가 넘어오지 않았습니다.' => 'Inget lösenord skickades.',
 '비밀번호가 일치하지 않습니다.' => 'Lösenorden stämmer inte överens.',
 
@@ -410,6 +419,7 @@ return array(
 '회원가입 완료' => 'Registreringen är klar',
 
 // bbs/rss.php
+'RSS 보기가 허용되지 않는 게시판입니다.' => 'RSS är inte tillåtet på det här forumet.',
 '비회원 읽기가 가능한 게시판만 RSS 지원합니다.' => 'RSS är bara tillgängligt för forum som gäster får läsa.',
 'RSS 보기가 금지되어 있습니다.' => 'RSS är inaktiverat.',
 
@@ -433,7 +443,10 @@ Vill du visa dina sparade inlägg nu?',
 
 // bbs/scrap_popin_update.php
 '스크랩하시려는 게시글이 존재하지 않습니다.' => 'Inlägget du försöker spara finns inte.',
+'올바른 방법으로 이용해 주십시오. 스크랩 창을 다시 열어 주십시오.' => 'Använd rätt metod. Öppna fönstret för att spara igen.',
 '너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.' => 'Du kan inte publicera flera inlägg i så snabb följd.',
+'잠시 후 다시 시도해 주십시오.' => 'Försök igen senare.',
+'스크랩하지 못했습니다. 잠시 후 다시 시도해 주십시오.' => 'Det gick inte att spara inlägget. Försök igen senare.',
 '이 글을 스크랩 하였습니다.
 
 지금 스크랩을 확인하시겠습니까?' => 'Inlägget har sparats.
@@ -473,16 +486,9 @@ Vill du visa dina sparade inlägg nu?',
 '답변글을 작성할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Du har inte behörighet att skriva ett svar.\\n\\nOm du är medlem, logga in och försök igen.',
 '보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.' => 'Du har inte tillräckligt med poäng ({1}) för att svara ({2}).\\n\\nSamla fler poäng och försök igen.',
 '공지에는 답변 할 수 없습니다.' => 'Det går inte att svara på ett anslag.',
-'정상적인 접근이 아닙니다.' => 'Ogiltig åtkomst.',
-'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Endast författaren eller en administratör kan svara på ett privat inlägg.',
-'비회원의 비밀글에는 답변이 불가합니다.' => 'Det går inte att svara på gästers privata inlägg.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 10단계 까지만 가능합니다.' => 'Du kan inte svara fler gånger.\\n\\nSvar är begränsade till 10 nivåer.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.' => 'Du kan inte svara fler gånger.\\n\\nSvar är begränsade till 26.',
 '글답변' => 'Svara',
-'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Åtkomst nekad.\\n\\nOm du är medlem, logga in och försök igen.',
-'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Du har inte behörighet att skriva.\\n\\nKontakta administratören om du har frågor.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'I det här forumet kan endast identitetskontrollerade medlemmar skriva.\\n\\nOm du är medlem, logga in och försök igen.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'I det här forumet kan endast identitetskontrollerade medlemmar skriva.\\n\\nGör identitetskontrollen under Redigera profil.',
 
 // bbs/write_comment_update.php
 '이름은 필히 입력하셔야 합니다.' => 'Namn är obligatoriskt.',
@@ -509,6 +515,7 @@ Kommentar
 '댓글 ' => 'Kommentar ',
 '댓글 수정' => 'Redigera kommentar',
 '[{1}] {2} 게시판에 {3}글이 올라왔습니다.' => '[{1}] Nytt inlägg i forumet {2} ({3})',
+'댓글 대상이 올바르지 않습니다.' => 'Ogiltigt mål för kommentar.',
 '그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Kommentaren har skrivits av en medlem med högre nivå än gruppadministratören och kan inte redigeras.',
 '자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.' => 'Du kan inte redigera kommentaren eftersom forumet inte tillhör en grupp som du administrerar.',
 '게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Kommentaren har skrivits av en medlem med högre nivå än forumadministratören och kan inte redigeras.',
@@ -572,6 +579,17 @@ Kommentar
 // head.sub.php
 '{1}님 로그인 중 ' => '{1} inloggad ',
 
+// lib/board_access.lib.php
+'회원만 접근할 수 있는 게시판입니다.' => 'Det här forumet är endast för medlemmar.',
+'접근 권한이 없는 게시판입니다.' => 'Du har inte åtkomst till det här forumet.',
+'글을 읽을 권한이 없습니다.' => 'Du har inte behörighet att läsa det här inlägget.',
+'본인확인 후 이용해 주십시오.' => 'Verifiera din identitet först.',
+'회원정보에서 본인확인 정보를 갱신한 후 이용해 주십시오.' => 'Uppdatera först din identitetskontroll i din profil.',
+'성인인증 후 이용해 주십시오.' => 'Slutför åldersverifieringen först.',
+'게시글이 존재하지 않거나 잘못된 대상입니다.' => 'Inlägget finns inte eller målet är ogiltigt.',
+'비밀글 인증 후 이용해 주십시오.' => 'Verifiera det hemliga inlägget först.',
+'비밀글에는 작성자 또는 관리자만 답변할 수 있습니다.' => 'Endast författaren eller en administratör kan svara på ett hemligt inlägg.',
+
 // lib/common.lib.php
 '처음' => 'Första',
 '이전' => 'Föregående',
@@ -610,7 +628,10 @@ Kommentar
 '휴대폰' => 'Mobil',
 '아이핀' => 'i-PIN',
 '오늘 {1} 본인확인을 {2}회 이용하셔서 더 이상 이용할 수 없습니다.' => 'Du har använt identitetskontroll via {1} {2} gånger i dag och kan inte använda den mer.',
-'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Inte tillgängligt eftersom funktionen exec inte kan köras.',
+'서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.
+서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.' => 'Betalningsmodulen NHN KCP (grundläggande) kan inte användas eftersom PHP-funktionen exec är blockerad på servern.
+Be serveradministratören att tillåta exec, eller ställ in tjänstecertifikat och privat nyckel och välj KCP REST API.',
+'서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.' => 'Verifieringsmodulen kan inte användas eftersom PHP-funktionen exec är blockerad på servern. Be serveradministratören att tillåta exec.',
 '폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.' => 'Antalet variabler som skickats från formuläret överskrider max_input_vars.\\nVissa värden kan gå förlorade när de sparas i databasen.\\n\\nÄndra värdet max_input_vars i serverns php.ini för att åtgärda detta.',
 'url에 타 도메인을 지정할 수 없습니다.' => 'En annan domän kan inte anges i URL:en.',
 'url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.' => 'Åtkomst nekad eftersom URL:en innehåller användaruppgifter.',
@@ -897,4 +918,19 @@ Endast .gif-, .jpg- och .png-filer tillåts.
 '{1} : 공백이 없어야 합니다.
 ' => '{1} : Mellanslag är inte tillåtna.
 ',
+
+// 코드에서 쓰지 않는 키
+'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Gäster har inte åtkomst till det här forumet.\\n\\nOm du är medlem, logga in och försök igen.',
+'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Du har inte behörighet att läsa inlägg.\\n\\nKontakta administratören om du har frågor.',
+'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Du har inte behörighet att läsa det här inlägget.\\n\\nOm du är medlem, logga in och försök igen.',
+'현재접속자' => 'Aktuella besökare',
+'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Ett e-postmeddelande för att verifiera användarnamn och lösenord har skickats till {1}.\\n\\nKontrollera din e-post.',
+'정상적인 접근이 아닙니다.' => 'Ogiltig åtkomst.',
+'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Endast författaren eller en administratör kan svara på ett privat inlägg.',
+'비회원의 비밀글에는 답변이 불가합니다.' => 'Det går inte att svara på gästers privata inlägg.',
+'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Åtkomst nekad.\\n\\nOm du är medlem, logga in och försök igen.',
+'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Du har inte behörighet att skriva.\\n\\nKontakta administratören om du har frågor.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'I det här forumet kan endast identitetskontrollerade medlemmar skriva.\\n\\nOm du är medlem, logga in och försök igen.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'I det här forumet kan endast identitetskontrollerade medlemmar skriva.\\n\\nGör identitetskontrollen under Redigera profil.',
+'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Inte tillgängligt eftersom funktionen exec inte kan köras.',
 );

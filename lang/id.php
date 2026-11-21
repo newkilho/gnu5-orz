@@ -32,16 +32,12 @@ return array(
 '존재하지 않는 게시판입니다.' => 'Papan tidak ditemukan.',
 'bo_table 값이 넘어오지 않았습니다.\\n\\nboard.php?bo_table=code 와 같은 방식으로 넘겨 주세요.' => 'Nilai bo_table tidak diterima.\\n\\nKirimkan dengan format board.php?bo_table=code.',
 '글이 존재하지 않습니다.\\n\\n글이 삭제되었거나 이동된 경우입니다.' => 'Postingan tidak ditemukan.\\n\\nPostingan mungkin telah dihapus atau dipindahkan.',
-'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Tamu tidak memiliki izin untuk mengakses papan ini.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
-'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Anda tidak dapat membaca postingan karena tidak memiliki izin akses.\\n\\nUntuk pertanyaan, silakan hubungi administrator.',
-'글을 읽을 권한이 없습니다.' => 'Anda tidak memiliki izin untuk membaca postingan.',
-'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Anda tidak memiliki izin untuk membaca postingan.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Hanya anggota yang telah verifikasi identitas yang dapat membaca postingan di papan ini.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Hanya anggota yang telah verifikasi identitas yang dapat membaca postingan di papan ini.\\n\\nSilakan lakukan verifikasi identitas di halaman ubah profil.',
-'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Hanya anggota dewasa yang telah diverifikasi melalui verifikasi identitas yang dapat membaca postingan di papan ini.\\n\\nJika Anda sudah dewasa tetapi tidak dapat membaca, silakan ulangi verifikasi identitas di halaman ubah profil.',
 '보유하신 포인트({1})가 없거나 모자라서 글읽기({2})가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.' => 'Anda tidak dapat membaca postingan ({2}) karena poin Anda ({1}) tidak mencukupi.\\n\\nSilakan kumpulkan poin lalu coba lagi.',
 '목록을 볼 권한이 없습니다.' => 'Anda tidak memiliki izin untuk melihat daftar.',
 '목록을 볼 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Anda tidak memiliki izin untuk melihat daftar.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Hanya anggota yang telah verifikasi identitas yang dapat membaca postingan di papan ini.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Hanya anggota yang telah verifikasi identitas yang dapat membaca postingan di papan ini.\\n\\nSilakan lakukan verifikasi identitas di halaman ubah profil.',
+'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Hanya anggota dewasa yang telah diverifikasi melalui verifikasi identitas yang dapat membaca postingan di papan ini.\\n\\nJika Anda sudah dewasa tetapi tidak dapat membaca, silakan ulangi verifikasi identitas di halaman ubah profil.',
 '{1} {2} 페이지' => '{1} - Halaman {2}',
 
 // bbs/board_list_update.php
@@ -59,7 +55,7 @@ return array(
 '<p>{1}이 존재하지 않습니다.</p>' => '<p>{1} tidak ditemukan.</p>',
 
 // bbs/current_connect.php
-'현재접속자' => 'Pengunjung saat ini',
+'현재접속자 기능은 제공하지 않습니다.' => 'Fitur pengguna online tidak tersedia.',
 
 // bbs/delete.php
 '토큰 에러로 삭제 불가합니다.' => 'Tidak dapat menghapus karena kesalahan token.',
@@ -180,11 +176,13 @@ return array(
 
 // bbs/member_cert_refresh_update.php
 '로그인 후 이용해 주십시오.' => 'Silakan masuk terlebih dahulu.',
+'올바른 방법으로 이용해 주십시오. 본인인증 화면을 다시 열어 주십시오.' => 'Gunakan cara yang benar. Buka kembali layar verifikasi identitas.',
 'w 값이 제대로 넘어오지 않았습니다.' => 'Nilai w tidak diterima dengan benar.',
 '잘못된 접근입니다' => 'Akses tidak valid',
 '회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.' => 'Nama pengguna tidak ada. Silakan gunakan dengan cara yang benar.',
 '입력하신 본인확인 정보로 가입된 내역이 존재합니다.' => 'Sudah ada akun yang terdaftar dengan informasi verifikasi identitas yang Anda masukkan.',
 '본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요' => 'Informasi yang diverifikasi tidak cocok dengan informasi anggota yang dimasukkan. Silakan coba lagi',
+'본인인증을 완료한 뒤 다시 시도해 주십시오.' => 'Selesaikan verifikasi identitas lalu coba lagi.',
 
 // bbs/member_confirm.php
 '로그인 한 회원만 접근하실 수 있습니다.' => 'Hanya anggota yang sudah masuk yang dapat mengakses.',
@@ -204,6 +202,10 @@ return array(
 '보낸' => 'Dikirim',
 '정보없음' => 'Tidak ada informasi',
 '아직 읽지 않음' => 'Belum dibaca',
+
+// bbs/memo_delete.php
+'쪽지가 존재하지 않거나 삭제할 수 없습니다.' => 'Pesan tidak ada atau tidak dapat dihapus.',
+'쪽지를 삭제하지 못했습니다.' => 'Gagal menghapus pesan.',
 
 // bbs/memo_form.php
 '자신의 정보를 공개하지 않으면 다른분에게 쪽지를 보낼 수 없습니다. 정보공개 설정은 회원정보수정에서 하실 수 있습니다.' => 'Anda tidak dapat mengirim pesan kepada orang lain jika profil Anda tidak publik. Pengaturan profil publik dapat diubah di halaman ubah profil.',
@@ -255,13 +257,18 @@ return array(
 // bbs/password.php
 '비밀번호 입력' => 'Masukkan kata sandi',
 
+// bbs/password_check.php
+'비밀글 인증 대상이 올바르지 않습니다.' => 'Target verifikasi postingan rahasia tidak valid.',
+
 // bbs/password_lost.php
 '이미 로그인중입니다.' => 'Anda sudah masuk.',
 '회원정보 찾기' => 'Cari informasi akun',
 
 // bbs/password_lost2.php
+'현재 비밀번호 찾기를 이용할 수 없습니다. 관리자에게 문의해 주십시오.' => 'Pemulihan kata sandi saat ini tidak tersedia. Silakan hubungi administrator.',
+'요청이 많습니다. 잠시 후 다시 이용해 주십시오.' => 'Terlalu banyak permintaan. Silakan coba lagi nanti.',
 '메일주소 오류입니다.' => 'Alamat email salah.',
-'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Email untuk memverifikasi nama pengguna dan kata sandi telah dikirim ke {1}.\\n\\nSilakan periksa email Anda.',
+'입력하신 정보와 일치하는 회원이 있으면 비밀번호 찾기 안내 메일이 발송됩니다.\\n최근 요청이 있거나 발송이 제한된 경우 추가 발송되지 않을 수 있습니다.\\n메일함과 스팸함을 확인하고, 메일이 없으면 잠시 후 다시 요청해 주십시오.' => 'Jika ada anggota yang cocok dengan informasi yang Anda masukkan, email pemulihan kata sandi akan dikirim.\\nJika Anda baru saja meminta atau pengiriman dibatasi, email tambahan mungkin tidak dikirim.\\nPeriksa kotak masuk dan folder spam; jika tidak ada email, minta lagi nanti.',
 '[{1}] 요청하신 회원정보 찾기 안내 메일입니다.' => '[{1}] Informasi pemulihan akun yang Anda minta',
 '회원정보 찾기 안내' => 'Panduan pemulihan akun',
 '{1} ({2}) 회원님은 {3} 에 회원정보 찾기 요청을 하셨습니다.<br>' => '{1} ({2}) telah meminta pemulihan informasi akun pada {3}.<br>',
@@ -277,10 +284,12 @@ return array(
 '비밀번호가 변경됐습니다.\\n\\n회원아이디와 변경된 비밀번호로 로그인 하시기 바랍니다.' => 'Kata sandi telah diubah.\\n\\nSilakan masuk dengan nama pengguna dan kata sandi baru.',
 
 // bbs/password_reset.php
+'최고관리자 계정은 본인인증으로 비밀번호를 재설정할 수 없습니다.' => 'Akun super administrator tidak dapat mengatur ulang kata sandi melalui verifikasi identitas.',
 '본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.' => 'Tidak dapat mencari nama pengguna/kata sandi melalui verifikasi identitas. Silakan hubungi administrator.',
 '패스워드 변경' => 'Ubah kata sandi',
 
 // bbs/password_reset_update.php
+'올바른 방법으로 이용해 주십시오. 비밀번호 찾기를 다시 진행해 주십시오.' => 'Gunakan cara yang benar. Mulai ulang pemulihan kata sandi.',
 '비밀번호가 넘어오지 않았습니다.' => 'Kata sandi tidak diterima.',
 '비밀번호가 일치하지 않습니다.' => 'Kata sandi tidak cocok.',
 
@@ -410,6 +419,7 @@ return array(
 '회원가입 완료' => 'Pendaftaran selesai',
 
 // bbs/rss.php
+'RSS 보기가 허용되지 않는 게시판입니다.' => 'RSS tidak diizinkan di papan ini.',
 '비회원 읽기가 가능한 게시판만 RSS 지원합니다.' => 'RSS hanya tersedia untuk papan yang dapat dibaca oleh tamu.',
 'RSS 보기가 금지되어 있습니다.' => 'Tampilan RSS tidak diizinkan.',
 
@@ -433,7 +443,10 @@ Lihat simpanan Anda sekarang?',
 
 // bbs/scrap_popin_update.php
 '스크랩하시려는 게시글이 존재하지 않습니다.' => 'Postingan yang ingin Anda simpan tidak ditemukan.',
+'올바른 방법으로 이용해 주십시오. 스크랩 창을 다시 열어 주십시오.' => 'Gunakan cara yang benar. Buka kembali jendela simpan.',
 '너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.' => 'Anda tidak dapat mengirim postingan berturut-turut dalam waktu terlalu singkat.',
+'잠시 후 다시 시도해 주십시오.' => 'Silakan coba lagi nanti.',
+'스크랩하지 못했습니다. 잠시 후 다시 시도해 주십시오.' => 'Gagal menyimpan postingan. Silakan coba lagi nanti.',
 '이 글을 스크랩 하였습니다.
 
 지금 스크랩을 확인하시겠습니까?' => 'Postingan ini telah disimpan.
@@ -473,16 +486,9 @@ Lihat simpanan Anda sekarang?',
 '답변글을 작성할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Anda tidak memiliki izin untuk menulis balasan.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
 '보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.' => 'Anda tidak dapat membalas ({2}) karena poin Anda ({1}) tidak mencukupi.\\n\\nSilakan kumpulkan poin lalu coba lagi.',
 '공지에는 답변 할 수 없습니다.' => 'Tidak dapat membalas pengumuman.',
-'정상적인 접근이 아닙니다.' => 'Akses tidak valid.',
-'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Hanya penulis atau administrator yang dapat membalas postingan rahasia.',
-'비회원의 비밀글에는 답변이 불가합니다.' => 'Postingan rahasia dari tamu tidak dapat dibalas.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 10단계 까지만 가능합니다.' => 'Anda tidak dapat membalas lagi.\\n\\nBalasan hanya dapat sampai 10 tingkat.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.' => 'Anda tidak dapat membalas lagi.\\n\\nBalasan hanya dapat sampai 26.',
 '글답변' => 'Balas postingan',
-'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Anda tidak memiliki izin akses.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
-'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Anda tidak dapat menulis karena tidak memiliki izin akses.\\n\\nUntuk pertanyaan, silakan hubungi administrator.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Hanya anggota yang telah verifikasi identitas yang dapat menulis di papan ini.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Hanya anggota yang telah verifikasi identitas yang dapat menulis di papan ini.\\n\\nSilakan lakukan verifikasi identitas di halaman ubah profil.',
 
 // bbs/write_comment_update.php
 '이름은 필히 입력하셔야 합니다.' => 'Nama wajib diisi.',
@@ -509,6 +515,7 @@ Komentar
 '댓글 ' => 'Komentar ',
 '댓글 수정' => 'Ubah komentar',
 '[{1}] {2} 게시판에 {3}글이 올라왔습니다.' => '[{1}] Ada postingan di papan {2} ({3}).',
+'댓글 대상이 올바르지 않습니다.' => 'Target komentar tidak valid.',
 '그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Tidak dapat mengubah karena komentar ini milik anggota dengan level lebih tinggi dari admin grup.',
 '자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.' => 'Anda tidak dapat mengubah komentar karena papan ini bukan milik grup yang Anda kelola.',
 '게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Tidak dapat mengubah karena komentar ini milik anggota dengan level lebih tinggi dari admin papan.',
@@ -572,6 +579,17 @@ Komentar
 // head.sub.php
 '{1}님 로그인 중 ' => '{1} sedang masuk ',
 
+// lib/board_access.lib.php
+'회원만 접근할 수 있는 게시판입니다.' => 'Papan ini hanya untuk anggota.',
+'접근 권한이 없는 게시판입니다.' => 'Anda tidak memiliki akses ke papan ini.',
+'글을 읽을 권한이 없습니다.' => 'Anda tidak memiliki izin untuk membaca postingan.',
+'본인확인 후 이용해 주십시오.' => 'Silakan verifikasi identitas Anda terlebih dahulu.',
+'회원정보에서 본인확인 정보를 갱신한 후 이용해 주십시오.' => 'Silakan perbarui verifikasi identitas di profil Anda terlebih dahulu.',
+'성인인증 후 이용해 주십시오.' => 'Silakan selesaikan verifikasi usia dewasa terlebih dahulu.',
+'게시글이 존재하지 않거나 잘못된 대상입니다.' => 'Postingan tidak ada atau targetnya tidak valid.',
+'비밀글 인증 후 이용해 주십시오.' => 'Silakan verifikasi postingan rahasia terlebih dahulu.',
+'비밀글에는 작성자 또는 관리자만 답변할 수 있습니다.' => 'Hanya penulis atau administrator yang dapat membalas postingan rahasia.',
+
 // lib/common.lib.php
 '처음' => 'Pertama',
 '이전' => 'Sebelumnya',
@@ -610,7 +628,10 @@ Komentar
 '휴대폰' => 'Ponsel',
 '아이핀' => 'i-PIN',
 '오늘 {1} 본인확인을 {2}회 이용하셔서 더 이상 이용할 수 없습니다.' => 'Anda telah menggunakan verifikasi identitas ({1}) sebanyak {2} kali hari ini dan tidak dapat menggunakannya lagi.',
-'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Tidak dapat digunakan karena fungsi exec tidak dapat dijalankan.',
+'서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.
+서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.' => 'Modul pembayaran NHN KCP (dasar) tidak dapat digunakan karena fungsi PHP exec diblokir di server.
+Minta administrator server untuk mengizinkan exec, atau atur sertifikat layanan dan kunci privat lalu pilih KCP REST API.',
+'서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.' => 'Modul verifikasi tidak dapat digunakan karena fungsi PHP exec diblokir di server. Minta administrator server untuk mengizinkan exec.',
 '폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.' => 'Jumlah variabel yang dikirim dari formulir melebihi nilai max_input_vars.\\nSebagian nilai yang dikirim mungkin hilang saat disimpan ke DB.\\n\\nUntuk mengatasinya, ubah nilai max_input_vars di php.ini server.',
 'url에 타 도메인을 지정할 수 없습니다.' => 'Domain lain tidak dapat ditentukan dalam url.',
 'url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.' => 'Tidak dapat diakses karena url berisi informasi pengguna.',
@@ -897,4 +918,19 @@ Hanya file .gif .jpg .png yang diizinkan.
 '{1} : 공백이 없어야 합니다.
 ' => '{1} : Tidak boleh ada spasi.
 ',
+
+// 코드에서 쓰지 않는 키
+'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Tamu tidak memiliki izin untuk mengakses papan ini.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
+'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Anda tidak dapat membaca postingan karena tidak memiliki izin akses.\\n\\nUntuk pertanyaan, silakan hubungi administrator.',
+'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Anda tidak memiliki izin untuk membaca postingan.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
+'현재접속자' => 'Pengunjung saat ini',
+'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Email untuk memverifikasi nama pengguna dan kata sandi telah dikirim ke {1}.\\n\\nSilakan periksa email Anda.',
+'정상적인 접근이 아닙니다.' => 'Akses tidak valid.',
+'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Hanya penulis atau administrator yang dapat membalas postingan rahasia.',
+'비회원의 비밀글에는 답변이 불가합니다.' => 'Postingan rahasia dari tamu tidak dapat dibalas.',
+'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Anda tidak memiliki izin akses.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
+'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Anda tidak dapat menulis karena tidak memiliki izin akses.\\n\\nUntuk pertanyaan, silakan hubungi administrator.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Hanya anggota yang telah verifikasi identitas yang dapat menulis di papan ini.\\n\\nJika Anda anggota, silakan masuk terlebih dahulu.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Hanya anggota yang telah verifikasi identitas yang dapat menulis di papan ini.\\n\\nSilakan lakukan verifikasi identitas di halaman ubah profil.',
+'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Tidak dapat digunakan karena fungsi exec tidak dapat dijalankan.',
 );

@@ -32,16 +32,12 @@ return array(
 '존재하지 않는 게시판입니다.' => 'Böyle bir pano yok.',
 'bo_table 값이 넘어오지 않았습니다.\\n\\nboard.php?bo_table=code 와 같은 방식으로 넘겨 주세요.' => 'bo_table değeri gönderilmedi.\\n\\nLütfen board.php?bo_table=code biçiminde gönderin.',
 '글이 존재하지 않습니다.\\n\\n글이 삭제되었거나 이동된 경우입니다.' => 'Gönderi bulunamadı.\\n\\nGönderi silinmiş veya taşınmış olabilir.',
-'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Üye olmayanların bu panoya erişim izni yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
-'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Erişim izniniz olmadığı için gönderiyi okuyamazsınız.\\n\\nSorularınız için lütfen yöneticiye başvurun.',
-'글을 읽을 권한이 없습니다.' => 'Gönderiyi okuma izniniz yok.',
-'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Gönderiyi okuma izniniz yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi okuyabilir.\\n\\nÜyeyseniz lütfen giriş yapın.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi okuyabilir.\\n\\nLütfen profil düzenleme sayfasından kimlik doğrulaması yapın.',
-'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Bu panoda yalnızca kimlik doğrulamasıyla yetişkin olduğu onaylanmış üyeler gönderi okuyabilir.\\n\\nYetişkin olduğunuz hâlde okuyamıyorsanız lütfen profil düzenleme sayfasından kimlik doğrulamasını yeniden yapın.',
 '보유하신 포인트({1})가 없거나 모자라서 글읽기({2})가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.' => 'Puanınız ({1}) olmadığı veya yetersiz olduğu için gönderiyi okuyamazsınız ({2}).\\n\\nLütfen puan biriktirdikten sonra tekrar deneyin.',
 '목록을 볼 권한이 없습니다.' => 'Listeyi görüntüleme izniniz yok.',
 '목록을 볼 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Listeyi görüntüleme izniniz yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi okuyabilir.\\n\\nÜyeyseniz lütfen giriş yapın.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi okuyabilir.\\n\\nLütfen profil düzenleme sayfasından kimlik doğrulaması yapın.',
+'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Bu panoda yalnızca kimlik doğrulamasıyla yetişkin olduğu onaylanmış üyeler gönderi okuyabilir.\\n\\nYetişkin olduğunuz hâlde okuyamıyorsanız lütfen profil düzenleme sayfasından kimlik doğrulamasını yeniden yapın.',
 '{1} {2} 페이지' => '{1} - Sayfa {2}',
 
 // bbs/board_list_update.php
@@ -59,7 +55,7 @@ return array(
 '<p>{1}이 존재하지 않습니다.</p>' => '<p>{1} mevcut değil.</p>',
 
 // bbs/current_connect.php
-'현재접속자' => 'Çevrimiçi ziyaretçiler',
+'현재접속자 기능은 제공하지 않습니다.' => 'Çevrimiçi kullanıcılar özelliği kullanılamıyor.',
 
 // bbs/delete.php
 '토큰 에러로 삭제 불가합니다.' => 'Token hatası nedeniyle silinemiyor.',
@@ -180,11 +176,13 @@ return array(
 
 // bbs/member_cert_refresh_update.php
 '로그인 후 이용해 주십시오.' => 'Lütfen giriş yaptıktan sonra kullanın.',
+'올바른 방법으로 이용해 주십시오. 본인인증 화면을 다시 열어 주십시오.' => 'Lütfen doğru yöntemi kullanın. Kimlik doğrulama ekranını yeniden açın.',
 'w 값이 제대로 넘어오지 않았습니다.' => 'w değeri doğru şekilde gönderilmedi.',
 '잘못된 접근입니다' => 'Geçersiz erişim',
 '회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.' => 'Kullanıcı adı değeri yok. Lütfen doğru yöntemle kullanın.',
 '입력하신 본인확인 정보로 가입된 내역이 존재합니다.' => 'Girdiğiniz kimlik doğrulama bilgileriyle yapılmış bir kayıt zaten var.',
 '본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요' => 'Doğrulanan kimlik bilgileri ile girilen üye bilgileri eşleşmiyor. Lütfen tekrar deneyin',
+'본인인증을 완료한 뒤 다시 시도해 주십시오.' => 'Lütfen kimlik doğrulamasını tamamlayıp tekrar deneyin.',
 
 // bbs/member_confirm.php
 '로그인 한 회원만 접근하실 수 있습니다.' => 'Yalnızca giriş yapmış üyeler erişebilir.',
@@ -204,6 +202,10 @@ return array(
 '보낸' => 'Gönderilme',
 '정보없음' => 'Bilgi yok',
 '아직 읽지 않음' => 'Henüz okunmadı',
+
+// bbs/memo_delete.php
+'쪽지가 존재하지 않거나 삭제할 수 없습니다.' => 'Mesaj mevcut değil veya silinemiyor.',
+'쪽지를 삭제하지 못했습니다.' => 'Mesaj silinemedi.',
 
 // bbs/memo_form.php
 '자신의 정보를 공개하지 않으면 다른분에게 쪽지를 보낼 수 없습니다. 정보공개 설정은 회원정보수정에서 하실 수 있습니다.' => 'Kendi bilgilerinizi herkese açık yapmazsanız başkalarına mesaj gönderemezsiniz. Bilgi paylaşım ayarını profil düzenleme sayfasından yapabilirsiniz.',
@@ -255,13 +257,18 @@ return array(
 // bbs/password.php
 '비밀번호 입력' => 'Şifre girin',
 
+// bbs/password_check.php
+'비밀글 인증 대상이 올바르지 않습니다.' => 'Gizli gönderi doğrulaması için geçersiz hedef.',
+
 // bbs/password_lost.php
 '이미 로그인중입니다.' => 'Zaten giriş yapmış durumdasınız.',
 '회원정보 찾기' => 'Hesap bilgilerini bul',
 
 // bbs/password_lost2.php
+'현재 비밀번호 찾기를 이용할 수 없습니다. 관리자에게 문의해 주십시오.' => 'Şifre kurtarma şu anda kullanılamıyor. Lütfen yöneticiyle iletişime geçin.',
+'요청이 많습니다. 잠시 후 다시 이용해 주십시오.' => 'Çok fazla istek. Lütfen daha sonra tekrar deneyin.',
 '메일주소 오류입니다.' => 'E-posta adresi hatalı.',
-'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Kullanıcı adınızı ve şifrenizi doğrulayabileceğiniz bir e-posta {1} adresine gönderildi.\\n\\nLütfen e-postanızı kontrol edin.',
+'입력하신 정보와 일치하는 회원이 있으면 비밀번호 찾기 안내 메일이 발송됩니다.\\n최근 요청이 있거나 발송이 제한된 경우 추가 발송되지 않을 수 있습니다.\\n메일함과 스팸함을 확인하고, 메일이 없으면 잠시 후 다시 요청해 주십시오.' => 'Girdiğiniz bilgilerle eşleşen bir üye varsa şifre kurtarma e-postası gönderilir.\\nKısa süre önce istekte bulunduysanız veya gönderim sınırlıysa ek e-posta gönderilmeyebilir.\\nGelen kutunuzu ve spam klasörünüzü kontrol edin; e-posta yoksa daha sonra tekrar isteyin.',
 '[{1}] 요청하신 회원정보 찾기 안내 메일입니다.' => '[{1}] Hesap bilgilerini bulma talebiniz hakkında bilgilendirme',
 '회원정보 찾기 안내' => 'Hesap bilgilerini bulma bilgilendirmesi',
 '{1} ({2}) 회원님은 {3} 에 회원정보 찾기 요청을 하셨습니다.<br>' => '{1} ({2}) adlı üye {3} tarihinde hesap bilgilerini bulma talebinde bulundu.<br>',
@@ -277,10 +284,12 @@ return array(
 '비밀번호가 변경됐습니다.\\n\\n회원아이디와 변경된 비밀번호로 로그인 하시기 바랍니다.' => 'Şifreniz değiştirildi.\\n\\nLütfen kullanıcı adınız ve yeni şifrenizle giriş yapın.',
 
 // bbs/password_reset.php
+'최고관리자 계정은 본인인증으로 비밀번호를 재설정할 수 없습니다.' => 'Süper yönetici hesabı, kimlik doğrulamasıyla şifresini sıfırlayamaz.',
 '본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.' => 'Kimlik doğrulaması ile kullanıcı adı/şifre bulma kullanılamıyor. Lütfen yöneticiye başvurun.',
 '패스워드 변경' => 'Şifre değiştir',
 
 // bbs/password_reset_update.php
+'올바른 방법으로 이용해 주십시오. 비밀번호 찾기를 다시 진행해 주십시오.' => 'Lütfen doğru yöntemi kullanın. Şifre kurtarmayı yeniden başlatın.',
 '비밀번호가 넘어오지 않았습니다.' => 'Şifre gönderilmedi.',
 '비밀번호가 일치하지 않습니다.' => 'Şifreler eşleşmiyor.',
 
@@ -410,6 +419,7 @@ return array(
 '회원가입 완료' => 'Kayıt tamamlandı',
 
 // bbs/rss.php
+'RSS 보기가 허용되지 않는 게시판입니다.' => 'Bu panoda RSS\'e izin verilmiyor.',
 '비회원 읽기가 가능한 게시판만 RSS 지원합니다.' => 'RSS yalnızca üye olmayanların okuyabildiği panolarda desteklenir.',
 'RSS 보기가 금지되어 있습니다.' => 'RSS görüntüleme engellenmiş.',
 
@@ -433,7 +443,10 @@ Kaydedilenleri şimdi görüntülemek ister misiniz?',
 
 // bbs/scrap_popin_update.php
 '스크랩하시려는 게시글이 존재하지 않습니다.' => 'Kaydetmek istediğiniz gönderi bulunamadı.',
+'올바른 방법으로 이용해 주십시오. 스크랩 창을 다시 열어 주십시오.' => 'Lütfen doğru yöntemi kullanın. Kaydetme penceresini yeniden açın.',
 '너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.' => 'Çok kısa süre içinde art arda gönderi paylaşamazsınız.',
+'잠시 후 다시 시도해 주십시오.' => 'Lütfen daha sonra tekrar deneyin.',
+'스크랩하지 못했습니다. 잠시 후 다시 시도해 주십시오.' => 'Gönderi kaydedilemedi. Lütfen daha sonra tekrar deneyin.',
 '이 글을 스크랩 하였습니다.
 
 지금 스크랩을 확인하시겠습니까?' => 'Bu gönderi kaydedildi.
@@ -473,16 +486,9 @@ Kaydedilenleri şimdi görüntülemek ister misiniz?',
 '답변글을 작성할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Yanıt yazma izniniz yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
 '보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.' => 'Puanınız ({1}) olmadığı veya yetersiz olduğu için yanıt yazamazsınız ({2}).\\n\\nLütfen puan biriktirdikten sonra tekrar deneyin.',
 '공지에는 답변 할 수 없습니다.' => 'Duyurulara yanıt verilemez.',
-'정상적인 접근이 아닙니다.' => 'Geçerli bir erişim değil.',
-'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Gizli gönderilere yalnızca yazarı veya yönetici yanıt verebilir.',
-'비회원의 비밀글에는 답변이 불가합니다.' => 'Üye olmayanların gizli gönderilerine yanıt verilemez.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 10단계 까지만 가능합니다.' => 'Daha fazla yanıt veremezsiniz.\\n\\nYanıtlar en fazla 10 seviyeye kadar olabilir.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.' => 'Daha fazla yanıt veremezsiniz.\\n\\nEn fazla 26 yanıt verilebilir.',
 '글답변' => 'Yanıt yaz',
-'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Erişim izniniz yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
-'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Erişim izniniz olmadığı için gönderi yazamazsınız.\\n\\nSorularınız için lütfen yöneticiye başvurun.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi yazabilir.\\n\\nÜyeyseniz lütfen giriş yapın.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi yazabilir.\\n\\nLütfen profil düzenleme sayfasından kimlik doğrulaması yapın.',
 
 // bbs/write_comment_update.php
 '이름은 필히 입력하셔야 합니다.' => 'Ad alanı zorunludur.',
@@ -509,6 +515,7 @@ Yorum
 '댓글 ' => 'Yorum ',
 '댓글 수정' => 'Yorum düzenleme',
 '[{1}] {2} 게시판에 {3}글이 올라왔습니다.' => '[{1}] {2} panosunda yeni içerik ({3})',
+'댓글 대상이 올바르지 않습니다.' => 'Geçersiz yorum hedefi.',
 '그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Grup yöneticisinden daha yüksek yetkili bir üyenin yorumu olduğu için düzenlenemez.',
 '자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.' => 'Yönettiğiniz grubun panosu olmadığı için yorumu düzenleyemezsiniz.',
 '게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Pano yöneticisinden daha yüksek yetkili bir üyenin yorumu olduğu için düzenlenemez.',
@@ -572,6 +579,17 @@ Yorum
 // head.sub.php
 '{1}님 로그인 중 ' => '{1} olarak giriş yapıldı ',
 
+// lib/board_access.lib.php
+'회원만 접근할 수 있는 게시판입니다.' => 'Bu pano yalnızca üyeler içindir.',
+'접근 권한이 없는 게시판입니다.' => 'Bu panoya erişiminiz yok.',
+'글을 읽을 권한이 없습니다.' => 'Gönderiyi okuma izniniz yok.',
+'본인확인 후 이용해 주십시오.' => 'Lütfen önce kimliğinizi doğrulayın.',
+'회원정보에서 본인확인 정보를 갱신한 후 이용해 주십시오.' => 'Lütfen önce profilinizdeki kimlik doğrulama bilgilerini güncelleyin.',
+'성인인증 후 이용해 주십시오.' => 'Lütfen önce yetişkin doğrulamasını tamamlayın.',
+'게시글이 존재하지 않거나 잘못된 대상입니다.' => 'Gönderi mevcut değil veya hedef geçersiz.',
+'비밀글 인증 후 이용해 주십시오.' => 'Lütfen önce gizli gönderiyi doğrulayın.',
+'비밀글에는 작성자 또는 관리자만 답변할 수 있습니다.' => 'Gizli gönderiye yalnızca yazar veya yönetici yanıt verebilir.',
+
 // lib/common.lib.php
 '처음' => 'İlk',
 '이전' => 'Önceki',
@@ -610,7 +628,10 @@ Yorum
 '휴대폰' => 'Cep telefonu',
 '아이핀' => 'i-PIN',
 '오늘 {1} 본인확인을 {2}회 이용하셔서 더 이상 이용할 수 없습니다.' => 'Bugün {1} kimlik doğrulamasını {2} kez kullandığınız için daha fazla kullanamazsınız.',
-'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'exec fonksiyonu çalıştırılamadığı için kullanılamıyor.',
+'서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.
+서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.' => 'Sunucuda PHP exec işlevi engellendiği için NHN KCP ödeme modülü (temel) kullanılamıyor.
+Sunucu yöneticisinden exec işlevine izin vermesini isteyin veya hizmet sertifikasını ve özel anahtarı ayarlayıp KCP REST API\'yi seçin.',
+'서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.' => 'Sunucuda PHP exec işlevi engellendiği için doğrulama modülü kullanılamıyor. Sunucu yöneticisinden exec işlevine izin vermesini isteyin.',
 '폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.' => 'Formdan gönderilen değişken sayısı max_input_vars değerinden büyük.\\nGönderilen değerlerin bir kısmı kaybolarak veritabanına kaydedilebilir.\\n\\nSorunu çözmek için sunucudaki php.ini dosyasında max_input_vars değerini değiştirin.',
 'url에 타 도메인을 지정할 수 없습니다.' => 'url içinde başka bir alan adı belirtilemez.',
 'url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.' => 'url kullanıcı bilgisi içerdiği için erişilemiyor.',
@@ -897,4 +918,19 @@ Yalnızca .gif .jpg .png dosyalarına izin verilir.
 '{1} : 공백이 없어야 합니다.
 ' => '{1} : Boşluk kullanılamaz.
 ',
+
+// 코드에서 쓰지 않는 키
+'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Üye olmayanların bu panoya erişim izni yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
+'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Erişim izniniz olmadığı için gönderiyi okuyamazsınız.\\n\\nSorularınız için lütfen yöneticiye başvurun.',
+'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Gönderiyi okuma izniniz yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
+'현재접속자' => 'Çevrimiçi ziyaretçiler',
+'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Kullanıcı adınızı ve şifrenizi doğrulayabileceğiniz bir e-posta {1} adresine gönderildi.\\n\\nLütfen e-postanızı kontrol edin.',
+'정상적인 접근이 아닙니다.' => 'Geçerli bir erişim değil.',
+'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Gizli gönderilere yalnızca yazarı veya yönetici yanıt verebilir.',
+'비회원의 비밀글에는 답변이 불가합니다.' => 'Üye olmayanların gizli gönderilerine yanıt verilemez.',
+'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Erişim izniniz yok.\\n\\nÜyeyseniz lütfen giriş yapın.',
+'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Erişim izniniz olmadığı için gönderi yazamazsınız.\\n\\nSorularınız için lütfen yöneticiye başvurun.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi yazabilir.\\n\\nÜyeyseniz lütfen giriş yapın.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Bu panoda yalnızca kimliğini doğrulamış üyeler gönderi yazabilir.\\n\\nLütfen profil düzenleme sayfasından kimlik doğrulaması yapın.',
+'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'exec fonksiyonu çalıştırılamadığı için kullanılamıyor.',
 );

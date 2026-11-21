@@ -185,9 +185,6 @@ Automatic line breaks convert line breaks in the post into <br> tags.',
 '이미지 목록' => 'Image list',
 '열람중' => 'Viewing',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'No one is online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Search term',
 '자주하시는질문 분류' => 'FAQ categories',
@@ -679,4 +676,7 @@ Deleted data cannot be recovered.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Mobile version',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'No one is online.',
 );

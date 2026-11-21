@@ -3,6 +3,8 @@ if (!defined('_GNUBOARD_')) exit;
 
 include_once(dirname(__FILE__) .'/pbkdf2.compat.php');
 include_once(dirname(__FILE__) .'/attachment.lib.php');
+include_once(dirname(__FILE__) .'/board_access.lib.php');
+include_once(dirname(__FILE__) .'/sql_rows.lib.php');
 
 /*************************************************************************
 **
@@ -1963,6 +1965,7 @@ function sql_set_charset($charset, $link=null)
 
 function sql_data_seek($result, $offset=0)
 {
+    if ($result instanceof G5_sql_rows) return $result->seek($offset);
     if ( ! $result ) return;
 
     if(function_exists('mysqli_set_charset') && G5_MYSQLI_USE)
@@ -2127,6 +2130,7 @@ function sql_fetch($sql, $error=G5_DISPLAY_SQL_ERROR, $link=null)
 // 결과값에서 한행 연관배열(이름으로)로 얻는다.
 function sql_fetch_array($result)
 {
+    if ($result instanceof G5_sql_rows) return $result->fetch();
     if( ! $result) return array();
 
     if(function_exists('mysqli_fetch_assoc') && G5_MYSQLI_USE)
@@ -2147,6 +2151,7 @@ function sql_fetch_array($result)
 // 단, 결과 값은 스크립트(script) 실행부가 종료되면서 메모리에서 자동적으로 지워진다.
 function sql_free_result($result)
 {
+    if ($result instanceof G5_sql_rows) return $result->free();
     if(!is_resource($result)) return;
 
     if(function_exists('mysqli_free_result') && G5_MYSQLI_USE)
@@ -2193,6 +2198,7 @@ function sql_insert_id($link=null)
 
 function sql_num_rows($result)
 {
+    if ($result instanceof G5_sql_rows) return $result->count();
     if(function_exists('mysqli_num_rows') && G5_MYSQLI_USE)
         return mysqli_num_rows($result);
     else
@@ -2595,16 +2601,15 @@ function get_token()
 }
 
 
-// POST로 넘어온 토큰의 HMAC 및 만료 시간 검증
-// 기본 만료: 7200초(2시간)
-function check_token($expire = 7200)
+// get_token() 값의 HMAC 및 만료 시간을 검증하고 오류 메시지를 반환한다. 통과하면 빈 문자열.
+// alert()를 쓸 수 없는 JSON 응답 엔드포인트에서 사용한다.
+function get_token_error($token, $expire = 7200)
 {
-    $token = isset($_POST['token']) ? $_POST['token'] : '';
+    $token = is_string($token) ? $token : '';
 
     $dot = strpos($token, '.');
-    if (!$token || $dot === false) {
-        alert(__('올바른 방법으로 이용해 주십시오.'));
-        return false;
+    if ($token === '' || $dot === false) {
+        return __('올바른 방법으로 이용해 주십시오.');
     }
 
     $time = (int)substr($token, 0, $dot);
@@ -2612,8 +2617,7 @@ function check_token($expire = 7200)
 
     // 만료 검증
     if (abs(time() - $time) > $expire) {
-        alert(__('토큰이 만료되었습니다. 페이지를 새로고침 해주십시오.'));
-        return false;
+        return __('토큰이 만료되었습니다. 페이지를 새로고침 해주십시오.');
     }
 
     // HMAC 검증
@@ -2621,8 +2625,21 @@ function check_token($expire = 7200)
     $secret = _get_token_secret();
     $expected = hash_hmac('sha256', $secret . '|csrf_token|' . $time, $key);
 
-    if ($hmac !== $expected) {
-        alert(__('올바른 방법으로 이용해 주십시오.'));
+    if (!slow_equals($expected, $hmac)) {
+        return __('올바른 방법으로 이용해 주십시오.');
+    }
+
+    return '';
+}
+
+
+// POST로 넘어온 토큰의 HMAC 및 만료 시간 검증
+// 기본 만료: 7200초(2시간)
+function check_token($expire = 7200)
+{
+    $error = get_token_error(isset($_POST['token']) ? $_POST['token'] : '', $expire);
+    if ($error !== '') {
+        alert($error);
         return false;
     }
 
@@ -2676,6 +2693,103 @@ function check_rate_limit($key, $max = 30, $window = 60)
     set_session($session_key, $data);
 
     return $data['count'] <= $max;
+}
+
+// 본인인증 비밀번호 찾기 완료 상태의 유효 시간(초). (KVE-2026-3199)
+if (!defined('G5_CERT_FIND_TTL')) define('G5_CERT_FIND_TTL', 600);
+
+// 본인인증 비밀번호 찾기 결과로 찾은 회원을 세션에 기록한다. 인증 시각을 함께 남겨 만료를 판정한다.
+function g5_set_cert_find_member($mb_id)
+{
+    set_session('ss_cert_mb_id', $mb_id);
+    set_session('ss_cert_find_time', G5_SERVER_TIME);
+}
+
+// 본인인증 비밀번호 찾기 완료 상태와 재설정 토큰을 비운다.
+function g5_clear_cert_find()
+{
+    set_session('ss_cert_mb_id', '');
+    set_session('ss_cert_dupinfo', '');
+    set_session('ss_cert_find_time', '');
+    set_session('ss_password_reset_token', '');
+}
+
+// 최고관리자 계정은 본인인증 비밀번호 재설정 대상에서 제외한다.
+function g5_is_cert_find_excluded($mb_id)
+{
+    global $config;
+    $admin = isset($config['cf_admin']) ? (string)$config['cf_admin'] : '';
+    return $admin !== '' && strtolower(trim((string)$mb_id)) === strtolower(trim($admin));
+}
+
+// 유효한 본인인증 비밀번호 찾기 완료 세션의 회원 ID. 없거나 만료되었거나 제외 대상이면 상태를 비우고 빈 문자열을 반환한다.
+function g5_cert_find_member_id()
+{
+    $mb_id = get_session('ss_cert_mb_id');
+    $mb_id = is_string($mb_id) ? trim($mb_id) : '';
+    $time = (int)get_session('ss_cert_find_time');
+    if ($mb_id === '' || $time <= 0 || abs(G5_SERVER_TIME - $time) > G5_CERT_FIND_TTL || g5_is_cert_find_excluded($mb_id)) {
+        if ($mb_id !== '') g5_clear_cert_find();
+        return '';
+    }
+    return $mb_id;
+}
+
+// 비밀번호 재설정 폼에 넣을 1회용 토큰을 발급한다. 회원 ID와 발급 시각을 세션에 함께 저장한다.
+function g5_get_password_reset_token($mb_id)
+{
+    $token = bin2hex(get_random_token_string(32));
+    set_session('ss_password_reset_token', array('token' => $token, 'mb_id' => (string)$mb_id, 'time' => G5_SERVER_TIME));
+    return $token;
+}
+
+// 제출된 재설정 토큰을 검증한다. 결과와 관계없이 토큰은 한 번 쓰면 폐기한다.
+function g5_check_password_reset_token($mb_id, $token)
+{
+    $saved = get_session('ss_password_reset_token');
+    set_session('ss_password_reset_token', '');
+    if (!is_array($saved) || !isset($saved['token'], $saved['mb_id'], $saved['time'])) return false;
+    if (!is_string($token) || $token === '' || !is_string($saved['token']) || $saved['token'] === '') return false;
+    if ((string)$mb_id === '' || $saved['mb_id'] !== (string)$mb_id) return false;
+    if (abs(G5_SERVER_TIME - (int)$saved['time']) > G5_CERT_FIND_TTL) return false;
+    return slow_equals($saved['token'], $token);
+}
+
+// 화면에서 발급해 같은 회원의 처리 요청에서 한 번만 쓰는 용도별 토큰.
+// $bind에 회원 ID 등 대상 값을 묶어 다른 대상의 요청에 쓰지 못하게 한다. (KVE-2026-3201, KVE-2026-3202, KVE-2026-3203)
+function g5_get_form_token($name, $bind)
+{
+    $token = get_random_token_string(32);
+    set_session('ss_form_token_'.$name, array('token' => $token, 'bind' => (string)$bind, 'time' => G5_SERVER_TIME));
+    return $token;
+}
+
+// 제출된 용도별 토큰을 검증한다. 결과와 관계없이 한 번 쓰면 폐기한다.
+function g5_check_form_token($name, $bind, $token, $ttl = 1800)
+{
+    $key = 'ss_form_token_'.$name;
+    $saved = get_session($key);
+    set_session($key, '');
+    if (!is_array($saved) || !isset($saved['token'], $saved['bind'], $saved['time'])) return false;
+    if (!is_string($token) || $token === '' || !is_string($saved['token']) || $saved['token'] === '') return false;
+    if ((string)$bind === '' || $saved['bind'] !== (string)$bind) return false;
+    if (abs(G5_SERVER_TIME - (int)$saved['time']) > $ttl) return false;
+    return slow_equals($saved['token'], $token);
+}
+
+// MySQL 이름 잠금(GET_LOCK). MySQL 5.7 미만은 연결당 잠금을 하나만 유지하므로,
+// 다른 잠금을 얻는 함수(insert_point 등)를 부르기 전에 풀어야 한다.
+function g5_get_named_lock($name, $timeout = 5)
+{
+    $name = sql_escape_string(substr((string)$name, 0, 64));
+    $row = sql_fetch(" select get_lock('{$name}', ".(int)$timeout.") as got_lock ");
+    return !empty($row['got_lock']);
+}
+
+function g5_release_named_lock($name)
+{
+    $name = sql_escape_string(substr((string)$name, 0, 64));
+    sql_query(" do release_lock('{$name}') ", false);
 }
 
 /**
@@ -3505,6 +3619,10 @@ class html_process {
         self::$is_end = 1;
 
         // 현재접속자 처리
+        // 접속자 수 집계만 하며 위치(lo_location)와 주소(lo_url)는 기록하지 않는다. (KVE-2026-3200)
+        // 테마의 head.sub.php가 값을 채워도 저장하지 않도록 여기서 비운다.
+        $g5['lo_location'] = '';
+        $g5['lo_url'] = '';
         $tmp_sql = " select count(*) as cnt from {$g5['login_table']} where lo_ip = '{$_SERVER['REMOTE_ADDR']}' ";
         $tmp_row = sql_fetch($tmp_sql);
         if (!isset($member['mb_id'])) {
@@ -3865,12 +3983,12 @@ function module_exec_check($exe, $type)
                 $error = $exe.'\n파일의 실행권한이 없습니다.\n\n'.basename($exe).' 파일에 실행권한을 부여해 주십시오.';
         } else {
             // 바이너리 파일인지
-            if($is_linux) {
-
-                if ( !function_exists('exec') ) {
-                    alert(__('exec 함수실행이 불가능하므로 사용할수 없습니다.'));
-                }
-
+            if($is_linux && !function_exists('exec')) {
+                // 설정 화면을 종료하거나 이전 페이지로 이동시키지 않고 경고를 반환한다.
+                $error = $type === 'pp_cli'
+                    ? __("서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.\n서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.")
+                    : __('서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.');
+            } else if($is_linux) {
                 $search = false;
                 $isbinary = true;
                 $executable = true;

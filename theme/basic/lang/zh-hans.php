@@ -185,9 +185,6 @@ return array(
 '이미지 목록' => '图片列表',
 '열람중' => '正在浏览',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => '当前没有在线用户。',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => '搜索词',
 '자주하시는질문 분류' => '常见问题分类',
@@ -679,4 +676,7 @@ return array(
 
 // theme/basic/tail.php
 '모바일버전' => '手机版',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => '当前没有在线用户。',
 );

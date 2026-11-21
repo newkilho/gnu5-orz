@@ -58,7 +58,7 @@ if ($xpay->TX()) {
     echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
     echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
 
-    echo "거래번호 : " . $xpay->Response("LGD_TID",0) . "<br>";
+    echo "거래번호 : " . htmlspecialchars($xpay->Response("LGD_TID",0), ENT_QUOTES, 'UTF-8') . "<br>";
     echo "상점아이디 : " . $xpay->Response("LGD_MID",0) . "<br>";
     echo "상점주문번호 : " . $xpay->Response("LGD_OID",0) . "<br>";
     echo "결제금액 : " . $xpay->Response("LGD_AMOUNT",0) . "<br>";
@@ -84,6 +84,10 @@ if ($xpay->TX()) {
         $account         = $xpay->Response('LGD_ACCOUNTNUM',0).' '.$xpay->Response('LGD_SAOWNER',0);
         $commid          = $xpay->Response('LGD_FINANCENAME',0);
         $mobile_no       = $xpay->Response('LGD_TELNO',0);
+        require_once(G5_LIB_PATH.'/shop_pg_approval.lib.php');
+        $approval_card = array();
+        foreach (shop_pg_approval_card_fields('lg') as $field) $approval_card[$field] = $xpay->Response($field, 0);
+        shop_pg_approval_log('lg', $xpay->Response('LGD_OID',0), $tno, $amount, $xpay->Response_Code(), $approval_card);
         $app_no = $od_app_no = $xpay->Response('LGD_FINANCEAUTHNUM',0);
         $card_name       = $xpay->Response('LGD_FINANCENAME',0);
         $pay_type        = $xpay->Response('LGD_PAYTYPE',0);

@@ -185,9 +185,6 @@ Automatische regeleinden zetten regeleinden in het bericht om in <br>-tags.',
 '이미지 목록' => 'Afbeeldingenlijst',
 '열람중' => 'Wordt bekeken',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Er is niemand online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Zoekterm',
 '자주하시는질문 분류' => 'FAQ-categorieën',
@@ -679,4 +676,7 @@ Verwijderde gegevens kunnen niet worden hersteld.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Mobiele versie',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Er is niemand online.',
 );

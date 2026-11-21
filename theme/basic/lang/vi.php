@@ -185,9 +185,6 @@ Tự động xuống dòng sẽ chuyển các chỗ xuống dòng trong bài vi�
 '이미지 목록' => 'Danh sách hình ảnh',
 '열람중' => 'Đang xem',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Hiện không có ai trực tuyến.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Từ khóa',
 '자주하시는질문 분류' => 'Danh mục FAQ',
@@ -679,4 +676,7 @@ Dữ liệu đã xóa không thể khôi phục.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Phiên bản di động',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Hiện không có ai trực tuyến.',
 );

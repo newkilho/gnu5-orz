@@ -1,6 +1,31 @@
 <?php
 if (!defined('_GNUBOARD_')) exit;
 
+// 분류 관리 권한 확인: 최고관리자가 아니면 DB에 저장된 분류의 관리 회원(ca_mb_id)이 현재 회원일 때만 허용한다.
+// 요청 값(POST ca_mb_id 등)이 아니라 DB 값을 기준으로 판단한다.
+function shop_admin_category_owner_check($ca_id)
+{
+    global $g5, $is_admin, $member;
+
+    if ($is_admin === 'super') {
+        return true;
+    }
+
+    if (!is_string($ca_id) && !is_int($ca_id)) {
+        return false;
+    }
+
+    $ca_id = preg_replace('/[^0-9a-z]/i', '', (string)$ca_id);
+    $mb_id = isset($member['mb_id']) ? (string)$member['mb_id'] : '';
+    if ($ca_id === '' || $mb_id === '') {
+        return false;
+    }
+
+    $row = sql_fetch(" select ca_mb_id from {$g5['g5_shop_category_table']} where ca_id = '".sql_real_escape_string($ca_id)."' ");
+
+    return isset($row['ca_mb_id']) && (string)$row['ca_mb_id'] !== '' && (string)$row['ca_mb_id'] === $mb_id;
+}
+
 function get_shop_skin_dirs($is_mobile=false)
 {
     global $config;
@@ -161,6 +186,7 @@ function conv_sms_contents($od_id, $contents)
 }
 
 function pg_setting_check($is_print=false){
+    include_once(G5_LIB_PATH.'/kcp_rest.lib.php');
 	global $g5, $config, $default, $member;
 
 	$msg = '';
@@ -168,7 +194,7 @@ function pg_setting_check($is_print=false){
     $pg_test_conf_link = G5_ADMIN_URL.'/shop_admin/configform.php#de_card_test1';
 
 	if( $default['de_card_test'] ){
-		if( $default['de_pg_service'] === 'kcp' && $default['de_kcp_mid'] && $default['de_kcp_site_key'] ){
+		if( $default['de_pg_service'] === 'kcp' && $default['de_kcp_mid'] && (kcp_rest_enabled() || $default['de_kcp_site_key']) ){
 			$pg_msg = 'NHN KCP';
 		} else if ( $default['de_pg_service'] === 'lg' && $config['cf_lg_mid'] && $config['cf_lg_mert_key'] ){
 			$msg .= '<div class="admin_pg_notice od_test_caution">(주의!) 토스페이먼츠(구버전) 결제의 결제 설정이 현재 테스트결제로 되어 있습니다.<br>반드시 <a href="#lg_info_anchor">MERT KEY</a>를 <u>[테스트]키</u>로 설정한 후 테스트결제를 진행해야합니다.<br>쇼핑몰 운영 시에는 실결제로 전환하여 <u>[라이브]키</u>로 설정해 주시기 바랍니다.<br>아래 링크를 클릭하여 실결제로 설정하여 운영해 주세요.<br><a href="'.$pg_test_conf_link.'" class="pg_test_conf_link">'.$pg_test_conf_link.'</a></div>';
@@ -181,7 +207,7 @@ function pg_setting_check($is_print=false){
 		}
 	}
 
-    if( function_exists('is_use_easypay') && is_use_easypay('global_nhnkcp') ){
+    if( !kcp_rest_enabled() && function_exists('is_use_easypay') && is_use_easypay('global_nhnkcp') ){
         if(!extension_loaded('soap') || !class_exists('SOAPClient')) {
             $msg .= '<script>'.PHP_EOL;
             $msg .= 'alert("PHP SOAP 확장모듈이 설치되어 있지 않습니다.\n모바일 쇼핑몰 결제 때 사용되오니 SOAP 확장 모듈을 설치하여 주십시오.\nNHN_KCP (네이버페이) 모바일결제가 되지 않습니다.");'.PHP_EOL;

@@ -92,7 +92,7 @@ $data = shop_order_access_load($access_order_id, 'kcp');
     }
     
     // 에스크로 변수 ( 간편결제의 경우 N 으로 변경 )
-    $escw_used = 'Y';
+    $escw_used = kcp_rest_enabled() ? (!empty($default['de_escrow_use']) ? 'Y' : 'N') : 'Y';
 
     switch($settle_method)
     {
@@ -248,7 +248,7 @@ if($enc_data != '' && $enc_info != '' && $tran_cd != '') {
 
     echo '<form name="forderform" method="post" action="'.$order_action_url.'" autocomplete="off">'.PHP_EOL;
 
-    echo make_order_field($data, $exclude);
+    echo make_order_field($data, $exclude, true);
 
     foreach($_POST as $key=>$value) {
         if (!in_array($key, $exclude, true) || !is_string($value)) continue;
@@ -260,6 +260,7 @@ if($enc_data != '' && $enc_info != '' && $tran_cd != '') {
 ?>
 
 <form name="sm_form" method="POST" accept-charset="euc-kr">
+<input type="hidden" name="g5_order_state" value="<?php echo get_text($data['g5_order_state']); ?>">
 
 <input type="hidden" name="good_name" value="<?php echo get_text($good_name); ?>">
 <input type="hidden" name="good_mny"  value="<?php echo $good_mny; ?>" >

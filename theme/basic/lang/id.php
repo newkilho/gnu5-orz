@@ -185,9 +185,6 @@ Baris baru otomatis mengubah pergantian baris dalam postingan menjadi tag <br>.'
 '이미지 목록' => 'Daftar gambar',
 '열람중' => 'Sedang dilihat',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Tidak ada yang sedang online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Kata kunci',
 '자주하시는질문 분류' => 'Kategori FAQ',
@@ -679,4 +676,7 @@ Data yang telah dihapus tidak dapat dipulihkan.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Versi seluler',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Tidak ada yang sedang online.',
 );

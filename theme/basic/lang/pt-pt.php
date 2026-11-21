@@ -185,9 +185,6 @@ A quebra de linha automática converte as quebras de linha da publicação em et
 '이미지 목록' => 'Lista de imagens',
 '열람중' => 'A visualizar',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Não há ninguém online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Termo de pesquisa',
 '자주하시는질문 분류' => 'Categorias de FAQ',
@@ -679,4 +676,7 @@ Os dados eliminados não podem ser recuperados.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Versão móvel',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Não há ninguém online.',
 );

@@ -185,9 +185,6 @@ Automatyczne łamanie wierszy zamienia znaki nowego wiersza we wpisie na znaczni
 '이미지 목록' => 'Lista obrazów',
 '열람중' => 'Przeglądasz',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Nikt nie jest teraz online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Wyszukiwana fraza',
 '자주하시는질문 분류' => 'Kategorie FAQ',
@@ -679,4 +676,7 @@ Usuniętych danych nie można odzyskać.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Wersja mobilna',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Nikt nie jest teraz online.',
 );

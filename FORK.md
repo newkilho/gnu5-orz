@@ -47,6 +47,10 @@
 2. 위 표의 다른 수정(주소 상수, `get_board_db()` 등)이 원본 변경으로 사라지지 않았는지 확인한다.
 3. `php lang/build.php <언어>`를 언어마다 실행 → "새로 추가"된 키를 번역하고, "알림 문구가 __() 밖에 있음" 경고를 고친다.
 4. `php tests/i18n.php`가 `ok`인지 확인한다.
+5. 3번 경고는 `alert('…')`처럼 문자열을 바로 넘긴 곳만 잡는다. 원본이 새로 만든 함수가 문구를 `return '…'` 하고 호출하는 곳이 `alert($msg)` 하는 경우(예: `lib/board_access.lib.php`), `exit('…')` 는 잡히지 않는다. `git diff -U0 master..upstream/master`에서 번역 대상 경로(`build.php`의 `$skip_re` 밖)에 더해진 줄 가운데 한글이 있고 `__(`가 없는 줄을 따로 훑어 감싼다. 관리자 DB 업그레이드 문구(`lib/migration.lib.php`)는 관리자 화면이라 그대로 둔다.
+6. 원본에 `migrations/*.sql`이 늘었으면 이 포크를 쓰는 사이트 DB마다 적용한다(관리자 → 환경설정 → DB업그레이드, 또는 `common.php`를 읽고 `g5_migration_run('')`).
+
+2026-11-22 연습: 원본 5.6.41 → 5.6.54(KVE-2026-2513, 3196~3203, 3257, 3258). 충돌 20개 파일 — 대부분 원본이 보안 수정으로 권한 검사를 `lib/board_access.lib.php`(`g5_require_board_access()` 등)로 옮긴 자리와 토큰 검사(`get_token_error()`가 알림 대신 문구를 돌려줌). 원본이 현재접속자 기능을 없애 `current_connect.skin.php` 2개는 삭제, `head.php`의 접속자 링크도 원본대로 링크 없이. 원본이 `tests/`를 추가해 `lang/build.php`가 시험용 문구를 사전에 넣지 않도록 `$skip_dirs`에 `tests`를 더했다.
 
 ### 저장소 밖 설정 (서버 `.htaccess`)
 

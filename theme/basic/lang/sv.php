@@ -185,9 +185,6 @@ Automatiska radbrytningar omvandlar radbrytningar i inlägget till <br>-taggar.'
 '이미지 목록' => 'Bildlista',
 '열람중' => 'Visas',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'Ingen är online.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Sökord',
 '자주하시는질문 분류' => 'FAQ-kategorier',
@@ -679,4 +676,7 @@ Raderade data kan inte återställas.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Mobilversion',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'Ingen är online.',
 );

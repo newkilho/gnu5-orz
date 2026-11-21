@@ -32,16 +32,12 @@ return array(
 '존재하지 않는 게시판입니다.' => 'Bảng tin không tồn tại.',
 'bo_table 값이 넘어오지 않았습니다.\\n\\nboard.php?bo_table=code 와 같은 방식으로 넘겨 주세요.' => 'Không nhận được giá trị bo_table.\\n\\nVui lòng truyền theo dạng board.php?bo_table=code.',
 '글이 존재하지 않습니다.\\n\\n글이 삭제되었거나 이동된 경우입니다.' => 'Bài viết không tồn tại.\\n\\nBài viết có thể đã bị xóa hoặc di chuyển.',
-'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Khách không có quyền truy cập bảng tin này.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
-'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Bạn không thể đọc bài viết vì không có quyền truy cập.\\n\\nNếu có thắc mắc, vui lòng liên hệ quản trị viên.',
-'글을 읽을 권한이 없습니다.' => 'Bạn không có quyền đọc bài viết.',
-'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bạn không có quyền đọc bài viết.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Chỉ thành viên đã xác minh danh tính mới có thể đọc bài trên bảng tin này.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
-'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Chỉ thành viên đã xác minh danh tính mới có thể đọc bài trên bảng tin này.\\n\\nVui lòng xác minh danh tính trong phần sửa hồ sơ.',
-'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Chỉ thành viên đã được xác minh là người trưởng thành qua xác minh danh tính mới có thể đọc bài trên bảng tin này.\\n\\nNếu bạn đã trưởng thành mà vẫn không đọc được, vui lòng xác minh danh tính lại trong phần sửa hồ sơ.',
 '보유하신 포인트({1})가 없거나 모자라서 글읽기({2})가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.' => 'Bạn không thể đọc bài ({2}) vì điểm hiện có ({1}) không đủ.\\n\\nVui lòng tích lũy điểm rồi thử lại.',
 '목록을 볼 권한이 없습니다.' => 'Bạn không có quyền xem danh sách.',
 '목록을 볼 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bạn không có quyền xem danh sách.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Chỉ thành viên đã xác minh danh tính mới có thể đọc bài trên bảng tin này.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
+'이 게시판은 본인확인 하신 회원님만 글읽기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Chỉ thành viên đã xác minh danh tính mới có thể đọc bài trên bảng tin này.\\n\\nVui lòng xác minh danh tính trong phần sửa hồ sơ.',
+'이 게시판은 본인확인으로 성인인증 된 회원님만 글읽기가 가능합니다.\\n\\n현재 성인인데 글읽기가 안된다면 회원정보 수정에서 본인확인을 다시 해주시기 바랍니다.' => 'Chỉ thành viên đã được xác minh là người trưởng thành qua xác minh danh tính mới có thể đọc bài trên bảng tin này.\\n\\nNếu bạn đã trưởng thành mà vẫn không đọc được, vui lòng xác minh danh tính lại trong phần sửa hồ sơ.',
 '{1} {2} 페이지' => '{1} - Trang {2}',
 
 // bbs/board_list_update.php
@@ -59,7 +55,7 @@ return array(
 '<p>{1}이 존재하지 않습니다.</p>' => '<p>{1} không tồn tại.</p>',
 
 // bbs/current_connect.php
-'현재접속자' => 'Người đang truy cập',
+'현재접속자 기능은 제공하지 않습니다.' => 'Tính năng người dùng trực tuyến không khả dụng.',
 
 // bbs/delete.php
 '토큰 에러로 삭제 불가합니다.' => 'Không thể xóa do lỗi token.',
@@ -180,11 +176,13 @@ return array(
 
 // bbs/member_cert_refresh_update.php
 '로그인 후 이용해 주십시오.' => 'Vui lòng đăng nhập trước.',
+'올바른 방법으로 이용해 주십시오. 본인인증 화면을 다시 열어 주십시오.' => 'Vui lòng sử dụng đúng cách. Hãy mở lại màn hình xác minh danh tính.',
 'w 값이 제대로 넘어오지 않았습니다.' => 'Không nhận được giá trị w hợp lệ.',
 '잘못된 접근입니다' => 'Truy cập không hợp lệ',
 '회원아이디 값이 없습니다. 올바른 방법으로 이용해 주십시오.' => 'Không có tên đăng nhập. Vui lòng sử dụng đúng cách.',
 '입력하신 본인확인 정보로 가입된 내역이 존재합니다.' => 'Đã có tài khoản đăng ký với thông tin xác minh danh tính bạn nhập.',
 '본인인증된 정보와 입력된 회원정보가 일치하지않습니다. 다시시도 해주세요' => 'Thông tin đã xác minh không khớp với thông tin thành viên đã nhập. Vui lòng thử lại',
+'본인인증을 완료한 뒤 다시 시도해 주십시오.' => 'Vui lòng hoàn tất xác minh danh tính rồi thử lại.',
 
 // bbs/member_confirm.php
 '로그인 한 회원만 접근하실 수 있습니다.' => 'Chỉ thành viên đã đăng nhập mới có thể truy cập.',
@@ -204,6 +202,10 @@ return array(
 '보낸' => 'Gửi',
 '정보없음' => 'Không có thông tin',
 '아직 읽지 않음' => 'Chưa đọc',
+
+// bbs/memo_delete.php
+'쪽지가 존재하지 않거나 삭제할 수 없습니다.' => 'Tin nhắn không tồn tại hoặc không thể xóa.',
+'쪽지를 삭제하지 못했습니다.' => 'Không thể xóa tin nhắn.',
 
 // bbs/memo_form.php
 '자신의 정보를 공개하지 않으면 다른분에게 쪽지를 보낼 수 없습니다. 정보공개 설정은 회원정보수정에서 하실 수 있습니다.' => 'Bạn không thể gửi tin nhắn cho người khác nếu không công khai hồ sơ của mình. Bạn có thể cài đặt công khai hồ sơ trong phần sửa hồ sơ.',
@@ -255,13 +257,18 @@ return array(
 // bbs/password.php
 '비밀번호 입력' => 'Nhập mật khẩu',
 
+// bbs/password_check.php
+'비밀글 인증 대상이 올바르지 않습니다.' => 'Đối tượng xác minh bài viết bí mật không hợp lệ.',
+
 // bbs/password_lost.php
 '이미 로그인중입니다.' => 'Bạn đã đăng nhập rồi.',
 '회원정보 찾기' => 'Tìm thông tin tài khoản',
 
 // bbs/password_lost2.php
+'현재 비밀번호 찾기를 이용할 수 없습니다. 관리자에게 문의해 주십시오.' => 'Hiện không thể khôi phục mật khẩu. Vui lòng liên hệ quản trị viên.',
+'요청이 많습니다. 잠시 후 다시 이용해 주십시오.' => 'Quá nhiều yêu cầu. Vui lòng thử lại sau.',
 '메일주소 오류입니다.' => 'Địa chỉ email không hợp lệ.',
-'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Email xác minh tên đăng nhập và mật khẩu đã được gửi đến {1}.\\n\\nVui lòng kiểm tra email.',
+'입력하신 정보와 일치하는 회원이 있으면 비밀번호 찾기 안내 메일이 발송됩니다.\\n최근 요청이 있거나 발송이 제한된 경우 추가 발송되지 않을 수 있습니다.\\n메일함과 스팸함을 확인하고, 메일이 없으면 잠시 후 다시 요청해 주십시오.' => 'Nếu có thành viên khớp với thông tin bạn đã nhập, email khôi phục mật khẩu sẽ được gửi.\\nNếu bạn vừa yêu cầu gần đây hoặc việc gửi bị giới hạn, có thể sẽ không gửi thêm email.\\nHãy kiểm tra hộp thư đến và thư rác; nếu không có email, hãy yêu cầu lại sau.',
 '[{1}] 요청하신 회원정보 찾기 안내 메일입니다.' => '[{1}] Hướng dẫn tìm thông tin tài khoản bạn đã yêu cầu',
 '회원정보 찾기 안내' => 'Hướng dẫn tìm thông tin tài khoản',
 '{1} ({2}) 회원님은 {3} 에 회원정보 찾기 요청을 하셨습니다.<br>' => 'Thành viên {1} ({2}) đã yêu cầu tìm thông tin tài khoản vào lúc {3}.<br>',
@@ -277,10 +284,12 @@ return array(
 '비밀번호가 변경됐습니다.\\n\\n회원아이디와 변경된 비밀번호로 로그인 하시기 바랍니다.' => 'Mật khẩu đã được thay đổi.\\n\\nVui lòng đăng nhập bằng tên đăng nhập và mật khẩu mới.',
 
 // bbs/password_reset.php
+'최고관리자 계정은 본인인증으로 비밀번호를 재설정할 수 없습니다.' => 'Tài khoản quản trị viên cấp cao không thể đặt lại mật khẩu bằng xác minh danh tính.',
 '본인인증을 이용하여 아이디/비밀번호 찾기를 할 수 없습니다. 관리자에게 문의 하십시오.' => 'Không thể tìm tên đăng nhập/mật khẩu bằng xác minh danh tính. Vui lòng liên hệ quản trị viên.',
 '패스워드 변경' => 'Đổi mật khẩu',
 
 // bbs/password_reset_update.php
+'올바른 방법으로 이용해 주십시오. 비밀번호 찾기를 다시 진행해 주십시오.' => 'Vui lòng sử dụng đúng cách. Hãy thực hiện lại việc khôi phục mật khẩu.',
 '비밀번호가 넘어오지 않았습니다.' => 'Không nhận được mật khẩu.',
 '비밀번호가 일치하지 않습니다.' => 'Mật khẩu không khớp.',
 
@@ -410,6 +419,7 @@ return array(
 '회원가입 완료' => 'Đăng ký hoàn tất',
 
 // bbs/rss.php
+'RSS 보기가 허용되지 않는 게시판입니다.' => 'Bảng tin này không cho phép RSS.',
 '비회원 읽기가 가능한 게시판만 RSS 지원합니다.' => 'RSS chỉ hỗ trợ các bảng tin mà khách có thể đọc.',
 'RSS 보기가 금지되어 있습니다.' => 'Xem RSS không được phép.',
 
@@ -433,7 +443,10 @@ Bạn có muốn xem bài đã lưu ngay bây giờ không?',
 
 // bbs/scrap_popin_update.php
 '스크랩하시려는 게시글이 존재하지 않습니다.' => 'Bài viết bạn muốn lưu không tồn tại.',
+'올바른 방법으로 이용해 주십시오. 스크랩 창을 다시 열어 주십시오.' => 'Vui lòng sử dụng đúng cách. Hãy mở lại cửa sổ lưu.',
 '너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.' => 'Bạn không thể đăng bài liên tiếp trong thời gian quá ngắn.',
+'잠시 후 다시 시도해 주십시오.' => 'Vui lòng thử lại sau.',
+'스크랩하지 못했습니다. 잠시 후 다시 시도해 주십시오.' => 'Không thể lưu bài viết. Vui lòng thử lại sau.',
 '이 글을 스크랩 하였습니다.
 
 지금 스크랩을 확인하시겠습니까?' => 'Đã lưu bài viết này.
@@ -473,16 +486,9 @@ Bạn có muốn xem bài đã lưu ngay bây giờ không?',
 '답변글을 작성할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bạn không có quyền viết bài trả lời.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
 '보유하신 포인트({1})가 없거나 모자라서 글답변({2})가 불가합니다.\\n\\n포인트를 적립하신 후 다시 글답변 해 주십시오.' => 'Bạn không thể trả lời ({2}) vì điểm hiện có ({1}) không đủ.\\n\\nVui lòng tích lũy điểm rồi thử lại.',
 '공지에는 답변 할 수 없습니다.' => 'Không thể trả lời thông báo.',
-'정상적인 접근이 아닙니다.' => 'Truy cập không hợp lệ.',
-'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Chỉ người viết hoặc quản trị viên mới có thể trả lời bài viết bí mật.',
-'비회원의 비밀글에는 답변이 불가합니다.' => 'Không thể trả lời bài viết bí mật của khách.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 10단계 까지만 가능합니다.' => 'Bạn không thể trả lời thêm.\\n\\nChỉ có thể trả lời tối đa 10 cấp.',
 '더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.' => 'Bạn không thể trả lời thêm.\\n\\nChỉ có thể có tối đa 26 bài trả lời.',
 '글답변' => 'Trả lời bài viết',
-'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bạn không có quyền truy cập.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
-'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Bạn không thể viết bài vì không có quyền truy cập.\\n\\nNếu có thắc mắc, vui lòng liên hệ quản trị viên.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Chỉ thành viên đã xác minh danh tính mới có thể viết bài trên bảng tin này.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
-'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Chỉ thành viên đã xác minh danh tính mới có thể viết bài trên bảng tin này.\\n\\nVui lòng xác minh danh tính trong phần sửa hồ sơ.',
 
 // bbs/write_comment_update.php
 '이름은 필히 입력하셔야 합니다.' => 'Bắt buộc phải nhập tên.',
@@ -509,6 +515,7 @@ Bình luận
 '댓글 ' => 'Bình luận ',
 '댓글 수정' => 'Sửa bình luận',
 '[{1}] {2} 게시판에 {3}글이 올라왔습니다.' => '[{1}] Có bài viết trên bảng tin {2} ({3}).',
+'댓글 대상이 올바르지 않습니다.' => 'Đối tượng bình luận không hợp lệ.',
 '그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Không thể sửa vì bình luận này của thành viên có cấp quyền cao hơn quản trị nhóm.',
 '자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.' => 'Bạn không thể sửa bình luận vì bảng tin này không thuộc nhóm bạn quản lý.',
 '게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.' => 'Không thể sửa vì bình luận này của thành viên có cấp quyền cao hơn quản trị bảng tin.',
@@ -572,6 +579,17 @@ Bình luận
 // head.sub.php
 '{1}님 로그인 중 ' => '{1} đang đăng nhập ',
 
+// lib/board_access.lib.php
+'회원만 접근할 수 있는 게시판입니다.' => 'Bảng tin này chỉ dành cho thành viên.',
+'접근 권한이 없는 게시판입니다.' => 'Bạn không có quyền truy cập bảng tin này.',
+'글을 읽을 권한이 없습니다.' => 'Bạn không có quyền đọc bài viết.',
+'본인확인 후 이용해 주십시오.' => 'Vui lòng xác minh danh tính trước.',
+'회원정보에서 본인확인 정보를 갱신한 후 이용해 주십시오.' => 'Vui lòng cập nhật xác minh danh tính trong hồ sơ của bạn trước.',
+'성인인증 후 이용해 주십시오.' => 'Vui lòng hoàn tất xác minh tuổi trưởng thành trước.',
+'게시글이 존재하지 않거나 잘못된 대상입니다.' => 'Bài viết không tồn tại hoặc đối tượng không hợp lệ.',
+'비밀글 인증 후 이용해 주십시오.' => 'Vui lòng xác minh bài viết bí mật trước.',
+'비밀글에는 작성자 또는 관리자만 답변할 수 있습니다.' => 'Chỉ tác giả hoặc quản trị viên mới có thể trả lời bài viết bí mật.',
+
 // lib/common.lib.php
 '처음' => 'Đầu',
 '이전' => 'Trước',
@@ -610,7 +628,10 @@ Bình luận
 '휴대폰' => 'Điện thoại',
 '아이핀' => 'i-PIN',
 '오늘 {1} 본인확인을 {2}회 이용하셔서 더 이상 이용할 수 없습니다.' => 'Hôm nay bạn đã dùng xác minh danh tính ({1}) {2} lần nên không thể dùng thêm.',
-'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Không thể sử dụng vì không thể thực thi hàm exec.',
+'서버에서 PHP exec 함수가 차단되어 NHN KCP 결제 모듈 (기본)을 사용할 수 없습니다.
+서버 관리자에게 exec 함수 허용을 요청하거나, 서비스 인증서와 개인키를 설정한 뒤 KCP REST API를 선택해 주세요.' => 'Không thể dùng mô-đun thanh toán NHN KCP (cơ bản) vì hàm PHP exec bị chặn trên máy chủ.
+Hãy yêu cầu quản trị viên máy chủ cho phép exec, hoặc thiết lập chứng chỉ dịch vụ và khóa riêng rồi chọn KCP REST API.',
+'서버에서 PHP exec 함수가 차단되어 인증 모듈을 사용할 수 없습니다. 서버 관리자에게 exec 함수 허용을 요청해 주세요.' => 'Không thể dùng mô-đun xác minh vì hàm PHP exec bị chặn trên máy chủ. Hãy yêu cầu quản trị viên máy chủ cho phép exec.',
 '폼에서 전송된 변수의 개수가 max_input_vars 값보다 큽니다.\\n전송된 값중 일부는 유실되어 DB에 기록될 수 있습니다.\\n\\n문제를 해결하기 위해서는 서버 php.ini의 max_input_vars 값을 변경하십시오.' => 'Số biến gửi từ biểu mẫu lớn hơn giá trị max_input_vars.\\nMột số giá trị đã gửi có thể bị mất khi ghi vào DB.\\n\\nĐể khắc phục, hãy thay đổi giá trị max_input_vars trong php.ini của máy chủ.',
 'url에 타 도메인을 지정할 수 없습니다.' => 'Không thể chỉ định tên miền khác trong url.',
 'url에 사용자 정보가 포함되어 있어 접근할 수 없습니다.' => 'Không thể truy cập vì url chứa thông tin người dùng.',
@@ -897,4 +918,19 @@ Chỉ cho phép tệp .gif .jpg .png.
 '{1} : 공백이 없어야 합니다.
 ' => '{1} : Không được có khoảng trắng.
 ',
+
+// 코드에서 쓰지 않는 키
+'비회원은 이 게시판에 접근할 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Khách không có quyền truy cập bảng tin này.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
+'접근 권한이 없으므로 글읽기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Bạn không thể đọc bài viết vì không có quyền truy cập.\\n\\nNếu có thắc mắc, vui lòng liên hệ quản trị viên.',
+'글을 읽을 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bạn không có quyền đọc bài viết.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
+'현재접속자' => 'Người đang truy cập',
+'{1} 메일로 회원아이디와 비밀번호를 인증할 수 있는 메일이 발송 되었습니다.\\n\\n메일을 확인하여 주십시오.' => 'Email xác minh tên đăng nhập và mật khẩu đã được gửi đến {1}.\\n\\nVui lòng kiểm tra email.',
+'정상적인 접근이 아닙니다.' => 'Truy cập không hợp lệ.',
+'비밀글에는 자신 또는 관리자만 답변이 가능합니다.' => 'Chỉ người viết hoặc quản trị viên mới có thể trả lời bài viết bí mật.',
+'비회원의 비밀글에는 답변이 불가합니다.' => 'Không thể trả lời bài viết bí mật của khách.',
+'접근 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Bạn không có quyền truy cập.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
+'접근 권한이 없으므로 글쓰기가 불가합니다.\\n\\n궁금하신 사항은 관리자에게 문의 바랍니다.' => 'Bạn không thể viết bài vì không có quyền truy cập.\\n\\nNếu có thắc mắc, vui lòng liên hệ quản trị viên.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.' => 'Chỉ thành viên đã xác minh danh tính mới có thể viết bài trên bảng tin này.\\n\\nNếu bạn là thành viên, vui lòng đăng nhập.',
+'이 게시판은 본인확인 하신 회원님만 글쓰기가 가능합니다.\\n\\n회원정보 수정에서 본인확인을 해주시기 바랍니다.' => 'Chỉ thành viên đã xác minh danh tính mới có thể viết bài trên bảng tin này.\\n\\nVui lòng xác minh danh tính trong phần sửa hồ sơ.',
+'exec 함수실행이 불가능하므로 사용할수 없습니다.' => 'Không thể sử dụng vì không thể thực thi hàm exec.',
 );

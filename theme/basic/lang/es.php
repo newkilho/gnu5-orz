@@ -185,9 +185,6 @@ Esta función convierte los saltos de línea de la publicación en etiquetas <br
 '이미지 목록' => 'Lista de imágenes',
 '열람중' => 'Viendo',
 
-// theme/basic/mobile/skin/connect/basic/current_connect.skin.php
-'현재 접속자가 없습니다.' => 'No hay nadie conectado.',
-
 // theme/basic/mobile/skin/faq/basic/list.skin.php
 '검색어' => 'Término de búsqueda',
 '자주하시는질문 분류' => 'Categorías de las preguntas frecuentes',
@@ -679,4 +676,7 @@ Los datos eliminados no se pueden recuperar.',
 
 // theme/basic/tail.php
 '모바일버전' => 'Versión móvil',
+
+// 코드에서 쓰지 않는 키
+'현재 접속자가 없습니다.' => 'No hay nadie conectado.',
 );
