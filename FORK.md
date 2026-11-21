@@ -38,6 +38,7 @@
 | `plugin/editor/smarteditor2/editor.lib.php`, `plugin/editor/smarteditor2/config.js` | 에디터 언어 | 현재 언어를 `g5_editor_locale`로 넘기고, `config.js`가 그 언어의 화면 파일(`SmartEditor2Skin_<로케일>.html`)과 `I18N_LOCALE`을 고름. 에디터가 제공하는 ko_KR·en_US·ja_JP·zh_CN·zh_TW만 쓰고 그 밖의 언어는 en_US | 외부 라이브러리는 직접 번역하지 않고 제공 언어만 쓴다 |
 | `plugin/editor/smarteditor2/SmartEditor2Skin_en_US.html`, `_zh_CN.html`, `_zh_TW.html` | 화면 구조 | 그누보드가 기본 화면과 `_ja_JP.html`에 넣은 것(사진첨부 스크립트·사진 버튼, 목록·들여쓰기 '더보기' 묶음, 버전 숨김)을 똑같이 옮김 | 원본의 언어별 화면에는 사진 업로드가 없었다 |
 | `adm/i18n.php`, `adm/i18n_update.php` | 새 파일 | 관리자 → 환경설정 → 다국어 문구 (메뉴는 `extend/`의 `admin_menu` 훅) | 번역 수정·DB 문구 번역. 저장은 `data/lang/<언어>.php` |
+| `bbs/visit_insert.inc.php` | 방문자 INSERT 성공 뒤 합계 갱신 | visit_sum·`cf_visit` 갱신을 `data/cache/visit_sum.stamp`가 60초 지났을 때 `GET_LOCK`을 얻은 한 요청만 한다. 합계는 오늘·어제 g5_visit 행 수를 `GREATEST`로 넣는다 | 원본은 새 방문자마다 날짜 행 UPDATE·SELECT 4개·config UPDATE를 해서, 쿠키 없는 봇이 몰리면 모든 요청이 그 한 행의 잠금에 줄을 섰다(2026-11-22 kilho 게시판 정체). `common.php`가 바로 include 하고 훅이 없어 `extend/`로 못 바꾼다 |
 
 ### 원본 업데이트를 받을 때
 
