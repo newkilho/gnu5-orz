@@ -27,44 +27,58 @@ if (get_cookie('ck_visit_ip') != $_SERVER['REMOTE_ADDR'])
 
     $result = sql_query($sql, FALSE);
     // 정상으로 INSERT 되었다면 방문자 합계에 반영
+    // (gnu5-orz) 합계·cf_visit 갱신은 사이트 전체에서 60초에 한 번, 한 요청만 한다.
+    // 원본은 새 방문자마다 visit_sum 날짜 행 UPDATE + SELECT 4개 + config UPDATE 를 해서,
+    // 쿠키 없는 봇이 몰리면 모든 요청이 그 한 행의 잠금 앞에 줄을 섰다(2026-11-22 kilho, 분당 1,400명에 PHP 정체).
+    // 합계는 g5_visit 행 수로 다시 센다. GREATEST 로 넣어 오래된 방문기록을 지워도 줄지 않고, 날이 바뀔 때 어제 마지막 1분도 채운다.
     if ($result) {
-        $sql = " insert {$g5['visit_sum_table']} ( vs_count, vs_date) values ( 1, '".G5_TIME_YMD."' ) ";
-        $result = sql_query($sql, FALSE);
+        $visit_stamp = G5_DATA_PATH.'/cache/visit_sum.stamp';
+        if (!is_file($visit_stamp) || filemtime($visit_stamp) <= G5_SERVER_TIME - 60) {
+            $visit_lock = sql_real_escape_string('g5_visit_sum_'.G5_MYSQL_DB.'_'.$g5['visit_sum_table']);
+            $row = sql_fetch(" select get_lock('{$visit_lock}', 0) as l ");
+            if (!empty($row['l'])) {
+                @touch($visit_stamp);
 
-        // DUPLICATE 오류가 발생한다면 이미 날짜별 행이 생성되었으므로 UPDATE 실행
-        if (!$result) {
-            $sql = " update {$g5['visit_sum_table']} set vs_count = vs_count + 1 where vs_date = '".G5_TIME_YMD."' ";
-            $result = sql_query($sql);
+                foreach (array(G5_TIME_YMD, date('Y-m-d', G5_SERVER_TIME - 86400)) as $visit_date) {
+                    $row = sql_fetch(" select count(*) as cnt from {$g5['visit_table']} where vi_date = '{$visit_date}' ");
+                    $visit_cnt = isset($row['cnt']) ? (int)$row['cnt'] : 0;
+                    if ($visit_cnt > 0)
+                        sql_query(" insert into {$g5['visit_sum_table']} ( vs_date, vs_count ) values ( '{$visit_date}', '{$visit_cnt}' )
+                                    on duplicate key update vs_count = greatest(vs_count, values(vs_count)) ", false);
+                }
+
+                // INSERT, UPDATE 된건이 있다면 기본환경설정 테이블에 저장
+                // 방문객 접속시마다 따로 쿼리를 하지 않기 위함 (엄청난 쿼리를 줄임 ^^)
+
+                // 오늘
+                $sql = " select vs_count as cnt from {$g5['visit_sum_table']} where vs_date = '".G5_TIME_YMD."' ";
+                $row = sql_fetch($sql);
+                $vi_today = isset($row['cnt']) ? $row['cnt'] : 0;
+
+                // 어제
+                $sql = " select vs_count as cnt from {$g5['visit_sum_table']} where vs_date = DATE_SUB('".G5_TIME_YMD."', INTERVAL 1 DAY) ";
+                $row = sql_fetch($sql);
+                $vi_yesterday = isset($row['cnt']) ? $row['cnt'] : 0;
+
+                // 최대
+                $sql = " select max(vs_count) as cnt from {$g5['visit_sum_table']} ";
+                $row = sql_fetch($sql);
+                $vi_max = isset($row['cnt']) ? $row['cnt'] : 0;
+
+                // 전체
+                $sql = " select sum(vs_count) as total from {$g5['visit_sum_table']} ";
+                $row = sql_fetch($sql);
+                $vi_sum = isset($row['total']) ? $row['total'] : 0;
+
+                $visit = '오늘:'.$vi_today.',어제:'.$vi_yesterday.',최대:'.$vi_max.',전체:'.$vi_sum;
+
+                // 기본설정 테이블에 방문자수를 기록한 후
+                // 방문자수 테이블을 읽지 않고 출력한다.
+                // 쿼리의 수를 상당부분 줄임
+                sql_query(" update {$g5['config_table']} set cf_visit = '{$visit}' ");
+
+                sql_query(" select release_lock('{$visit_lock}') ", false);
+            }
         }
-
-        // INSERT, UPDATE 된건이 있다면 기본환경설정 테이블에 저장
-        // 방문객 접속시마다 따로 쿼리를 하지 않기 위함 (엄청난 쿼리를 줄임 ^^)
-
-        // 오늘
-        $sql = " select vs_count as cnt from {$g5['visit_sum_table']} where vs_date = '".G5_TIME_YMD."' ";
-        $row = sql_fetch($sql);
-        $vi_today = isset($row['cnt']) ? $row['cnt'] : 0;
-
-        // 어제
-        $sql = " select vs_count as cnt from {$g5['visit_sum_table']} where vs_date = DATE_SUB('".G5_TIME_YMD."', INTERVAL 1 DAY) ";
-        $row = sql_fetch($sql);
-        $vi_yesterday = isset($row['cnt']) ? $row['cnt'] : 0;
-
-        // 최대
-        $sql = " select max(vs_count) as cnt from {$g5['visit_sum_table']} ";
-        $row = sql_fetch($sql);
-        $vi_max = isset($row['cnt']) ? $row['cnt'] : 0;
-
-        // 전체
-        $sql = " select sum(vs_count) as total from {$g5['visit_sum_table']} ";
-        $row = sql_fetch($sql);
-        $vi_sum = isset($row['total']) ? $row['total'] : 0;
-
-        $visit = '오늘:'.$vi_today.',어제:'.$vi_yesterday.',최대:'.$vi_max.',전체:'.$vi_sum;
-
-        // 기본설정 테이블에 방문자수를 기록한 후
-        // 방문자수 테이블을 읽지 않고 출력한다.
-        // 쿼리의 수를 상당부분 줄임
-        sql_query(" update {$g5['config_table']} set cf_visit = '{$visit}' ");
     }
 }
